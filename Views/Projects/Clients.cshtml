@@ -1,0 +1,41 @@
+﻿
+@model IEnumerable<Human_Evolution.Models.Project>
+
+<div class="container my-5">
+    <h2 class="fw-bold mb-4">Projets Clients en Cours</h2>
+
+    <!-- Filtres dynamiques (simple exemple) -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <input type="text" class="form-control" placeholder="Recherche par titre...">
+        </div>
+        <div class="col-md-4">
+            <select class="form-select">
+                <option selected>Filtrer par état</option>
+                <option>Idée</option>
+                <option>Étude</option>
+                <option>Permis</option>
+                <option>Chantier</option>
+                <option>Livré</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- Cartes projets -->
+    <div class="row">
+        @foreach (var project in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm border-0 rounded-4 overflow-hidden text-center">
+                    <img src="@project.ImageUrl" class="card-img-top" alt="@project.Title" />
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold mb-3">@project.Title</h5>
+                        <button class="btn btn-outline-dark rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#@project.ModalId">
+                            Plus de détails
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

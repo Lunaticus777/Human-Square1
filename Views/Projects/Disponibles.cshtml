@@ -1,0 +1,147 @@
+﻿@{
+    ViewData["Title"] = "Propositions à saisir";
+    ViewBag.ActiveTab = "disponibles";
+}
+
+<section class="projects py-5 bg-white">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5">Projets à proposer aux investisseurs</h2>
+
+        <div class="container mt-5">
+            <h2 class="fw-bold text-center mb-4">Nos projets</h2>
+
+            <!-- Onglets -->
+            <style>
+                .project-tabs-modern {
+                    background-color: #f8f9fa;
+                    padding: 12px;
+                    border-radius: 12px;
+                    display: flex;
+                    justify-content: center;
+                    gap: 30px;
+                    margin-bottom: 40px;
+                }
+
+                    .project-tabs-modern a {
+                        padding: 10px 25px;
+                        border-radius: 50px;
+                        font-weight: 600;
+                        text-decoration: none;
+                        color: #333;
+                        background-color: #e9ecef;
+                        transition: all 0.3s ease-in-out;
+                    }
+
+                        .project-tabs-modern a.active,
+                        .project-tabs-modern a:hover {
+                            background-color: #212529;
+                            color: #fff;
+                            transform: scale(1.05);
+                        }
+            </style>
+
+            <div class="project-tabs-modern">
+                <a class="@(ViewBag.ActiveTab == "clients" ? "active" : "")" href="/Projects/Index">Projets clients</a>
+                <a class="@(ViewBag.ActiveTab == "disponibles" ? "active" : "")" href="/Projects/Disponibles">Projets sur le marché</a>
+            </div>
+
+
+        <div class="row justify-content-center">
+            <!-- 📦 Exemple de carte projet disponible -->
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm border-0 rounded-4 overflow-hidden text-center">
+                    <img src="~/images/project07.jpg" class="card-img-top" alt="Projet Douro">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold mb-3">Ruine à réhabiliter – Douro</h5>
+                        <p class="text-muted small">💰 Budget : 250.000 € | 📈 Rentabilité cible : 9% | ⏳ 18 mois</p>
+                        <button class="btn btn-outline-dark rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalDouro">
+                            Plus de détails
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tu peux dupliquer ce bloc pour d'autres projets disponibles -->
+        </div>
+    </div>
+</section>
+
+<!-- 💼 Modale – Projet disponible pour investisseurs -->
+<div class="modal fade" id="modalDouro" tabindex="-1" aria-labelledby="modalDouroLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content rounded-4 border-0 shadow-lg">
+            <div class="modal-header bg-dark text-white rounded-top-4">
+                <h5 class="modal-title fw-bold" id="modalDouroLabel">Ruine à réhabiliter – Vallée du Douro</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+            <div class="modal-body">
+
+                <!-- 🎞️ Carousel -->
+                <div id="carouselDouro" class="carousel slide mb-4" data-bs-ride="carousel">
+                    <div class="carousel-inner rounded shadow-sm">
+                        <div class="carousel-item active">
+                            <img src="~/images/project07.jpg" class="d-block w-100" alt="Vue aérienne">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/images/project07b.jpg" class="d-block w-100" alt="Vue terrain">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselDouro" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselDouro" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
+
+                <!-- 📍 Localisation & description -->
+                <p><strong>📍 Localisation :</strong> Vallée du Douro – région viticole classée UNESCO, vue sur le fleuve, accès par route goudronnée.</p>
+                <p><strong>🏘️ Type de bien :</strong> Ruine en pierre sur un terrain de 3.200 m² – à réhabiliter en hébergement touristique ou villa de luxe.</p>
+
+                <!-- 📊 Données clés -->
+                <h6 class="fw-bold mt-4 mb-2">📊 Informations financières</h6>
+                <ul>
+                    <li><strong>Prix de vente :</strong> 120.000 €</li>
+                    <li><strong>Budget total projet :</strong> 250.000 €</li>
+                    <li><strong>Ticket d’entrée minimum :</strong> 25.000 €</li>
+                    <li><strong>Rentabilité cible :</strong> 8 à 10% / an</li>
+                    <li><strong>Durée prévisionnelle :</strong> 18 mois</li>
+                </ul>
+
+                <!-- 🏗️ Données urbanistiques -->
+                <h6 class="fw-bold mt-4 mb-2">🏗️ Urbanisme & faisabilité</h6>
+                <ul>
+                    <li>Zone : Solo Urbano - zone de construction autorisée</li>
+                    <li>Certificat : PIP en cours / viabilité confirmée par mairie</li>
+                    <li>Surface brute de construction possible : 260 m²</li>
+                    <li>Hauteur max : 2 étages</li>
+                    <li>Orientation sud – vue dominante</li>
+                </ul>
+
+                <!-- 🧾 Documents & statuts -->
+                <h6 class="fw-bold mt-4 mb-2">📁 Statut du dossier</h6>
+                <ul>
+                    <li>🟢 Propriété 100% privée, sans dettes ni charges</li>
+                    <li>📜 Registre foncier mis à jour</li>
+                    <li>🌐 Accès à l’eau, électricité en bordure, fibre disponible</li>
+                    <li>📂 Étude de faisabilité technique réalisée</li>
+                    <li>📝 Pré-projet architectural disponible</li>
+                </ul>
+
+                <!-- 🎯 Profil cible -->
+                <p><strong>🎯 Profil d’investisseur :</strong> Idéal pour un fonds immobilier, family office, investisseur privé ou société cherchant une opération patrimoniale ou touristique.</p>
+
+                <!-- 📄 Fiche -->
+                <p><strong>📄 Télécharger la fiche complète :</strong> <a href="~/pdfs/douro-projet.pdf" target="_blank">Cliquez ici</a></p>
+            </div>
+
+            <!-- 🎯 Call-to-action -->
+            <div class="modal-footer bg-light rounded-bottom-4">
+                <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                <a href="/contact" class="btn btn-dark rounded-pill px-4">Être mis en relation</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+

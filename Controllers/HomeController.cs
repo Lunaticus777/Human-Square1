@@ -26,7 +26,10 @@ namespace Human_Evolution.Controllers
 
         public IActionResult Services() => View();
 
-        public IActionResult Projects() => View();
+        public IActionResult Projects()
+        {
+            return RedirectToAction("Index", "Projects");
+        }
 
         public IActionResult Contact()
         {

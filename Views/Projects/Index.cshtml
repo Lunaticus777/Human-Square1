@@ -1,0 +1,366 @@
+﻿@model List<Human_Evolution.Models.Project>
+@{
+    ViewData["Title"] = "Nos Projets";
+}
+
+<div class="container mt-5">
+    <h2 class="fw-bold text-center mb-4">Nos projets</h2>
+
+    <!-- Onglets -->
+    <style>
+        .project-tabs-modern {
+            background-color: #f8f9fa;
+            padding: 12px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+            .project-tabs-modern a {
+                padding: 10px 25px;
+                border-radius: 50px;
+                font-weight: 600;
+                text-decoration: none;
+                color: #333;
+                background-color: #e9ecef;
+                transition: all 0.3s ease-in-out;
+            }
+
+                .project-tabs-modern a.active,
+                .project-tabs-modern a:hover {
+                    background-color: #212529;
+                    color: #fff;
+                    transform: scale(1.05);
+                }
+    </style>
+
+    <div class="project-tabs-modern">
+        <a class="@(ViewBag.ActiveTab == "clients" ? "active" : "")" href="/Projects/Index">Projets clients</a>
+        <a class="@(ViewBag.ActiveTab == "disponibles" ? "active" : "")" href="/Projects/Disponibles">Projets sur le marché</a>
+    </div>
+
+
+    <!-- Liste des projets -->
+    <div class="row">
+        @foreach (var project in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm border-0 rounded-4 overflow-hidden text-center">
+                    <img src="@project.ImageUrl" class="card-img-top" alt="@project.Title">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold mb-3">@project.Title</h5>
+                        <p>@project.Description</p>
+                        <button class="btn btn-outline-dark rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#@project.ModalId">
+                            Plus de détails
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- 🪟 Modal Projet 01 – 7 Villas à Esposende -->
+<div class="modal fade" id="modalProjet1" tabindex="-1" aria-labelledby="modalProjet1Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content rounded-4 border-0 shadow-lg">
+            <div class="modal-header bg-dark text-white rounded-top-4">
+                <h5 class="modal-title fw-bold" id="modalProjet1Label">7 Villas à Esposende</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+
+            <div class="modal-body">
+                <!-- 🖼️ Carousel images -->
+                <div id="carouselProjet1" class="carousel slide mb-4" data-bs-ride="carousel">
+                    <div class="carousel-inner rounded shadow-sm">
+                        <div class="carousel-item active">
+                            <img src="~/images/project01b.png" class="d-block w-100" alt="Vue 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/images/project01.png" class="d-block w-100" alt="Vue 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/images/project01c.png" class="d-block w-100" alt="Vue 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/images/project01d.png" class="d-block w-100" alt="Vue 4">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/images/project01e.jpg" class="d-block w-100" alt="Vue 5">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/images/project01f.jpg" class="d-block w-100" alt="Vue 6">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjet1" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselProjet1" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
+
+                <p><strong>📍 Localisation :</strong> Esposende, Portugal – Quartier résidentiel calme avec vue océan.</p>
+
+                <p><strong>🎯 Objectifs :</strong></p>
+                <ul>
+                    <li>Construction de 7 villas contemporaines avec terrasses et piscines privées</li>
+                    <li>Projet en cours avec permis obtenu</li>
+                    <li>Accompagnement global jusqu’à la livraison</li>
+                </ul>
+
+                <p><strong>🏗️ Nature de l’accompagnement :</strong></p>
+                <ul>
+                    <li>Recherche de terrain et coordination urbanistique</li>
+                    <li>Conception architecturale et choix techniques</li>
+                    <li>Suivi des travaux, communication et commercialisation</li>
+                </ul>
+
+                <p><strong>🔍 Profil idéal :</strong> Investisseur ou promoteur à la recherche d’un projet sécurisé et attractif sur la côte nord.</p>
+            </div>
+
+            <div class="modal-footer bg-light rounded-bottom-4">
+                <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                <a href="/contact" class="btn btn-dark rounded-pill px-4">Être accompagné</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 🪟 Modal Projet 02 – 10 Villas à Albufeira -->
+<div class="modal fade" id="modalProjet2" tabindex="-1" aria-labelledby="modalProjet2Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content rounded-4 border-0 shadow-lg">
+            <div class="modal-header bg-dark text-white rounded-top-4">
+                <h5 class="modal-title fw-bold" id="modalProjet2Label">10 Villas à Albufeira</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+
+            <div class="modal-body">
+                <!-- 🖼️ Carousel images -->
+                <div id="carouselProjet2" class="carousel slide mb-4" data-bs-ride="carousel">
+                    <div class="carousel-inner rounded shadow-sm">
+                        <div class="carousel-item active">
+                            <img src="~/images/project02.png" class="d-block w-100" alt="Vue 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/images/project02b.png" class="d-block w-100" alt="Vue 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/images/project02c.png" class="d-block w-100" alt="Vue 3">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjet2" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselProjet2" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </button>
+                </div>
+
+                <p><strong>📍 Localisation :</strong> Albufeira, Algarve – zone résidentielle et touristique recherchée.</p>
+
+                <p><strong>🎯 Objectifs :</strong></p>
+                <ul>
+                    <li>Développement d’un ensemble de 10 villas contemporaines</li>
+                    <li>Optimisation de la conception pour une rentabilité élevée</li>
+                    <li>Gestion complète du projet jusqu’à la livraison</li>
+                </ul>
+
+                <p><strong>🏗️ Nature de l’accompagnement :</strong></p>
+                <ul>
+                    <li>Étude de faisabilité complète</li>
+                    <li>Montage juridique et financier</li>
+                    <li>Choix des entreprises et suivi de chantier</li>
+                    <li>Stratégie de commercialisation</li>
+                </ul>
+
+                <p><strong>🔍 Profil idéal :</strong> Investisseur institutionnel ou promoteur cherchant un projet structuré avec visibilité immédiate.</p>
+            </div>
+
+            <div class="modal-footer bg-light rounded-bottom-4">
+                <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                <a href="/contact" class="btn btn-dark rounded-pill px-4">Être accompagné</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 🪟 Modal Projet 03 – Villa à Barcelos -->
+<div class="modal fade" id="modalProjet3" tabindex="-1" aria-labelledby="modalProjet3Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content rounded-4 border-0 shadow-lg">
+            <div class="modal-header bg-dark text-white rounded-top-4">
+                <h5 class="modal-title fw-bold" id="modalProjet3Label">Villa à Barcelos</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+
+            <div class="modal-body">
+                <!-- 🖼️ Carousel -->
+                <div id="carouselProjet3" class="carousel slide mb-4" data-bs-ride="carousel">
+                    <div class="carousel-inner rounded shadow-sm">
+                        <div class="carousel-item active">
+                            <img src="~/images/project03.png" class="d-block w-100" alt="Vue 1">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjet3" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselProjet3" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </button>
+                </div>
+
+                <p><strong>📍 Localisation :</strong> Village traditionnel à proximité de Barcelos, dans le nord du Portugal.</p>
+
+                <p><strong>🎯 Objectifs :</strong></p>
+                <ul>
+                    <li>Reconstruction d’une villa sur base d’une ruine en pierre</li>
+                    <li>Préservation du charme local avec une approche moderne</li>
+                    <li>Accompagnement total du projet pour un résultat clé en main</li>
+                </ul>
+
+                <p><strong>🏗️ Nature de l’accompagnement :</strong></p>
+                <ul>
+                    <li>Analyse structurelle du bâti existant</li>
+                    <li>Étude technique et administrative</li>
+                    <li>Collaboration avec des architectes locaux</li>
+                    <li>Choix des artisans et suivi de chantier</li>
+                </ul>
+
+                <p><strong>🔍 Profil idéal :</strong> Particulier à la recherche d’un projet unique dans un cadre authentique.</p>
+            </div>
+
+            <div class="modal-footer bg-light rounded-bottom-4">
+                <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                <a href="/contact" class="btn btn-dark rounded-pill px-4">Être accompagné</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 🪟 Modal Projet 05 – 6 Villas à Viseu -->
+<div class="modal fade" id="modalProjet5" tabindex="-1" aria-labelledby="modalProjet5Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content rounded-4 border-0 shadow-lg">
+            <div class="modal-header bg-dark text-white rounded-top-4">
+                <h5 class="modal-title fw-bold" id="modalProjet5Label">6 Villas à Viseu</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+
+            <div class="modal-body">
+                <!-- 🖼️ Carousel -->
+                <div id="carouselProjet5" class="carousel slide mb-4" data-bs-ride="carousel">
+                    <div class="carousel-inner rounded shadow-sm">
+                        <div class="carousel-item active">
+                            <img src="~/images/project04.jpg" class="d-block w-100" alt="Vue 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/images/project04b.jpg" class="d-block w-100" alt="Vue 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/images/project04c.jpg" class="d-block w-100" alt="Vue 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/images/project04d.jpg" class="d-block w-100" alt="Vue 4">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/images/project04e.jpg" class="d-block w-100" alt="Vue 5">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/images/project04f.jpg" class="d-block w-100" alt="Vue 6">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/images/project04g.jpg" class="d-block w-100" alt="Vue 7">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjet5" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselProjet5" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </button>
+                </div>
+
+                <p><strong>📍 Localisation :</strong> Ville de Viseu, région Centre – à fort potentiel résidentiel et touristique.</p>
+
+                <p><strong>🎯 Objectifs :</strong></p>
+                <ul>
+                    <li>Développement d’un lotissement de 6 villas familiales</li>
+                    <li>Maîtrise complète du cycle : étude, planification, réalisation</li>
+                    <li>Optimisation financière et technique pour les investisseurs</li>
+                </ul>
+
+                <p><strong>🏗️ Nature de l’accompagnement :</strong></p>
+                <ul>
+                    <li>Étude de faisabilité et analyse foncière</li>
+                    <li>Montage financier et prévisionnel</li>
+                    <li>Coordination avec l’architecte et les autorités locales</li>
+                    <li>Suivi administratif, technique et lancement du chantier</li>
+                </ul>
+
+                <p><strong>🔍 Profil idéal :</strong> Investisseur ou promoteur à la recherche d’un projet encadré et rentable.</p>
+            </div>
+
+            <div class="modal-footer bg-light rounded-bottom-4">
+                <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                <a href="/contact" class="btn btn-dark rounded-pill px-4">Être accompagné</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 🪟 Modal Projet 05 – Ruine dans le Douro -->
+<div class="modal fade" id="modalProjet6" tabindex="-1" aria-labelledby="modalProjet6Label" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content rounded-4 border-0 shadow-lg">
+            <div class="modal-header bg-dark text-white rounded-top-4">
+                <h5 class="modal-title fw-bold" id="modalProjet6Label">Projet 06 – Projet immobilier touristique dans le Douro</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+            <div class="modal-body">
+                <img src="~/images/project06.jpg" class="img-fluid rounded-3 mb-4" alt="Projet Douro">
+
+                <p><strong>📍 Localisation :</strong> Vallée du Douro, Portugal – site classé UNESCO, au cœur des vignes et collines surplombant le fleuve.</p>
+
+                <p><strong>🎯 Objectifs :</strong></p>
+                <ul>
+                    <li>Restauration d’une ruine en pierre dans le respect du patrimoine architectural local</li>
+                    <li>Création d’un bien unique (résidence secondaire ou hébergement touristique)</li>
+                    <li>Accompagnement global du projet : étude de faisabilité, autorisations, conception, pilotage</li>
+                </ul>
+
+                <p><strong>🏗️ Nature de l’accompagnement :</strong></p>
+                <ul>
+                    <li>Analyse urbanistique et potentiels de construction</li>
+                    <li>Étude de sol et contraintes techniques</li>
+                    <li>Collaboration avec architecte local pour valoriser l'existant</li>
+                    <li>Recherche de solutions de financement et de subventions (tourisme ou patrimoine)</li>
+                </ul>
+
+                <p><strong>🔍 Profil idéal :</strong> Investisseur, particulier ou promoteur sensible à la valeur patrimoniale et naturelle du lieu.</p>
+            </div>
+            <div class="modal-footer bg-light rounded-bottom-4">
+                <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                <a href="/contact" class="btn btn-dark rounded-pill px-4">Être accompagné</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function loadProjects(type) {
+        fetch(`/Projects/LoadProjects?type=${type}`)
+            .then(response => response.text())
+            .then(html => {
+                document.querySelector("#projectsContent").innerHTML = html;
+
+                // Mettre à jour les onglets actifs
+                document.querySelectorAll("#projectTabs .nav-link").forEach(btn => btn.classList.remove("active"));
+                document.querySelector(`#projectTabs .nav-link[onclick="loadProjects('${type}')"]`).classList.add("active");
+            });
+    }
+</script>
+

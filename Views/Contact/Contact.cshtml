@@ -65,6 +65,11 @@ else if (TempData["ErrorMessage"] != null)
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="mb-3">
+                <label asp-for="Phone" class="form-label">Téléphone</label>
+                <input asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
                 <label asp-for="Message" class="form-label">Message</label>
                 <textarea asp-for="Message" class="form-control" rows="4"></textarea>
                 <span asp-validation-for="Message" class="text-danger"></span>

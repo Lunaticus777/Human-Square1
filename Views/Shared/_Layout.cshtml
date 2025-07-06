@@ -126,8 +126,45 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">...</div>
     @await RenderSectionAsync("Scripts", required: false)
     <partial name="_ValidationScriptsPartial" />
+    <script>
+        const counters = document.querySelectorAll('.counter');
+
+        const startCounter = (entry) => {
+            const el = entry.target;
+            const target = +el.getAttribute('data-target');
+            const duration = 1500;
+            const stepTime = 20;
+            const steps = Math.ceil(duration / stepTime);
+            let count = 0;
+            const increment = target / steps;
+
+            const interval = setInterval(() => {
+                count += increment;
+                if (count >= target) {
+                    el.textContent = target;
+                    clearInterval(interval);
+                } else {
+                    el.textContent = Math.ceil(count);
+                }
+            }, stepTime);
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    startCounter(entry);
+                    observer.unobserve(entry.target); // une seule fois
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
+    </script>
 
 </body>
 </html>

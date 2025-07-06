@@ -464,3 +464,12 @@ form#langForm select {
 .case-card:hover .case-overlay {
     transform: translateY(0);
 }
+@media (max-width: 576px) {
+    .stats-box h3 {
+        font-size: 1.6rem;
+    }
+
+    .stats-box p {
+        font-size: 0.85rem;
+    }
+}

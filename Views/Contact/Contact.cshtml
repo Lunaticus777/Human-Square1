@@ -1,0 +1,98 @@
+﻿@model Human_Evolution.Models.ContactViewModel
+@{
+    ViewData["Title"] = "Contact";
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+        <div id="flashMessage" class="custom-flash success">@TempData["SuccessMessage"]</div>
+}
+else if (TempData["ErrorMessage"] != null)
+{
+        <div id="flashMessage" class="custom-flash error">@TempData["ErrorMessage"]</div>
+}
+
+<script>
+    setTimeout(function () {
+        const msg = document.getElementById('flashMessage');
+        if (msg) {
+            msg.style.opacity = '0';
+            setTimeout(() => msg.remove(), 600);
+        }
+    }, 3000);
+</script>
+
+<style>
+    .custom-flash {
+        position: fixed;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 20px 40px;
+        border-radius: 12px;
+        font-size: 1.1rem;
+        color: white;
+        z-index: 9999;
+        backdrop-filter: blur(4px);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        transition: opacity 0.6s ease-in-out;
+    }
+
+    .custom-flash.success {
+        background-color: rgba(40, 167, 69, 0.92);
+    }
+
+    .custom-flash.error {
+        background-color: rgba(220, 53, 69, 0.92);
+    }
+</style>
+
+<section class="contact py-5">
+    <div class="container">
+        <h1 class="text-center mb-5 fw-bold text-dark">Contactez-nous</h1>
+
+        <form asp-controller="Contact" asp-action="SendMessage" method="post" class="mx-auto bg-white shadow rounded-4 p-4 border" style="max-width:600px">
+            @Html.AntiForgeryToken()
+
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label">Nom</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Message" class="form-label">Message</label>
+                <textarea asp-for="Message" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Message" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-warning w-100 py-2 fw-semibold rounded-pill shadow-sm">
+                Envoyer
+            </button>
+        </form>
+
+        <p class="text-muted mt-4 text-center small">
+            <strong>Présence nationale :</strong> Vila do Conde, Porto, Lisbonne, Viseu et Albufeira.<br />
+            📍 <em>Av. Gen. Humberto Delgado 115, 4480-905 Vila do Conde</em>
+        </p>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script>
+    setTimeout(function () {
+        const msg = document.getElementById('flashMessage');
+        if (msg) {
+            msg.style.opacity = '0';
+            setTimeout(() => {
+                msg.remove(); // ✅ sans eval
+            }, 600);
+        }
+    }, 3000);
+</script>

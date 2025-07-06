@@ -1,0 +1,195 @@
+﻿@model Human_Evolution.Models.ServiceRequestViewModel
+
+@{
+    ViewData["Title"] = "Services & Formations - Orientation";
+}
+
+<!-- ===== Bouton “voir tous nos services” ===== -->
+<div class="container py-3 text-end">
+    <a asp-controller="Services" asp-action="Services" class="btn btn-outline-secondary">
+        Voir tous nos services
+    </a>
+</div>
+
+<!-- ======== styles existants (inchangés) ========= -->
+<style>
+    /* … (tes styles clickable-domain / clickable-card copiés tels quels) … */
+</style>
+
+<!-- ===== Sélection des domaines ===== -->
+<div class="container py-5">
+    <h1 class="text-center mb-4">Choisissez vos domaines d’intérêt</h1>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm clickable-domain"
+                 onclick="toggleDomain('conseil')">
+                <div class="card-body text-center">
+                    Consulting stratégique
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm clickable-domain"
+                 onclick="toggleDomain('audit')">
+                <div class="card-body text-center">
+                    Audit
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm clickable-domain"
+                 onclick="toggleDomain('formation')">
+                <div class="card-body text-center">
+                    Formation
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm clickable-domain"
+                 onclick="toggleDomain('coaching')">
+                <div class="card-body text-center">
+                    Coaching Professionnel
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Prestations dynamiques -->
+<div class="container py-4" id="servicesByDomain"></div>
+
+<!-- ======= Formulaire ======= -->
+<div class="container py-5">
+    <h3 class="text-center mb-4">Votre sélection</h3>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+    }
+    else if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+    }
+
+    <div class="alert alert-light border mb-4">
+        <strong>Domaines sélectionnés :</strong>
+        <ul id="domainList" class="mb-2"></ul>
+        <strong>Prestations sélectionnées :</strong>
+        <ul id="serviceList"></ul>
+    </div>
+
+    <form asp-controller="Services"
+          asp-action="SubmitServiceRequest"
+          method="post"
+          class="row g-3">
+        @Html.AntiForgeryToken()
+
+        <!-- Champs cachés alimentés par JS -->
+        <input asp-for="SelectedDomains" type="hidden" id="SelectedDomains" />
+        <input asp-for="ServiceType" type="hidden" id="SelectedServices" />
+
+        <div class="col-md-6">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Email" class="form-label"></label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-6">
+            <label asp-for="Phone" class="form-label"></label>
+            <input asp-for="Phone" class="form-control" />
+            <span asp-validation-for="Phone" class="text-danger"></span>
+        </div>
+
+        <div class="col-md-12">
+            <label asp-for="Message" class="form-label"></label>
+            <textarea asp-for="Message" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="Message" class="text-danger"></span>
+        </div>
+
+        <div class="col-12 text-center">
+            <button class="btn btn-primary" type="submit">Envoyer</button>
+        </div>
+    </form>
+</div>
+
+<!-- ====== Script domaines / prestations ====== -->
+<script>
+    const prestations = {
+        conseil: ["Trouver un bien immobilier", "Finances & croissance", "Structurer & développer un projet"],
+        audit: ["Projet immobilier", "Optimiser finances", "Entreprise"],
+        formation: ["Investissement", "Entrepreneuriat", "Immobilier & Construction"],
+        coaching: ["Marketing de soi", "Affirmation & confiance de soi", "Prise de position & décision"]
+    };
+
+    let selectedDomains = [];
+    let selectedServices = [];
+
+    function toggleDomain(domain) {
+        const idx = selectedDomains.indexOf(domain);
+        const card = document.querySelector(`.clickable-domain[onclick*="${domain}"]`);
+        if (idx === -1) {
+            selectedDomains.push(domain);
+            card.classList.add("selected-card");
+            showServices(domain);
+        } else {
+            selectedDomains.splice(idx, 1);
+            card.classList.remove("selected-card");
+            document.getElementById(`services-${domain}`)?.remove();
+            selectedServices = selectedServices.filter(s => !s.startsWith(domain + "::"));
+        }
+        updateSummary();
+    }
+
+    function showServices(domain) {
+        const wrap = document.createElement("div");
+        wrap.className = "my-4";
+        wrap.id = `services-${domain}`;
+
+        let html = `<h5 class="mb-3 text-capitalize">${domain}</h5><div class="row g-3">`;
+        prestations[domain].forEach(s => {
+            const id = `${domain}-${s}`.replace(/\s+/g, '-').toLowerCase();
+            html += `
+                  <div class="col-md-3">
+                    <div id="${id}" class="card h-100 shadow-sm clickable-card"
+                         onclick="toggleService('${domain}','${s}','${id}')">
+                         <div class="card-body text-center">${s}</div>
+                    </div>
+                  </div>`;
+        });
+        html += "</div>";
+        wrap.innerHTML = html;
+        document.getElementById("servicesByDomain").appendChild(wrap);
+    }
+
+    function toggleService(domain, service, id) {
+        const full = domain + "::" + service;
+        const idx = selectedServices.indexOf(full);
+        const card = document.getElementById(id);
+        if (idx === -1) {
+            selectedServices.push(full);
+            card.classList.add("selected-card");
+        } else {
+            selectedServices.splice(idx, 1);
+            card.classList.remove("selected-card");
+        }
+        updateSummary();
+    }
+
+    function updateSummary() {
+        domainList.innerHTML = selectedDomains.map(d => `<li>${d}</li>`).join('');
+        serviceList.innerHTML = selectedServices.map(s => `<li>${s.split("::")[1]}</li>`).join('');
+
+        SelectedDomains.value = selectedDomains.join(", ");
+        SelectedServices.value = selectedServices.map(s => s.split("::")[1]).join(", ");
+    }
+</script>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

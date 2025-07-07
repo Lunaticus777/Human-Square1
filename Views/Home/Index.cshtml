@@ -25,6 +25,14 @@ h1, h2, h5 { font-family: 'Playfair Display', serif; }
     .btn-primary { background: #003366; border: none; }
     .btn-primary:hover { background: #001f4d; }
     .card-service:hover { transform: translateY(-6px); box-shadow: 0 12px 25px rgba(0,0,0,0.1); }
+    <style>
+@media (max-width: 768px) {
+    .hero-content {
+        transform: translateY(30px); /* un peu moins sur mobile */
+    }
+}
+</style>
+
 </style>
 
 <!-- HERO SECTION FULL WIDTH AVEC STATS DÉCALÉES EN BAS -->
@@ -71,8 +79,8 @@ h1, h2, h5 { font-family: 'Playfair Display', serif; }
         </div>
     </div>
 
-    <!-- Contenu centré (logo, titre, bouton) -->
-    <div class="position-relative z-2 text-center" style="max-width: 900px;">
+    <!-- Contenu centré (logo, titre, bouton) avec décalage -->
+    <div class="position-relative z-2 text-center hero-content" style="max-width: 900px; transform: translateY(60px);">
         <img src="/images/Logo_HE_blanc.png" alt="Logo HE blanc"
              style="height: 120px; max-width: 100%;" class="mb-4" />
 

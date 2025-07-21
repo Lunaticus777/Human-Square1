@@ -13,7 +13,7 @@ namespace Human_Evolution.Controllers
             var projetsClients = new List<Project>
             {
                 new Project { Title = "7 Villas à Esposende", ImageUrl = "/images/project01b.png", Description = "Projet en bord de mer", ModalId = "modalProjet1" },
-                new Project { Title = "10 Villas à Albufeira", ImageUrl = "/images/project02.png", Description = "Projet dans le sud", ModalId = "modalProjet2" },
+                new Project { Title = "10 Villas à Albufeira", ImageUrl = "/images/project02i.jpg", Description = "Projet dans le sud", ModalId = "modalProjet2" },
                 new Project { Title = "Villa à Barcelos", ImageUrl = "/images/project03.png", Description = "Projet individuel", ModalId = "modalProjet3" },
                 new Project { Title = "6 Villas à Viseu", ImageUrl = "/images/project04.jpg", Description = "Projet de montagne", ModalId = "modalProjet5" },
                 new Project { Title = "Projet immobilier touristique – Douro", ImageUrl = "/images/project06.jpg", Description = "Projet de réhabilitation", ModalId = "modalProjet6" }

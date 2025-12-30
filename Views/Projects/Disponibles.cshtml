@@ -45,28 +45,52 @@
                 <a class="@(ViewBag.ActiveTab == "disponibles" ? "active" : "")" href="/Projects/Disponibles">Projets sur le marché</a>
             </div>
 
+            <!-- ✅ CARTES (tout doit rester dans la row) -->
+            <div class="row justify-content-center">
 
-        <div class="row justify-content-center">
-            <!-- 📦 Exemple de carte projet disponible -->
-            <div class="col-md-4 mb-4">
-                <div class="card shadow-sm border-0 rounded-4 overflow-hidden text-center">
-                    <img src="~/images/project07.jpg" class="card-img-top" alt="Projet Douro">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold mb-3">Ruine à réhabiliter – Douro</h5>
-                        <p class="text-muted small"> Budget : 250.000 € |  Rentabilité cible : 9% |  18 mois</p>
-                        <button class="btn btn-outline-dark rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#modalDouro">
-                            Plus de détails
-                        </button>
+                <!-- 📦 Carte Douro -->
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm border-0 rounded-4 overflow-hidden text-center">
+                        <img src="~/images/project07.jpg" class="card-img-top" alt="Projet Douro">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold mb-3">Ruine à réhabiliter – Douro</h5>
+                            <p class="text-muted small"> Budget : 250.000 € | Rentabilité cible : 9% | 18 mois</p>
+                            <button class="btn btn-outline-dark rounded-pill px-4"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalDouro">
+                                Plus de détails
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Tu peux dupliquer ce bloc pour d'autres projets disponibles -->
-        </div>
-    </div>
+                <!-- 🏷️ Carte Lomba -->
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm border-0 rounded-4 overflow-hidden text-center">
+                        <img src="~/images/lomba-01.PNG" class="card-img-top" alt="Projeto turístico Lomba">
+                        <div class="card-body">
+                            <h5 class="card-title fw-bold mb-3">Projet touristique – Lomba</h5>
+                            <p class="text-muted small">
+                                Vente terrain + PIP approuvé <br />
+                                Projet touristique clé en main
+                            </p>
+                            <button type="button"
+                                    class="btn btn-outline-dark rounded-pill px-4"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#modalLomba">
+                                Plus de détails
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- /row -->
+
+        </div> <!-- /container mt-5 -->
+    </div> <!-- /container -->
 </section>
 
-<!-- 💼 Modale – Projet disponible pour investisseurs -->
+<!-- ✅ Modale Douro -->
 <div class="modal fade" id="modalDouro" tabindex="-1" aria-labelledby="modalDouroLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content rounded-4 border-0 shadow-lg">
@@ -76,7 +100,6 @@
             </div>
             <div class="modal-body">
 
-                <!-- 🎞️ Carousel -->
                 <div id="carouselDouro" class="carousel slide mb-4" data-bs-ride="carousel">
                     <div class="carousel-inner rounded shadow-sm">
                         <div class="carousel-item active">
@@ -94,11 +117,9 @@
                     </button>
                 </div>
 
-                <!-- 📍 Localisation & description -->
                 <p><strong>📍 Localisation :</strong> Vallée du Douro – région viticole classée UNESCO, vue sur le fleuve, accès par route goudronnée.</p>
                 <p><strong> Type de bien :</strong> Ruine en pierre sur un terrain de 3.200 m² – à réhabiliter en hébergement touristique ou villa de luxe.</p>
 
-                <!-- 📊 Données clés -->
                 <h6 class="fw-bold mt-4 mb-2"> Informations financières</h6>
                 <ul>
                     <li><strong>Prix de vente :</strong> 120.000 €</li>
@@ -108,7 +129,6 @@
                     <li><strong>Durée prévisionnelle :</strong> 18 mois</li>
                 </ul>
 
-                <!-- 🏗️ Données urbanistiques -->
                 <h6 class="fw-bold mt-4 mb-2"> Urbanisme & faisabilité</h6>
                 <ul>
                     <li>Zone : Solo Urbano - zone de construction autorisée</li>
@@ -118,24 +138,19 @@
                     <li>Orientation sud – vue dominante</li>
                 </ul>
 
-                <!-- 🧾 Documents & statuts -->
                 <h6 class="fw-bold mt-4 mb-2"> Statut du dossier</h6>
                 <ul>
-                    <li> Propriété 100% privée, sans dettes ni charges</li>
-                    <li> Registre foncier mis à jour</li>
-                    <li> Accès à l’eau, électricité en bordure, fibre disponible</li>
-                    <li> Étude de faisabilité technique réalisée</li>
-                    <li> Pré-projet architectural disponible</li>
+                    <li>Propriété 100% privée, sans dettes ni charges</li>
+                    <li>Registre foncier mis à jour</li>
+                    <li>Accès à l’eau, électricité en bordure, fibre disponible</li>
+                    <li>Étude de faisabilité technique réalisée</li>
+                    <li>Pré-projet architectural disponible</li>
                 </ul>
 
-                <!-- 🎯 Profil cible -->
-                <p><strong> Profil d’investisseur :</strong> Idéal pour un fonds immobilier, family office, investisseur privé ou société cherchant une opération patrimoniale ou touristiques.</p>
-
-                <!-- 📄 Fiche -->
-                <p><strong> Télécharger la fiche complète :</strong> <a href="~/pdfs/douro-projet.pdf" target="_blank">Cliquez ici</a></p>
+                <p><strong> Profil d’investisseur :</strong> Idéal pour un fonds immobilier, family office, investisseur privé ou société cherchant une opération patrimoniale ou touristique.</p>
+                <p><strong> Télécharger la fiche complète :</strong> <a href="/Contact?projet=Douro" target="_blank">Cliquez ici</a></p>
             </div>
 
-            <!-- 🎯 Call-to-action -->
             <div class="modal-footer bg-light rounded-bottom-4">
                 <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
                 <a href="/contact" class="btn btn-dark rounded-pill px-4">Être mis en relation</a>
@@ -144,4 +159,134 @@
     </div>
 </div>
 
+<!-- ✅ Modale Lomba -->
+<div class="modal fade" id="modalLomba" tabindex="-1" aria-labelledby="modalLombaLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content rounded-4 border-0 shadow-lg">
 
+            <div class="modal-header bg-dark text-white rounded-top-4">
+                <h5 class="modal-title fw-bold" id="modalLombaLabel">Projeto turístico Lomba – Gondomar (PIP approuvé)</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <div id="carouselLomba" class="carousel slide mb-4" data-bs-ride="carousel">
+                    <div class="carousel-inner rounded shadow-sm">
+                        <div class="carousel-item active">
+                            <img src="~/images/lomba-01.PNG" class="d-block w-100" alt="Lomba - vue 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/images/lomba-02.JPEG" class="d-block w-100" alt="Lomba - vue 2">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselLomba" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselLomba" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
+
+                <p><strong>📍 Localisation :</strong> Lomba, Gondomar (Nord du Portugal) – Porto à ~35 km (~30 min).</p>
+                <p><strong> Statut :</strong> PIP vinculativo approuvé.</p>
+
+                <h6 class="fw-bold mt-4 mb-2">Composition de l’opération</h6>
+                <ul>
+                    <li><strong>Prix de vente :</strong> 500.000 €</li>
+                    <li><strong>Budget total construction :</strong> 2.000.000 €</li>
+                    <li><strong>Rentabilitée annuelle location :</strong> 350.000 à 650.0000 €/ an</li>
+                    <li><strong>Durée prévisionnelle construction :</strong> 18 mois</li>
+                </ul>
+                
+                <ul>
+                    <li><strong>6 Appartements T0</strong></li>
+                    <li><strong>8 Appartements T1</strong></li>
+                    <li><strong>2 Villas T2</strong></li>
+                    <li><strong>Restaurant panoramique</strong> (2 niveaux, possibilité +1 niveau) – <strong>440 m²</strong></li>
+                </ul>
+
+                <h6 class="fw-bold mt-4 mb-2">Résumé des surfaces</h6>
+                <ul>
+                    <li><strong>Terrain :</strong> 5.115 m²</li>
+                    <li><strong>Implantation :</strong> 880 m² (17%)</li>
+                    <li><strong>Surface brute de construction :</strong> 1.761 m² (35%)</li>
+                    <li><strong>Zone jacuzzi & piscine :</strong> 271 m² (5%)</li>
+                    <li><strong>Espaces verts :</strong> 2.458 m² (48%)</li>
+                </ul>
+
+                <h6 class="fw-bold mt-4 mb-2">Exemple typologie</h6>
+                <ul>
+                    <li><strong>Surface intérieure utile :</strong> 30,40 m²</li>
+                    <li><strong>Salle de bain :</strong> 7,55 m²</li>
+                    <li><strong>Terrasse (varanda) :</strong> 31,53 m²</li>
+                    <li><strong>Surface brute totale :</strong> 66,27 m²</li>
+                </ul>
+
+                <p class="mb-0">
+                    <strong> Télécharger la brochure :</strong>
+                    <a href="/Contact?projet=Lomba" class="btn btn-outline-dark rounded-pill px-4" role="button">
+                        Télécharger PDF
+                    </a>
+                </p>
+            </div>
+
+            <div class="modal-footer bg-light rounded-bottom-4">
+                <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                <a href="/Contact?projet=Lomba" class="btn btn-outline-dark rounded-pill px-4" role="button">
+                    Etre mis en relation
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- (Optionnel) Modale Vente Lisbonne : garde-la seulement si tu as une carte qui l'ouvre -->
+<div class="modal fade" id="modalVenteLisbonne" tabindex="-1" aria-labelledby="modalVenteLisbonneLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content rounded-4 border-0 shadow-lg">
+            <div class="modal-header bg-dark text-white rounded-top-4">
+                <h5 class="modal-title fw-bold" id="modalVenteLisbonneLabel">Immeuble à vendre – Lisbonne</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+
+            <div class="modal-body">
+                <div id="carouselVenteLisbonne" class="carousel slide mb-4" data-bs-ride="carousel">
+                    <div class="carousel-inner rounded shadow-sm">
+                        <div class="carousel-item active">
+                            <img src="~/images/project08.PNG" class="d-block w-100" alt="Façade">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="~/images/project08b.PNG" class="d-block w-100" alt="Intérieur">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselVenteLisbonne" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselVenteLisbonne" data-bs-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </button>
+                </div>
+
+                <p><strong>📍 Localisation :</strong> Lisbonne – quartier central.</p>
+                <p><strong> Type de bien :</strong> Immeuble R+4 – 6 lots + 1 local commercial.</p>
+
+                <h6 class="fw-bold mt-4 mb-2"> Informations financières</h6>
+                <ul>
+                    <li><strong>Prix de vente :</strong> 980.000 €</li>
+                    <li><strong>Revenus locatifs actuels :</strong> 5.300 € / mois</li>
+                    <li><strong>Rendement brut estimé :</strong> 6,5%</li>
+                    <li><strong>Horizon :</strong> 12 mois</li>
+                </ul>
+
+                <p><strong> Télécharger la fiche complète :</strong> <a href="~/pdfs/vente-lisbonne.pdf" target="_blank">Cliquez ici</a></p>
+            </div>
+
+            <div class="modal-footer bg-light rounded-bottom-4">
+                <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                <a href="/contact" class="btn btn-dark rounded-pill px-4">Être mis en relation</a>
+            </div>
+        </div>
+    </div>
+</div>

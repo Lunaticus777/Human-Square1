@@ -95,8 +95,18 @@
 
             <!-- CONTENU PRINCIPAL AVEC ANCRES -->
             <div class="container-fluid px-4">
-                <h1 class="text-center mb-5"></h1>
 
+                <h1 class="text-center fw-bold mb-4">
+                    Services de coaching, consulting immobilier et stratégie d’investissement au Portugal
+                </h1>
+
+                <p class="text-muted text-center mx-auto mb-5" style="max-width: 950px;">
+                    Human Square accompagne investisseurs, entrepreneurs, dirigeants et particuliers
+                    dans leurs projets immobiliers, stratégiques et entrepreneuriaux au Portugal.
+                    Nos prestations couvrent le coaching professionnel certifié ICF, le consulting immobilier,
+                    l’audit de projets, la structuration d’investissements, la promotion immobilière,
+                    l’accompagnement à l’expatriation et la formation stratégique.
+                </p>
                 <!-- Service 1 -->
                 <div id="coaching" class="service-section d-none">
                     <h3 class="mb-4">Coaching Professionnel</h3>
@@ -1850,11 +1860,11 @@
         }
 
         // Mettre en surbrillance le bon bouton
-        document.querySelectorAll(".sidebar-fixed button").forEach(function (btn) {
+        document.querySelectorAll(".service-navbar .nav-item").forEach(function (btn) {
             btn.classList.remove("text-primary", "fw-bold");
         });
 
-        const activeBtn = document.querySelector(`.sidebar-fixed button[onclick="showSection('${id}')"]`);
+        const activeBtn = document.querySelector(`.service-navbar .nav-item[onclick="showSection('${id}')"]`);
         if (activeBtn) {
             activeBtn.classList.add("text-primary", "fw-bold");
         }

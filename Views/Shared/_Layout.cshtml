@@ -5,8 +5,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Human_Square</title>
-
+    <meta name="description" content="@(ViewData["Description"] ?? "Human Square accompagne les projets immobiliers et investissements au Portugal : stratégie, acquisition, réseau local et accompagnement sur mesure.")" />
+    <meta property="og:title" content="@ViewData["Title"] | Human Square" />
+    <meta property="og:description" content="@(ViewData["Description"] ?? "Human Square accompagne les projets immobiliers et investissements au Portugal.")" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://human-square.com/images/Human_Square_Logo.png" />
+    <meta property="og:url" content="@Context.Request.Scheme://@Context.Request.Host@Context.Request.Path" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="@Context.Request.Scheme://@Context.Request.Host@Context.Request.Path" />
+    <title>@ViewData["Title"] | Human Square</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
     <style>
@@ -29,7 +37,9 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" asp-controller="Home" asp-action="Index">
-                    <img src="/images/Human_Square_Logo.png?v=2" alt="Logo" height="110" class="me-2 nav-logo" />
+                    <img src="/images/Human_Square_Logo.png?v=2"
+                         alt="Human Square"
+                         class="me-2 nav-logo" />
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
                         aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
@@ -71,7 +81,11 @@
                 </div>
             </div>
         </nav>
-        <div style="height:70px;"></div>
+        <style>
+            body {
+                padding-top: 110px;
+            }
+        </style>
     </header>
 
     <div class="container">
@@ -134,47 +148,59 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <partial name="_ValidationScriptsPartial" />
     @await RenderSectionAsync("Scripts", required: false)
     <script>
-        const counters = document.querySelectorAll('.counter');
+        document.addEventListener("DOMContentLoaded", function () {
 
-        const startCounter = (entry) => {
-            const el = entry.target;
-            const target = +el.getAttribute('data-target');
-            const duration = 1500;
-            const stepTime = 20;
-            const steps = Math.ceil(duration / stepTime);
-            let count = 0;
-            const increment = target / steps;
+            const counters = document.querySelectorAll('.counter');
 
-            // Réinitialiser à 0 avant d’animer
-            el.textContent = '0';
+            if (!counters.length) return;
 
-            const interval = setInterval(() => {
-                count += increment;
-                if (count >= target) {
-                    el.textContent = target;
-                    clearInterval(interval);
-                } else {
-                    el.textContent = Math.ceil(count);
-                }
-            }, stepTime);
-        };
+            const startCounter = (entry) => {
+                const el = entry.target;
+                const target = +el.getAttribute('data-target');
+                const duration = 1500;
+                const stepTime = 20;
+                const steps = Math.ceil(duration / stepTime);
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    startCounter(entry);
-                    observer.unobserve(entry.target);
-                }
+                let count = 0;
+                const increment = target / steps;
+
+                el.textContent = '0';
+
+                const interval = setInterval(() => {
+
+                    count += increment;
+
+                    if (count >= target) {
+                        el.textContent = target;
+                        clearInterval(interval);
+                    } else {
+                        el.textContent = Math.ceil(count);
+                    }
+
+                }, stepTime);
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+
+                entries.forEach(entry => {
+
+                    if (entry.isIntersecting) {
+                        startCounter(entry);
+                        observer.unobserve(entry.target);
+                    }
+
+                });
+
+            }, { threshold: 0.5 });
+
+            counters.forEach(counter => {
+                observer.observe(counter);
             });
-        }, { threshold: 0.5 });
 
-        counters.forEach(counter => {
-            observer.observe(counter);
         });
     </script>
 </body>

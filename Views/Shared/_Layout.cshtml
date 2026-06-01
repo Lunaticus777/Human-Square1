@@ -16,10 +16,23 @@
     <link rel="canonical" href="@Context.Request.Scheme://@Context.Request.Host@Context.Request.Path" />
     <title>@ViewData["Title"] | Human Square</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
     <style>
-        /* Cacher le widget Google Translate sauf pour les navigateurs non-Chrome */
+        /* ─── Variables globales ─── */
+        :root {
+            --ink: #0e0e0c;
+            --cream: #f7f5f0;
+            --warm: #ede9e1;
+            --gold: #c9a96e;
+            --gold2: #e8d5b0;
+            --muted: #7a7870;
+            --hint: #b0ae9f;
+            --border: rgba(14,14,12,0.1);
+        }
+
+        /* Masquer Google Translate */
         #google_translate_element,
         .goog-te-banner-frame.skiptranslate,
         .goog-te-gadget,
@@ -29,179 +42,564 @@
         }
 
         body {
-            top: 0px !important;
+            top: 0 !important;
+        }
+
+        /* ─── NAVBAR ─── */
+        .hs-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            padding: 0 48px;
+            /* Dégradé visible dès l'arrivée sur le hero */
+            background: linear-gradient(to bottom, rgba(14,14,12,0.55) 0%, rgba(14,14,12,0) 100%);
+            transition: background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease;
+        }
+
+            /* Après scroll sur hero : fond clair */
+            .hs-nav.scrolled {
+                background: rgba(247,245,240,0.97) !important;
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(14px);
+                box-shadow: 0 1px 0 var(--border);
+            }
+
+            /* Sur pages sans hero : fond clair direct */
+            .hs-nav.opaque {
+                background: #f7f5f0 !important;
+                box-shadow: 0 1px 0 var(--border);
+            }
+
+        /* Logo */
+        .hs-nav-brand {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            margin-right: auto;
+        }
+
+            .hs-nav-brand img {
+                height: 40px;
+                width: auto;
+                transition: filter .3s;
+            }
+
+        /* Logo blanc quand fond transparent */
+        .hs-nav:not(.scrolled):not(.opaque) .hs-nav-brand img {
+            filter: brightness(0) invert(1);
+        }
+
+        /* Liens */
+        .hs-nav-links {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+            .hs-nav-links a {
+                font-family: 'Outfit', sans-serif;
+                font-size: 12px;
+                font-weight: 300;
+                letter-spacing: 0.06em;
+                text-decoration: none;
+                color: var(--muted);
+                transition: color .15s;
+                white-space: nowrap;
+            }
+
+        /* Liens blancs sur fond transparent */
+        .hs-nav:not(.scrolled):not(.opaque) .hs-nav-links a {
+            color: rgba(255,255,255,0.8);
+        }
+
+            .hs-nav:not(.scrolled):not(.opaque) .hs-nav-links a:hover {
+                color: #fff;
+            }
+
+        .hs-nav-links a:hover {
+            color: var(--ink);
+        }
+
+        /* Bouton Contact */
+        .hs-nav-cta {
+            font-size: 11px !important;
+            letter-spacing: 0.12em !important;
+            text-transform: uppercase;
+            padding: 8px 20px !important;
+            border: 0.5px solid rgba(255,255,255,0.45) !important;
+            border-radius: 2px !important;
+            color: rgba(255,255,255,0.9) !important;
+            background: rgba(201,169,110,0.18) !important;
+            transition: all .2s !important;
+        }
+
+        .hs-nav:is(.scrolled,.opaque) .hs-nav-cta {
+            border-color: var(--ink) !important;
+            color: var(--ink) !important;
+            background: transparent !important;
+        }
+
+        .hs-nav-cta:hover {
+            background: var(--gold) !important;
+            border-color: var(--gold) !important;
+            color: var(--ink) !important;
+        }
+
+        /* Hamburger mobile */
+        .hs-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            margin-left: 16px;
+        }
+
+            .hs-hamburger span {
+                display: block;
+                width: 22px;
+                height: 1.5px;
+                background: rgba(255,255,255,0.9);
+                border-radius: 2px;
+                transition: background .2s;
+            }
+
+        .hs-nav:is(.scrolled,.opaque) .hs-hamburger span {
+            background: var(--ink);
+        }
+
+        /* Menu mobile */
+        .hs-mobile-menu {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            background: #f7f5f0;
+            border-bottom: 1px solid var(--border);
+            padding: 16px 24px 24px;
+            z-index: 999;
+            box-shadow: 0 8px 24px rgba(14,14,12,0.08);
+        }
+
+            .hs-mobile-menu.open {
+                display: block;
+            }
+
+            .hs-mobile-menu a {
+                display: block;
+                font-family: 'Outfit', sans-serif;
+                font-size: 14px;
+                font-weight: 300;
+                color: var(--muted);
+                text-decoration: none;
+                padding: 13px 0;
+                border-bottom: 0.5px solid var(--border);
+            }
+
+                .hs-mobile-menu a:last-child {
+                    border-bottom: none;
+                }
+
+                .hs-mobile-menu a:hover {
+                    color: var(--ink);
+                }
+
+        /* Dropdown langue */
+        .hs-lang-btn {
+            font-family: 'Outfit', sans-serif;
+            font-size: 12px;
+            font-weight: 300;
+            letter-spacing: 0.06em;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            color: rgba(255,255,255,0.8);
+            transition: color .15s;
+        }
+
+        .hs-nav:is(.scrolled,.opaque) .hs-lang-btn {
+            color: var(--muted);
+        }
+
+        .hs-lang-btn:hover {
+            color: #fff;
+        }
+
+        .hs-nav:is(.scrolled,.opaque) .hs-lang-btn:hover {
+            color: var(--ink);
+        }
+
+        /* Padding body */
+        body {
+            padding-top: 72px;
+        }
+
+            body.has-hero {
+                padding-top: 0;
+            }
+
+        /* ─── FOOTER ─── */
+        .hs-footer {
+            background: var(--ink);
+            padding: 72px 0 0;
+        }
+
+        .hs-footer-grid {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr 1fr 1fr;
+            gap: 48px;
+            padding-bottom: 56px;
+            border-bottom: 0.5px solid rgba(255,255,255,0.08);
+        }
+
+        /* Colonne marque */
+        .hs-footer-logo {
+            height: 38px;
+            filter: brightness(0) invert(1);
+            opacity: .85;
+            margin-bottom: 18px;
+            display: block;
+        }
+
+        .hs-footer-desc {
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            font-weight: 300;
+            line-height: 1.75;
+            color: rgba(255,255,255,0.38);
+            max-width: 240px;
+            margin-bottom: 24px;
+        }
+
+        .hs-footer-contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 11px;
+            font-weight: 400;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--gold);
+            text-decoration: none;
+            border-bottom: 0.5px solid rgba(201,169,110,0.35);
+            padding-bottom: 2px;
+            transition: color .15s, border-color .15s;
+        }
+
+            .hs-footer-contact-link:hover {
+                color: var(--gold2);
+                border-color: var(--gold2);
+            }
+
+        /* Titres colonnes */
+        .hs-footer-col-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 9px;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        /* Liens footer */
+        .hs-footer-col a {
+            display: block;
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.45);
+            text-decoration: none;
+            margin-bottom: 12px;
+            transition: color .15s;
+        }
+
+            .hs-footer-col a:hover {
+                color: rgba(255,255,255,0.85);
+            }
+
+        /* Texte colonne */
+        .hs-footer-col p {
+            font-family: 'Outfit', sans-serif;
+            font-size: 13px;
+            font-weight: 300;
+            color: rgba(255,255,255,0.38);
+            line-height: 1.75;
+            margin: 0 0 10px;
+        }
+
+        /* Ligne du bas */
+        .hs-footer-bottom {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 24px 0;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+            .hs-footer-bottom span {
+                font-family: 'Outfit', sans-serif;
+                font-size: 11px;
+                font-weight: 300;
+                color: rgba(255,255,255,0.2);
+                letter-spacing: 0.04em;
+            }
+
+        .hs-footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+            .hs-footer-bottom-links a {
+                font-family: 'Outfit', sans-serif;
+                font-size: 11px;
+                font-weight: 300;
+                color: rgba(255,255,255,0.28);
+                text-decoration: none;
+                transition: color .15s;
+            }
+
+                .hs-footer-bottom-links a:hover {
+                    color: rgba(255,255,255,0.65);
+                }
+
+        /* ─── Responsive ─── */
+        @@media (max-width: 992px) {
+            .hs-nav {
+                padding: 0 24px;
+            }
+
+            .hs-nav-links {
+                display: none;
+            }
+
+            .hs-hamburger {
+                display: flex;
+            }
+
+            .hs-footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 36px;
+            }
+        }
+
+        @@media (max-width: 576px) {
+            .hs-footer-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .hs-footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm">
-            <div class="container">
-                <a class="navbar-brand d-flex align-items-center" asp-controller="Home" asp-action="Index">
-                    <img src="/images/Human_Square_Logo.png?v=2"
-                         alt="Human Square"
-                         class="me-2 nav-logo" />
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain"
-                        aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarMain">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Index">Accueil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="About">À propos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Biens">Acheter un bien immobilier</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Services" asp-action="Index">Prestations</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Home" asp-action="Projects">Projets</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="Contact" asp-action="Contact">Contact</a>
-                        </li>
+    <!-- ═══════════════ NAVBAR ═══════════════ -->
+    <nav class="hs-nav" id="hsNav">
 
-                        <!-- Menu Langue visible pour les navigateurs non-Chrome -->
-                        <li class="nav-item dropdown" id="langDropdownContainer" style="display: none;">
-                            <a class="nav-link dropdown-toggle text-uppercase" href="#" id="langDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Langue
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="langDropdown">
-                                <li><button class="dropdown-item" onclick="changeLanguage('fr')">🇫🇷 Français</button></li>
-                                <li><button class="dropdown-item" onclick="changeLanguage('pt')">🇵🇹 Português</button></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-        <style>
-            body {
-                padding-top: 110px;
-            }
-        </style>
-    </header>
+        <a class="hs-nav-brand" asp-controller="Home" asp-action="Index">
+            <img src="/images/Human_Square_Logo.png?v=2" alt="Human Square" />
+        </a>
 
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        <ul class="hs-nav-links">
+            <li><a asp-controller="Home" asp-action="Index">Accueil</a></li>
+            <li><a asp-controller="Home" asp-action="About">À propos</a></li>
+            <li><a href="/Biens">Acheter un bien</a></li>
+            <li><a asp-controller="Services" asp-action="Index">Prestations</a></li>
+            <li><a asp-controller="Home" asp-action="Projects">Projets</a></li>
+            <li id="langItem" style="display:none" class="dropdown">
+                <button class="hs-lang-btn dropdown-toggle" data-bs-toggle="dropdown">Langue</button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><button class="dropdown-item" onclick="changeLanguage('fr')">🇫🇷 Français</button></li>
+                    <li><button class="dropdown-item" onclick="changeLanguage('pt')">🇵🇹 Português</button></li>
+                </ul>
+            </li>
+            <li><a asp-controller="Contact" asp-action="Contact" class="hs-nav-cta">Contact</a></li>
+        </ul>
+
+        <button class="hs-hamburger" onclick="toggleMenu()" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+
+    </nav>
+
+    <!-- Menu mobile -->
+    <div class="hs-mobile-menu" id="mobileMenu">
+        <a asp-controller="Home" asp-action="Index">Accueil</a>
+        <a asp-controller="Home" asp-action="About">À propos</a>
+        <a href="/Biens">Acheter un bien</a>
+        <a asp-controller="Services" asp-action="Index">Prestations</a>
+        <a asp-controller="Home" asp-action="Projects">Projets</a>
+        <a asp-controller="Contact" asp-action="Contact">Contact</a>
     </div>
 
-    <footer class="bg-dark text-light py-4 mt-5">
+    <div id="google_translate_element" style="display:none"></div>
+
+    <!-- ═══════════════ CONTENU ═══════════════ -->
+    <main role="main" class="pb-3">
+        @RenderBody()
+    </main>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer class="hs-footer">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6 mb-3 mb-md-0">
-                    <h5>Human Square</h5>
-                    <p class="mb-0">@Localizer["Footer_Company"]</p>
+            <div class="hs-footer-grid">
+
+                <!-- Colonne marque -->
+                <div>
+                    <img src="/images/Human_Square_Logo.png?v=2" alt="Human Square" class="hs-footer-logo" />
+                    <p class="hs-footer-desc">
+                        Accompagnement stratégique pour vos projets immobiliers au Portugal — de la stratégie à la clé en main.
+                    </p>
+                    <a asp-controller="Contact" asp-action="Contact" class="hs-footer-contact-link">
+                        Prendre rendez-vous
+                        <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
+                            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </a>
                 </div>
-                <div class="col-md-6 text-md-end">
-                    <a href="/Home/Privacy" class="text-light me-3">@Localizer["Footer_Legal"]</a>
-                    <a asp-controller="Contact" asp-action="Contact" class="btn btn-outline-light btn-sm">@Localizer["Contact"]</a>
+
+                <!-- Navigation -->
+                <div class="hs-footer-col">
+                    <p class="hs-footer-col-title">Navigation</p>
+                    <a asp-controller="Home" asp-action="Index">Accueil</a>
+                    <a asp-controller="Home" asp-action="About">À propos</a>
+                    <a href="/Biens">Acheter un bien</a>
+                    <a asp-controller="Services" asp-action="Index">Prestations</a>
+                    <a asp-controller="Home" asp-action="Projects">Projets</a>
+                    <a asp-controller="Contact" asp-action="Contact">Contact</a>
+                </div>
+
+                <!-- Services -->
+                <div class="hs-footer-col">
+                    <p class="hs-footer-col-title">Services</p>
+                    <a href="#">Conseil stratégique</a>
+                    <a href="#">Coaching professionnel</a>
+                    <a href="#">Formations</a>
+                    <a href="#">Audit immobilier</a>
+                    <a href="/Biens">Catalogue de biens</a>
+                </div>
+
+                <!-- Contact -->
+                <div class="hs-footer-col">
+                    <p class="hs-footer-col-title">Contact</p>
+                    <p>Av. Gen. Humberto Delgado 115<br />4480-905 Vila do Conde<br />Portugal</p>
+                    <a href="mailto:admin@human-square.com">admin@human-square.com</a>
+                </div>
+
+            </div>
+
+            <!-- Bas du footer -->
+            <div class="hs-footer-bottom">
+                <span>© 2026 Human Square. Tous droits réservés.</span>
+                <div class="hs-footer-bottom-links">
+                    <a href="/Home/Privacy">Mentions légales</a>
+                    <a asp-controller="Contact" asp-action="Contact">Contact</a>
                 </div>
             </div>
-            <hr class="border-light my-3" />
-            <p class="text-center mb-0">&copy; 2025 Human Square. @Localizer["Footer_Claim"]</p>
         </div>
     </footer>
 
-    <div id="google_translate_element" style="display: none;"></div>
+    <!-- ═══════════════ SCRIPTS ═══════════════ -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <partial name="_ValidationScriptsPartial" />
+    @await RenderSectionAsync("Scripts", required: false)
 
-    <!-- JS POUR GESTION INTELLIGENTE DE GOOGLE TRANSLATE -->
     <script>
+        /* ── Navbar : transparent sur hero, clair ailleurs et au scroll ── */
+        const nav = document.getElementById('hsNav');
+        const isHeroPage = !!document.querySelector('.hs-home');
+
+        function updateNav() {
+            if (isHeroPage) {
+                if (window.scrollY > 80) {
+                    nav.classList.add('scrolled');
+                    nav.classList.remove('opaque');
+                } else {
+                    nav.classList.remove('scrolled');
+                    nav.classList.remove('opaque');
+                }
+            } else {
+                nav.classList.remove('scrolled');
+                nav.classList.add('opaque');
+            }
+        }
+
+        window.addEventListener('scroll', updateNav, { passive: true });
+        updateNav();
+
+        /* ── Menu mobile ── */
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('open');
+        }
+
+        /* ── Google Translate ── */
         const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-
         if (!isChrome) {
-            // Charger le script Google Translate
-            const gtScript = document.createElement('script');
-            gtScript.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-            document.head.appendChild(gtScript);
-
-            // Afficher le bouton langue custom
-            document.addEventListener("DOMContentLoaded", function () {
-                const dropdown = document.getElementById("langDropdownContainer");
-                if (dropdown) dropdown.style.display = "block";
+            const s = document.createElement('script');
+            s.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+            document.head.appendChild(s);
+            document.addEventListener("DOMContentLoaded", () => {
+                const l = document.getElementById("langItem");
+                if (l) l.style.display = "block";
             });
         }
 
         function googleTranslateElementInit() {
             new google.translate.TranslateElement({
-                pageLanguage: 'fr',
-                includedLanguages: 'fr,pt',
+                pageLanguage: 'fr', includedLanguages: 'fr,pt',
                 layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
                 autoDisplay: false
             }, 'google_translate_element');
         }
 
         function changeLanguage(lang) {
-            const cookieValue = `/fr/${lang}`;
-            document.cookie = `googtrans=${cookieValue};path=/;domain=.human-square.com`;
+            document.cookie = `googtrans=/fr/${lang};path=/;domain=.human-square.com`;
             window.location.reload();
         }
-    </script>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <partial name="_ValidationScriptsPartial" />
-    @await RenderSectionAsync("Scripts", required: false)
-    <script>
+        /* ── Compteurs animés ── */
         document.addEventListener("DOMContentLoaded", function () {
-
             const counters = document.querySelectorAll('.counter');
-
             if (!counters.length) return;
-
-            const startCounter = (entry) => {
-                const el = entry.target;
-                const target = +el.getAttribute('data-target');
-                const duration = 1500;
-                const stepTime = 20;
-                const steps = Math.ceil(duration / stepTime);
-
-                let count = 0;
-                const increment = target / steps;
-
-                el.textContent = '0';
-
-                const interval = setInterval(() => {
-
-                    count += increment;
-
-                    if (count >= target) {
-                        el.textContent = target;
-                        clearInterval(interval);
-                    } else {
-                        el.textContent = Math.ceil(count);
-                    }
-
-                }, stepTime);
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-
-                entries.forEach(entry => {
-
-                    if (entry.isIntersecting) {
-                        startCounter(entry);
-                        observer.unobserve(entry.target);
-                    }
-
+            const obs = new IntersectionObserver((entries, observer) => {
+                entries.forEach(e => {
+                    if (!e.isIntersecting) return;
+                    const el = e.target;
+                    const target = +el.getAttribute('data-target');
+                    const inc = target / 75;
+                    let count = 0;
+                    el.textContent = '0';
+                    const iv = setInterval(() => {
+                        count += inc;
+                        if (count >= target) { el.textContent = target; clearInterval(iv); }
+                        else { el.textContent = Math.ceil(count); }
+                    }, 20);
+                    observer.unobserve(el);
                 });
-
             }, { threshold: 0.5 });
-
-            counters.forEach(counter => {
-                observer.observe(counter);
-            });
-
+            counters.forEach(c => obs.observe(c));
         });
     </script>
 </body>

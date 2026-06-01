@@ -16,6 +16,7 @@ namespace Human_Evolution.Data
         public DbSet<Formation> Formations { get; set; }
         public DbSet<ContactRequest> ContactRequests { get; set; }
         public DbSet<ServiceRequest> ServiceRequests { get; set; }
+        public DbSet<Bien> Biens { get; set; }
 
     }
 }

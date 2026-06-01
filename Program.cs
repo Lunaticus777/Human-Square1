@@ -80,6 +80,12 @@ app.MapControllerRoute(
     pattern: "contact",
     defaults: new { controller = "Contact", action = "Contact" });
 
+// ← AJOUTEZ CECI
+app.MapControllerRoute(
+    name: "biens",
+    pattern: "Biens",
+    defaults: new { controller = "Biens", action = "Index" });
+
 // Route par défaut : HomeController → Index()
 app.MapControllerRoute(
     name: "default",

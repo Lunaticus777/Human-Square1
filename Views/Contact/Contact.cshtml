@@ -1,93 +1,513 @@
 ﻿@model Human_Evolution.Models.ContactViewModel
 @{
     ViewData["Title"] = "Contactez Human Square – Conseil Immobilier Portugal";
+    ViewData["Description"] = "Contactez Human Square pour votre projet immobilier au Portugal. Vila do Conde, Porto, Lisbonne, Viseu, Albufeira.";
 }
 
 @if (TempData["SuccessMessage"] != null)
 {
-        <div id="flashMessage" class="custom-flash success">@TempData["SuccessMessage"]</div>
+    <div id="flashMessage" class="ct-flash ct-flash-success">@TempData["SuccessMessage"]</div>
 }
 else if (TempData["ErrorMessage"] != null)
 {
-        <div id="flashMessage" class="custom-flash error">@TempData["ErrorMessage"]</div>
+    <div id="flashMessage" class="ct-flash ct-flash-error">@TempData["ErrorMessage"]</div>
 }
 
-<script>
-    setTimeout(function () {
-        const msg = document.getElementById('flashMessage');
-        if (msg) {
-            msg.style.opacity = '0';
-            setTimeout(() => msg.remove(), 600);
-        }
-    }, 3000);
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
 
 <style>
-    .custom-flash {
+    :root {
+        --ink: #0c0c0a;
+        --cream: #f5f3ee;
+        --warm: #ece8df;
+        --gold: #b8935a;
+        --gold2: #d4b483;
+        --muted: #78766e;
+        --hint: #aeac9f;
+        --border: rgba(12,12,10,0.09);
+    }
+
+    .ct {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        background: var(--cream);
+        color: var(--ink);
+        overflow-x: hidden;
+    }
+
+    /* ── Flash ── */
+    .ct-flash {
         position: fixed;
         top: 20%;
         left: 50%;
         transform: translateX(-50%);
-        padding: 20px 40px;
-        border-radius: 12px;
-        font-size: 1.1rem;
-        color: white;
+        padding: 18px 40px;
+        font-family: 'DM Mono', monospace;
+        font-size: 12px;
+        font-weight: 300;
+        letter-spacing: 0.08em;
+        color: #fff;
         z-index: 9999;
-        backdrop-filter: blur(4px);
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-        transition: opacity 0.6s ease-in-out;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        transition: opacity .6s ease;
     }
 
-    .custom-flash.success {
-        background-color: rgba(40, 167, 69, 0.92);
+    .ct-flash-success {
+        background: rgba(40,167,69,0.92);
     }
 
-    .custom-flash.error {
-        background-color: rgba(220, 53, 69, 0.92);
+    .ct-flash-error {
+        background: rgba(220,53,69,0.92);
+    }
+
+    /* ── HERO SPLIT ── */
+    .ct-hero {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 100vh;
+    }
+
+    /* Côté gauche : fond sombre informatif */
+    .ct-left {
+        background: var(--ink);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 96px 72px;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .ct-left::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(184,147,90,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(184,147,90,0.05) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+        }
+
+    .ct-left-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .ct-pretitle {
+        font-family: 'DM Mono', monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+        .ct-pretitle::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+    .ct-h1 {
+        font-size: clamp(42px, 4.5vw, 68px);
+        font-weight: 300;
+        line-height: 0.96;
+        color: #fff;
+        margin-bottom: 40px;
+        letter-spacing: -0.02em;
+    }
+
+        .ct-h1 em {
+            font-style: italic;
+            color: var(--gold2);
+            display: block;
+        }
+
+    .ct-tagline {
+        font-family: 'DM Mono', monospace;
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 1.75;
+        color: rgba(255,255,255,0.38);
+        letter-spacing: 0.03em;
+        max-width: 320px;
+        margin-bottom: 56px;
+    }
+
+    /* Infos de contact */
+    .ct-infos {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .ct-info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 20px 0;
+        border-bottom: 0.5px solid rgba(255,255,255,0.07);
+    }
+
+        .ct-info-item:first-child {
+            border-top: 0.5px solid rgba(255,255,255,0.07);
+        }
+
+    .ct-info-icon {
+        width: 32px;
+        height: 32px;
+        border: 0.5px solid rgba(184,147,90,0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+
+        .ct-info-icon svg {
+            width: 14px;
+            height: 14px;
+            color: var(--gold);
+        }
+
+    .ct-info-label {
+        font-family: 'DM Mono', monospace;
+        font-size: 8px;
+        font-weight: 300;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 5px;
+        opacity: 0.8;
+    }
+
+    .ct-info-value {
+        font-size: 15px;
+        font-weight: 300;
+        color: rgba(255,255,255,0.7);
+        line-height: 1.5;
+    }
+
+        .ct-info-value a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: color .15s;
+        }
+
+            .ct-info-value a:hover {
+                color: var(--gold2);
+            }
+
+    /* Villes */
+    .ct-cities {
+        margin-top: 48px;
+        padding-top: 32px;
+        border-top: 0.5px solid rgba(255,255,255,0.07);
+    }
+
+    .ct-cities-label {
+        font-family: 'DM Mono', monospace;
+        font-size: 8px;
+        font-weight: 300;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 14px;
+        opacity: 0.7;
+    }
+
+    .ct-cities-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .ct-city {
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        font-weight: 300;
+        letter-spacing: 0.08em;
+        color: rgba(255,255,255,0.3);
+        padding: 5px 12px;
+        border: 0.5px solid rgba(255,255,255,0.08);
+    }
+
+    /* ── Côté droit : formulaire ── */
+    .ct-right {
+        background: var(--cream);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 96px 72px;
+        border-left: 0.5px solid var(--border);
+    }
+
+    .ct-form-header {
+        margin-bottom: 48px;
+    }
+
+    .ct-form-label {
+        font-family: 'DM Mono', monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 12px;
+    }
+
+    .ct-form-title {
+        font-size: clamp(28px, 3vw, 42px);
+        font-weight: 300;
+        line-height: 1.1;
+        color: var(--ink);
+        letter-spacing: -0.01em;
+    }
+
+        .ct-form-title em {
+            font-style: italic;
+            color: var(--muted);
+        }
+
+    /* Champs */
+    .ct-field {
+        margin-bottom: 28px;
+    }
+
+    .ct-field-label {
+        font-family: 'DM Mono', monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    .ct-input {
+        width: 100%;
+        background: transparent;
+        border: none;
+        border-bottom: 0.5px solid rgba(12,12,10,0.2);
+        padding: 12px 0;
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 18px;
+        font-weight: 300;
+        color: var(--ink);
+        outline: none;
+        transition: border-color .2s;
+        border-radius: 0;
+    }
+
+        .ct-input:focus {
+            border-bottom-color: var(--gold);
+        }
+
+        .ct-input::placeholder {
+            color: var(--hint);
+            font-style: italic;
+        }
+
+    .ct-textarea {
+        resize: none;
+        min-height: 100px;
+        line-height: 1.5;
+    }
+
+    .ct-error {
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        font-weight: 300;
+        color: #c0392b;
+        letter-spacing: 0.06em;
+        margin-top: 4px;
+        display: block;
+    }
+
+    /* Bouton submit */
+    .ct-submit {
+        width: 100%;
+        margin-top: 12px;
+        background: var(--ink);
+        color: #fff;
+        border: none;
+        padding: 18px 32px;
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        font-weight: 300;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        transition: background .2s, transform .15s;
+    }
+
+        .ct-submit:hover {
+            background: var(--gold);
+            transform: translateY(-1px);
+        }
+
+        .ct-submit svg {
+            width: 14px;
+            height: 14px;
+        }
+
+    /* ── Responsive ── */
+    @@media (max-width: 900px) {
+        .ct-hero {
+            grid-template-columns: 1fr;
+        }
+
+        .ct-left {
+            padding: 72px 36px 48px;
+            min-height: auto;
+        }
+
+        .ct-right {
+            padding: 56px 36px 72px;
+        }
+
+        .ct-h1 {
+            font-size: 42px;
+        }
+    }
+
+    @@media (max-width: 480px) {
+        .ct-left, .ct-right {
+            padding: 48px 24px;
+        }
     }
 </style>
 
-<section class="contact py-5">
-    <div class="container">
-        <h1 class="text-center mb-5 fw-bold text-dark">Contactez-nous</h1>
+<div class="ct">
+    <div class="ct-hero">
 
-        <form asp-controller="Contact" asp-action="SendMessage" method="post" class="mx-auto bg-white shadow rounded-4 p-4 border" style="max-width:600px">
-            @Html.AntiForgeryToken()
+        <!-- ── Gauche : infos ── -->
+        <div class="ct-left">
+            <div class="ct-left-content">
 
-            <div class="mb-3">
-                <label asp-for="Name" class="form-label">Nom</label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="Email" class="form-label">Email</label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="Phone" class="form-label">Téléphone</label>
-                <input asp-for="Phone" class="form-control" />
-                <span asp-validation-for="Phone" class="text-danger"></span>
-            </div>
-            <div class="mb-3">
-                <label asp-for="Message" class="form-label">Message</label>
-                <textarea asp-for="Message" class="form-control" rows="4"></textarea>
-                <span asp-validation-for="Message" class="text-danger"></span>
-            </div>
-            <button type="submit" class="btn btn-warning w-100 py-2 fw-semibold rounded-pill shadow-sm">
-                Envoyer
-            </button>
-        </form>
+                <p class="ct-pretitle">Human Square · Portugal</p>
+                <h1 class="ct-h1">
+                    Parlons<br>
+                    <em>de votre projet</em>
+                </h1>
+                <p class="ct-tagline">
+                    Chaque projet commence par une conversation. Prenez contact — nous vous répondons sous 24h.
+                </p>
 
-        <p class="text-muted mt-4 text-center small">
-            <strong>Présence nationale :</strong> Vila do Conde, Porto, Lisbonne, Viseu et Albufeira.<br />
-            📍 <em>Av. Gen. Humberto Delgado 115, 4480-905 Vila do Conde</em>
-        </p>
-        <p class="text-muted mt-4 text-center small">
-            <strong>Mail :</strong> admin@human-square.com<br />
-        </p>
+                <div class="ct-infos">
+                    <div class="ct-info-item">
+                        <div class="ct-info-icon">
+                            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2">
+                                <path d="M8 1.5A4.5 4.5 0 018 10.5C5.5 10.5 2 7.5 2 5.5A6 6 0 0114 5.5C14 7.5 10.5 10.5 8 10.5" />
+                                <circle cx="8" cy="5.5" r="1.5" fill="currentColor" />
+                                <path d="M5 13.5c1-1.5 3-2 3-2s2 .5 3 2" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="ct-info-label">Adresse</p>
+                            <p class="ct-info-value">Av. Gen. Humberto Delgado 115<br />4480-905 Vila do Conde, Portugal</p>
+                        </div>
+                    </div>
+
+                    <div class="ct-info-item">
+                        <div class="ct-info-icon">
+                            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2">
+                                <rect x="2" y="3" width="12" height="10" rx="1" />
+                                <path d="M2 5l6 4 6-4" stroke-linecap="round" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="ct-info-label">Email</p>
+                            <p class="ct-info-value"><a href="mailto:admin@human-square.com">admin@human-square.com</a></p>
+                        </div>
+                    </div>
+
+                    <div class="ct-info-item">
+                        <div class="ct-info-icon">
+                            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2">
+                                <circle cx="8" cy="8" r="6" />
+                                <path d="M8 4v4l2.5 2.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p class="ct-info-label">Réponse</p>
+                            <p class="ct-info-value">Sous 24h ouvrées</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ct-cities">
+                    <p class="ct-cities-label">Présence nationale</p>
+                    <div class="ct-cities-list">
+                        <span class="ct-city">Vila do Conde</span>
+                        <span class="ct-city">Porto</span>
+                        <span class="ct-city">Lisbonne</span>
+                        <span class="ct-city">Viseu</span>
+                        <span class="ct-city">Albufeira</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ── Droite : formulaire ── -->
+        <div class="ct-right">
+            <div class="ct-form-header">
+                <p class="ct-form-label">Formulaire de contact</p>
+                <h2 class="ct-form-title">
+                    Envoyez-nous<br>
+                    <em>un message</em>
+                </h2>
+            </div>
+
+            <form asp-controller="Contact" asp-action="SendMessage" method="post">
+                @Html.AntiForgeryToken()
+
+                <div class="ct-field">
+                    <label asp-for="Name" class="ct-field-label">Nom complet</label>
+                    <input asp-for="Name" class="ct-input" placeholder="Votre nom" />
+                    <span asp-validation-for="Name" class="ct-error"></span>
+                </div>
+
+                <div class="ct-field">
+                    <label asp-for="Email" class="ct-field-label">Adresse email</label>
+                    <input asp-for="Email" class="ct-input" placeholder="votre@email.com" />
+                    <span asp-validation-for="Email" class="ct-error"></span>
+                </div>
+
+                <div class="ct-field">
+                    <label asp-for="Phone" class="ct-field-label">Téléphone</label>
+                    <input asp-for="Phone" class="ct-input" placeholder="+33 6 00 00 00 00" />
+                    <span asp-validation-for="Phone" class="ct-error"></span>
+                </div>
+
+                <div class="ct-field">
+                    <label asp-for="Message" class="ct-field-label">Votre message</label>
+                    <textarea asp-for="Message" class="ct-input ct-textarea" placeholder="Décrivez votre projet en quelques mots…"></textarea>
+                    <span asp-validation-for="Message" class="ct-error"></span>
+                </div>
+
+                <button type="submit" class="ct-submit">
+                    Envoyer le message
+                    <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </form>
+        </div>
+
     </div>
-</section>
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
@@ -98,9 +518,7 @@ else if (TempData["ErrorMessage"] != null)
         const msg = document.getElementById('flashMessage');
         if (msg) {
             msg.style.opacity = '0';
-            setTimeout(() => {
-                msg.remove(); // ✅ sans eval
-            }, 600);
+            setTimeout(() => msg.remove(), 600);
         }
     }, 3000);
 </script>

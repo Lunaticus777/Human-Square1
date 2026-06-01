@@ -1,0 +1,545 @@
+﻿@model List<Human_Evolution.Models.Bien>
+@{
+    ViewData["Title"] = "Acheter un bien immobilier au Portugal – Human Square";
+    ViewData["Description"] = "Découvrez les biens immobiliers sélectionnés par Human Square au Portugal : appartements, villas, terrains et locaux commerciaux.";
+}
+
+<style>
+    @@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@@0,400;0,600;1,400&family=DM+Sans:opsz,wght@@9..40,300;9..40,400;9..40,500&display=swap');
+
+    :root {
+        --hs-black: #1a1a18;
+        --hs-surface: #f4f3ef;
+        --hs-border: rgba(26,26,24,0.11);
+        --hs-border-mid: rgba(26,26,24,0.22);
+        --hs-muted: #6b6b66;
+        --hs-hint: #9c9c96;
+    }
+
+    .hs-page { font-family: 'DM Sans', sans-serif; }
+
+    /* Hero */
+    .hs-hero { background: var(--hs-black); padding: 52px 0 0; margin-bottom: 0; text-align: center; }
+    .hs-hero-eyebrow { font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.4); margin-bottom: 10px; }
+    .hs-hero-title { font-family: 'Cormorant Garamond', serif; font-size: 46px; font-weight: 400; line-height: 1.1; color: #fff; }
+    .hs-hero-title em { font-style: italic; color: rgba(255,255,255,.6); }
+    .hs-hero-sub { font-size: 14px; color: rgba(255,255,255,.5); max-width: 500px; line-height: 1.7; margin-top: 10px; margin-bottom: 36px; margin-left: auto; margin-right: auto; }
+
+    /* Search Box */
+    .hs-search-box { background: #fff; border-radius: 6px 6px 0 0; overflow: hidden; box-shadow: 0 -2px 32px rgba(0,0,0,.25); }
+    .hs-search-tabs { display: flex; background: var(--hs-surface); border-bottom: 0.5px solid var(--hs-border); }
+    .hs-search-tab { font-size: 12px; font-weight: 500; font-family: 'DM Sans', sans-serif; padding: 13px 24px; background: none; border: none; border-bottom: 2px solid transparent; cursor: pointer; color: var(--hs-hint); transition: all .15s; }
+    .hs-search-tab.active { color: var(--hs-black); border-bottom-color: var(--hs-black); background: #fff; }
+    .hs-search-main { display: flex; align-items: stretch; border-bottom: 0.5px solid var(--hs-border); flex-wrap: wrap; }
+    .hs-search-field { flex: 1; min-width: 160px; display: flex; flex-direction: column; justify-content: center; padding: 16px 20px; border-right: 0.5px solid var(--hs-border); transition: background .15s; }
+    .hs-search-field:hover { background: var(--hs-surface); }
+    .hs-search-field:last-of-type { border-right: none; }
+    .hs-field-label { font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--hs-hint); margin-bottom: 4px; }
+    .hs-field-ctrl { font-size: 14px; font-family: 'DM Sans', sans-serif; background: none; border: none; outline: none; padding: 0; color: var(--hs-black); width: 100%; }
+    .hs-field-ctrl::placeholder { color: var(--hs-hint); }
+    .hs-rooms-ctr { display: flex; align-items: center; gap: 12px; }
+    .hs-rooms-btn { width: 26px; height: 26px; border-radius: 50%; border: 0.5px solid var(--hs-border-mid); background: none; cursor: pointer; font-size: 16px; color: var(--hs-muted); display: flex; align-items: center; justify-content: center; }
+    .hs-rooms-btn:hover { background: var(--hs-surface); }
+    .hs-price-row { display: flex; align-items: center; gap: 8px; }
+    .hs-price-input { font-size: 13px; font-family: 'DM Sans', sans-serif; background: none; border: none; outline: none; padding: 0; color: var(--hs-black); width: 85px; }
+    .hs-price-input::placeholder { color: var(--hs-hint); }
+    .hs-search-actions { display: flex; align-items: center; padding: 14px 20px; gap: 10px; flex-wrap: wrap; }
+    .hs-btn-more { font-size: 12px; font-family: 'DM Sans', sans-serif; padding: 9px 18px; border-radius: 3px; border: 0.5px solid var(--hs-border-mid); background: none; cursor: pointer; color: var(--hs-muted); display: flex; align-items: center; gap: 7px; transition: all .15s; }
+    .hs-btn-more:hover { border-color: var(--hs-black); color: var(--hs-black); }
+    .hs-btn-search { margin-left: auto; font-size: 13px; font-family: 'DM Sans', sans-serif; font-weight: 500; padding: 11px 28px; border-radius: 3px; border: none; background: var(--hs-black); color: #fff; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+    .hs-btn-search:hover { opacity: .82; }
+    .hs-btn-reset { font-size: 12px; color: var(--hs-hint); background: none; border: none; cursor: pointer; text-decoration: underline; }
+
+    /* Filtres avancés */
+    .hs-adv { display: none; border-top: 0.5px solid var(--hs-border); padding: 24px 20px; grid-template-columns: repeat(4,1fr); gap: 24px; }
+    .hs-adv.open { display: grid; }
+    .hs-adv-label { font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--hs-hint); margin-bottom: 12px; }
+    .hs-adv-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .hs-chip { font-size: 11px; font-family: 'DM Sans', sans-serif; padding: 5px 12px; border-radius: 20px; border: 0.5px solid var(--hs-border-mid); background: none; cursor: pointer; color: var(--hs-muted); transition: all .15s; }
+    .hs-chip:hover { border-color: var(--hs-black); color: var(--hs-black); }
+    .hs-chip.on { background: var(--hs-black); color: #fff; border-color: var(--hs-black); }
+    .hs-check-list { display: flex; flex-direction: column; gap: 8px; }
+    .hs-check { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+    .hs-check input { width: 14px; height: 14px; accent-color: var(--hs-black); }
+    .hs-check span { font-size: 12px; color: var(--hs-muted); }
+    .hs-adv-input { font-size: 12px; font-family: 'DM Sans', sans-serif; padding: 7px 10px; border-radius: 3px; border: 0.5px solid var(--hs-border-mid); background: #fff; color: var(--hs-muted); width: 100%; }
+
+    /* Filtres rapides */
+    .hs-filters-bar { background: #fff; border-bottom: 0.5px solid var(--hs-border); padding: 13px 0; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .hs-filter-btn { font-size: 12px; font-family: 'DM Sans', sans-serif; padding: 6px 16px; border-radius: 20px; border: 0.5px solid var(--hs-border-mid); background: transparent; color: var(--hs-muted); cursor: pointer; transition: all .15s; }
+    .hs-filter-btn:hover, .hs-filter-btn.active { background: var(--hs-black); color: #fff; border-color: var(--hs-black); }
+    .hs-filter-sep { width: 0.5px; height: 24px; background: var(--hs-border); margin: 0 6px; }
+    .hs-sort-select { font-size: 12px; font-family: 'DM Sans', sans-serif; padding: 6px 12px; border-radius: 20px; border: 0.5px solid var(--hs-border-mid); background: transparent; color: var(--hs-muted); }
+    .hs-count { font-size: 12px; color: var(--hs-hint); margin-left: auto; }
+
+    /* Grille */
+    .hs-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--hs-border); margin: 0 -12px; }
+    .hs-card { background: #fff; display: flex; flex-direction: column; cursor: pointer; transition: background .18s; }
+    .hs-card:hover { background: var(--hs-surface); }
+    .hs-card-media { position: relative; overflow: hidden; height: 220px; }
+    .hs-card-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
+    .hs-card:hover .hs-card-media img { transform: scale(1.03); }
+    .hs-placeholder { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+    .hs-bien-tag { position: absolute; top: 14px; left: 14px; font-size: 10px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; padding: 4px 10px; border-radius: 3px; }
+    .tag-apt   { background: rgba(230,241,251,.92); color: #0C447C; }
+    .tag-villa { background: rgba(234,243,222,.92); color: #27500A; }
+    .tag-ter   { background: rgba(250,238,218,.92); color: #633806; }
+    .tag-com   { background: rgba(251,234,240,.92); color: #72243E; }
+    .hs-ref    { position: absolute; bottom: 12px; right: 14px; font-size: 10px; color: rgba(255,255,255,.65); letter-spacing: .08em; }
+    .hs-card-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+    .hs-loc  { font-size: 11px; color: var(--hs-hint); }
+    .hs-titre { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600; line-height: 1.2; color: var(--hs-black); }
+    .hs-desc { font-size: 12px; color: var(--hs-muted); line-height: 1.5; }
+    .hs-prix { font-size: 20px; font-weight: 500; color: var(--hs-black); margin-top: 4px; }
+    .hs-prix small { font-size: 11px; font-weight: 400; color: var(--hs-hint); }
+    .hs-specs { display: flex; gap: 14px; padding-top: 12px; border-top: 0.5px solid var(--hs-border); margin-top: 8px; }
+    .hs-spec  { font-size: 11px; color: var(--hs-muted); }
+    .hs-card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 12px; }
+    .hs-link { font-size: 12px; font-weight: 500; color: var(--hs-black); }
+    .hs-statut { font-size: 10px; padding: 3px 8px; border-radius: 3px; font-weight: 500; }
+    .s-dispo   { background: #EAF3DE; color: #27500A; }
+    .s-reserve { background: #FAEEDA; color: #633806; }
+    .s-vendu   { background: #D3D1C7; color: #444441; }
+    .hs-empty { padding: 60px 20px; text-align: center; }
+
+    /* CTA bas */
+    .hs-cta { background: var(--hs-surface); border-radius: 8px; padding: 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; margin: 32px 0 24px; }
+    .hs-cta p { font-size: 14px; font-weight: 500; color: var(--hs-black); margin-bottom: 4px; }
+    .hs-cta span { font-size: 13px; color: var(--hs-muted); }
+    .hs-cta-btn { font-size: 13px; font-family: 'DM Sans', sans-serif; font-weight: 500; padding: 12px 28px; border-radius: 3px; background: var(--hs-black); color: #fff; text-decoration: none; white-space: nowrap; }
+    .hs-cta-btn:hover { color: #fff; opacity: .82; }
+
+    /* Modal */
+    .hs-modal-media { height: 260px; overflow: hidden; }
+    .hs-modal-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hs-spec-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 18px; }
+    .hs-spec-item { background: var(--hs-surface); border-radius: 4px; padding: 11px 13px; }
+    .hs-spec-lbl { font-size: 10px; color: var(--hs-hint); text-transform: uppercase; letter-spacing: .08em; }
+    .hs-spec-val { font-size: 15px; font-weight: 500; margin-top: 3px; }
+
+    @@media (max-width: 992px) { .hs-grid { grid-template-columns: repeat(2,1fr); } .hs-adv { grid-template-columns: repeat(2,1fr); } }
+    @@media (max-width: 640px)  { .hs-hero-title { font-size: 32px; } .hs-grid { grid-template-columns: 1fr; } .hs-cta { flex-direction: column; align-items: flex-start; } }
+</style>
+
+<div class="hs-page">
+
+    <!-- Hero + Barre de recherche -->
+    <div class="hs-hero">
+        <div class="container">
+            <p class="hs-hero-eyebrow" style="text-align:center;justify-content:center;">Catalogue immobilier · Portugal</p>
+            <h1 class="hs-hero-title" style="text-align:center;">Trouvez votre bien<br><em>au Portugal</em></h1>
+            <p class="hs-hero-sub" style="text-align:center;max-width:600px;margin:0 auto 36px;">
+             Appartements, villas, terrains et locaux commerciaux — sélectionnés et accompagnés par Human Square au Portugal.
+            </p>
+        </div>
+        <div class="container">
+            <div class="hs-search-box">
+                <div class="hs-search-tabs">
+                    <button class="hs-search-tab active" onclick="setTab(this)">Acheter</button>
+                    <button class="hs-search-tab" onclick="setTab(this)">Louer</button>
+                </div>
+                <div class="hs-search-main">
+                    <div class="hs-search-field" style="flex:2;min-width:200px">
+                        <div class="hs-field-label">Localisation</div>
+                        <input type="text" class="hs-field-ctrl" id="s-loc" placeholder="Ville, quartier…" />
+                    </div>
+                    <div class="hs-search-field">
+                        <div class="hs-field-label">Type de bien</div>
+                        <select class="hs-field-ctrl" id="s-type" style="appearance:none;cursor:pointer">
+                            <option value="">Tous les types</option>
+                            <option value="Appartement">Appartement</option>
+                            <option value="Maison">Maison / Villa</option>
+                            <option value="Terrain">Terrain</option>
+                            <option value="Commercial">Local commercial</option>
+                        </select>
+                    </div>
+                    <div class="hs-search-field" style="min-width:160px">
+                        <div class="hs-field-label">Pièces</div>
+                        <div class="hs-rooms-ctr">
+                            <button type="button" class="hs-rooms-btn" onclick="changeRooms(-1)">−</button>
+                            <span id="rooms-val" style="font-size:14px;font-weight:500;min-width:22px;text-align:center">–</span>
+                            <button type="button" class="hs-rooms-btn" onclick="changeRooms(1)">+</button>
+                        </div>
+                    </div>
+                    <div class="hs-search-field" style="min-width:200px">
+                        <div class="hs-field-label">Budget (€)</div>
+                        <div class="hs-price-row">
+                            <input type="number" class="hs-price-input" id="s-min" placeholder="Min" step="10000" />
+                            <span style="color:var(--hs-hint);font-size:12px">—</span>
+                            <input type="number" class="hs-price-input" id="s-max" placeholder="Max" step="10000" />
+                        </div>
+                    </div>
+                </div>
+                <div class="hs-search-actions">
+                    <button class="hs-btn-more" id="btnMore" type="button" onclick="toggleAdv()">
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 4h12M4 8h8M6 12h4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+                        Plus de filtres
+                        <svg id="chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" style="transition:transform .25s"><path d="M1 1l4 4 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <button class="hs-btn-reset" type="button" onclick="resetSearch()">Réinitialiser</button>
+                    <button class="hs-btn-search" type="button" onclick="applySearch()">
+                        <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.5"/><path d="M11 11l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        Rechercher
+                    </button>
+                </div>
+                <div class="hs-adv" id="advFilters">
+                    <div>
+                        <p class="hs-adv-label">Type de bien</p>
+                        <div class="hs-adv-chips">
+                            <button class="hs-chip" onclick="this.classList.toggle('on');filterCards()">Appartement</button>
+                            <button class="hs-chip" onclick="this.classList.toggle('on');filterCards()">Maison / Villa</button>
+                            <button class="hs-chip" onclick="this.classList.toggle('on');filterCards()">Terrain</button>
+                            <button class="hs-chip" onclick="this.classList.toggle('on');filterCards()">Commercial</button>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="hs-adv-label">Caractéristiques</p>
+                        <div class="hs-check-list">
+                            <label class="hs-check"><input type="checkbox" value="piscine" /><span>Piscine</span></label>
+                            <label class="hs-check"><input type="checkbox" value="terrasse" /><span>Terrasse</span></label>
+                            <label class="hs-check"><input type="checkbox" value="jardin" /><span>Jardin</span></label>
+                            <label class="hs-check"><input type="checkbox" value="garage" /><span>Garage</span></label>
+                            <label class="hs-check"><input type="checkbox" value="vue_mer" /><span>Vue mer</span></label>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="hs-adv-label">Surface (m²)</p>
+                        <div style="display:flex;flex-direction:column;gap:10px">
+                            <div><p style="font-size:11px;color:var(--hs-hint);margin-bottom:4px">Minimum</p><input type="number" class="hs-adv-input" id="s-surf-min" placeholder="0 m²" step="10" /></div>
+                            <div><p style="font-size:11px;color:var(--hs-hint);margin-bottom:4px">Maximum</p><input type="number" class="hs-adv-input" id="s-surf-max" placeholder="Sans limite" step="10" /></div>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="hs-adv-label">État du bien</p>
+                        <div class="hs-adv-chips" style="flex-direction:column;align-items:flex-start;gap:6px" id="etat-chips">
+                            <button class="hs-chip" onclick="toggleEtat(this)">Neuf</button>
+                            <button class="hs-chip" onclick="toggleEtat(this)">Rénové</button>
+                            <button class="hs-chip" onclick="toggleEtat(this)">Ancien</button>
+                            <button class="hs-chip" onclick="toggleEtat(this)">Sur plan</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filtres rapides -->
+    <div class="container">
+        <div class="hs-filters-bar">
+            <button class="hs-filter-btn active" data-filter="tous">Tous</button>
+            <button class="hs-filter-btn" data-filter="Appartement">Appartements</button>
+            <button class="hs-filter-btn" data-filter="Maison">Maisons / Villas</button>
+            <button class="hs-filter-btn" data-filter="Terrain">Terrains</button>
+            <button class="hs-filter-btn" data-filter="Commercial">Commerciaux</button>
+            <div class="hs-filter-sep"></div>
+            <select class="hs-sort-select" id="sortSelect">
+                <option value="">Prix : tous</option>
+                <option value="asc">Prix croissant</option>
+                <option value="desc">Prix décroissant</option>
+            </select>
+            <span class="hs-count" id="count">@Model.Count bien@(Model.Count > 1 ? "s" : "")</span>
+        </div>
+    </div>
+
+    <!-- Grille des biens -->
+    <div class="container" style="padding-left:0;padding-right:0">
+        <div class="hs-grid" id="grid">
+            @if (!Model.Any())
+            {
+                <div class="hs-empty" style="grid-column:1/-1">
+                    <p class="text-muted">Aucun bien disponible pour le moment.</p>
+                    <p class="text-muted small mt-2">Revenez bientôt ou contactez-nous pour connaître les prochaines opportunités.</p>
+                </div>
+            }
+            else
+            {
+                @foreach (var b in Model)
+                {
+                    var tagClass = b.Type switch {
+                        "Appartement" => "tag-apt",
+                        "Maison"      => "tag-villa",
+                        "Terrain"     => "tag-ter",
+                        "Commercial"  => "tag-com",
+                        _             => ""
+                    };
+                    var bgColor = b.Type switch {
+                        "Appartement" => "#B5D4F420",
+                        "Maison"      => "#C0DD9720",
+                        "Terrain"     => "#FAC77520",
+                        "Commercial"  => "#F4C0D120",
+                        _             => "#f4f3ef"
+                    };
+                    var darkColor = b.Type switch {
+                        "Appartement" => "#0C447C",
+                        "Maison"      => "#27500A",
+                        "Terrain"     => "#633806",
+                        "Commercial"  => "#72243E",
+                        _             => "#888"
+                    };
+                    var statutClass = b.Statut switch {
+                        "Disponible" => "s-dispo",
+                        "Réservé"    => "s-reserve",
+                        _            => "s-vendu"
+                    };
+
+                    <div class="hs-card"
+                         data-type="@b.Type"
+                         data-prix="@b.Prix"
+                         data-surface="@(b.Surface ?? 0)"
+                         data-pieces="@(b.NbPieces ?? 0)"
+                         onclick="openModal(@b.Id)"
+                         tabindex="0" role="button" aria-label="@b.Titre">
+
+                        <div class="hs-card-media">
+                            @if (!string.IsNullOrEmpty(b.ImagePrincipale))
+                            {
+                                <img src="@b.ImagePrincipale" alt="@b.Titre" loading="lazy" />
+                            }
+                            else
+                            {
+                                <div class="hs-placeholder" style="background:@bgColor;height:220px">
+                                    <span style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:3px;color:@darkColor;opacity:.35">@b.Reference</span>
+                                </div>
+                            }
+                            <span class="hs-bien-tag @tagClass">@b.Type</span>
+                            <span class="hs-ref">@b.Reference</span>
+                        </div>
+
+                        <div class="hs-card-body">
+                            <p class="hs-loc">📍 @b.Quartier, @b.Ville</p>
+                            <h2 class="hs-titre">@b.Titre</h2>
+                            @if (!string.IsNullOrEmpty(b.Description))
+                            {
+                                <p class="hs-desc">@(b.Description.Length > 80 ? b.Description.Substring(0,80) + "…" : b.Description)</p>
+                            }
+                            <div class="hs-prix">@b.Prix.ToString("N0") € <small>prix de vente</small></div>
+                            <div class="hs-specs">
+                                @if (b.Surface.HasValue) { <span class="hs-spec">⬜ @b.Surface m²</span> }
+                                @if (b.NbPieces.HasValue) { <span class="hs-spec">🛏 @b.NbPieces pièces</span> }
+                                @if (b.NbSdb.HasValue) { <span class="hs-spec">🚿 @b.NbSdb sdb</span> }
+                            </div>
+                            <div class="hs-card-footer">
+                                <span class="hs-link">Voir le bien →</span>
+                                <span class="hs-statut @statutClass">@b.Statut</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+
+    <!-- CTA bas -->
+    <div class="container">
+        <div class="hs-cta">
+            <div>
+                <p>Vous ne trouvez pas ce que vous cherchez ?</p>
+                <span>Parlez-nous de votre projet et nous identifions les opportunités pour vous.</span>
+            </div>
+            <a asp-controller="Contact" asp-action="Contact" class="hs-cta-btn">Prendre rendez-vous →</a>
+        </div>
+    </div>
+
+</div>
+
+<!-- Données JSON pour le JS côté client (filtres rapides) -->
+<script>
+    // Données injectées depuis le serveur — pas de fetch nécessaire
+    const BIENS_DATA = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Select(b => new {
+        id        = b.Id,
+        type      = b.Type,
+        ville     = b.Ville,
+        quartier  = b.Quartier,
+        titre     = b.Titre,
+        prix      = b.Prix,
+        surface   = b.Surface,
+        pieces    = b.NbPieces,
+        sdb       = b.NbSdb,
+        etage     = b.Etage,
+        annee     = b.AnneeConstruction,
+        statut    = b.Statut,
+        reference = b.Reference,
+        image     = b.ImagePrincipale,
+        description = b.Description
+    })));
+
+    let roomsMin = 0, currentFilter = 'tous', currentSort = '';
+
+    function setTab(btn) {
+        document.querySelectorAll('.hs-search-tab').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+    }
+
+    function changeRooms(d) {
+        roomsMin = Math.max(0, roomsMin + d);
+        document.getElementById('rooms-val').textContent = roomsMin === 0 ? '–' : roomsMin + '+';
+    }
+
+    function toggleAdv() {
+        const p = document.getElementById('advFilters');
+        const open = p.classList.toggle('open');
+        document.getElementById('chevron').style.transform = open ? 'rotate(180deg)' : '';
+    }
+
+    function toggleEtat(el) {
+        document.querySelectorAll('#etat-chips .hs-chip').forEach(c => c.classList.remove('on'));
+        el.classList.add('on');
+    }
+
+    function applySearch() {
+        const loc  = document.getElementById('s-loc').value.trim().toLowerCase();
+        const type = document.getElementById('s-type').value;
+        const min  = parseFloat(document.getElementById('s-min').value) || 0;
+        const max  = parseFloat(document.getElementById('s-max').value) || Infinity;
+        const sMin = parseFloat(document.getElementById('s-surf-min').value) || 0;
+        const sMax = parseFloat(document.getElementById('s-surf-max').value) || Infinity;
+
+        let data = [...BIENS_DATA];
+        if (loc)         data = data.filter(b => (b.ville+' '+b.quartier).toLowerCase().includes(loc));
+        if (type)        data = data.filter(b => b.type === type);
+        if (roomsMin > 0) data = data.filter(b => b.pieces && b.pieces >= roomsMin);
+        if (min > 0)     data = data.filter(b => b.prix >= min);
+        if (max < Infinity) data = data.filter(b => b.prix <= max);
+        if (sMin > 0)    data = data.filter(b => b.surface && b.surface >= sMin);
+        if (sMax < Infinity) data = data.filter(b => b.surface && b.surface <= sMax);
+
+        renderCards(data);
+    }
+
+    function resetSearch() {
+        ['s-loc','s-min','s-max','s-surf-min','s-surf-max'].forEach(id => {
+            const el = document.getElementById(id); if(el) el.value = '';
+        });
+        document.getElementById('s-type').value = '';
+        document.getElementById('sortSelect').value = '';
+        roomsMin = 0; document.getElementById('rooms-val').textContent = '–';
+        document.querySelectorAll('.hs-chip').forEach(c => c.classList.remove('on'));
+        document.querySelectorAll('.hs-check input').forEach(c => c.checked = false);
+        currentFilter = 'tous'; currentSort = '';
+        document.querySelectorAll('.hs-filter-btn').forEach(b => b.classList.remove('active'));
+        document.querySelector('.hs-filter-btn[data-filter="tous"]').classList.add('active');
+        renderCards(BIENS_DATA);
+    }
+
+    function filterCards() {
+        let data = [...BIENS_DATA];
+        if (currentFilter !== 'tous') data = data.filter(b => b.type === currentFilter);
+        if (currentSort === 'asc')  data.sort((a,b) => a.prix - b.prix);
+        if (currentSort === 'desc') data.sort((a,b) => b.prix - a.prix);
+        renderCards(data);
+    }
+
+    function renderCards(data) {
+        const grid = document.getElementById('grid');
+        if (!data.length) {
+            grid.innerHTML = '<div class="hs-empty" style="grid-column:1/-1"><p class="text-muted">Aucun bien ne correspond à votre recherche.</p></div>';
+        } else {
+            grid.innerHTML = data.map(cardHTML).join('');
+        }
+        document.getElementById('count').textContent = data.length + ' bien' + (data.length > 1 ? 's' : '');
+    }
+
+    const TYPE_COLORS = {
+        'Appartement': { tag:'tag-apt',   bg:'#B5D4F420', dk:'#0C447C' },
+        'Maison':      { tag:'tag-villa', bg:'#C0DD9720', dk:'#27500A' },
+        'Terrain':     { tag:'tag-ter',   bg:'#FAC77520', dk:'#633806' },
+        'Commercial':  { tag:'tag-com',   bg:'#F4C0D120', dk:'#72243E' },
+    };
+
+    function cardHTML(b) {
+        const m = TYPE_COLORS[b.type] || { tag:'', bg:'#f4f3ef', dk:'#888' };
+        const sc = b.statut === 'Disponible' ? 's-dispo' : b.statut === 'Réservé' ? 's-reserve' : 's-vendu';
+        const media = b.image
+            ? `<img src="${b.image}" alt="${b.titre}" loading="lazy" />`
+            : `<div class="hs-placeholder" style="background:${m.bg};height:220px"><span style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:3px;color:${m.dk};opacity:.35">${b.reference||''}</span></div>`;
+        const specs = [
+            b.surface ? `<span class="hs-spec">⬜ ${b.surface} m²</span>` : '',
+            b.pieces  ? `<span class="hs-spec">🛏 ${b.pieces} pièces</span>` : '',
+            b.sdb     ? `<span class="hs-spec">🚿 ${b.sdb} sdb</span>` : '',
+        ].join('');
+        const desc = b.description ? (b.description.length > 80 ? b.description.substring(0,80)+'…' : b.description) : '';
+        return `<div class="hs-card" onclick="openModal(${b.id})" tabindex="0" role="button">
+            <div class="hs-card-media">${media}<span class="hs-bien-tag ${m.tag}">${b.type}</span><span class="hs-ref">${b.reference||''}</span></div>
+            <div class="hs-card-body">
+                <p class="hs-loc">📍 ${b.quartier}, ${b.ville}</p>
+                <h2 class="hs-titre">${b.titre}</h2>
+                <p class="hs-desc">${desc}</p>
+                <div class="hs-prix">${Number(b.prix).toLocaleString('fr-FR')} € <small>prix de vente</small></div>
+                <div class="hs-specs">${specs}</div>
+                <div class="hs-card-footer"><span class="hs-link">Voir le bien →</span><span class="hs-statut ${sc}">${b.statut}</span></div>
+            </div>
+        </div>`;
+    }
+
+    function openModal(id) {
+        const b = BIENS_DATA.find(x => x.id === id); if (!b) return;
+        const m = TYPE_COLORS[b.type] || { tag:'', bg:'#f4f3ef', dk:'#888' };
+        const sc = b.statut === 'Disponible' ? 's-dispo' : b.statut === 'Réservé' ? 's-reserve' : 's-vendu';
+        document.getElementById('modal-title').textContent = b.titre;
+        document.getElementById('modal-media').innerHTML = b.image
+            ? `<img src="${b.image}" alt="${b.titre}" style="width:100%;height:100%;object-fit:cover" />`
+            : `<div style="background:${m.bg};height:260px;display:flex;align-items:center;justify-content:center"><span style="font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:3px;color:${m.dk};opacity:.35">${b.reference||''}</span></div>`;
+        document.getElementById('modal-tag').textContent = b.type;
+        document.getElementById('modal-tag').className = `hs-bien-tag ${m.tag}`;
+        const sb = document.getElementById('modal-statut');
+        sb.textContent = b.statut; sb.className = `hs-statut ${sc}`;
+        document.getElementById('modal-ref').textContent = b.reference || '';
+        document.getElementById('modal-ville').textContent = '📍 ' + b.quartier + ', ' + b.ville;
+        document.getElementById('modal-prix').textContent = Number(b.prix).toLocaleString('fr-FR') + ' €';
+        document.getElementById('modal-desc').textContent = b.description || '';
+        const specs = [
+            b.surface ? { l:'Surface', v: b.surface+' m²' } : null,
+            b.pieces  ? { l:'Pièces',  v: b.pieces }        : null,
+            b.sdb     ? { l:'Sdb',     v: b.sdb }           : null,
+            b.etage   ? { l:'Étage',   v: b.etage }         : null,
+            b.annee   ? { l:'Année',   v: b.annee }         : null,
+        ].filter(Boolean);
+        document.getElementById('modal-specs').innerHTML = specs.map(s =>
+            `<div class="hs-spec-item"><div class="hs-spec-lbl">${s.l}</div><div class="hs-spec-val">${s.v}</div></div>`
+        ).join('');
+        new bootstrap.Modal(document.getElementById('modalBien')).show();
+    }
+
+    /* Filtres rapides */
+    document.querySelectorAll('.hs-filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.hs-filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentFilter = btn.dataset.filter;
+            filterCards();
+        });
+    });
+
+    document.getElementById('sortSelect').addEventListener('change', e => {
+        currentSort = e.target.value;
+        filterCards();
+    });
+</script>
+
+<!-- Modal Bootstrap -->
+<div class="modal fade" id="modalBien" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content rounded-4 border-0 shadow-lg">
+            <div class="modal-header bg-dark text-white rounded-top-4">
+                <h5 class="modal-title fw-bold" id="modal-title"></h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="hs-modal-media" id="modal-media"></div>
+            <div class="modal-body">
+                <div class="d-flex align-items-center gap-2 mb-3">
+                    <span class="hs-bien-tag" id="modal-tag"></span>
+                    <span class="hs-statut" id="modal-statut"></span>
+                    <span class="ms-auto" style="font-size:11px;color:var(--hs-hint)" id="modal-ref"></span>
+                </div>
+                <p style="font-size:13px;color:var(--hs-muted)" id="modal-ville"></p>
+                <div style="font-size:24px;font-weight:500;margin-bottom:16px" id="modal-prix"></div>
+                <div class="hs-spec-grid" id="modal-specs"></div>
+                <p style="font-size:14px;color:var(--hs-muted);line-height:1.7;margin-bottom:20px" id="modal-desc"></p>
+            </div>
+            <div class="modal-footer bg-light rounded-bottom-4">
+                <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
+                <a asp-controller="Contact" asp-action="Contact" class="btn btn-dark rounded-pill px-4">Contacter un conseiller</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -25,13 +25,20 @@ namespace Human_Evolution.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var biensRecents = await _context.Biens
-                .Where(b => b.Visible)
-                .OrderByDescending(b => b.DateAjout)
-                .Take(3)
-                .ToListAsync();
+            try
+            {
+                var biensRecents = await _context.Biens
+                    .Where(b => b.Visible)
+                    .OrderByDescending(b => b.DateAjout)
+                    .Take(3)
+                    .ToListAsync();
 
-            return View("~/Views/Home/Index.cshtml", biensRecents);
+                return View("~/Views/Home/Index.cshtml", biensRecents);
+            }
+            catch
+            {
+                return View("~/Views/Home/Index.cshtml", new List<Human_Evolution.Models.Bien>());
+            }
         }
 
         public IActionResult About() => View();

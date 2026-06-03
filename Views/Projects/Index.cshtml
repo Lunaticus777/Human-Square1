@@ -1,574 +1,1072 @@
 ﻿@model List<Human_Evolution.Models.Project>
 @{
     ViewData["Title"] = "Projets Immobiliers au Portugal – Human Square";
+    ViewData["Description"] = "Découvrez les projets immobiliers accompagnés par Human Square au Portugal : villas, réhabilitation, tourisme, promotion immobilière.";
+    var isDisponibles = ViewBag.ActiveTab == "disponibles";
 }
 
-<div class="container mt-5">
-    <h1 class="fw-bold text-center mb-4">
-        Projets immobiliers accompagnés par Human Square au Portugal
-    </h1>
-    <p class="text-muted text-center mb-5">
-        Human Square accompagne des investisseurs, particuliers et promoteurs
-        dans leurs projets immobiliers au Portugal :
-        étude de faisabilité, acquisition foncière, architecture,
-        construction, rénovation et stratégie patrimoniale.
-    </p>
-    <p class="text-muted text-center mb-5">
-        Découvrez une sélection de projets immobiliers réalisés et accompagnés par Human Square :
-        villas contemporaines, projets touristiques, rénovation, développement immobilier et investissement au Portugal.
-    </p>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
 
-    <!-- Onglets -->
-    <style>
-        .project-tabs-modern {
-            background-color: #f8f9fa;
-            padding: 12px;
-            border-radius: 12px;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 40px;
+<style>
+    :root {
+        --ink: #0c0c0a;
+        --cream: #f5f3ee;
+        --warm: #ece8df;
+        --gold: #b8935a;
+        --gold2: #d4b483;
+        --muted: #78766e;
+        --hint: #aeac9f;
+        --border: rgba(12,12,10,0.09);
+    }
+
+    .pj {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        background: var(--cream);
+        color: var(--ink);
+        overflow-x: hidden;
+    }
+
+    /* ── HERO ── */
+    .pj-hero {
+        background: var(--ink);
+        padding: 72px 0 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .pj-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(184,147,90,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(184,147,90,0.05) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
         }
 
-            .project-tabs-modern a {
-                padding: 10px 25px;
-                border-radius: 50px;
-                font-weight: 600;
-                text-decoration: none;
-                color: #333;
-                background-color: #e9ecef;
-                transition: all 0.3s ease-in-out;
+    .pj-hero-content {
+        position: relative;
+        z-index: 2;
+        padding-bottom: 64px;
+    }
+
+    .pj-pretitle {
+        font-family: 'DM Mono', monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+        .pj-pretitle::before {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+    .pj-h1 {
+        font-size: clamp(44px, 5vw, 72px);
+        font-weight: 300;
+        line-height: 0.96;
+        color: #fff;
+        margin-bottom: 20px;
+        letter-spacing: -0.02em;
+    }
+
+        .pj-h1 em {
+            font-style: italic;
+            color: var(--gold2);
+            display: block;
+        }
+
+    .pj-hero-sub {
+        font-family: 'DM Mono', monospace;
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 1.75;
+        color: rgba(255,255,255,0.38);
+        letter-spacing: 0.03em;
+        max-width: 520px;
+        margin-bottom: 48px;
+    }
+
+    /* Stats hero */
+    .pj-hero-stats {
+        display: flex;
+        gap: 0;
+        border-top: 0.5px solid rgba(255,255,255,0.08);
+        padding-top: 0;
+    }
+
+    .pj-hero-stat {
+        padding: 28px 40px;
+        border-right: 0.5px solid rgba(255,255,255,0.08);
+    }
+
+        .pj-hero-stat:first-child {
+            padding-left: 0;
+        }
+
+        .pj-hero-stat:last-child {
+            border-right: none;
+        }
+
+    .pj-stat-num {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 36px;
+        font-weight: 300;
+        color: var(--gold2);
+        line-height: 1;
+        margin-bottom: 4px;
+    }
+
+    .pj-stat-label {
+        font-family: 'DM Mono', monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.28);
+    }
+
+    /* ── TABS ── */
+    .pj-tabs {
+        background: var(--ink);
+        border-bottom: 0.5px solid rgba(255,255,255,0.06);
+        position: sticky;
+        top: 72px;
+        z-index: 90;
+        display: flex;
+        height: 52px;
+    }
+
+    .pj-tab {
+        flex: 1;
+        max-width: 280px;
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        font-weight: 300;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.3);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        border-right: 0.5px solid rgba(255,255,255,0.06);
+        position: relative;
+        transition: color .2s;
+    }
+
+        .pj-tab::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform .2s;
+        }
+
+        .pj-tab.active {
+            color: rgba(255,255,255,0.9);
+        }
+
+            .pj-tab.active::after {
+                transform: scaleX(1);
             }
 
-                .project-tabs-modern a.active,
-                .project-tabs-modern a:hover {
-                    background-color: #212529;
-                    color: #fff;
-                    transform: scale(1.05);
-                }
-    </style>
-
-    <div class="project-tabs-modern">
-        <a class="@(ViewBag.ActiveTab == "clients" ? "active" : "")" href="/Projects/Index">Projets clients</a>
-        <a class="@(ViewBag.ActiveTab == "disponibles" ? "active" : "")" href="/Projects/Disponibles">Projets sur le marché</a>
-    </div>
-
-
-    <!-- Liste des projets -->
-    <div class="row">
-        @foreach (var project in Model)
-        {
-            <div class="col-md-4 mb-4">
-                <div class="card shadow-sm border-0 rounded-4 overflow-hidden text-center">
-                    <img src="@project.ImageUrl" class="card-img-top" alt="@project.Title">
-                    <div class="card-body">
-                        <h5 class="card-title fw-bold mb-3">@project.Title</h5>
-                        <p>@project.Description</p>
-                        <button class="btn btn-outline-dark rounded-pill px-4" data-bs-toggle="modal" data-bs-target="#@project.ModalId">
-                            Plus de détails
-                        </button>
-                    </div>
-                </div>
-            </div>
+        .pj-tab:hover {
+            color: rgba(255,255,255,0.6);
         }
-    </div>
-</div>
 
-<!-- 🪟 Modal Projet 01 – 7 Villas à Esposende -->
-<div class="modal fade" id="modalProjet1" tabindex="-1" aria-labelledby="modalProjet1Label" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content rounded-4 border-0 shadow-lg">
-            <div class="modal-header bg-dark text-white rounded-top-4">
-                <h5 class="modal-title fw-bold" id="modalProjet1Label">7 Villas à Esposende</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
-            </div>
+    .pj-tab-num {
+        font-size: 8px;
+        color: var(--gold);
+        opacity: 0.7;
+    }
 
-            <div class="modal-body">
-                <!-- 🖼️ Carousel images -->
-                <div id="carouselProjet1" class="carousel slide mb-4" data-bs-ride="carousel">
-                    <div class="carousel-inner rounded shadow-sm">
-                        <div class="carousel-item active">
-                            <img src="~/images/project01b.png" class="d-block w-100" alt="Vue 1">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="~/images/project01.png" class="d-block w-100" alt="Vue 2">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="~/images/project01c.png" class="d-block w-100" alt="Vue 3">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="~/images/project01d.png" class="d-block w-100" alt="Vue 4">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="~/images/project01e.jpg" class="d-block w-100" alt="Vue 5">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="~/images/project01f.jpg" class="d-block w-100" alt="Vue 6">
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjet1" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselProjet1" data-bs-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </button>
+    /* ── INTRO SECTION ── */
+    .pj-intro {
+        padding: 64px 0 48px;
+        border-bottom: 0.5px solid var(--border);
+    }
+
+    .pj-intro-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: end;
+    }
+
+    .pj-section-label {
+        font-family: 'DM Mono', monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 12px;
+    }
+
+    .pj-section-h2 {
+        font-size: clamp(32px, 4vw, 52px);
+        font-weight: 300;
+        line-height: 0.98;
+        color: var(--ink);
+        letter-spacing: -0.02em;
+    }
+
+        .pj-section-h2 em {
+            font-style: italic;
+            color: var(--muted);
+            display: block;
+        }
+
+    .pj-intro-text {
+        font-family: 'DM Mono', monospace;
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 1.75;
+        color: var(--muted);
+        letter-spacing: 0.03em;
+    }
+
+    /* ── GRILLE PROJETS ── */
+    .pj-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--border);
+        padding: 48px 0 80px;
+    }
+
+    .pj-card {
+        background: var(--cream);
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        transition: background .2s;
+        overflow: hidden;
+        position: relative;
+    }
+
+        .pj-card:hover {
+            background: #fff;
+        }
+
+        .pj-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .3s;
+        }
+
+        .pj-card:hover::before {
+            transform: scaleX(1);
+        }
+
+    .pj-card-media {
+        height: 240px;
+        overflow: hidden;
+        position: relative;
+    }
+
+        .pj-card-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .5s cubic-bezier(.22,1,.36,1);
+        }
+
+    .pj-card:hover .pj-card-media img {
+        transform: scale(1.05);
+    }
+
+    .pj-card-num {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        font-family: 'DM Mono', monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: 0.14em;
+        color: rgba(255,255,255,0.7);
+        background: rgba(12,12,10,0.45);
+        padding: 4px 10px;
+        backdrop-filter: blur(4px);
+    }
+
+    .pj-card-body {
+        padding: 28px 28px 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        flex: 1;
+    }
+
+    .pj-card-title {
+        font-size: 22px;
+        font-weight: 300;
+        color: var(--ink);
+        line-height: 1.15;
+        letter-spacing: -0.01em;
+    }
+
+    .pj-card-desc {
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        font-weight: 300;
+        color: var(--hint);
+        letter-spacing: 0.04em;
+        flex: 1;
+    }
+
+    .pj-card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 16px;
+        border-top: 0.5px solid var(--border);
+        margin-top: 4px;
+    }
+
+    .pj-card-btn {
+        font-family: 'DM Mono', monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink);
+        background: none;
+        border: 0.5px solid rgba(12,12,10,0.2);
+        padding: 9px 18px;
+        cursor: pointer;
+        transition: all .15s;
+    }
+
+        .pj-card-btn:hover {
+            background: var(--ink);
+            color: var(--cream);
+            border-color: var(--ink);
+        }
+
+    .pj-card-arrow {
+        color: var(--gold);
+        font-size: 18px;
+        opacity: 0;
+        transition: opacity .2s, transform .2s;
+    }
+
+    .pj-card:hover .pj-card-arrow {
+        opacity: 1;
+        transform: translateX(4px);
+    }
+
+    /* Tag disponible */
+    .pj-tag-dispo {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        font-family: 'DM Mono', monospace;
+        font-size: 8px;
+        font-weight: 300;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--ink);
+        background: var(--gold2);
+        padding: 4px 10px;
+    }
+
+    /* ── CTA FINAL ── */
+    .pj-cta {
+        background: var(--ink);
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 48px;
+        padding: 56px 80px;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .pj-cta::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 50% 80% at 80% 50%, rgba(184,147,90,0.06) 0%, transparent 70%);
+        }
+
+    .pj-cta-text {
+        position: relative;
+        z-index: 2;
+        font-size: clamp(24px, 3vw, 38px);
+        font-weight: 300;
+        color: #fff;
+        line-height: 1.15;
+        letter-spacing: -0.01em;
+    }
+
+        .pj-cta-text em {
+            font-style: italic;
+            color: var(--gold2);
+        }
+
+    .pj-cta-btn {
+        position: relative;
+        z-index: 2;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        font-weight: 300;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--ink);
+        text-decoration: none;
+        background: var(--gold);
+        padding: 18px 36px;
+        transition: background .2s, transform .15s;
+        white-space: nowrap;
+    }
+
+        .pj-cta-btn:hover {
+            background: var(--gold2);
+            color: var(--ink);
+            transform: translateY(-2px);
+        }
+
+    /* ── MODALES ── */
+    .pj-modal .modal-content {
+        border: none;
+        border-radius: 0;
+    }
+
+    .pj-modal .modal-header {
+        background: var(--ink);
+        border: none;
+        padding: 24px 32px;
+    }
+
+    .pj-modal .modal-title {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 24px;
+        font-weight: 300;
+        color: #fff;
+    }
+
+    .pj-modal .modal-body {
+        padding: 0;
+        background: var(--cream);
+    }
+
+    .pj-modal-carousel {
+        height: 320px;
+        overflow: hidden;
+    }
+
+        .pj-modal-carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .pj-modal-carousel .carousel-inner {
+            height: 100%;
+        }
+
+        .pj-modal-carousel .carousel-item {
+            height: 100%;
+        }
+
+    .pj-modal-body {
+        padding: 36px 40px;
+    }
+
+    .pj-modal-loc {
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        font-weight: 300;
+        letter-spacing: 0.12em;
+        color: var(--gold);
+        margin-bottom: 20px;
+    }
+
+    .pj-modal-section {
+        font-family: 'DM Mono', monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--hint);
+        margin: 24px 0 10px;
+    }
+
+    .pj-modal-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+        .pj-modal-list li {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            font-weight: 300;
+            color: var(--muted);
+            line-height: 1.6;
+            padding-left: 16px;
+            position: relative;
+        }
+
+            .pj-modal-list li::before {
+                content: '→';
+                position: absolute;
+                left: 0;
+                color: var(--gold);
+                opacity: 0.7;
+            }
+
+            .pj-modal-list li strong {
+                color: var(--ink);
+                font-weight: 400;
+            }
+
+    .pj-modal-profil {
+        margin-top: 24px;
+        padding: 20px 24px;
+        background: var(--warm);
+        border-left: 2px solid var(--gold);
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        font-weight: 300;
+        color: var(--muted);
+        line-height: 1.65;
+    }
+
+    .pj-modal .modal-footer {
+        background: var(--cream);
+        border-top: 0.5px solid var(--border);
+        padding: 16px 32px;
+    }
+
+    /* Responsive */
+    @@media (max-width: 992px) {
+        .pj-grid {
+            grid-template-columns: repeat(2,1fr);
+        }
+
+        .pj-intro-grid {
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        .pj-cta {
+            grid-template-columns: 1fr;
+            padding: 48px 32px;
+            gap: 28px;
+        }
+    }
+
+    @@media (max-width: 640px) {
+        .pj-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .pj-hero-stats {
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .pj-hero-stat {
+            border-right: none;
+            border-bottom: 0.5px solid rgba(255,255,255,0.08);
+        }
+    }
+</style>
+
+<div class="pj">
+
+    <!-- ── HERO ── -->
+    <section class="pj-hero">
+        <div class="container pj-hero-content">
+            <p class="pj-pretitle">Human Square · Portugal</p>
+            <h1 class="pj-h1">
+                @(isDisponibles ? "Opportunités" : "Projets")<br>
+                <em>@(isDisponibles ? "d'investissement" : "accompagnés")</em>
+            </h1>
+            <p class="pj-hero-sub">
+                @(isDisponibles
+                                ? "Opportunités immobilières sélectionnées par Human Square — projets touristiques, réhabilitation et développement au Portugal."
+                                : "Human Square accompagne investisseurs, particuliers et promoteurs dans leurs projets immobiliers au Portugal, de la faisabilité à la livraison.")
+            </p>
+            <div class="pj-hero-stats">
+                <div class="pj-hero-stat">
+                    <div class="pj-stat-num">52+</div>
+                    <div class="pj-stat-label">Projets accompagnés</div>
                 </div>
-
-                <p><strong>📍 Localisation :</strong> Esposende, Portugal – Quartier résidentiel calme avec vue océan.</p>
-
-                <p><strong> Objectifs :</strong></p>
-                <ul>
-                    <li>Construction de 7 villas contemporaines avec terrasses et piscines privées</li>
-                    <li>Projet en cours avec permis obtenu</li>
-                    <li>Accompagnement global jusqu’à la livraison</li>
-                </ul>
-
-                <p><strong> Nature de l’accompagnement :</strong></p>
-                <ul>
-                    <li>Etude de la faisabilité du projet</li>
-                    <li>Conception architecturale et étude techniques</li>
-                    <li>Suivi des travaux, communication et commercialisation des maisons</li>
-                </ul>
-
-                <p><strong> Profil idéal :</strong> Investisseur ou promoteur.</p>
-            </div>
-
-            <div class="modal-footer bg-light rounded-bottom-4">
-                <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
-                <a href="/contact" class="btn btn-dark rounded-pill px-4">Être accompagné</a>
+                <div class="pj-hero-stat">
+                    <div class="pj-stat-num">5</div>
+                    <div class="pj-stat-label">Régions couvertes</div>
+                </div>
+                <div class="pj-hero-stat">
+                    <div class="pj-stat-num">2017</div>
+                    <div class="pj-stat-label">Depuis</div>
+                </div>
             </div>
         </div>
+    </section>
+
+    <!-- ── TABS ── -->
+    <div class="pj-tabs">
+        <a class="pj-tab @(isDisponibles ? "" : "active")" href="/Projects/Index">
+            <span class="pj-tab-num">01</span> Projets clients
+        </a>
+        <a class="pj-tab @(isDisponibles ? "active" : "")" href="/Projects/Disponibles">
+            <span class="pj-tab-num">02</span> Sur le marché
+        </a>
     </div>
-</div>
 
-<!-- 🪟 Modal Projet 02 – 10 Villas à Albufeira -->
-<div class="modal fade" id="modalProjet2" tabindex="-1" aria-labelledby="modalProjet2Label" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content rounded-4 border-0 shadow-lg">
-            <div class="modal-header bg-dark text-white rounded-top-4">
-                <h5 class="modal-title fw-bold" id="modalProjet2Label">10 Villas à Albufeira</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
-            </div>
-
-            <div class="modal-body">
-                <!-- 🖼️ Carousel images -->
-                <div id="carouselProjet2" class="carousel slide mb-4" data-bs-ride="carousel">
-                    <div class="carousel-inner rounded shadow-sm">
-                        <div class="carousel-item active">
-                            <img src="~/images/project02i.jpg" class="d-block w-100" alt="Vue 1">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="~/images/project02b.jpg" class="d-block w-100" alt="Vue 2">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="~/images/project02c.jpg" class="d-block w-100" alt="Vue 3">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="~/images/project02d.jpg" class="d-block w-100" alt="Vue 4">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="~/images/project02e.jpg" class="d-block w-100" alt="Vue 5">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="~/images/project02f.jpg" class="d-block w-100" alt="Vue 6">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="~/images/project02g.jpg" class="d-block w-100" alt="Vue 7">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="~/images/project02h.jpg" class="d-block w-100" alt="Vue 8">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="~/images/project02.png" class="d-block w-100" alt="Vue 10">
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjet2" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselProjet2" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    </button>
+    <!-- ── INTRO ── -->
+    <section class="pj-intro">
+        <div class="container">
+            <div class="pj-intro-grid">
+                <div>
+                    <p class="pj-section-label">@(isDisponibles ? "02 — Projets sur le marché" : "01 — Projets clients")</p>
+                    <h2 class="pj-section-h2">
+                        @(isDisponibles ? "Investissez dans" : "Réalisations &")<br>
+                        <em>@(isDisponibles ? "l'immobilier portugais" : "accompagnements")</em>
+                    </h2>
                 </div>
-
-                <p><strong>📍 Localisation :</strong> Albufeira, Algarve – zone résidentielle et touristique recherchée.</p>
-
-                <p><strong> Objectifs :</strong></p>
-                <ul>
-                    <li>Développement d’un ensemble de 10 villas contemporaines</li>
-                    <li>Optimisation de la conception pour une rentabilité élevée</li>
-                    <li>Gestion complète du projet jusqu’à la livraison</li>
-                </ul>
-
-                <p><strong> Nature de l’accompagnement :</strong></p>
-                <ul>
-                    <li>Étude de faisabilité complète</li>
-                    <li>Montage juridique et financier</li>
-                    <li>Choix des entreprises et suivi de chantier</li>
-                    <li>Stratégie de commercialisation</li>
-                </ul>
-
-                <p><strong> Profil idéal :</strong> Investisseur ou promoteur cherchant un projet structuré avec visibilité immédiate.</p>
-            </div>
-
-            <div class="modal-footer bg-light rounded-bottom-4">
-                <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
-                <a href="/contact" class="btn btn-dark rounded-pill px-4">Être accompagné pour un projet?</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 🪟 Modal Projet 03 – Villa à Barcelos -->
-<div class="modal fade" id="modalProjet3" tabindex="-1" aria-labelledby="modalProjet3Label" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content rounded-4 border-0 shadow-lg">
-            <div class="modal-header bg-dark text-white rounded-top-4">
-                <h5 class="modal-title fw-bold" id="modalProjet3Label">Villa à Barcelos</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
-            </div>
-
-            <div class="modal-body">
-                <!-- 🖼️ Carousel -->
-                <div id="carouselProjet3" class="carousel slide mb-4" data-bs-ride="carousel">
-                    <div class="carousel-inner rounded shadow-sm">
-               
-                        <div class="carousel-item">
-                            <img src="~/images/barcelos.jpeg"
-                                 class="d-block w-100 project-carousel-img"
-                                 alt="Vue 1">
-                        </div>
-                        <div class="carousel-item active">
-                            <img src="~/images/project03.png"
-                                 class="d-block w-100 project-carousel-img"
-                                 alt="Vue 1">
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjet3" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselProjet3" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    </button>
-                </div>
-
-                <p><strong>📍 Localisation :</strong> Village traditionnel à proximité de Barcelos, dans le nord du Portugal.</p>
-
-                <p><strong> Objectifs :</strong></p>
-                <ul>
-                    <li>Reconstruction d’une villa d'architecte sur base d’une ruine en pierre</li>
-                    <li>Préservation du charme local avec une approche moderne</li>
-                    <li>Accompagnement total du projet pour un résultat clé en main</li>
-                </ul>
-
-                <p><strong> Nature de l’accompagnement :</strong></p>
-                <ul>
-                    <li>Analyse structurelle du bâti existant</li>
-                    <li>Étude technique et administrative</li>
-                    <li>Collaboration avec des architectes locaux</li>
-                    <li>Choix des artisans et suivi de chantier</li>
-                </ul>
-
-                <p><strong> Profil idéal :</strong> Particulier à la recherche d’un projet unique dans un cadre authentique.</p>
-            </div>
-
-            <div class="modal-footer bg-light rounded-bottom-4">
-                <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
-                <a href="/contact" class="btn btn-dark rounded-pill px-4">Être accompagné pour un projet?</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 🪟 Modal Projet 05 – 6 Villas à Viseu -->
-<div class="modal fade" id="modalProjet5" tabindex="-1" aria-labelledby="modalProjet5Label" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content rounded-4 border-0 shadow-lg">
-            <div class="modal-header bg-dark text-white rounded-top-4">
-                <h5 class="modal-title fw-bold" id="modalProjet5Label">6 Villas à Viseu</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
-            </div>
-
-            <div class="modal-body">
-                <!-- 🖼️ Carousel -->
-                <div id="carouselProjet5" class="carousel slide mb-4" data-bs-ride="carousel">
-                    <div class="carousel-inner rounded shadow-sm">
-                        <div class="carousel-item active">
-                            <img src="~/images/project04.jpg" class="d-block w-100" alt="Vue 1">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="~/images/project04b.jpg" class="d-block w-100" alt="Vue 2">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="~/images/project04c.jpg" class="d-block w-100" alt="Vue 3">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="~/images/project04d.jpg" class="d-block w-100" alt="Vue 4">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="~/images/project04e.jpg" class="d-block w-100" alt="Vue 5">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="~/images/project04f.jpg" class="d-block w-100" alt="Vue 6">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="~/images/project04g.jpg" class="d-block w-100" alt="Vue 7">
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjet5" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselProjet5" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    </button>
-                </div>
-
-                <p><strong>📍 Localisation :</strong> Ville de Viseu, région Centre – à fort potentiel résidentiel et touristique.</p>
-
-                <p><strong> Objectifs :</strong></p>
-                <ul>
-                    <li>Développement d’un lotissement de 6 villas familiales</li>
-                    <li>Maîtrise complète du cycle : étude, planification, réalisation</li>
-                    <li>Optimisation financière et technique pour les investisseurs</li>
-                </ul>
-
-                <p><strong> Nature de l’accompagnement :</strong></p>
-                <ul>
-                    <li>Étude de faisabilité et analyse foncière</li>
-                    <li>Montage financier et prévisionnel</li>
-                    <li>Coordination avec l’architecte et les autorités locales</li>
-                    <li>Suivi administratif, technique et lancement du chantier</li>
-                </ul>
-
-                <p><strong> Profil idéal :</strong> Investisseur ou promoteur à la recherche d’un projet encadré et rentable.</p>
-            </div>
-
-            <div class="modal-footer bg-light rounded-bottom-4">
-                <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
-                <a href="/contact" class="btn btn-dark rounded-pill px-4">Être accompagné pour un projet?</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- 🪟 Modal Projet 05 – Ruine dans le Douro -->
-<div class="modal fade" id="modalProjet6" tabindex="-1" aria-labelledby="modalProjet6Label" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content rounded-4 border-0 shadow-lg">
-            <div class="modal-header bg-dark text-white rounded-top-4">
-                <h5 class="modal-title fw-bold" id="modalProjet6Label">Projet 06 – Projet immobilier touristique dans le Douro</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
-            </div>
-            <div class="modal-body">
-                <img src="~/images/project06.jpg" class="img-fluid rounded-3 mb-4" alt="Projet Douro">
-
-                <p><strong>📍 Localisation :</strong> Vallée du Douro, Portugal – site classé UNESCO, au cœur des vignes et collines surplombant le fleuve.</p>
-
-                <p><strong> Objectifs :</strong></p>
-                <ul>
-                    <li>Restauration d’une ruine en pierre dans le respect du patrimoine architectural local</li>
-                    <li>Création d’un bien unique (résidence secondaire ou hébergement touristique)</li>
-                    <li>Accompagnement global du projet : étude de faisabilité, autorisations, conception, pilotage</li>
-                </ul>
-
-                <p><strong> Nature de l’accompagnement :</strong></p>
-                <ul>
-                    <li>Analyse urbanistique et potentiels de construction</li>
-                    <li>Étude de sol et contraintes techniques</li>
-                    <li>Collaboration avec architecte local pour valoriser l'existant</li>
-                    <li>Recherche de solutions de financement et de subventions (tourisme ou patrimoine)</li>
-                </ul>
-
-                <p><strong> Profil idéal :</strong> Investisseur, particulier ou promoteur sensible à la valeur patrimoniale et naturelle du lieu.</p>
-            </div>
-            <div class="modal-footer bg-light rounded-bottom-4">
-                <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
-                <a href="/contact" class="btn btn-dark rounded-pill px-4">Être accompagné pour un projet?</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- ✅ Projets 06 Modale Lomba -->
-<div class="modal fade" id="modalLomba" tabindex="-1" aria-labelledby="modalLombaLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content rounded-4 border-0 shadow-lg">
-
-            <div class="modal-header bg-dark text-white rounded-top-4">
-                <h5 class="modal-title fw-bold" id="modalLombaLabel">Projeto turístico Lomba – Gondomar (PIP approuvé)</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
-            </div>
-
-            <div class="modal-body">
-
-                <div id="carouselLomba" class="carousel slide mb-4" data-bs-ride="carousel">
-                    <div class="carousel-inner rounded shadow-sm">
-                        <div class="carousel-item active">
-                            <img src="~/images/lomba-01.png" class="d-block w-100" alt="Lomba - vue 1">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="~/images/lomba-02.jpeg" class="d-block w-100" alt="Lomba - vue 2">
-                        </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselLomba" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselLomba" data-bs-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </button>
-                </div>
-
-                <p><strong>📍 Localisation :</strong> Lomba, Gondomar (Nord du Portugal) – Porto à ~35 km (~30 min).</p>
-                <p><strong> Statut :</strong> PIP vinculativo approuvé.</p>
-
-                <p><strong> Objectifs :</strong></p>
-                <ul>
-                    <li>Développement d’un projet touristique de 14 appartements et 2 villas familiales</li>
-                </ul>
-
-                <p><strong> Nature de l’accompagnement :</strong></p>
-                <ul>
-                    <li>Coordination avec l’architecte et les autorités locales</li>
-                    <li>Suivi administratif, technique et lancement du chantier</li>
-                </ul>
-
-                <p class="mb-0">
-                    <strong> Télécharger la brochure :</strong>
-                    <a href="/Contact?projet=Lomba" class="btn btn-outline-dark rounded-pill px-4" role="button">
-                        Télécharger PDF
-                    </a>
+                <p class="pj-intro-text">
+                    @(isDisponibles
+                                        ? "Découvrez des opportunités immobilières à fort potentiel, soigneusement sélectionnées et analysées par notre équipe. Chaque projet est accompagné d'une étude de faisabilité complète."
+                                        : "Une sélection de projets réalisés avec nos clients — villas contemporaines, projets touristiques, rénovation patrimoniale et développement immobilier dans tout le Portugal.")
                 </p>
             </div>
-
-            <div class="modal-footer bg-light rounded-bottom-4">
-                <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
-                <a href="/Contact?projet=Lomba" class="btn btn-outline-dark rounded-pill px-4" role="button">
-                    Etre mis en relation
-                </a>
-            </div>
-
         </div>
-    </div>
-</div>
+    </section>
 
-<!-- 🪟 Modal Projet 07 – 15 appartements à Joane, Famalicao -->
-<div class="modal fade" id="modalProjet7" tabindex="-1" aria-labelledby="modalProjet7Label" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content rounded-4 border-0 shadow-lg">
-            <div class="modal-header bg-dark text-white rounded-top-4">
-                <h5 class="modal-title fw-bold" id="modalProjet7Label">
-                    15 appartements à Joane, Famalicão
-                </h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
-            </div>
-
-            <div class="modal-body">
-                <!-- 🖼️ Carousel images -->
-                <div id="carouselProjet7" class="carousel slide mb-4" data-bs-ride="carousel">
-                    <div class="carousel-inner rounded shadow-sm">
-                        <div class="carousel-item">
-                            <img src="~/images/joane.jpeg" class="d-block w-100" alt="Vue 2">
+    <!-- ── GRILLE ── -->
+    <div class="container">
+        <div class="pj-grid">
+            @{
+                int idx = 1;
+            }
+            @foreach (var project in Model)
+            {
+                <div class="pj-card">
+                    <div class="pj-card-media">
+                        <img src="@project.ImageUrl" alt="@project.Title" loading="lazy" />
+                        <span class="pj-card-num">@idx.ToString("D2")</span>
+                        @if (isDisponibles)
+                        {
+                            <span class="pj-tag-dispo">Disponible</span>
+                        }
+                    </div>
+                    <div class="pj-card-body">
+                        <h3 class="pj-card-title">@project.Title</h3>
+                        <p class="pj-card-desc">@project.Description</p>
+                        <div class="pj-card-footer">
+                            <button class="pj-card-btn" data-bs-toggle="modal" data-bs-target="#@project.ModalId">
+                                Voir le projet →
+                            </button>
+                            <span class="pj-card-arrow">→</span>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjet2" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselProjet2" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    </button>
                 </div>
+                idx++;
+            }
+        </div>
+    </div>
 
-                <p><strong>📍 Localisation :</strong> Joane, Famalicao – zone résidentielle.</p>
+    <!-- ── CTA ── -->
+    <div class="pj-cta">
+        <p class="pj-cta-text">
+            Vous avez un projet<br><em>immobilier au Portugal ?</em>
+        </p>
+        <a asp-controller="Contact" asp-action="Contact" class="pj-cta-btn">
+            Être accompagné
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </a>
+    </div>
 
-                <p><strong> Objectifs :</strong></p>
-                <ul>
-                    <li>Développement d’un ensemble de 15 appartementos contemporains</li>
-                    <li>Optimisation de la conception pour une rentabilité élevée</li>
-                    <li>Gestion complète du projet jusqu’à la livraison</li>
-                </ul>
+</div>
 
-                <p><strong> Nature de l’accompagnement :</strong></p>
-                <ul>
-                    <li>Étude de faisabilité complète</li>
-                    <li>Montage juridique et financier</li>
-                    <li>Choix des entreprises et suivi de chantier</li>
-                    <li>Stratégie de commercialisation</li>
-                </ul>
-
-                <p><strong> Profil idéal :</strong> Investisseur ou promoteur cherchant un projet structuré avec visibilité immédiate.</p>
+<!-- ════ MODALES ════ -->
+<!-- Modal Projet 1 – 7 Villas Esposende -->
+<div class="modal fade pj-modal" id="modalProjet1" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header"><h5 class="modal-title">7 Villas à Esposende</h5><button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body">
+                <div class="pj-modal-carousel">
+                    <div id="c1" class="carousel slide h-100" data-bs-ride="carousel">
+                        <div class="carousel-inner h-100">
+                            <div class="carousel-item active h-100"><img src="/images/project01b.png" alt="Vue 1" /></div>
+                            <div class="carousel-item h-100"><img src="/images/project01.png" alt="Vue 2" /></div>
+                            <div class="carousel-item h-100"><img src="/images/project01c.png" alt="Vue 3" /></div>
+                            <div class="carousel-item h-100"><img src="/images/project01d.png" alt="Vue 4" /></div>
+                            <div class="carousel-item h-100"><img src="/images/project01e.jpg" alt="Vue 5" /></div>
+                            <div class="carousel-item h-100"><img src="/images/project01f.jpg" alt="Vue 6" /></div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#c1" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#c1" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+                    </div>
+                </div>
+                <div class="pj-modal-body">
+                    <p class="pj-modal-loc">📍 Esposende, Portugal — Quartier résidentiel calme avec vue océan</p>
+                    <p class="pj-modal-section">Objectifs</p>
+                    <ul class="pj-modal-list">
+                        <li>Construction de 7 villas contemporaines avec terrasses et piscines privées</li>
+                        <li>Projet en cours avec permis obtenu</li>
+                        <li>Accompagnement global jusqu'à la livraison</li>
+                    </ul>
+                    <p class="pj-modal-section">Nature de l'accompagnement</p>
+                    <ul class="pj-modal-list">
+                        <li>Étude de la faisabilité du projet</li>
+                        <li>Conception architecturale et études techniques</li>
+                        <li>Suivi des travaux, communication et commercialisation</li>
+                    </ul>
+                    <div class="pj-modal-profil">Profil idéal : Investisseur ou promoteur.</div>
+                </div>
             </div>
-
-            <div class="modal-footer bg-light rounded-bottom-4">
-                <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
-                <a href="/contact" class="btn btn-dark rounded-pill px-4">Être accompagné pour un projet?</a>
-            </div>
+            <div class="modal-footer"><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button><a href="/contact" class="btn btn-dark btn-sm">Être accompagné →</a></div>
         </div>
     </div>
 </div>
 
-<!-- 🪟 Modal Projet 08 – 15 villas GAIA -->
-<div class="modal fade" id="modalProjet8" tabindex="-1" aria-labelledby="modalProjet2Label" aria-hidden="true">
+<!-- Modal Projet 2 – 10 Villas Albufeira -->
+<div class="modal fade pj-modal" id="modalProjet2" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-        <div class="modal-content rounded-4 border-0 shadow-lg">
-            <div class="modal-header bg-dark text-white rounded-top-4">
-                <h5 class="modal-title fw-bold" id="modalProjet8Label">15 villas à Porto</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fermer"></button>
-            </div>
-
+        <div class="modal-content">
+            <div class="modal-header"><h5 class="modal-title">10 Villas à Albufeira</h5><button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button></div>
             <div class="modal-body">
-                <!-- 🖼️ Carousel images -->
-                <div id="carouselProjet8" class="carousel slide mb-4" data-bs-ride="carousel">
-                    <div class="carousel-inner rounded shadow-sm">
-                        <div class="carousel-item active">
-                            <img src="~/images/gaia.jpg" class="d-block w-100" alt="Vue 1">
+                <div class="pj-modal-carousel">
+                    <div id="c2" class="carousel slide h-100" data-bs-ride="carousel">
+                        <div class="carousel-inner h-100">
+                            <div class="carousel-item active h-100"><img src="/images/project02i.jpg" alt="Vue 1" /></div>
+                            <div class="carousel-item h-100"><img src="/images/project02b.jpg" alt="Vue 2" /></div>
+                            <div class="carousel-item h-100"><img src="/images/project02c.jpg" alt="Vue 3" /></div>
+                            <div class="carousel-item h-100"><img src="/images/project02d.jpg" alt="Vue 4" /></div>
+                            <div class="carousel-item h-100"><img src="/images/project02e.jpg" alt="Vue 5" /></div>
+                            <div class="carousel-item h-100"><img src="/images/project02.png" alt="Vue 6" /></div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#c2" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#c2" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+                    </div>
+                </div>
+                <div class="pj-modal-body">
+                    <p class="pj-modal-loc">📍 Albufeira, Algarve — zone résidentielle et touristique recherchée</p>
+                    <p class="pj-modal-section">Objectifs</p>
+                    <ul class="pj-modal-list">
+                        <li>Développement d'un ensemble de 10 villas contemporaines</li>
+                        <li>Optimisation de la conception pour une rentabilité élevée</li>
+                        <li>Gestion complète du projet jusqu'à la livraison</li>
+                    </ul>
+                    <p class="pj-modal-section">Nature de l'accompagnement</p>
+                    <ul class="pj-modal-list">
+                        <li>Étude de faisabilité complète</li>
+                        <li>Montage juridique et financier</li>
+                        <li>Choix des entreprises et suivi de chantier</li>
+                        <li>Stratégie de commercialisation</li>
+                    </ul>
+                    <div class="pj-modal-profil">Profil idéal : Investisseur ou promoteur cherchant un projet structuré.</div>
+                </div>
+            </div>
+            <div class="modal-footer"><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button><a href="/contact" class="btn btn-dark btn-sm">Être accompagné →</a></div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Projet 3 – Villa Barcelos -->
+<div class="modal fade pj-modal" id="modalProjet3" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header"><h5 class="modal-title">Villa à Barcelos</h5><button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body">
+                <div class="pj-modal-carousel">
+                    <div id="c3" class="carousel slide h-100" data-bs-ride="carousel">
+                        <div class="carousel-inner h-100">
+                            <div class="carousel-item active h-100"><img src="/images/barcelos.jpeg" alt="Vue 1" /></div>
+                            <div class="carousel-item h-100"><img src="/images/project03.png" alt="Vue 2" /></div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#c3" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#c3" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+                    </div>
+                </div>
+                <div class="pj-modal-body">
+                    <p class="pj-modal-loc">📍 Barcelos, Nord du Portugal — village traditionnel</p>
+                    <p class="pj-modal-section">Objectifs</p>
+                    <ul class="pj-modal-list">
+                        <li>Reconstruction d'une villa d'architecte sur base d'une ruine en pierre</li>
+                        <li>Préservation du charme local avec une approche moderne</li>
+                        <li>Accompagnement total du projet clé en main</li>
+                    </ul>
+                    <p class="pj-modal-section">Nature de l'accompagnement</p>
+                    <ul class="pj-modal-list">
+                        <li>Analyse structurelle du bâti existant</li>
+                        <li>Étude technique et administrative</li>
+                        <li>Collaboration avec des architectes locaux</li>
+                        <li>Choix des artisans et suivi de chantier</li>
+                    </ul>
+                    <div class="pj-modal-profil">Profil idéal : Particulier à la recherche d'un projet unique dans un cadre authentique.</div>
+                </div>
+            </div>
+            <div class="modal-footer"><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button><a href="/contact" class="btn btn-dark btn-sm">Être accompagné →</a></div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Projet 5 – 6 Villas Viseu -->
+<div class="modal fade pj-modal" id="modalProjet5" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header"><h5 class="modal-title">6 Villas à Viseu</h5><button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body">
+                <div class="pj-modal-carousel">
+                    <div id="c5" class="carousel slide h-100" data-bs-ride="carousel">
+                        <div class="carousel-inner h-100">
+                            <div class="carousel-item active h-100"><img src="/images/project04.jpg" alt="Vue 1" /></div>
+                            <div class="carousel-item h-100"><img src="/images/project04b.jpg" alt="Vue 2" /></div>
+                            <div class="carousel-item h-100"><img src="/images/project04c.jpg" alt="Vue 3" /></div>
+                            <div class="carousel-item h-100"><img src="/images/project04d.jpg" alt="Vue 4" /></div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#c5" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#c5" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+                    </div>
+                </div>
+                <div class="pj-modal-body">
+                    <p class="pj-modal-loc">📍 Viseu, région Centre — fort potentiel résidentiel et touristique</p>
+                    <p class="pj-modal-section">Objectifs</p>
+                    <ul class="pj-modal-list">
+                        <li>Développement d'un lotissement de 6 villas familiales</li>
+                        <li>Maîtrise complète du cycle : étude, planification, réalisation</li>
+                        <li>Optimisation financière et technique pour les investisseurs</li>
+                    </ul>
+                    <p class="pj-modal-section">Nature de l'accompagnement</p>
+                    <ul class="pj-modal-list">
+                        <li>Étude de faisabilité et analyse foncière</li>
+                        <li>Montage financier et prévisionnel</li>
+                        <li>Coordination avec l'architecte et les autorités locales</li>
+                        <li>Suivi administratif, technique et lancement du chantier</li>
+                    </ul>
+                    <div class="pj-modal-profil">Profil idéal : Investisseur ou promoteur à la recherche d'un projet encadré et rentable.</div>
+                </div>
+            </div>
+            <div class="modal-footer"><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button><a href="/contact" class="btn btn-dark btn-sm">Être accompagné →</a></div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Projet 6 – Douro -->
+<div class="modal fade pj-modal" id="modalProjet6" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header"><h5 class="modal-title">Projet touristique – Vallée du Douro</h5><button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body">
+                <div class="pj-modal-carousel">
+                    <div id="c6" class="carousel slide h-100">
+                        <div class="carousel-inner h-100">
+                            <div class="carousel-item active h-100"><img src="/images/project06.jpg" alt="Vue 1" /></div>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselProjet2" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselProjet2" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    </button>
                 </div>
-
-                <p><strong>📍 Localisation :</strong> Gulpilhares, Gaia – zone résidentielle et touristique recherchée.</p>
-
-                <p><strong> Objectifs :</strong></p>
-                <ul>
-                    <li>Développement d’un ensemble de 15 villas contemporaines</li>
-                    <li>Optimisation de la conception pour une rentabilité élevée</li>
-                    <li>Gestion complète du projet jusqu’à la livraison</li>
-                </ul>
-
-                <p><strong> Nature de l’accompagnement :</strong></p>
-                <ul>
-                    <li>Étude de faisabilité complète</li>
-                    <li>Montage juridique et financier</li>
-                    <li>Choix des entreprises et suivi de chantier</li>
-                    <li>Stratégie de commercialisation</li>
-                </ul>
-
-                <p><strong> Profil idéal :</strong> Investisseur ou promoteur cherchant un projet structuré avec visibilité immédiate.</p>
+                <div class="pj-modal-body">
+                    <p class="pj-modal-loc">📍 Vallée du Douro — site classé UNESCO, vignes et collines surplombant le fleuve</p>
+                    <p class="pj-modal-section">Objectifs</p>
+                    <ul class="pj-modal-list">
+                        <li>Restauration d'une ruine en pierre dans le respect du patrimoine local</li>
+                        <li>Création d'un bien unique — résidence secondaire ou hébergement touristique</li>
+                        <li>Accompagnement global : faisabilité, autorisations, conception, pilotage</li>
+                    </ul>
+                    <p class="pj-modal-section">Nature de l'accompagnement</p>
+                    <ul class="pj-modal-list">
+                        <li>Analyse urbanistique et potentiels de construction</li>
+                        <li>Étude de sol et contraintes techniques</li>
+                        <li>Collaboration avec architecte local pour valoriser l'existant</li>
+                        <li>Recherche de solutions de financement et de subventions</li>
+                    </ul>
+                    <div class="pj-modal-profil">Profil idéal : Investisseur, particulier ou promoteur sensible à la valeur patrimoniale.</div>
+                </div>
             </div>
-
-            <div class="modal-footer bg-light rounded-bottom-4">
-                <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Fermer</button>
-                <a href="/contact" class="btn btn-dark rounded-pill px-4">Être accompagné pour un projet?</a>
-            </div>
+            <div class="modal-footer"><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button><a href="/contact" class="btn btn-dark btn-sm">Être accompagné →</a></div>
         </div>
     </div>
 </div>
 
-<script>
-    function loadProjects(type) {
-        fetch(`/Projects/LoadProjects?type=${type}`)
-            .then(response => response.text())
-            .then(html => {
-                document.querySelector("#projectsContent").innerHTML = html;
+<!-- Modal Lomba -->
+<div class="modal fade pj-modal" id="modalLomba" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header"><h5 class="modal-title">Projet touristique Lomba – Gondomar</h5><button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body">
+                <div class="pj-modal-carousel">
+                    <div id="cLomba" class="carousel slide h-100" data-bs-ride="carousel">
+                        <div class="carousel-inner h-100">
+                            <div class="carousel-item active h-100"><img src="/images/lomba-01.png" alt="Vue 1" /></div>
+                            <div class="carousel-item h-100"><img src="/images/lomba-02.jpeg" alt="Vue 2" /></div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#cLomba" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#cLomba" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+                    </div>
+                </div>
+                <div class="pj-modal-body">
+                    <p class="pj-modal-loc">📍 Lomba, Gondomar — Porto à ~35 km (~30 min) · PIP vinculativo approuvé</p>
+                    <p class="pj-modal-section">Composition de l'opération</p>
+                    <ul class="pj-modal-list">
+                        <li><strong>Prix de vente :</strong> 500 000 €</li>
+                        <li><strong>Budget total construction :</strong> 2 500 000 €</li>
+                        <li><strong>Rentabilité annuelle location :</strong> 350 000 – 650 000 € / an</li>
+                        <li><strong>Durée prévisionnelle :</strong> 18 mois</li>
+                    </ul>
+                    <p class="pj-modal-section">Programme</p>
+                    <ul class="pj-modal-list">
+                        <li>6 Appartements T0 + 8 Appartements T1 + 2 Villas T2</li>
+                        <li>Restaurant panoramique 2 niveaux — 440 m²</li>
+                        <li>Terrain : 5 115 m² · Surface brute : 1 761 m²</li>
+                        <li>Zone jacuzzi & piscine : 271 m² · Espaces verts : 2 458 m²</li>
+                    </ul>
+                    <div class="pj-modal-profil">Profil idéal : Fonds immobilier, family office, investisseur privé ou société cherchant une opération patrimoniale ou touristique.</div>
+                </div>
+            </div>
+            <div class="modal-footer"><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button><a href="/contact" class="btn btn-dark btn-sm">Être mis en relation →</a></div>
+        </div>
+    </div>
+</div>
 
-                // Mettre à jour les onglets actifs
-                document.querySelectorAll("#projectTabs .nav-link").forEach(btn => btn.classList.remove("active"));
-                document.querySelector(`#projectTabs .nav-link[onclick="loadProjects('${type}')"]`).classList.add("active");
-            });
-    }
-</script>
+<!-- Modal Projet 7 – Joane -->
+<div class="modal fade pj-modal" id="modalProjet7" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header"><h5 class="modal-title">15 appartements à Joane, Famalicão</h5><button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body">
+                <div class="pj-modal-carousel">
+                    <div id="c7" class="carousel slide h-100">
+                        <div class="carousel-inner h-100">
+                            <div class="carousel-item active h-100"><img src="/images/joane.jpeg" alt="Vue 1" /></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pj-modal-body">
+                    <p class="pj-modal-loc">📍 Joane, Famalicão — zone résidentielle</p>
+                    <p class="pj-modal-section">Objectifs</p>
+                    <ul class="pj-modal-list">
+                        <li>Développement d'un ensemble de 15 appartements contemporains</li>
+                        <li>Optimisation de la conception pour une rentabilité élevée</li>
+                        <li>Gestion complète du projet jusqu'à la livraison</li>
+                    </ul>
+                    <p class="pj-modal-section">Nature de l'accompagnement</p>
+                    <ul class="pj-modal-list">
+                        <li>Étude de faisabilité complète</li>
+                        <li>Montage juridique et financier</li>
+                        <li>Choix des entreprises et suivi de chantier</li>
+                        <li>Stratégie de commercialisation</li>
+                    </ul>
+                    <div class="pj-modal-profil">Profil idéal : Investisseur ou promoteur cherchant un projet structuré avec visibilité immédiate.</div>
+                </div>
+            </div>
+            <div class="modal-footer"><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button><a href="/contact" class="btn btn-dark btn-sm">Être accompagné →</a></div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Projet 8 – Gaia -->
+<div class="modal fade pj-modal" id="modalProjet8" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header"><h5 class="modal-title">15 villas à Porto — Gulpilhares, Gaia</h5><button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body">
+                <div class="pj-modal-carousel">
+                    <div id="c8" class="carousel slide h-100">
+                        <div class="carousel-inner h-100">
+                            <div class="carousel-item active h-100"><img src="/images/gaia.jpg" alt="Vue 1" /></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pj-modal-body">
+                    <p class="pj-modal-loc">📍 Gulpilhares, Gaia — zone résidentielle et touristique recherchée</p>
+                    <p class="pj-modal-section">Objectifs</p>
+                    <ul class="pj-modal-list">
+                        <li>Développement d'un ensemble de 15 villas contemporaines haut de gamme</li>
+                        <li>Optimisation de la conception pour une rentabilité élevée</li>
+                        <li>Gestion complète du projet jusqu'à la livraison</li>
+                    </ul>
+                    <p class="pj-modal-section">Nature de l'accompagnement</p>
+                    <ul class="pj-modal-list">
+                        <li>Étude de faisabilité complète</li>
+                        <li>Montage juridique et financier</li>
+                        <li>Choix des entreprises et suivi de chantier</li>
+                        <li>Stratégie de commercialisation</li>
+                    </ul>
+                    <div class="pj-modal-profil">Profil idéal : Investisseur ou promoteur cherchant un projet résidentiel premium.</div>
+                </div>
+            </div>
+            <div class="modal-footer"><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button><a href="/contact" class="btn btn-dark btn-sm">Être accompagné →</a></div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Douro (disponibles) -->
+<div class="modal fade pj-modal" id="modalDouro" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header"><h5 class="modal-title">Ruine à réhabiliter – Vallée du Douro</h5><button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button></div>
+            <div class="modal-body">
+                <div class="pj-modal-carousel">
+                    <div id="cDouro" class="carousel slide h-100" data-bs-ride="carousel">
+                        <div class="carousel-inner h-100">
+                            <div class="carousel-item active h-100"><img src="/images/project07.jpg" alt="Vue 1" /></div>
+                            <div class="carousel-item h-100"><img src="/images/project07b.jpg" alt="Vue 2" /></div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#cDouro" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#cDouro" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+                    </div>
+                </div>
+                <div class="pj-modal-body">
+                    <p class="pj-modal-loc">📍 Vallée du Douro — région viticole classée UNESCO, vue sur le fleuve</p>
+                    <p class="pj-modal-section">Informations financières</p>
+                    <ul class="pj-modal-list">
+                        <li><strong>Prix de vente :</strong> 120 000 €</li>
+                        <li><strong>Budget total projet :</strong> 250 000 €</li>
+                        <li><strong>Ticket d'entrée minimum :</strong> 25 000 €</li>
+                        <li><strong>Rentabilité cible :</strong> 8 à 10% / an</li>
+                        <li><strong>Durée prévisionnelle :</strong> 18 mois</li>
+                    </ul>
+                    <p class="pj-modal-section">Urbanisme & faisabilité</p>
+                    <ul class="pj-modal-list">
+                        <li>Zone Solo Urbano — construction autorisée</li>
+                        <li>Surface brute de construction possible : 260 m²</li>
+                        <li>Hauteur max : 2 étages · Orientation sud — vue dominante</li>
+                        <li>Accès eau, électricité en bordure, fibre disponible</li>
+                    </ul>
+                    <div class="pj-modal-profil">Profil idéal : Fonds immobilier, family office, investisseur privé ou société cherchant une opération patrimoniale ou touristique.</div>
+                </div>
+            </div>
+            <div class="modal-footer"><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button><a href="/contact" class="btn btn-dark btn-sm">Être mis en relation →</a></div>
+        </div>
+    </div>
+</div>
 

@@ -27,17 +27,21 @@ namespace Human_Evolution.Controllers
         {
             try
             {
-                var biensRecents = await _context.Biens
+                var biens = await _context.Biens
                     .Where(b => b.Visible)
                     .OrderByDescending(b => b.DateAjout)
                     .Take(3)
                     .ToListAsync();
 
-                return View("~/Views/Home/Index.cshtml", biensRecents);
+                if (!biens.Any())
+                    biens = BiensController.GetBiensStatiques().Take(3).ToList();
+
+                return View("~/Views/Home/Index.cshtml", biens);
             }
             catch
             {
-                return View("~/Views/Home/Index.cshtml", new List<Human_Evolution.Models.Bien>());
+                var biens = BiensController.GetBiensStatiques().Take(3).ToList();
+                return View("~/Views/Home/Index.cshtml", biens);
             }
         }
 

@@ -22,9 +22,9 @@ namespace Human_Evolution.Controllers
         {
             new Bien {
                 Id = 1,
-                Titre = "Terraços de Joane — T0, T2, T3 neufs",
+                Titre = "Terracos de Joane — T0, T2, T3 neufs",
                 Type = "Appartement",
-                Ville = "Famalicão",
+                Ville = "Famalicao",
                 Quartier = "Joane",
                 Prix = 113520,
                 Surface = 144,
@@ -34,7 +34,7 @@ namespace Human_Evolution.Controllers
                 Statut = "Disponible",
                 Visible = true,
                 ImagePrincipale = "/images/joane.jpeg",
-                Description = "Programme résidentiel neuf — 15 lots T0, T2 et T3 avec terrasse panoramique. Certification A, parking inclus. À partir de 113 520 €.",
+                Description = "Programme residentiel neuf — 15 lots T0, T2 et T3 avec terrasse panoramique. Certification A, parking inclus. A partir de 113 520 EUR.",
                 Etat = "Neuf",
                 Slug = "terracos-de-joane",
                 DateAjout = new DateTime(2024, 6, 1)

@@ -72,5 +72,9 @@ namespace Human_Evolution.Controllers
 
             return View("~/Views/Biens/Detail.cshtml", bien);
         }
+        public IActionResult T3Joane()
+        {
+            return View("~/Views/Biens/T3Joane.cshtml");
+        }
     }
 }

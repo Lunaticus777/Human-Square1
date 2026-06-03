@@ -1,6 +1,6 @@
 ﻿@{
-    ViewData["Title"] = "Appartement T3 — Joane, Famalicão | Human Square";
-    ViewData["Description"] = "Appartement T3 neuf avec grande terrasse et vue panoramique à Joane, Famalicão. Livraison prévue 2026. Human Square Portugal.";
+    ViewData["Title"] = "Terraços de Joane – Appartements neufs T0, T2, T3 | Joane, Famalicão";
+    ViewData["Description"] = "Programme résidentiel neuf Terraços de Joane à Joane, Vila Nova de Famalicão. T0, T2, T3 avec terrasse panoramique. À partir de 113 520 €.";
 }
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
@@ -15,118 +15,217 @@
         --muted: #78766e;
         --hint: #aeac9f;
         --border: rgba(12,12,10,0.09);
+        --teal: #1e4a5a;
     }
 
-    .bien {
+    .tj {
         font-family: 'Cormorant Garamond', Georgia, serif;
         background: var(--cream);
         color: var(--ink);
         overflow-x: hidden;
     }
 
-    /* ── GALLERY HERO ── */
-    .bien-gallery {
+    /* ── HERO PROGRAMME ── */
+    .tj-hero {
+        background: var(--teal);
+        min-height: 88vh;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 480px 320px;
-        gap: 3px;
-        background: var(--ink);
-        height: 800px;
-        overflow: hidden;
-    }
-
-    .bien-gallery-main {
-        grid-row: 1 / 3;
-        overflow: hidden;
         position: relative;
-        cursor: pointer;
-    }
-
-        .bien-gallery-main img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform .6s cubic-bezier(.22,1,.36,1);
-        }
-
-        .bien-gallery-main:hover img {
-            transform: scale(1.03);
-        }
-
-    .bien-gallery-thumb {
         overflow: hidden;
-        position: relative;
-        cursor: pointer;
     }
 
-        .bien-gallery-thumb img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform .5s cubic-bezier(.22,1,.36,1);
+        .tj-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(212,180,131,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(212,180,131,0.06) 1px, transparent 1px);
+            background-size: 48px 48px;
         }
 
-        .bien-gallery-thumb:hover img {
-            transform: scale(1.05);
-        }
+    .tj-hero-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 80px 64px;
+        position: relative;
+        z-index: 2;
+    }
 
-    /* Badge sur la galerie */
-    .bien-gallery-badge {
+    .tj-hero-right {
+        position: relative;
+        overflow: hidden;
+        border-left: 0.5px solid rgba(212,180,131,0.15);
+    }
+
+    .tj-hero-right-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        opacity: 0.55;
+        transition: opacity .4s;
+    }
+
+    .tj-hero-right:hover .tj-hero-right-img {
+        opacity: 0.7;
+    }
+
+    .tj-hero-right-overlay {
         position: absolute;
-        top: 24px;
-        left: 24px;
+        inset: 0;
+        background: linear-gradient(to right, var(--teal) 0%, transparent 40%);
+    }
+
+    /* Badges programme */
+    .tj-badges {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 28px;
+    }
+
+    .tj-badge {
         font-family: 'DM Mono', monospace;
-        font-size: 9px;
+        font-size: 8px;
         font-weight: 300;
         letter-spacing: 0.18em;
         text-transform: uppercase;
-        color: var(--ink);
+        color: var(--teal);
         background: var(--gold2);
-        padding: 6px 14px;
-        z-index: 10;
+        padding: 5px 12px;
     }
 
-    .bien-gallery-btn {
-        position: absolute;
-        bottom: 20px;
-        right: 20px;
+    .tj-badge-outline {
+        font-family: 'DM Mono', monospace;
+        font-size: 8px;
+        font-weight: 300;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.6);
+        border: 0.5px solid rgba(212,180,131,0.35);
+        padding: 5px 12px;
+    }
+
+    .tj-pretitle {
         font-family: 'DM Mono', monospace;
         font-size: 9px;
         font-weight: 300;
-        letter-spacing: 0.14em;
+        letter-spacing: 0.22em;
         text-transform: uppercase;
-        color: #fff;
-        background: rgba(12,12,10,0.55);
-        border: 0.5px solid rgba(255,255,255,0.2);
-        padding: 8px 16px;
-        cursor: pointer;
-        backdrop-filter: blur(4px);
-        transition: background .2s;
-        z-index: 10;
+        color: var(--gold);
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
     }
 
-        .bien-gallery-btn:hover {
-            background: rgba(12,12,10,0.8);
+        .tj-pretitle::before {
+            content: '';
+            width: 20px;
+            height: 1px;
+            background: var(--gold);
+            display: block;
         }
 
-    /* ── HEADER BIEN ── */
-    .bien-header {
-        background: var(--cream);
-        padding: 52px 0 0;
+    .tj-hero-h1 {
+        font-size: clamp(42px, 5vw, 76px);
+        font-weight: 300;
+        line-height: 0.94;
+        color: #fff;
+        margin-bottom: 12px;
+        letter-spacing: -0.02em;
+    }
+
+        .tj-hero-h1 em {
+            font-style: italic;
+            color: var(--gold2);
+            display: block;
+        }
+
+    .tj-hero-sub {
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        font-weight: 300;
+        color: rgba(255,255,255,0.45);
+        line-height: 1.7;
+        letter-spacing: 0.04em;
+        max-width: 380px;
+        margin-bottom: 40px;
+    }
+
+    .tj-hero-stats {
+        display: flex;
+        gap: 32px;
+        padding-top: 28px;
+        border-top: 0.5px solid rgba(212,180,131,0.2);
+    }
+
+    .tj-hero-stat-num {
+        font-size: 28px;
+        font-weight: 300;
+        color: var(--gold2);
+        line-height: 1;
+    }
+
+    .tj-hero-stat-label {
+        font-family: 'DM Mono', monospace;
+        font-size: 8px;
+        font-weight: 300;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.3);
+        margin-top: 4px;
+    }
+
+    /* ── BANDE PRIX ── */
+    .tj-prix-band {
+        background: var(--ink);
+        padding: 20px 0;
+        border-bottom: 0.5px solid rgba(212,180,131,0.15);
+    }
+
+    .tj-prix-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+
+    .tj-prix-item {
+        text-align: center;
+    }
+
+    .tj-prix-label {
+        font-family: 'DM Mono', monospace;
+        font-size: 8px;
+        font-weight: 300;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--hint);
+        margin-bottom: 4px;
+    }
+
+    .tj-prix-val {
+        font-size: 20px;
+        font-weight: 300;
+        color: var(--gold2);
+    }
+
+    .tj-prix-sep {
+        width: 0.5px;
+        height: 40px;
+        background: rgba(255,255,255,0.06);
+    }
+
+    /* ── SECTIONS ── */
+    .tj-section {
+        padding: 72px 0;
         border-bottom: 0.5px solid var(--border);
     }
 
-    .bien-header-grid {
-        display: grid;
-        grid-template-columns: 1fr auto;
-        gap: 48px;
-        align-items: start;
-        padding-bottom: 40px;
-        border-bottom: 0.5px solid var(--border);
-        margin-bottom: 32px;
-    }
-
-    .bien-pretitle {
+    .tj-section-label {
         font-family: 'DM Mono', monospace;
         font-size: 9px;
         font-weight: 300;
@@ -134,155 +233,23 @@
         text-transform: uppercase;
         color: var(--gold);
         margin-bottom: 14px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
     }
 
-        .bien-pretitle::before {
-            content: '';
-            display: block;
-            width: 20px;
-            height: 1px;
-            background: var(--gold);
-        }
-
-    .bien-h1 {
-        font-size: clamp(36px, 4vw, 58px);
+    .tj-section-h2 {
+        font-size: clamp(28px, 3.5vw, 44px);
         font-weight: 300;
-        line-height: 1.0;
+        line-height: 1.05;
         color: var(--ink);
-        letter-spacing: -0.02em;
-        margin-bottom: 12px;
-    }
-
-        .bien-h1 em {
-            font-style: italic;
-            color: var(--muted);
-            display: block;
-        }
-
-    .bien-loc {
-        font-family: 'DM Mono', monospace;
-        font-size: 11px;
-        font-weight: 300;
-        color: var(--hint);
-        letter-spacing: 0.08em;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-
-    /* Prix */
-    .bien-prix-bloc {
-        text-align: right;
-    }
-
-    .bien-prix {
-        font-size: clamp(32px, 3.5vw, 48px);
-        font-weight: 300;
-        color: var(--ink);
-        line-height: 1;
-        letter-spacing: -0.02em;
-        margin-bottom: 6px;
-    }
-
-    .bien-prix-label {
-        font-family: 'DM Mono', monospace;
-        font-size: 9px;
-        font-weight: 300;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--hint);
-    }
-
-    .bien-prix-m2 {
-        font-family: 'DM Mono', monospace;
-        font-size: 11px;
-        font-weight: 300;
-        color: var(--gold);
-        margin-top: 6px;
-    }
-
-    /* Specs rapides */
-    .bien-specs-bar {
-        display: flex;
-        gap: 0;
-        padding-bottom: 0;
-    }
-
-    .bien-spec {
-        flex: 1;
-        padding: 0 24px;
-        border-right: 0.5px solid var(--border);
-        text-align: center;
-    }
-
-        .bien-spec:first-child {
-            padding-left: 0;
-            text-align: left;
-        }
-
-        .bien-spec:last-child {
-            border-right: none;
-        }
-
-    .bien-spec-val {
-        font-size: 28px;
-        font-weight: 300;
-        color: var(--ink);
-        line-height: 1;
-        margin-bottom: 4px;
-    }
-
-    .bien-spec-label {
-        font-family: 'DM Mono', monospace;
-        font-size: 9px;
-        font-weight: 300;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--hint);
-    }
-
-    /* ── CORPS ── */
-    .bien-body {
-        display: grid;
-        grid-template-columns: 1fr 380px;
-        gap: 64px;
-        padding: 64px 0 80px;
-        align-items: start;
-    }
-
-    /* Description */
-    .bien-desc-section {
-        margin-bottom: 48px;
-    }
-
-    .bien-section-label {
-        font-family: 'DM Mono', monospace;
-        font-size: 9px;
-        font-weight: 300;
-        letter-spacing: 0.2em;
-        text-transform: uppercase;
-        color: var(--gold);
-        margin-bottom: 16px;
-    }
-
-    .bien-section-title {
-        font-size: 28px;
-        font-weight: 300;
-        color: var(--ink);
-        line-height: 1.15;
         margin-bottom: 20px;
         letter-spacing: -0.01em;
     }
 
-        .bien-section-title em {
+        .tj-section-h2 em {
             font-style: italic;
             color: var(--muted);
         }
 
-    .bien-text {
+    .tj-text {
         font-family: 'DM Mono', monospace;
         font-size: 12px;
         font-weight: 300;
@@ -291,103 +258,375 @@
         letter-spacing: 0.02em;
     }
 
-    /* Points clés */
-    .bien-points {
+    /* ── GRID TYPOLOGIES ── */
+    .tj-typo-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(3, 1fr);
         gap: 1px;
         background: var(--border);
-        margin-top: 32px;
+        margin-top: 40px;
     }
 
-    .bien-point {
+    .tj-typo-card {
         background: var(--cream);
-        padding: 20px 24px;
-        transition: background .15s;
+        padding: 36px 32px;
+        transition: background .18s;
+        position: relative;
+        overflow: hidden;
     }
 
-        .bien-point:hover {
+        .tj-typo-card:hover {
             background: #fff;
         }
 
-    .bien-point-title {
+        .tj-typo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .3s;
+        }
+
+        .tj-typo-card:hover::before {
+            transform: scaleX(1);
+        }
+
+    .tj-typo-ref {
         font-family: 'DM Mono', monospace;
         font-size: 9px;
         font-weight: 300;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
         color: var(--gold);
-        margin-bottom: 6px;
+        letter-spacing: 0.1em;
+        margin-bottom: 12px;
+        opacity: 0.8;
     }
 
-    .bien-point-val {
+    .tj-typo-name {
+        font-size: 32px;
+        font-weight: 300;
+        color: var(--ink);
+        line-height: 1;
+        margin-bottom: 4px;
+    }
+
+    .tj-typo-surface {
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        font-weight: 300;
+        color: var(--hint);
+        margin-bottom: 20px;
+    }
+
+    .tj-typo-specs {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 20px;
+        padding: 16px 0;
+        border-top: 0.5px solid var(--border);
+        border-bottom: 0.5px solid var(--border);
+    }
+
+    .tj-typo-spec {
+        display: flex;
+        justify-content: space-between;
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        font-weight: 300;
+        color: var(--muted);
+    }
+
+        .tj-typo-spec span:last-child {
+            color: var(--ink);
+            font-weight: 400;
+        }
+
+    .tj-typo-prix {
+        font-size: 22px;
+        font-weight: 300;
+        color: var(--ink);
+        margin-bottom: 4px;
+    }
+
+    .tj-typo-prix-label {
+        font-family: 'DM Mono', monospace;
+        font-size: 9px;
+        font-weight: 300;
+        color: var(--hint);
+        letter-spacing: 0.08em;
+    }
+
+    .tj-typo-tag {
+        display: inline-block;
+        font-family: 'DM Mono', monospace;
+        font-size: 8px;
+        font-weight: 300;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        margin-top: 12px;
+    }
+
+    .tj-typo-tag-libre {
+        background: rgba(184,147,90,0.15);
+        color: var(--gold);
+    }
+
+    .tj-typo-tag-reserve {
+        background: rgba(12,12,10,0.08);
+        color: var(--muted);
+    }
+
+    /* ── TABLEAU LOTES ── */
+    .tj-table-wrap {
+        margin-top: 40px;
+        overflow-x: auto;
+        border: 0.5px solid var(--border);
+    }
+
+    .tj-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: 'DM Mono', monospace;
+    }
+
+        .tj-table thead tr {
+            background: var(--ink);
+        }
+
+        .tj-table thead th {
+            font-size: 8px;
+            font-weight: 300;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            padding: 14px 20px;
+            text-align: left;
+            border-right: 0.5px solid rgba(255,255,255,0.05);
+            white-space: nowrap;
+        }
+
+        .tj-table tbody tr {
+            border-bottom: 0.5px solid var(--border);
+            transition: background .12s;
+        }
+
+            .tj-table tbody tr:hover {
+                background: #fff;
+            }
+
+        .tj-table tbody td {
+            font-size: 12px;
+            font-weight: 300;
+            color: var(--muted);
+            padding: 14px 20px;
+            border-right: 0.5px solid var(--border);
+            white-space: nowrap;
+        }
+
+            .tj-table tbody td:first-child {
+                color: var(--gold);
+                font-weight: 400;
+            }
+
+            .tj-table tbody td.prix {
+                color: var(--ink);
+                font-weight: 400;
+            }
+
+    .tj-status-libre {
+        display: inline-block;
+        background: rgba(184,147,90,0.12);
+        color: var(--gold);
+        font-size: 8px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 3px 8px;
+    }
+
+    .tj-status-reserve {
+        display: inline-block;
+        background: rgba(12,12,10,0.07);
+        color: var(--hint);
+        font-size: 8px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 3px 8px;
+    }
+
+    /* ── CONDITIONS ACQUISITION ── */
+    .tj-acq-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1px;
+        background: var(--border);
+        margin-top: 40px;
+    }
+
+    .tj-acq-step {
+        background: var(--cream);
+        padding: 32px 24px;
+        transition: background .18s;
+    }
+
+        .tj-acq-step:hover {
+            background: #fff;
+        }
+
+    .tj-acq-num {
+        font-family: 'DM Mono', monospace;
+        font-size: 28px;
+        font-weight: 300;
+        color: var(--gold);
+        line-height: 1;
+        margin-bottom: 8px;
+    }
+
+    .tj-acq-label {
+        font-family: 'DM Mono', monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--hint);
+        margin-bottom: 8px;
+    }
+
+    .tj-acq-desc {
+        font-size: 15px;
+        font-weight: 300;
+        color: var(--ink);
+        line-height: 1.3;
+    }
+
+    /* ── ATOUTS ── */
+    .tj-atouts {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--border);
+        margin-top: 40px;
+    }
+
+    .tj-atout {
+        background: var(--cream);
+        padding: 28px 28px;
+        border-left: 2px solid transparent;
+        transition: all .18s;
+    }
+
+        .tj-atout:hover {
+            background: #fff;
+            border-left-color: var(--gold);
+        }
+
+    .tj-atout-icon {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+
+    .tj-atout-title {
         font-size: 18px;
         font-weight: 300;
         color: var(--ink);
-        line-height: 1.2;
+        margin-bottom: 6px;
     }
 
-    /* Plan */
-    .bien-plan {
-        margin-top: 48px;
-        border-top: 0.5px solid var(--border);
-        padding-top: 48px;
+    .tj-atout-desc {
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        font-weight: 300;
+        color: var(--hint);
+        line-height: 1.6;
+        letter-spacing: 0.03em;
     }
 
-    .bien-plan-grid {
+    /* ── PROXIMITÉS ── */
+    .tj-prox-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3px;
-        background: var(--border);
-        margin-top: 24px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 48px;
+        margin-top: 40px;
     }
 
-    .bien-plan-img {
-        background: var(--warm);
-        overflow: hidden;
-        cursor: pointer;
+    .tj-prox-col-title {
+        font-family: 'DM Mono', monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 20px;
     }
 
-        .bien-plan-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-            transition: transform .4s;
-        }
+    .tj-prox-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
 
-        .bien-plan-img:hover img {
-            transform: scale(1.02);
-        }
+    .tj-prox-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 0;
+        border-bottom: 0.5px solid var(--border);
+    }
 
-    /* Sidebar */
-    .bien-sidebar {
+    .tj-prox-name {
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        font-weight: 300;
+        color: var(--muted);
+    }
+
+    .tj-prox-dist {
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        font-weight: 400;
+        color: var(--gold);
+    }
+
+    /* ── CTA SIDEBAR LAYOUT ── */
+    .tj-body-layout {
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 64px;
+        align-items: start;
+    }
+
+    .tj-sidebar {
         position: sticky;
         top: 88px;
     }
 
-    .bien-contact-card {
+    .tj-cta-card {
         background: var(--ink);
         padding: 36px 32px;
-        margin-bottom: 16px;
         position: relative;
         overflow: hidden;
+        margin-bottom: 16px;
     }
 
-        .bien-contact-card::before {
+        .tj-cta-card::before {
             content: '';
             position: absolute;
             inset: 0;
-            background-image: linear-gradient(rgba(184,147,90,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(184,147,90,0.04) 1px, transparent 1px);
+            background-image: linear-gradient(rgba(212,180,131,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(212,180,131,0.04) 1px, transparent 1px);
             background-size: 32px 32px;
         }
 
-    .bien-contact-content {
+    .tj-cta-content {
         position: relative;
         z-index: 2;
     }
 
-    .bien-contact-pretitle {
+    .tj-cta-pretitle {
         font-family: 'DM Mono', monospace;
         font-size: 8px;
         font-weight: 300;
@@ -397,30 +636,30 @@
         margin-bottom: 12px;
     }
 
-    .bien-contact-title {
-        font-size: 24px;
+    .tj-cta-title {
+        font-size: 26px;
         font-weight: 300;
         color: #fff;
         line-height: 1.15;
         margin-bottom: 8px;
     }
 
-        .bien-contact-title em {
+        .tj-cta-title em {
             font-style: italic;
             color: var(--gold2);
         }
 
-    .bien-contact-sub {
+    .tj-cta-sub {
         font-family: 'DM Mono', monospace;
         font-size: 10px;
         font-weight: 300;
         color: rgba(255,255,255,0.35);
-        letter-spacing: 0.04em;
+        line-height: 1.65;
         margin-bottom: 28px;
-        line-height: 1.6;
+        letter-spacing: 0.03em;
     }
 
-    .bien-contact-btn {
+    .tj-btn-primary {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -428,9 +667,9 @@
         width: 100%;
         padding: 16px;
         font-family: 'DM Mono', monospace;
-        font-size: 10px;
+        font-size: 9px;
         font-weight: 300;
-        letter-spacing: 0.14em;
+        letter-spacing: 0.16em;
         text-transform: uppercase;
         color: var(--ink);
         background: var(--gold);
@@ -438,15 +677,15 @@
         cursor: pointer;
         text-decoration: none;
         transition: background .2s;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
     }
 
-        .bien-contact-btn:hover {
+        .tj-btn-primary:hover {
             background: var(--gold2);
             color: var(--ink);
         }
 
-    .bien-contact-btn-outline {
+    .tj-btn-secondary {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -454,374 +693,472 @@
         width: 100%;
         padding: 14px;
         font-family: 'DM Mono', monospace;
-        font-size: 10px;
+        font-size: 9px;
         font-weight: 300;
-        letter-spacing: 0.14em;
+        letter-spacing: 0.16em;
         text-transform: uppercase;
-        color: rgba(255,255,255,0.5);
+        color: rgba(255,255,255,0.4);
         background: none;
-        border: 0.5px solid rgba(255,255,255,0.15);
+        border: 0.5px solid rgba(255,255,255,0.12);
         cursor: pointer;
         text-decoration: none;
         transition: all .2s;
     }
 
-        .bien-contact-btn-outline:hover {
-            border-color: rgba(255,255,255,0.4);
+        .tj-btn-secondary:hover {
+            border-color: rgba(255,255,255,0.35);
             color: #fff;
         }
 
-    /* Infos rapides card */
-    .bien-info-card {
+    .tj-info-card {
         background: var(--warm);
-        padding: 28px 32px;
+        padding: 28px 28px;
         border: 0.5px solid var(--border);
     }
 
-    .bien-info-card-title {
+    .tj-info-title {
         font-family: 'DM Mono', monospace;
-        font-size: 9px;
+        font-size: 8px;
         font-weight: 300;
         letter-spacing: 0.18em;
         text-transform: uppercase;
         color: var(--gold);
-        margin-bottom: 20px;
+        margin-bottom: 18px;
     }
 
-    .bien-info-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-    }
-
-    .bien-info-row {
+    .tj-info-row {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 12px 0;
+        padding: 10px 0;
         border-bottom: 0.5px solid var(--border);
     }
 
-        .bien-info-row:last-child {
+        .tj-info-row:last-child {
             border-bottom: none;
         }
 
-    .bien-info-key {
+    .tj-info-key {
         font-family: 'DM Mono', monospace;
         font-size: 10px;
         font-weight: 300;
         color: var(--hint);
-        letter-spacing: 0.06em;
     }
 
-    .bien-info-val {
+    .tj-info-val {
         font-size: 15px;
         font-weight: 300;
         color: var(--ink);
         text-align: right;
     }
 
-    /* Lightbox */
-    .bien-lightbox {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(12,12,10,0.95);
-        z-index: 9999;
-        align-items: center;
-        justify-content: center;
-        padding: 40px;
+    /* ── CTA FINAL ── */
+    .tj-final {
+        background: var(--teal);
+        padding: 80px 0;
+        position: relative;
+        overflow: hidden;
     }
 
-        .bien-lightbox.open {
-            display: flex;
+        .tj-final::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(212,180,131,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(212,180,131,0.04) 1px, transparent 1px);
+            background-size: 48px 48px;
         }
 
-        .bien-lightbox img {
-            max-width: 100%;
-            max-height: 90vh;
-            object-fit: contain;
+    .tj-final-content {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 48px;
+    }
+
+    .tj-final-title {
+        font-size: clamp(28px, 3.5vw, 46px);
+        font-weight: 300;
+        color: #fff;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+    }
+
+        .tj-final-title em {
+            font-style: italic;
+            color: var(--gold2);
         }
 
-    .bien-lightbox-close {
-        position: absolute;
-        top: 20px;
-        right: 24px;
+    .tj-final-sub {
         font-family: 'DM Mono', monospace;
         font-size: 11px;
-        color: rgba(255,255,255,0.4);
-        background: none;
-        border: none;
-        cursor: pointer;
-        letter-spacing: 0.1em;
+        font-weight: 300;
+        color: rgba(255,255,255,0.35);
+        margin-top: 10px;
+        line-height: 1.65;
+        letter-spacing: 0.04em;
     }
 
-        .bien-lightbox-close:hover {
-            color: #fff;
-        }
-
-    .bien-lightbox-nav {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(255,255,255,0.08);
-        border: 0.5px solid rgba(255,255,255,0.15);
-        color: #fff;
-        font-size: 20px;
-        width: 44px;
-        height: 44px;
-        display: flex;
+    .tj-final-btn {
+        display: inline-flex;
         align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: background .15s;
+        gap: 12px;
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        font-weight: 300;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--ink);
+        text-decoration: none;
+        background: var(--gold);
+        padding: 18px 36px;
+        transition: background .2s, transform .15s;
+        white-space: nowrap;
+        flex-shrink: 0;
     }
 
-        .bien-lightbox-nav:hover {
-            background: rgba(255,255,255,0.18);
+        .tj-final-btn:hover {
+            background: var(--gold2);
+            color: var(--ink);
+            transform: translateY(-2px);
         }
-
-    .bien-lightbox-prev {
-        left: 20px;
-    }
-
-    .bien-lightbox-next {
-        right: 20px;
-    }
 
     /* Responsive */
-    @@media (max-width: 992px) {
-        .bien-gallery {
-            height: 500px;
-            grid-template-rows: 1fr 1fr;
+    @@media (max-width: 1100px) {
+        .tj-typo-grid {
+            grid-template-columns: repeat(2,1fr);
         }
 
-        .bien-body {
+        .tj-acq-grid {
+            grid-template-columns: repeat(3,1fr);
+        }
+    }
+
+    @@media (max-width: 900px) {
+        .tj-hero {
             grid-template-columns: 1fr;
         }
 
-        .bien-sidebar {
+        .tj-hero-right {
+            display: none;
+        }
+
+        .tj-hero-left {
+            min-height: 60vh;
+            padding: 80px 28px 48px;
+        }
+
+        .tj-body-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .tj-sidebar {
             position: static;
         }
 
-        .bien-header-grid {
+        .tj-prox-grid {
             grid-template-columns: 1fr;
-            gap: 24px;
         }
 
-        .bien-prix-bloc {
-            text-align: left;
-        }
-
-        .bien-plan-grid {
+        .tj-final-content {
             grid-template-columns: 1fr;
         }
     }
 
     @@media (max-width: 640px) {
-        .bien-gallery {
-            height: 380px;
+        .tj-typo-grid {
             grid-template-columns: 1fr;
         }
 
-        .bien-gallery-main {
-            grid-row: auto;
+        .tj-acq-grid {
+            grid-template-columns: repeat(2,1fr);
         }
 
-        .bien-gallery-thumb:last-child {
-            display: none;
-        }
-
-        .bien-specs-bar {
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .bien-spec {
-            flex: none;
-            width: 45%;
-            border-right: none;
-        }
-
-        .bien-points {
+        .tj-atouts {
             grid-template-columns: 1fr;
         }
     }
 </style>
 
-<div class="bien">
+<div class="tj">
 
-    <!-- ── GALERIE HERO ── -->
-    <div class="bien-gallery">
-        <div class="bien-gallery-main" onclick="openLightbox(0)">
-            <img src="/images/Sala_comum_dia.png" alt="Salon - Vue panoramique" />
-            <span class="bien-gallery-badge">Nouveau · T3 Premium</span>
-            <button class="bien-gallery-btn" onclick="event.stopPropagation(); openLightbox(0)">
-                Voir toutes les photos →
-            </button>
-        </div>
-        <div class="bien-gallery-thumb" onclick="openLightbox(1)">
-            <img src="/images/Varance_dia.png" alt="Terrasse panoramique" />
-        </div>
-        <div class="bien-gallery-thumb" onclick="openLightbox(2)">
-            <img src="/images/1__T3_Planta_3D.png" alt="Plan 3D T3" />
-        </div>
-    </div>
-
-    <!-- ── HEADER ── -->
-    <div class="bien-header">
-        <div class="container">
-            <div class="bien-header-grid">
+    <!-- ── HERO ── -->
+    <section class="tj-hero">
+        <div class="tj-hero-left">
+            <div class="tj-badges">
+                <span class="tj-badge">Nouveau programme</span>
+                <span class="tj-badge-outline">15 lots · T0 / T2 / T3</span>
+                <span class="tj-badge-outline">Livraison 2026</span>
+            </div>
+            <p class="tj-pretitle">Terraços de Joane · Joane, Famalicão</p>
+            <h1 class="tj-hero-h1">
+                Viver bem<br>
+                <em>é investir no futuro</em>
+            </h1>
+            <p class="tj-hero-sub">
+                Appartements contemporains conçus pour ceux qui valorisent le confort, la localisation stratégique et la valorisation patrimoniale. Joane, Vila Nova de Famalicão.
+            </p>
+            <div class="tj-hero-stats">
                 <div>
-                    <p class="bien-pretitle">Joane · Famalicão · Portugal</p>
-                    <h1 class="bien-h1">
-                        Appartement T3<br>
-                        <em>avec terrasse panoramique</em>
-                    </h1>
-                    <p class="bien-loc">
-                        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M8 2a4 4 0 010 8c-2 0-5.5-2.5-5.5-4.5A5.5 5.5 0 0113.5 5.5C13.5 7.5 10 10 8 10" /><circle cx="8" cy="5.5" r="1.5" fill="currentColor" /></svg>
-                        Joane, Famalicão — Nord du Portugal
-                    </p>
+                    <div class="tj-hero-stat-num">15</div>
+                    <div class="tj-hero-stat-label">Lots disponibles</div>
                 </div>
-                <div class="bien-prix-bloc">
-                    <div class="bien-prix">Sur demande</div>
-                    <div class="bien-prix-label">Prix de vente</div>
-                    <div class="bien-prix-m2">Réf. HS-T3-JOANE</div>
+                <div>
+                    <div class="tj-hero-stat-num">4</div>
+                    <div class="tj-hero-stat-label">Niveaux</div>
+                </div>
+                <div>
+                    <div class="tj-hero-stat-num">A</div>
+                    <div class="tj-hero-stat-label">Cert. énergétique</div>
+                </div>
+                <div>
+                    <div class="tj-hero-stat-num">2026</div>
+                    <div class="tj-hero-stat-label">Livraison prévue</div>
                 </div>
             </div>
+        </div>
+        <div class="tj-hero-right">
+            <img class="tj-hero-right-img" src="/images/joane.jpeg" alt="Terraços de Joane" />
+            <div class="tj-hero-right-overlay"></div>
+        </div>
+    </section>
 
-            <div class="bien-specs-bar">
-                <div class="bien-spec">
-                    <div class="bien-spec-val">T3</div>
-                    <div class="bien-spec-label">Typologie</div>
+    <!-- ── BANDE PRIX ── -->
+    <div class="tj-prix-band">
+        <div class="container">
+            <div class="tj-prix-inner">
+                <div class="tj-prix-item">
+                    <div class="tj-prix-label">T0 à partir de</div>
+                    <div class="tj-prix-val">113 520 €</div>
                 </div>
-                <div class="bien-spec">
-                    <div class="bien-spec-val">3</div>
-                    <div class="bien-spec-label">Chambres</div>
+                <div class="tj-prix-sep"></div>
+                <div class="tj-prix-item">
+                    <div class="tj-prix-label">T2 à partir de</div>
+                    <div class="tj-prix-val">213 243 €</div>
                 </div>
-                <div class="bien-spec">
-                    <div class="bien-spec-val">2</div>
-                    <div class="bien-spec-label">Salles de bain</div>
+                <div class="tj-prix-sep"></div>
+                <div class="tj-prix-item">
+                    <div class="tj-prix-label">T3 à partir de</div>
+                    <div class="tj-prix-val">268 763 €</div>
                 </div>
-                <div class="bien-spec">
-                    <div class="bien-spec-val">~130</div>
-                    <div class="bien-spec-label">m² habitables</div>
+                <div class="tj-prix-sep"></div>
+                <div class="tj-prix-item">
+                    <div class="tj-prix-label">Lots disponibles</div>
+                    <div class="tj-prix-val">13 / 15</div>
                 </div>
-                <div class="bien-spec">
-                    <div class="bien-spec-val">~60</div>
-                    <div class="bien-spec-label">m² terrasse</div>
-                </div>
-                <div class="bien-spec">
-                    <div class="bien-spec-val">Neuf</div>
-                    <div class="bien-spec-label">État</div>
+                <div class="tj-prix-sep"></div>
+                <div class="tj-prix-item">
+                    <div class="tj-prix-label">Adresse</div>
+                    <div class="tj-prix-val" style="font-size:14px">Urb. Figueiró 5, 4770-251 Joane</div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- ── CORPS ── -->
-    <div class="container">
-        <div class="bien-body">
+    <div class="container" style="padding-top:64px; padding-bottom:80px">
+        <div class="tj-body-layout">
 
             <!-- Contenu principal -->
             <div>
 
-                <!-- Description -->
-                <div class="bien-desc-section">
-                    <p class="bien-section-label">À propos de ce bien</p>
-                    <h2 class="bien-section-title">
-                        Un appartement d'exception<br>
-                        <em>au cœur du Nord Portugal</em>
+                <!-- Présentation -->
+                <div class="tj-section" style="padding-top:0">
+                    <p class="tj-section-label">Le programme</p>
+                    <h2 class="tj-section-h2">
+                        Un nouveau standard<br><em>résidentiel à Joane</em>
                     </h2>
-                    <p class="bien-text">
-                        Situé dans la commune de Joane, Famalicão, cet appartement T3 neuf fait partie d'un programme résidentiel moderne alliant qualité de construction, confort contemporain et cadre de vie privilégié avec vue dégagée sur les collines du Norte.
+                    <p class="tj-text">
+                        Le Terraços de Joane naît pour répondre aux exigences de la vie contemporaine : confort, fonctionnalité, efficacité et proximité. Un programme pensé pour les familles, les investisseurs et les acquéreurs qui valorisent la qualité constructive et la localisation stratégique.
                     </p>
-                    <p class="bien-text" style="margin-top:16px">
-                        Chaque appartement bénéficie d'une grande terrasse à 360° offrant une vue panoramique exceptionnelle — un espace de vie extérieur rare, lumineux et parfaitement orienté. L'espace intérieur, ouvert et fluide, combine salon, cuisine équipée et espace repas dans un agencement pensé pour la vie moderne.
+                    <p class="tj-text" style="margin-top:12px">
+                        Architecture contemporaine, excellente exposition solaire, zone résidentielle calme et proximité immédiate des commerces, services, écoles et accès rapides aux principales villes de la région.
                     </p>
                 </div>
 
-                <!-- Points clés -->
-                <div class="bien-points">
-                    <div class="bien-point">
-                        <p class="bien-point-title">Salon & cuisine</p>
-                        <p class="bien-point-val">Espace ouvert lumineux avec îlot central</p>
-                    </div>
-                    <div class="bien-point">
-                        <p class="bien-point-title">Terrasse</p>
-                        <p class="bien-point-val">~60 m² · Vue panoramique sur le Norte</p>
-                    </div>
-                    <div class="bien-point">
-                        <p class="bien-point-title">Chambres</p>
-                        <p class="bien-point-val">3 suites avec dressings intégrés</p>
-                    </div>
-                    <div class="bien-point">
-                        <p class="bien-point-title">Finitions</p>
-                        <p class="bien-point-val">Premium · Cuisine Bosch · Baies aluminium</p>
-                    </div>
-                    <div class="bien-point">
-                        <p class="bien-point-title">Stationnement</p>
-                        <p class="bien-point-val">2 places de parking en sous-sol</p>
-                    </div>
-                    <div class="bien-point">
-                        <p class="bien-point-title">Livraison</p>
-                        <p class="bien-point-val">Programme en cours · 2026</p>
-                    </div>
-                    <div class="bien-point">
-                        <p class="bien-point-title">Certification énergétique</p>
-                        <p class="bien-point-val">Classe A · Pompe à chaleur</p>
-                    </div>
-                    <div class="bien-point">
-                        <p class="bien-point-title">Étages disponibles</p>
-                        <p class="bien-point-val">Rez-de-chaussée · 1er · 2ème · Tous identiques</p>
+                <!-- Atouts -->
+                <div class="tj-section">
+                    <p class="tj-section-label">Points forts du programme</p>
+                    <h2 class="tj-section-h2">Confort, qualité,<br><em>sécurité & valorisation</em></h2>
+                    <div class="tj-atouts">
+                        <div class="tj-atout"><div class="tj-atout-icon">✦</div><div class="tj-atout-title">Architecture contemporaine</div><div class="tj-atout-desc">Design moderne, lignes épurées, baies vitrées aluminium et terrasses généreuses sur chaque appartement.</div></div>
+                        <div class="tj-atout"><div class="tj-atout-icon">☀</div><div class="tj-atout-title">Excellente exposition solaire</div><div class="tj-atout-desc">Orientations optimisées pour maximiser la luminosité naturelle et réduire la consommation énergétique.</div></div>
+                        <div class="tj-atout"><div class="tj-atout-icon">⚡</div><div class="tj-atout-title">Efficacité énergétique classe A</div><div class="tj-atout-desc">Pompe à chaleur, isolation performante, certification énergétique A pour des charges réduites.</div></div>
+                        <div class="tj-atout"><div class="tj-atout-icon">🏡</div><div class="tj-atout-title">Zone résidentielle tranquille</div><div class="tj-atout-desc">Quartier familial calme, environnement agréable, espaces verts et qualité de vie au quotidien.</div></div>
+                        <div class="tj-atout"><div class="tj-atout-icon">🚗</div><div class="tj-atout-title">Accès A7 en 5 minutes</div><div class="tj-atout-desc">Connexion directe aux autoroutes A7 et A3, Porto à 40 min, Braga à 20 min, aéroport à 25 min.</div></div>
+                        <div class="tj-atout"><div class="tj-atout-icon">📈</div><div class="tj-atout-title">Fort potentiel de valorisation</div><div class="tj-atout-desc">Région en croissance, demande résidentielle soutenue, localisation stratégique entre Porto et Braga.</div></div>
                     </div>
                 </div>
 
-                <!-- Plan -->
-                <div class="bien-plan">
-                    <p class="bien-section-label">Plans & visualisations</p>
-                    <h3 class="bien-section-title">
-                        Conception <em>pensée pour la vie</em>
-                    </h3>
-                    <p class="bien-text" style="margin-bottom:0">
-                        Chaque étage reprend le même agencement optimisé — 3 chambres en suite, double salle de bain, dégagement, cellier et grande terrasse en continuité du salon. Le plan 3D ci-dessous illustre la fluidité des espaces.
-                    </p>
-                    <div class="bien-plan-grid" style="margin-top:24px">
-                        <div class="bien-plan-img" style="height:380px" onclick="openLightbox(2)">
-                            <img src="/images/1__T3_Planta_3D.png" alt="Plan 3D T3" />
+                <!-- Typologies -->
+                <div class="tj-section">
+                    <p class="tj-section-label">Typologies disponibles</p>
+                    <h2 class="tj-section-h2">Trois typologies<br><em>pour chaque projet</em></h2>
+                    <div class="tj-typo-grid">
+
+                        <!-- T0 -->
+                        <div class="tj-typo-card">
+                            <p class="tj-typo-ref">Piso 1 · Lot 02</p>
+                            <div class="tj-typo-name">T0</div>
+                            <div class="tj-typo-surface">45,90 m² intérieur</div>
+                            <div class="tj-typo-specs">
+                                <div class="tj-typo-spec"><span>Salon commun</span><span>22,00 m²</span></div>
+                                <div class="tj-typo-spec"><span>Cuisine</span><span>6,00 m²</span></div>
+                                <div class="tj-typo-spec"><span>Chambre</span><span>12,90 m²</span></div>
+                                <div class="tj-typo-spec"><span>WC</span><span>4,80 m²</span></div>
+                                <div class="tj-typo-spec"><span>Terrasse</span><span>11,40 m²</span></div>
+                                <div class="tj-typo-spec"><span>Garage</span><span>Inclus</span></div>
+                            </div>
+                            <div class="tj-typo-prix">113 520 €</div>
+                            <div class="tj-typo-prix-label">Prix de vente</div>
+                            <span class="tj-typo-tag tj-typo-tag-libre">Disponible</span>
+                            <p class="tj-text" style="margin-top:14px;font-size:11px">Compact, moderne et fonctionnel. Solution idéale pour investissement, première résidence ou rentabilité locative.</p>
                         </div>
-                        <div class="bien-plan-img" style="height:380px" onclick="openLightbox(3)">
-                            <img src="/images/Capture_d_écran_2026-05-15_191516.png" alt="Plan architectural" />
+
+                        <!-- T2 -->
+                        <div class="tj-typo-card">
+                            <p class="tj-typo-ref">Piso 2, 3, 4 · 4 variantes</p>
+                            <div class="tj-typo-name">T2</div>
+                            <div class="tj-typo-surface">85 à 116,80 m² intérieur</div>
+                            <div class="tj-typo-specs">
+                                <div class="tj-typo-spec"><span>Salon commun</span><span>18 – 29 m²</span></div>
+                                <div class="tj-typo-spec"><span>Cuisine</span><span>7 – 7,90 m²</span></div>
+                                <div class="tj-typo-spec"><span>Suite</span><span>16,70 – 24,60 m²</span></div>
+                                <div class="tj-typo-spec"><span>Chambre</span><span>10,70 – 14,10 m²</span></div>
+                                <div class="tj-typo-spec"><span>Terrasse</span><span>15 – 30,90 m²</span></div>
+                                <div class="tj-typo-spec"><span>Garage</span><span>Inclus</span></div>
+                            </div>
+                            <div class="tj-typo-prix">Dès 213 243 €</div>
+                            <div class="tj-typo-prix-label">Selon étage et variante</div>
+                            <span class="tj-typo-tag tj-typo-tag-libre">8 lots disponibles</span>
+                            <p class="tj-text" style="margin-top:14px;font-size:11px">Équilibre entre confort et fonctionnalité. Espaces amples et lumineux pensés pour la vie familiale moderne.</p>
+                        </div>
+
+                        <!-- T3 -->
+                        <div class="tj-typo-card">
+                            <p class="tj-typo-ref">Piso 1, 2, 3, 4 · Lot 01 réservé</p>
+                            <div class="tj-typo-name">T3</div>
+                            <div class="tj-typo-surface">144,70 m² intérieur</div>
+                            <div class="tj-typo-specs">
+                                <div class="tj-typo-spec"><span>Salon commun</span><span>32,00 m²</span></div>
+                                <div class="tj-typo-spec"><span>Cuisine</span><span>13,80 m²</span></div>
+                                <div class="tj-typo-spec"><span>Suite</span><span>19,20 m²</span></div>
+                                <div class="tj-typo-spec"><span>Chambre × 2</span><span>14,30 – 15,30 m²</span></div>
+                                <div class="tj-typo-spec"><span>Laverie</span><span>3,70 m²</span></div>
+                                <div class="tj-typo-spec"><span>Terrasse</span><span>34,90 m²</span></div>
+                            </div>
+                            <div class="tj-typo-prix">Dès 268 763 €</div>
+                            <div class="tj-typo-prix-label">Selon étage (lot 01 réservé)</div>
+                            <span class="tj-typo-tag tj-typo-tag-libre">3 lots disponibles</span>
+                            <p class="tj-text" style="margin-top:14px;font-size:11px">Espace, intimité et confort. Typologie premium pour familles qui valorisent l'amplitude et la qualité de vie.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Tableau complet des lots -->
+                <div class="tj-section">
+                    <p class="tj-section-label">Disponibilité complète</p>
+                    <h2 class="tj-section-h2">Tableau des lots<br><em>& prix par étage</em></h2>
+                    <div class="tj-table-wrap">
+                        <table class="tj-table">
+                            <thead>
+                                <tr>
+                                    <th>Lot</th>
+                                    <th>Étage</th>
+                                    <th>Type</th>
+                                    <th>Surface int.</th>
+                                    <th>Terrasse</th>
+                                    <th>Garage</th>
+                                    <th>Prix</th>
+                                    <th>Statut</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>01</td><td>Piso 1</td><td>T3</td><td>144,70 m²</td><td>34,90 m²</td><td>Oui</td><td class="prix">—</td><td><span class="tj-status-reserve">Réservé</span></td></tr>
+                                <tr><td>02</td><td>Piso 1</td><td>T0</td><td>45,90 m²</td><td>11,40 m²</td><td>Oui</td><td class="prix">113 520 €</td><td><span class="tj-status-libre">Disponible</span></td></tr>
+                                <tr><td>03</td><td>Piso 1</td><td>T2</td><td>85,00 m²</td><td>19,20 m²</td><td>Oui</td><td class="prix">—</td><td><span class="tj-status-reserve">Réservé</span></td></tr>
+                                <tr><td>04</td><td>Piso 2</td><td>T3</td><td>144,70 m²</td><td>34,90 m²</td><td>Oui</td><td class="prix">268 763 €</td><td><span class="tj-status-libre">Disponible</span></td></tr>
+                                <tr><td>05</td><td>Piso 2</td><td>T2</td><td>105,10 m²</td><td>15,00 m²</td><td>Oui</td><td class="prix">213 433 €</td><td><span class="tj-status-libre">Disponible</span></td></tr>
+                                <tr><td>06</td><td>Piso 2</td><td>T2</td><td>116,80 m²</td><td>30,90 m²</td><td>Oui</td><td class="prix">218 834 €</td><td><span class="tj-status-libre">Disponible</span></td></tr>
+                                <tr><td>07</td><td>Piso 2</td><td>T2</td><td>101,00 m²</td><td>25,00 m²</td><td>Oui</td><td class="prix">213 243 €</td><td><span class="tj-status-libre">Disponible</span></td></tr>
+                                <tr><td>08</td><td>Piso 3</td><td>T3</td><td>144,70 m²</td><td>34,90 m²</td><td>Oui</td><td class="prix">300 382 €</td><td><span class="tj-status-libre">Disponible</span></td></tr>
+                                <tr><td>09</td><td>Piso 3</td><td>T2</td><td>105,10 m²</td><td>15,00 m²</td><td>Oui</td><td class="prix">238 543 €</td><td><span class="tj-status-libre">Disponible</span></td></tr>
+                                <tr><td>10</td><td>Piso 3</td><td>T2</td><td>116,80 m²</td><td>30,90 m²</td><td>Oui</td><td class="prix">244 580 €</td><td><span class="tj-status-libre">Disponible</span></td></tr>
+                                <tr><td>11</td><td>Piso 3</td><td>T2</td><td>101,00 m²</td><td>25,00 m²</td><td>Oui</td><td class="prix">238 331 €</td><td><span class="tj-status-libre">Disponible</span></td></tr>
+                                <tr><td>12</td><td>Piso 4</td><td>T3</td><td>144,70 m²</td><td>34,90 m²</td><td>Oui</td><td class="prix">347 811 €</td><td><span class="tj-status-libre">Disponible</span></td></tr>
+                                <tr><td>13</td><td>Piso 4</td><td>T2</td><td>105,10 m²</td><td>15,00 m²</td><td>Oui</td><td class="prix">276 207 €</td><td><span class="tj-status-libre">Disponible</span></td></tr>
+                                <tr><td>14</td><td>Piso 4</td><td>T2</td><td>116,80 m²</td><td>30,90 m²</td><td>Oui</td><td class="prix">283 198 €</td><td><span class="tj-status-libre">Disponible</span></td></tr>
+                                <tr><td>15</td><td>Piso 4</td><td>T2</td><td>101,00 m²</td><td>25,00 m²</td><td>Oui</td><td class="prix">275 962 €</td><td><span class="tj-status-libre">Disponible</span></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Conditions d'acquisition -->
+                <div class="tj-section">
+                    <p class="tj-section-label">Conditions d'acquisition</p>
+                    <h2 class="tj-section-h2">Paiement échelonné<br><em>en 5 étapes</em></h2>
+                    <p class="tj-text">Un plan de paiement progressif aligné sur l'avancement du chantier pour sécuriser votre investissement à chaque étape.</p>
+                    <div class="tj-acq-grid">
+                        <div class="tj-acq-step">
+                            <div class="tj-acq-num">10%</div>
+                            <div class="tj-acq-label">À la signature</div>
+                            <div class="tj-acq-desc">Signature du CPCV (compromis de vente)</div>
+                        </div>
+                        <div class="tj-acq-step">
+                            <div class="tj-acq-num">10%</div>
+                            <div class="tj-acq-label">Début chantier</div>
+                            <div class="tj-acq-desc">Au démarrage des travaux de construction</div>
+                        </div>
+                        <div class="tj-acq-step">
+                            <div class="tj-acq-num">10%</div>
+                            <div class="tj-acq-label">Fin structure</div>
+                            <div class="tj-acq-desc">À la fin de la structure béton</div>
+                        </div>
+                        <div class="tj-acq-step">
+                            <div class="tj-acq-num">10%</div>
+                            <div class="tj-acq-label">Menuiseries</div>
+                            <div class="tj-acq-desc">Pose des menuiseries et fenêtres</div>
+                        </div>
+                        <div class="tj-acq-step">
+                            <div class="tj-acq-num">60%</div>
+                            <div class="tj-acq-label">Acte notarial</div>
+                            <div class="tj-acq-desc">Solde à la remise des clés</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Localisation -->
-                <div style="margin-top:48px; border-top:0.5px solid var(--border); padding-top:48px;">
-                    <p class="bien-section-label">Localisation</p>
-                    <h3 class="bien-section-title">
-                        Joane, Famalicão<br>
-                        <em>Norte do Portugal</em>
-                    </h3>
-                    <p class="bien-text">
-                        Joane est une commune dynamique de la région de Famalicão, dans le Norte Portugal — à 30 min de Porto, 10 min de Braga. Région à fort potentiel de valorisation, cadre résidentiel calme, accès aux autoroutes A7 et A3, commerces et écoles à proximité immédiate.
-                    </p>
-                    <div class="bien-points" style="margin-top:24px">
-                        <div class="bien-point">
-                            <p class="bien-point-title">Porto</p>
-                            <p class="bien-point-val">~30 min</p>
+                <!-- Localisation & proximités -->
+                <div class="tj-section">
+                    <p class="tj-section-label">Localisation</p>
+                    <h2 class="tj-section-h2">Urb. Figueiró 5<br><em>Joane, Vila Nova de Famalicão</em></h2>
+                    <p class="tj-text">Quartier résidentiel calme avec proximité immédiate des commerces, services, écoles et accès rapides aux principales cités de la région Norte.</p>
+                    <div class="tj-prox-grid">
+                        <div>
+                            <p class="tj-prox-col-title">Commerce & Services</p>
+                            <div class="tj-prox-list">
+                                <div class="tj-prox-item"><span class="tj-prox-name">Supermarchés</span><span class="tj-prox-dist">3 min</span></div>
+                                <div class="tj-prox-item"><span class="tj-prox-name">Pharmacie</span><span class="tj-prox-dist">3 min</span></div>
+                                <div class="tj-prox-item"><span class="tj-prox-name">Restauration</span><span class="tj-prox-dist">2–5 min</span></div>
+                                <div class="tj-prox-item"><span class="tj-prox-name">Banques</span><span class="tj-prox-dist">5 min</span></div>
+                                <div class="tj-prox-item"><span class="tj-prox-name">Centre de santé</span><span class="tj-prox-dist">5 min</span></div>
+                                <div class="tj-prox-item"><span class="tj-prox-name">Écoles primaires</span><span class="tj-prox-dist">3–5 min</span></div>
+                                <div class="tj-prox-item"><span class="tj-prox-name">Lycée</span><span class="tj-prox-dist">10 min</span></div>
+                            </div>
                         </div>
-                        <div class="bien-point">
-                            <p class="bien-point-title">Braga</p>
-                            <p class="bien-point-val">~10 min</p>
-                        </div>
-                        <div class="bien-point">
-                            <p class="bien-point-title">Aéroport Francisco Sá Carneiro</p>
-                            <p class="bien-point-val">~25 min</p>
-                        </div>
-                        <div class="bien-point">
-                            <p class="bien-point-title">Accès autoroute</p>
-                            <p class="bien-point-val">A7 & A3 · 5 min</p>
+                        <div>
+                            <p class="tj-prox-col-title">Accessibilité</p>
+                            <div class="tj-prox-list">
+                                <div class="tj-prox-item"><span class="tj-prox-name">Accès A7</span><span class="tj-prox-dist">5 min</span></div>
+                                <div class="tj-prox-item"><span class="tj-prox-name">Guimarães</span><span class="tj-prox-dist">10 min</span></div>
+                                <div class="tj-prox-item"><span class="tj-prox-name">Vila Nova de Famalicão</span><span class="tj-prox-dist">10 min</span></div>
+                                <div class="tj-prox-item"><span class="tj-prox-name">Braga</span><span class="tj-prox-dist">20 min</span></div>
+                                <div class="tj-prox-item"><span class="tj-prox-name">Porto</span><span class="tj-prox-dist">40 min</span></div>
+                                <div class="tj-prox-item"><span class="tj-prox-name">Aéroport Francisco Sá Carneiro</span><span class="tj-prox-dist">25 min</span></div>
+                                <div class="tj-prox-item"><span class="tj-prox-name">Universités Braga / Guimarães</span><span class="tj-prox-dist">20–25 min</span></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -829,129 +1166,60 @@
             </div>
 
             <!-- Sidebar -->
-            <div class="bien-sidebar">
-
-                <div class="bien-contact-card">
-                    <div class="bien-contact-content">
-                        <p class="bien-contact-pretitle">Human Square · Conseil immobilier</p>
-                        <h3 class="bien-contact-title">
-                            Intéressé par<br><em>ce bien ?</em>
-                        </h3>
-                        <p class="bien-contact-sub">
-                            Contactez notre équipe pour recevoir la fiche complète, les prix par étage et organiser une visite virtuelle ou sur place.
-                        </p>
-                        <a asp-controller="Contact" asp-action="Contact" class="bien-contact-btn">
+            <div class="tj-sidebar">
+                <div class="tj-cta-card">
+                    <div class="tj-cta-content">
+                        <p class="tj-cta-pretitle">Human Square · Conseil immobilier</p>
+                        <h3 class="tj-cta-title">Intéressé par<br><em>un lot ?</em></h3>
+                        <p class="tj-cta-sub">Contactez notre équipe pour recevoir la brochure complète, connaître la disponibilité et organiser une visite du site.</p>
+                        <a asp-controller="Contact" asp-action="Contact" class="tj-btn-primary">
                             Demander une visite
-                            <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                            <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" /></svg>
                         </a>
-                        <a asp-controller="Contact" asp-action="Contact" class="bien-contact-btn-outline">
-                            Recevoir la fiche PDF
+                        <a asp-controller="Contact" asp-action="Contact" class="tj-btn-secondary">
+                            Recevoir la brochure PDF
                         </a>
                     </div>
                 </div>
 
-                <div class="bien-info-card">
-                    <p class="bien-info-card-title">Fiche technique</p>
-                    <div class="bien-info-list">
-                        <div class="bien-info-row">
-                            <span class="bien-info-key">Référence</span>
-                            <span class="bien-info-val">HS-T3-JOANE</span>
-                        </div>
-                        <div class="bien-info-row">
-                            <span class="bien-info-key">Type</span>
-                            <span class="bien-info-val">Appartement T3</span>
-                        </div>
-                        <div class="bien-info-row">
-                            <span class="bien-info-key">Surface habitable</span>
-                            <span class="bien-info-val">~130 m²</span>
-                        </div>
-                        <div class="bien-info-row">
-                            <span class="bien-info-key">Terrasse</span>
-                            <span class="bien-info-val">~60 m²</span>
-                        </div>
-                        <div class="bien-info-row">
-                            <span class="bien-info-key">Chambres</span>
-                            <span class="bien-info-val">3</span>
-                        </div>
-                        <div class="bien-info-row">
-                            <span class="bien-info-key">Salles de bain</span>
-                            <span class="bien-info-val">2</span>
-                        </div>
-                        <div class="bien-info-row">
-                            <span class="bien-info-key">Parking</span>
-                            <span class="bien-info-val">2 places</span>
-                        </div>
-                        <div class="bien-info-row">
-                            <span class="bien-info-key">État</span>
-                            <span class="bien-info-val">Neuf</span>
-                        </div>
-                        <div class="bien-info-row">
-                            <span class="bien-info-key">Cert. énergétique</span>
-                            <span class="bien-info-val">Classe A</span>
-                        </div>
-                        <div class="bien-info-row">
-                            <span class="bien-info-key">Étages</span>
-                            <span class="bien-info-val">RDC · 1er · 2ème</span>
-                        </div>
-                        <div class="bien-info-row">
-                            <span class="bien-info-key">Livraison</span>
-                            <span class="bien-info-val">2026</span>
-                        </div>
-                        <div class="bien-info-row">
-                            <span class="bien-info-key">Statut</span>
-                            <span class="bien-info-val" style="color:var(--gold)">Disponible</span>
-                        </div>
+                <div class="tj-info-card">
+                    <p class="tj-info-title">Fiche programme</p>
+                    <div>
+                        <div class="tj-info-row"><span class="tj-info-key">Programme</span><span class="tj-info-val">Terraços de Joane</span></div>
+                        <div class="tj-info-row"><span class="tj-info-key">Adresse</span><span class="tj-info-val">Urb. Figueiró 5, Joane</span></div>
+                        <div class="tj-info-row"><span class="tj-info-key">Commune</span><span class="tj-info-val">V.N. Famalicão</span></div>
+                        <div class="tj-info-row"><span class="tj-info-key">Nombre de lots</span><span class="tj-info-val">15</span></div>
+                        <div class="tj-info-row"><span class="tj-info-key">Typologies</span><span class="tj-info-val">T0 · T2 · T3</span></div>
+                        <div class="tj-info-row"><span class="tj-info-key">Étages</span><span class="tj-info-val">Piso 1 à 4</span></div>
+                        <div class="tj-info-row"><span class="tj-info-key">Certif. énergétique</span><span class="tj-info-val">Classe A</span></div>
+                        <div class="tj-info-row"><span class="tj-info-key">Livraison</span><span class="tj-info-val">2026</span></div>
+                        <div class="tj-info-row"><span class="tj-info-key">Prix à partir de</span><span class="tj-info-val" style="color:var(--gold)">113 520 €</span></div>
+                        <div class="tj-info-row"><span class="tj-info-key">Référence HS</span><span class="tj-info-val">HS-JOANE-2024</span></div>
                     </div>
                 </div>
-
             </div>
+
         </div>
     </div>
 
+    <!-- ── CTA FINAL ── -->
+    <section class="tj-final">
+        <div class="container">
+            <div class="tj-final-content">
+                <div>
+                    <h2 class="tj-final-title">
+                        O futuro<br><em>começa aqui</em>
+                    </h2>
+                    <p class="tj-final-sub">
+                        Découvrez un nouveau concept d'habitat contemporain à Joane. Prenez rendez-vous ou demandez plus d'informations — notre équipe vous accompagne dans chaque étape.
+                    </p>
+                </div>
+                <a asp-controller="Contact" asp-action="Contact" class="tj-final-btn">
+                    Nous contacter
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
 </div>
-
-<!-- ── LIGHTBOX ── -->
-<div class="bien-lightbox" id="lightbox" onclick="closeLightbox(event)">
-    <button class="bien-lightbox-close" onclick="closeLightbox()">Fermer ✕</button>
-    <button class="bien-lightbox-nav bien-lightbox-prev" onclick="event.stopPropagation(); navLightbox(-1)">‹</button>
-    <img id="lightbox-img" src="" alt="" />
-    <button class="bien-lightbox-nav bien-lightbox-next" onclick="event.stopPropagation(); navLightbox(1)">›</button>
-</div>
-
-<script>
-    const images = [
-        '/images/Sala_comum_dia.png',
-        '/images/Varance_dia.png',
-        '/images/1__T3_Planta_3D.png',
-        '/images/Capture_d_écran_2026-05-15_191516.png'
-    ];
-
-    let current = 0;
-
-    function openLightbox(idx) {
-        current = idx;
-        document.getElementById('lightbox-img').src = images[current];
-        document.getElementById('lightbox').classList.add('open');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox(e) {
-        if (!e || e.target === document.getElementById('lightbox') || e.target.classList.contains('bien-lightbox-close')) {
-            document.getElementById('lightbox').classList.remove('open');
-            document.body.style.overflow = '';
-        }
-    }
-
-    function navLightbox(dir) {
-        current = (current + dir + images.length) % images.length;
-        document.getElementById('lightbox-img').src = images[current];
-    }
-
-    document.addEventListener('keydown', e => {
-        if (document.getElementById('lightbox').classList.contains('open')) {
-            if (e.key === 'ArrowRight') navLightbox(1);
-            if (e.key === 'ArrowLeft') navLightbox(-1);
-            if (e.key === 'Escape') closeLightbox({ target: document.getElementById('lightbox') });
-        }
-    });
-</script>

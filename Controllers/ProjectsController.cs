@@ -119,23 +119,8 @@ namespace Human_Evolution.Controllers
                     Description = "Projet avec PIP approuvé",
                     ImageUrl = "/images/lomba-01.png",
                     ModalId = "modalLomba"
-                },
-
-                new Project
-                {
-                    Title = "15 appartements à Joane",
-                    Description = "Projet prêt à développer",
-                    ImageUrl = "/images/joane.jpeg",
-                    ModalId = "modalProjet7"
-                },
-
-                new Project
-                {
-                    Title = "15 villas à Porto",
-                    Description = "Projet résidentiel premium",
-                    ImageUrl = "/images/gaia.jpg",
-                    ModalId = "modalProjet8"
                 }
+
             };
         }
     }

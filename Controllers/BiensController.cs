@@ -1,4 +1,4 @@
-using Human_Evolution.Data;
+﻿using Human_Evolution.Data;
 using Human_Evolution.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,15 +14,15 @@ namespace Human_Evolution.Controllers
             _context = context;
         }
 
-        // ?????????????????????????????????????????????
-        //  CATALOGUE STATIQUE � fonctionne sans base
+        // ─────────────────────────────────────────────
+        //  CATALOGUE STATIQUE — fonctionne sans base
         //  Ajoutez vos biens ici
-        // ?????????????????????????????????????????????
+        // ─────────────────────────────────────────────
         public static List<Bien> GetBiensStatiques() => new List<Bien>
         {
             new Bien {
                 Id = 1,
-                Titre = "Terracos de Joane � T0, T2, T3 neufs",
+                Titre = "Terracos de Joane  T0, T2, T3 neufs",
                 Type = "Appartement",
                 Ville = "Famalicao",
                 Quartier = "Joane",
@@ -34,7 +34,7 @@ namespace Human_Evolution.Controllers
                 Statut = "Disponible",
                 Visible = true,
                 ImagePrincipale = "/images/joane.jpeg",
-                Description = "Programme residentiel neuf � 15 lots T0, T2 et T3 avec terrasse panoramique. Certification A, parking inclus. A partir de 113 520 EUR.",
+                Description = "Programme residentiel neuf — 15 lots T0, T2 et T3 avec terrasse panoramique. Certification A, parking inclus. A partir de 113 520 EUR.",
                 Etat = "Neuf",
                 Slug = "terracos-de-joane",
                 DateAjout = new DateTime(2024, 6, 1)
@@ -134,7 +134,7 @@ namespace Human_Evolution.Controllers
             return View("~/Views/Biens/Detail.cshtml", bien);
         }
 
-        // Ancienne route conserv�e pour compatibilit�
+        // Ancienne route conservée pour compatibilité
         public IActionResult T3Joane()
         {
             return RedirectToAction("TerracosDeJoane");

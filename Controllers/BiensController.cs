@@ -38,8 +38,24 @@ namespace Human_Evolution.Controllers
                 Etat = "Neuf",
                 Slug = "terracos-de-joane",
                 DateAjout = new DateTime(2024, 6, 1)
+            },
+
+            new Bien {
+                Id = 2,
+                Titre = "Projet touristique Lomba - Douro",
+                Type = "Terrain",
+                Ville = "Gondomar", Quartier = "Lomba",
+                Prix = 690000,
+                Surface = 5115, NbPieces = 16, NbSdb = 0,
+                Reference = "HS-LOMBA-2024",
+                Statut = "Disponible", Visible = true,
+                ImagePrincipale = "/images/lomba-01.png",
+                Description = "Terrain 5115m2 avec PIP approuve - Complexe touristique 16 unites + restaurant panoramique au bord du Douro. 30 min de Porto.",
+                Etat = "Neuf", Slug = "lomba-gondomar",
+                DateAjout = new DateTime(2024, 3, 1)
             }
             // Ajoutez vos prochains biens ici
+
         };
 
         // GET /Biens
@@ -122,6 +138,10 @@ namespace Human_Evolution.Controllers
         public IActionResult T3Joane()
         {
             return RedirectToAction("TerracosDeJoane");
+        }
+        public IActionResult Lomba()
+        {
+            return View("~/Views/Biens/Lomba.cshtml");
         }
     }
 }

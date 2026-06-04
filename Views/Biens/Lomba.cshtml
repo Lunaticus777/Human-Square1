@@ -1,0 +1,1435 @@
+﻿@{
+    ViewData["Title"] = "Projet Touristique Lomba – Gondomar | Human Square";
+    ViewData["Description"] = "Terrain avec PIP approuve – Complexe touristique 16 unites + restaurant panoramique au bord du Douro, Gondomar. 690 000 EUR. Human Square Portugal.";
+}
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+
+<style>
+    :root {
+        --ink: #0c0c0a;
+        --cream: #f5f3ee;
+        --warm: #ece8df;
+        --gold: #b8935a;
+        --gold2: #d4b483;
+        --muted: #78766e;
+        --hint: #aeac9f;
+        --border: rgba(12,12,10,0.09);
+        --forest: #2d4a2d;
+        --forest2: #3a5c3a;
+    }
+
+    .lm {
+        font-family: 'Cormorant Garamond',Georgia,serif;
+        background: var(--cream);
+        color: var(--ink);
+        overflow-x: hidden;
+    }
+
+    /* ── GALERIE HERO ── */
+    .lm-gallery {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 480px 300px;
+        gap: 3px;
+        background: var(--ink);
+        height: 780px;
+    }
+
+    .lm-gallery-main {
+        grid-row: 1/3;
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+    }
+
+        .lm-gallery-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .6s cubic-bezier(.22,1,.36,1);
+        }
+
+        .lm-gallery-main:hover img {
+            transform: scale(1.03);
+        }
+
+    .lm-gallery-thumb {
+        overflow: hidden;
+        position: relative;
+        cursor: pointer;
+    }
+
+        .lm-gallery-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .5s;
+        }
+
+        .lm-gallery-thumb:hover img {
+            transform: scale(1.06);
+        }
+
+    .lm-pip-badge {
+        position: absolute;
+        top: 24px;
+        left: 24px;
+        font-family: 'DM Mono',monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color: #fff;
+        background: var(--forest);
+        padding: 7px 16px;
+        z-index: 10;
+        border: 0.5px solid rgba(255,255,255,.15);
+    }
+
+    .lm-gallery-count {
+        position: absolute;
+        bottom: 18px;
+        right: 18px;
+        font-family: 'DM Mono',monospace;
+        font-size: 9px;
+        letter-spacing: .12em;
+        text-transform: uppercase;
+        color: #fff;
+        background: rgba(12,12,10,.55);
+        border: 0.5px solid rgba(255,255,255,.2);
+        padding: 8px 16px;
+        cursor: pointer;
+        backdrop-filter: blur(4px);
+        z-index: 10;
+        transition: background .2s;
+    }
+
+        .lm-gallery-count:hover {
+            background: rgba(12,12,10,.8);
+        }
+
+    /* ── HEADER ── */
+    .lm-header {
+        background: var(--cream);
+        padding: 52px 0 0;
+        border-bottom: 0.5px solid var(--border);
+    }
+
+    .lm-header-grid {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 48px;
+        align-items: start;
+        padding-bottom: 36px;
+        border-bottom: 0.5px solid var(--border);
+        margin-bottom: 28px;
+    }
+
+    .lm-pretitle {
+        font-family: 'DM Mono',monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: .22em;
+        text-transform: uppercase;
+        color: var(--forest);
+        margin-bottom: 14px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+        .lm-pretitle::before {
+            content: '';
+            width: 20px;
+            height: 1px;
+            background: var(--forest);
+            display: block;
+        }
+
+    .lm-h1 {
+        font-size: clamp(36px,4.5vw,62px);
+        font-weight: 300;
+        line-height: .96;
+        color: var(--ink);
+        margin-bottom: 12px;
+        letter-spacing: -.02em;
+    }
+
+        .lm-h1 em {
+            font-style: italic;
+            color: var(--muted);
+            display: block;
+        }
+
+    .lm-loc {
+        font-family: 'DM Mono',monospace;
+        font-size: 11px;
+        font-weight: 300;
+        color: var(--hint);
+        letter-spacing: .08em;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .lm-prix-bloc {
+        text-align: right;
+    }
+
+    .lm-prix {
+        font-size: clamp(32px,3.5vw,50px);
+        font-weight: 300;
+        color: var(--ink);
+        line-height: 1;
+        letter-spacing: -.02em;
+        margin-bottom: 4px;
+    }
+
+    .lm-prix-label {
+        font-family: 'DM Mono',monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--hint);
+    }
+
+    .lm-prix-note {
+        font-family: 'DM Mono',monospace;
+        font-size: 11px;
+        color: var(--forest);
+        margin-top: 6px;
+    }
+
+    /* Specs bar */
+    .lm-specs-bar {
+        display: flex;
+        gap: 0;
+        padding-bottom: 0;
+    }
+
+    .lm-spec {
+        flex: 1;
+        padding: 0 24px;
+        border-right: .5px solid var(--border);
+        text-align: center;
+    }
+
+        .lm-spec:first-child {
+            padding-left: 0;
+            text-align: left;
+        }
+
+        .lm-spec:last-child {
+            border-right: none;
+        }
+
+    .lm-spec-val {
+        font-size: 26px;
+        font-weight: 300;
+        color: var(--ink);
+        line-height: 1;
+        margin-bottom: 4px;
+    }
+
+    .lm-spec-label {
+        font-family: 'DM Mono',monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--hint);
+    }
+
+    /* ── BODY LAYOUT ── */
+    .lm-body {
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 64px;
+        padding: 64px 0 80px;
+        align-items: start;
+    }
+
+    /* ── SECTIONS ── */
+    .lm-section {
+        margin-bottom: 52px;
+    }
+
+    .lm-section-label {
+        font-family: 'DM Mono',monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+        color: var(--forest);
+        margin-bottom: 14px;
+    }
+
+    .lm-section-h2 {
+        font-size: clamp(26px,3vw,40px);
+        font-weight: 300;
+        line-height: 1.05;
+        color: var(--ink);
+        margin-bottom: 16px;
+        letter-spacing: -.01em;
+    }
+
+        .lm-section-h2 em {
+            font-style: italic;
+            color: var(--muted);
+        }
+
+    .lm-text {
+        font-family: 'DM Mono',monospace;
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 1.8;
+        color: var(--muted);
+        letter-spacing: .02em;
+    }
+
+    /* ── ATOUTS ── */
+    .lm-atouts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        background: var(--border);
+        margin-top: 28px;
+    }
+
+    .lm-atout {
+        background: var(--cream);
+        padding: 24px 26px;
+        border-left: 2px solid transparent;
+        transition: all .18s;
+    }
+
+        .lm-atout:hover {
+            background: #fff;
+            border-left-color: var(--forest);
+        }
+
+    .lm-atout-title {
+        font-size: 17px;
+        font-weight: 300;
+        color: var(--ink);
+        margin-bottom: 5px;
+    }
+
+    .lm-atout-desc {
+        font-family: 'DM Mono',monospace;
+        font-size: 10px;
+        font-weight: 300;
+        color: var(--hint);
+        line-height: 1.6;
+        letter-spacing: .03em;
+    }
+
+    /* ── COMPOSITION ── */
+    .lm-compo-grid {
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap: 1px;
+        background: var(--border);
+        margin-top: 28px;
+    }
+
+    .lm-compo-card {
+        background: var(--cream);
+        padding: 28px 24px;
+        position: relative;
+        overflow: hidden;
+        transition: background .18s;
+    }
+
+        .lm-compo-card:hover {
+            background: #fff;
+        }
+
+        .lm-compo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--forest);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .3s;
+        }
+
+        .lm-compo-card:hover::before {
+            transform: scaleX(1);
+        }
+
+    .lm-compo-num {
+        font-family: 'DM Mono',monospace;
+        font-size: 28px;
+        font-weight: 300;
+        color: var(--forest);
+        line-height: 1;
+        margin-bottom: 6px;
+    }
+
+    .lm-compo-name {
+        font-size: 20px;
+        font-weight: 300;
+        color: var(--ink);
+        margin-bottom: 4px;
+    }
+
+    .lm-compo-type {
+        font-family: 'DM Mono',monospace;
+        font-size: 9px;
+        font-weight: 300;
+        color: var(--hint);
+        letter-spacing: .1em;
+        margin-bottom: 12px;
+        text-transform: uppercase;
+    }
+
+    .lm-compo-specs {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .lm-compo-spec {
+        font-family: 'DM Mono',monospace;
+        font-size: 10px;
+        font-weight: 300;
+        color: var(--muted);
+        display: flex;
+        justify-content: space-between;
+    }
+
+        .lm-compo-spec span:last-child {
+            color: var(--ink);
+        }
+
+    /* ── SURFACES ── */
+    .lm-surfaces {
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        gap: 1px;
+        background: var(--border);
+        margin-top: 28px;
+    }
+
+    .lm-surface-item {
+        background: var(--cream);
+        padding: 20px 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        transition: background .15s;
+    }
+
+        .lm-surface-item:hover {
+            background: #fff;
+        }
+
+    .lm-surface-pct {
+        font-size: 22px;
+        font-weight: 300;
+        color: var(--forest);
+        min-width: 52px;
+        line-height: 1;
+    }
+
+    .lm-surface-info {
+        flex: 1;
+    }
+
+    .lm-surface-val {
+        font-size: 17px;
+        font-weight: 300;
+        color: var(--ink);
+        margin-bottom: 2px;
+    }
+
+    .lm-surface-label {
+        font-family: 'DM Mono',monospace;
+        font-size: 9px;
+        font-weight: 300;
+        color: var(--hint);
+        letter-spacing: .1em;
+        text-transform: uppercase;
+    }
+
+    /* ── OPPORTUNITE INVEST ── */
+    .lm-invest {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        background: var(--border);
+        margin-top: 28px;
+    }
+
+    .lm-invest-left {
+        background: var(--forest);
+        padding: 40px 36px;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .lm-invest-left::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(212,180,131,.05) 1px,transparent 1px), linear-gradient(90deg,rgba(212,180,131,.05) 1px,transparent 1px);
+            background-size: 36px 36px;
+        }
+
+    .lm-invest-left-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .lm-invest-title {
+        font-size: 26px;
+        font-weight: 300;
+        color: #fff;
+        line-height: 1.15;
+        margin-bottom: 20px;
+    }
+
+        .lm-invest-title em {
+            font-style: italic;
+            color: var(--gold2);
+        }
+
+    .lm-invest-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+        .lm-invest-list li {
+            font-family: 'DM Mono',monospace;
+            font-size: 11px;
+            font-weight: 300;
+            color: rgba(255,255,255,.45);
+            letter-spacing: .03em;
+            padding-left: 16px;
+            position: relative;
+            line-height: 1.55;
+        }
+
+            .lm-invest-list li::before {
+                content: '→';
+                position: absolute;
+                left: 0;
+                color: var(--gold);
+                opacity: .7;
+            }
+
+    .lm-invest-right {
+        background: var(--warm);
+        padding: 40px 36px;
+    }
+
+    .lm-invest-quote {
+        font-size: 22px;
+        font-weight: 300;
+        font-style: italic;
+        line-height: 1.3;
+        color: var(--ink);
+        letter-spacing: -.01em;
+        padding-bottom: 24px;
+        border-bottom: .5px solid var(--border);
+        margin-bottom: 24px;
+    }
+
+        .lm-invest-quote em {
+            color: var(--forest);
+        }
+
+    .lm-invest-kpis {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    .lm-invest-kpi {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+    }
+
+    .lm-invest-kpi-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--forest);
+        flex-shrink: 0;
+        margin-top: 6px;
+    }
+
+    .lm-invest-kpi-text {
+        font-family: 'DM Mono',monospace;
+        font-size: 11px;
+        font-weight: 300;
+        color: var(--muted);
+        line-height: 1.6;
+        letter-spacing: .03em;
+    }
+
+    /* ── LOCALISATION ── */
+    .lm-prox-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+        margin-top: 28px;
+    }
+
+    .lm-prox-title {
+        font-family: 'DM Mono',monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: var(--forest);
+        margin-bottom: 16px;
+    }
+
+    .lm-prox-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .lm-prox-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 11px 0;
+        border-bottom: .5px solid var(--border);
+    }
+
+    .lm-prox-name {
+        font-family: 'DM Mono',monospace;
+        font-size: 11px;
+        font-weight: 300;
+        color: var(--muted);
+    }
+
+    .lm-prox-dist {
+        font-family: 'DM Mono',monospace;
+        font-size: 11px;
+        font-weight: 400;
+        color: var(--forest);
+    }
+
+    /* ── SIDEBAR ── */
+    .lm-sidebar {
+        position: sticky;
+        top: 88px;
+    }
+
+    .lm-cta-card {
+        background: var(--forest);
+        padding: 36px 32px;
+        margin-bottom: 16px;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .lm-cta-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(212,180,131,.04) 1px,transparent 1px), linear-gradient(90deg,rgba(212,180,131,.04) 1px,transparent 1px);
+            background-size: 32px 32px;
+        }
+
+    .lm-cta-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .lm-cta-pretitle {
+        font-family: 'DM Mono',monospace;
+        font-size: 8px;
+        font-weight: 300;
+        letter-spacing: .2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 10px;
+    }
+
+    .lm-cta-title {
+        font-size: 26px;
+        font-weight: 300;
+        color: #fff;
+        line-height: 1.15;
+        margin-bottom: 8px;
+    }
+
+        .lm-cta-title em {
+            font-style: italic;
+            color: var(--gold2);
+        }
+
+    .lm-cta-sub {
+        font-family: 'DM Mono',monospace;
+        font-size: 10px;
+        font-weight: 300;
+        color: rgba(255,255,255,.35);
+        line-height: 1.65;
+        margin-bottom: 28px;
+        letter-spacing: .03em;
+    }
+
+    .lm-btn-primary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        padding: 16px;
+        font-family: 'DM Mono',monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: var(--ink);
+        background: var(--gold);
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background .2s;
+        margin-bottom: 8px;
+    }
+
+        .lm-btn-primary:hover {
+            background: var(--gold2);
+            color: var(--ink);
+        }
+
+    .lm-btn-secondary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        padding: 14px;
+        font-family: 'DM Mono',monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,.4);
+        background: none;
+        border: .5px solid rgba(255,255,255,.12);
+        cursor: pointer;
+        text-decoration: none;
+        transition: all .2s;
+    }
+
+        .lm-btn-secondary:hover {
+            border-color: rgba(255,255,255,.35);
+            color: #fff;
+        }
+
+    .lm-info-card {
+        background: var(--warm);
+        padding: 28px 28px;
+        border: .5px solid var(--border);
+    }
+
+    .lm-info-title {
+        font-family: 'DM Mono',monospace;
+        font-size: 8px;
+        font-weight: 300;
+        letter-spacing: .18em;
+        text-transform: uppercase;
+        color: var(--forest);
+        margin-bottom: 18px;
+    }
+
+    .lm-info-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: .5px solid var(--border);
+    }
+
+        .lm-info-row:last-child {
+            border-bottom: none;
+        }
+
+    .lm-info-key {
+        font-family: 'DM Mono',monospace;
+        font-size: 10px;
+        font-weight: 300;
+        color: var(--hint);
+    }
+
+    .lm-info-val {
+        font-size: 14px;
+        font-weight: 300;
+        color: var(--ink);
+        text-align: right;
+    }
+
+    /* ── CTA FINAL ── */
+    .lm-final {
+        background: var(--forest);
+        padding: 80px 0;
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        position: relative;
+        overflow: hidden;
+    }
+
+        .lm-final::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(212,180,131,.04) 1px,transparent 1px), linear-gradient(90deg,rgba(212,180,131,.04) 1px,transparent 1px);
+            background-size: 48px 48px;
+        }
+
+    .lm-final-content {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 48px;
+    }
+
+    .lm-final-title {
+        font-size: clamp(26px,3.5vw,44px);
+        font-weight: 300;
+        color: #fff;
+        line-height: 1.1;
+        letter-spacing: -.01em;
+    }
+
+        .lm-final-title em {
+            font-style: italic;
+            color: var(--gold2);
+        }
+
+    .lm-final-sub {
+        font-family: 'DM Mono',monospace;
+        font-size: 11px;
+        font-weight: 300;
+        color: rgba(255,255,255,.35);
+        margin-top: 10px;
+        line-height: 1.65;
+        letter-spacing: .04em;
+    }
+
+    .lm-final-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-family: 'DM Mono',monospace;
+        font-size: 10px;
+        font-weight: 300;
+        letter-spacing: .16em;
+        text-transform: uppercase;
+        color: var(--ink);
+        text-decoration: none;
+        background: var(--gold);
+        padding: 18px 36px;
+        transition: background .2s,transform .15s;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+        .lm-final-btn:hover {
+            background: var(--gold2);
+            color: var(--ink);
+            transform: translateY(-2px);
+        }
+
+    /* ── LIGHTBOX ── */
+    .lm-lightbox {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(12,12,10,.95);
+        z-index: 9999;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+    }
+
+        .lm-lightbox.open {
+            display: flex;
+        }
+
+        .lm-lightbox img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+        }
+
+    .lm-lightbox-close {
+        position: absolute;
+        top: 20px;
+        right: 24px;
+        font-family: 'DM Mono',monospace;
+        font-size: 11px;
+        color: rgba(255,255,255,.4);
+        background: none;
+        border: none;
+        cursor: pointer;
+        letter-spacing: .1em;
+    }
+
+        .lm-lightbox-close:hover {
+            color: #fff;
+        }
+
+    .lm-lightbox-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255,255,255,.08);
+        border: .5px solid rgba(255,255,255,.15);
+        color: #fff;
+        font-size: 20px;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background .15s;
+    }
+
+        .lm-lightbox-nav:hover {
+            background: rgba(255,255,255,.18);
+        }
+
+    .lm-lightbox-prev {
+        left: 20px;
+    }
+
+    .lm-lightbox-next {
+        right: 20px;
+    }
+
+    .lm-lightbox-counter {
+        position: absolute;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-family: 'DM Mono',monospace;
+        font-size: 10px;
+        color: rgba(255,255,255,.3);
+        letter-spacing: .12em;
+    }
+
+    /* Responsive */
+    @@media (max-width:1100px) {
+        .lm-compo-grid {
+            grid-template-columns: repeat(2,1fr);
+        }
+    }
+
+    @@media (max-width:900px) {
+        .lm-gallery {
+            height: 500px;
+            grid-template-rows: 1fr 1fr;
+        }
+
+        .lm-body {
+            grid-template-columns: 1fr;
+        }
+
+        .lm-sidebar {
+            position: static;
+        }
+
+        .lm-header-grid {
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        .lm-prix-bloc {
+            text-align: left;
+        }
+
+        .lm-invest {
+            grid-template-columns: 1fr;
+        }
+
+        .lm-prox-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .lm-final-content {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @@media (max-width:640px) {
+        .lm-gallery {
+            grid-template-columns: 1fr;
+            height: 380px;
+        }
+
+        .lm-gallery-main {
+            grid-row: auto;
+        }
+
+        .lm-gallery-thumb:last-child {
+            display: none;
+        }
+
+        .lm-compo-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .lm-atouts {
+            grid-template-columns: 1fr;
+        }
+
+        .lm-surfaces {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="lm">
+
+    <!-- ── GALERIE ── -->
+    <div class="lm-gallery">
+        <div class="lm-gallery-main" onclick="openLb(0)">
+            <img src="/images/lomba-01.png" alt="Projet touristique Lomba - vue aerienne" />
+            <span class="lm-pip-badge">PIP Vinculado Aprovado</span>
+            <button class="lm-gallery-count" onclick="event.stopPropagation();openLb(0)">
+                Voir les 4 visuels →
+            </button>
+        </div>
+        <div class="lm-gallery-thumb" onclick="openLb(1)">
+            <img src="/images/lomba-02.jpeg" alt="Bungalows avec jacuzzi" />
+        </div>
+        <div class="lm-gallery-thumb" onclick="openLb(2)">
+            <img src="/images/DJI_20260326140655_0581_D.JPG" alt="Vue drone - terrain bord du Douro" />
+        </div>
+    </div>
+
+    <!-- ── HEADER ── -->
+    <div class="lm-header">
+        <div class="container">
+            <div class="lm-header-grid">
+                <div>
+                    <p class="lm-pretitle">Lomba · Gondomar · Douro · Portugal</p>
+                    <h1 class="lm-h1">
+                        Projet touristique<br>
+                        <em>Lomba — Douro</em>
+                    </h1>
+                    <p class="lm-loc">
+                        <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M8 2a4 4 0 010 8c-2 0-5.5-2.5-5.5-4.5A5.5 5.5 0 0113.5 5.5C13.5 7.5 10 10 8 10" /><circle cx="8" cy="5.5" r="1.5" fill="currentColor" /></svg>
+                        Rua de Sao Jose, Lomba, Gondomar — Nord du Portugal
+                    </p>
+                </div>
+                <div class="lm-prix-bloc">
+                    <div class="lm-prix">690 000 €</div>
+                    <div class="lm-prix-label">Prix de vente · Terrain + PIP</div>
+                    <div class="lm-prix-note">Ref. HS-LOMBA-2024</div>
+                </div>
+            </div>
+
+            <div class="lm-specs-bar">
+                <div class="lm-spec">
+                    <div class="lm-spec-val">5 115</div>
+                    <div class="lm-spec-label">m² terrain</div>
+                </div>
+                <div class="lm-spec">
+                    <div class="lm-spec-val">16</div>
+                    <div class="lm-spec-label">Unites logement</div>
+                </div>
+                <div class="lm-spec">
+                    <div class="lm-spec-val">440</div>
+                    <div class="lm-spec-label">m² restaurant</div>
+                </div>
+                <div class="lm-spec">
+                    <div class="lm-spec-val">1 761</div>
+                    <div class="lm-spec-label">m² constructibles</div>
+                </div>
+                <div class="lm-spec">
+                    <div class="lm-spec-val">PIP</div>
+                    <div class="lm-spec-label">Approuve</div>
+                </div>
+                <div class="lm-spec">
+                    <div class="lm-spec-val">30'</div>
+                    <div class="lm-spec-label">de Porto</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── CORPS ── -->
+    <div class="container">
+        <div class="lm-body">
+
+            <!-- Contenu -->
+            <div>
+
+                <!-- Description editoriale -->
+                <div class="lm-section">
+                    <p class="lm-section-label">L'opportunite</p>
+                    <h2 class="lm-section-h2">
+                        Une opportunite unique<br><em>au bord du Douro</em>
+                    </h2>
+                    <p class="lm-text">
+                        A seulement 30 minutes de Porto, ce terrain d'exception de 5 115 m² surplombe le fleuve Douro dans l'une de ses courbes les plus spectaculaires. Le PIP vinculado — le permis de construire strategique — est approuve : vous achetez une opportunite clee en main, prete a entrer en phase de construction immediate.
+                    </p>
+                    <p class="lm-text" style="margin-top:12px">
+                        Le projet concu est un complexe touristique boutique de 16 unites independantes — bungalows T0 et T1 avec jacuzzi privatif — associe a un restaurant panoramique de 440 m² sur 2 niveaux avec possibilite de rooftop. Une reponse directe a la demande explosive du tourisme fluvial et rural dans la vallee du Douro.
+                    </p>
+
+                    <div class="lm-atouts">
+                        <div class="lm-atout">
+                            <div class="lm-atout-title">PIP vinculado approuve</div>
+                            <div class="lm-atout-desc">Permis de construire strategique obtenu — aucune demarche administrative majeure restante. Construction peut demarrer immediatement.</div>
+                        </div>
+                        <div class="lm-atout">
+                            <div class="lm-atout-title">Vue Douro exceptionnelle</div>
+                            <div class="lm-atout-desc">Terrain en hauteur avec vue degagee sur le fleuve — atout differenciant majeur pour l'exploitation touristique et la valeur locative.</div>
+                        </div>
+                        <div class="lm-atout">
+                            <div class="lm-atout-title">Architecture premium validee</div>
+                            <div class="lm-atout-desc">Projet architectural signe : bungalows en bois sombre avec grandes baies vitrees, toitures a double pente, integration paysagere totale.</div>
+                        </div>
+                        <div class="lm-atout">
+                            <div class="lm-atout-title">Taux d'occupation 75%+</div>
+                            <div class="lm-atout-desc">Etudes de marche locales confirment des taux d'occupation superieurs a 75% dans la zone de Lomba — region en forte croissance touristique.</div>
+                        </div>
+                        <div class="lm-atout">
+                            <div class="lm-atout-title">Modele condo-hotel possible</div>
+                            <div class="lm-atout-desc">Structure compatible avec exploitation en condo-hotel : investisseurs multiples, gestion centralisee, revenus locatifs distribues annuellement.</div>
+                        </div>
+                        <div class="lm-atout">
+                            <div class="lm-atout-title">Eligible Turismo de Portugal</div>
+                            <div class="lm-atout-desc">Programme compatible avec les aides et subventions de Turismo de Portugal — levier financier supplementaire pour l'investisseur.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Composition du projet -->
+                <div class="lm-section">
+                    <p class="lm-section-label">Composition du projet</p>
+                    <h2 class="lm-section-h2">
+                        16 unites + restaurant<br><em>& espace bien-etre</em>
+                    </h2>
+                    <p class="lm-text">Un complexe concu pour la performance locative maximale — des unites independantes avec jacuzzi privatif, terrasse et connexion directe a la nature, completees par un restaurant panoramique et un espace spa.</p>
+                    <div class="lm-compo-grid">
+                        <div class="lm-compo-card">
+                            <div class="lm-compo-num">06</div>
+                            <div class="lm-compo-name">Bungalows T0</div>
+                            <div class="lm-compo-type">Short-stay · Couples</div>
+                            <div class="lm-compo-specs">
+                                <div class="lm-compo-spec"><span>Surface interieure</span><span>30,40 m²</span></div>
+                                <div class="lm-compo-spec"><span>Salle de bain</span><span>7,55 m²</span></div>
+                                <div class="lm-compo-spec"><span>Terrasse</span><span>31,53 m²</span></div>
+                                <div class="lm-compo-spec"><span>Surface totale</span><span>66,27 m²</span></div>
+                                <div class="lm-compo-spec"><span>Jacuzzi privatif</span><span>Option</span></div>
+                            </div>
+                        </div>
+                        <div class="lm-compo-card">
+                            <div class="lm-compo-num">08</div>
+                            <div class="lm-compo-name">Bungalows T1</div>
+                            <div class="lm-compo-type">Familles · Long-stay</div>
+                            <div class="lm-compo-specs">
+                                <div class="lm-compo-spec"><span>Surface interieure</span><span>30,40 m²</span></div>
+                                <div class="lm-compo-spec"><span>Salle de bain</span><span>7,55 m²</span></div>
+                                <div class="lm-compo-spec"><span>Terrasse</span><span>31,53 m²</span></div>
+                                <div class="lm-compo-spec"><span>Surface totale</span><span>66,27 m²</span></div>
+                                <div class="lm-compo-spec"><span>Jacuzzi privatif</span><span>Option</span></div>
+                            </div>
+                        </div>
+                        <div class="lm-compo-card">
+                            <div class="lm-compo-num">02</div>
+                            <div class="lm-compo-name">Villas T2</div>
+                            <div class="lm-compo-type">Premium · Groupes</div>
+                            <div class="lm-compo-specs">
+                                <div class="lm-compo-spec"><span>Terrasse privative</span><span>Incluse</span></div>
+                                <div class="lm-compo-spec"><span>Expo. solaire</span><span>Excellente</span></div>
+                                <div class="lm-compo-spec"><span>Jacuzzi exterieur</span><span>Inclus</span></div>
+                                <div class="lm-compo-spec"><span>Vue Douro</span><span>Directe</span></div>
+                            </div>
+                        </div>
+                        <div class="lm-compo-card">
+                            <div class="lm-compo-num">440</div>
+                            <div class="lm-compo-name">Restaurant</div>
+                            <div class="lm-compo-type">Panoramique · 2 niveaux</div>
+                            <div class="lm-compo-specs">
+                                <div class="lm-compo-spec"><span>Surface piso 1</span><span>220 m²</span></div>
+                                <div class="lm-compo-spec"><span>Surface piso 2</span><span>114,50 m²</span></div>
+                                <div class="lm-compo-spec"><span>Rooftop possible</span><span>+1 niveau</span></div>
+                                <div class="lm-compo-spec"><span>Esplanade varanda</span><span>13,60 m²</span></div>
+                            </div>
+                        </div>
+                        <div class="lm-compo-card">
+                            <div class="lm-compo-num">Spa</div>
+                            <div class="lm-compo-name">Espace Bien-etre</div>
+                            <div class="lm-compo-type">Jacuzzi · Sauna · Massage</div>
+                            <div class="lm-compo-specs">
+                                <div class="lm-compo-spec"><span>Jacuzzi interieur</span><span>20,30 m²</span></div>
+                                <div class="lm-compo-spec"><span>Sauna seche</span><span>5,60 m²</span></div>
+                                <div class="lm-compo-spec"><span>Sauna humide</span><span>5,60 m²</span></div>
+                                <div class="lm-compo-spec"><span>Salle massage</span><span>13,15 m²</span></div>
+                            </div>
+                        </div>
+                        <div class="lm-compo-card">
+                            <div class="lm-compo-num">48%</div>
+                            <div class="lm-compo-name">Espaces verts</div>
+                            <div class="lm-compo-type">Jardins · Contemplation</div>
+                            <div class="lm-compo-specs">
+                                <div class="lm-compo-spec"><span>Zones vertes</span><span>2 458 m²</span></div>
+                                <div class="lm-compo-spec"><span>Jacuzzi & piscine</span><span>271 m²</span></div>
+                                <div class="lm-compo-spec"><span>Parking organise</span><span>Inclus</span></div>
+                                <div class="lm-compo-spec"><span>Circulation pietons</span><span>Integree</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Surfaces -->
+                <div class="lm-section">
+                    <p class="lm-section-label">Resume des surfaces</p>
+                    <h2 class="lm-section-h2">5 115 m² de terrain<br><em>optimises pour la rentabilite</em></h2>
+                    <div class="lm-surfaces">
+                        <div class="lm-surface-item">
+                            <div class="lm-surface-pct">5 115</div>
+                            <div class="lm-surface-info">
+                                <div class="lm-surface-val">m² terrain total</div>
+                                <div class="lm-surface-label">Surface totale du terrain</div>
+                            </div>
+                        </div>
+                        <div class="lm-surface-item">
+                            <div class="lm-surface-pct">17%</div>
+                            <div class="lm-surface-info">
+                                <div class="lm-surface-val">880 m² implantation</div>
+                                <div class="lm-surface-label">Emprise au sol des batiments</div>
+                            </div>
+                        </div>
+                        <div class="lm-surface-item">
+                            <div class="lm-surface-pct">35%</div>
+                            <div class="lm-surface-info">
+                                <div class="lm-surface-val">1 761 m² construits</div>
+                                <div class="lm-surface-label">Surface brute de construction</div>
+                            </div>
+                        </div>
+                        <div class="lm-surface-item">
+                            <div class="lm-surface-pct">5%</div>
+                            <div class="lm-surface-info">
+                                <div class="lm-surface-val">271 m² jacuzzi & piscine</div>
+                                <div class="lm-surface-label">Zone detente aquatique</div>
+                            </div>
+                        </div>
+                        <div class="lm-surface-item">
+                            <div class="lm-surface-pct">48%</div>
+                            <div class="lm-surface-info">
+                                <div class="lm-surface-val">2 458 m² espaces verts</div>
+                                <div class="lm-surface-label">Jardins et zones de contemplation</div>
+                            </div>
+                        </div>
+                        <div class="lm-surface-item">
+                            <div class="lm-surface-pct">378</div>
+                            <div class="lm-surface-info">
+                                <div class="lm-surface-val">m² domaine public</div>
+                                <div class="lm-surface-label">Zone cedee a la commune</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Opportunite investissement -->
+                <div class="lm-section">
+                    <p class="lm-section-label">Potentiel d'investissement</p>
+                    <h2 class="lm-section-h2">Rentabilite locative<br><em>350 000 – 650 000 €/an</em></h2>
+                    <div class="lm-invest">
+                        <div class="lm-invest-left">
+                            <div class="lm-invest-left-content">
+                                <h3 class="lm-invest-title">Pourquoi <em>investir ici</em></h3>
+                                <ul class="lm-invest-list">
+                                    <li>Indice d'occupation superieur a 75% dans la zone de Lomba</li>
+                                    <li>Forte valorisation des villas T2 pour sejours premium</li>
+                                    <li>Compatibilite avec les programmes Turismo de Portugal</li>
+                                    <li>Possibilite d'exploitation en modele condo-hotel</li>
+                                    <li>Praias fluviais a proximite — attractivite unique toute l'annee</li>
+                                    <li>Proximite Porto (35 km) — flux touristique international</li>
+                                    <li>Budget de construction estime : 2 500 000 EUR</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="lm-invest-right">
+                            <p class="lm-invest-quote">« Un produit differenciant, pense pour <em>surpasser l'offre touristique</em> existante dans la region. »</p>
+                            <div class="lm-invest-kpis">
+                                <div class="lm-invest-kpi">
+                                    <div class="lm-invest-kpi-dot"></div>
+                                    <p class="lm-invest-kpi-text">Prix terrain + PIP : 690 000 EUR · Budget construction : 2,5M EUR</p>
+                                </div>
+                                <div class="lm-invest-kpi">
+                                    <div class="lm-invest-kpi-dot"></div>
+                                    <p class="lm-invest-kpi-text">Rentabilite annuelle estimee : 350 000 a 650 000 EUR / an</p>
+                                </div>
+                                <div class="lm-invest-kpi">
+                                    <div class="lm-invest-kpi-dot"></div>
+                                    <p class="lm-invest-kpi-text">Duree previsionnelle de construction : 18 mois</p>
+                                </div>
+                                <div class="lm-invest-kpi">
+                                    <div class="lm-invest-kpi-dot"></div>
+                                    <p class="lm-invest-kpi-text">Public vise : couples, familles, digital nomads, wine lovers, slow travel</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Localisation -->
+                <div class="lm-section">
+                    <p class="lm-section-label">Localisation</p>
+                    <h2 class="lm-section-h2">Lomba, Gondomar<br><em>Norte do Portugal</em></h2>
+                    <p class="lm-text">Situee dans la region de Gondomar, Lomba beneficie d'une position privilegiee entre Porto et la vallee du Douro. La region attire un tourisme fluvial et rural en forte croissance, soutenu par des praias fluviales accessibles et un paysage naturel exceptionnel.</p>
+                    <div class="lm-prox-grid">
+                        <div>
+                            <p class="lm-prox-title">Accessibilite</p>
+                            <div class="lm-prox-list">
+                                <div class="lm-prox-item"><span class="lm-prox-name">Porto centre</span><span class="lm-prox-dist">35 km · 30 min</span></div>
+                                <div class="lm-prox-item"><span class="lm-prox-name">Aeroport Porto</span><span class="lm-prox-dist">45 min</span></div>
+                                <div class="lm-prox-item"><span class="lm-prox-name">Gondomar ville</span><span class="lm-prox-dist">15 min</span></div>
+                                <div class="lm-prox-item"><span class="lm-prox-name">Acces A44</span><span class="lm-prox-dist">10 min</span></div>
+                                <div class="lm-prox-item"><span class="lm-prox-name">Praias fluviais Douro</span><span class="lm-prox-dist">Proximite immediate</span></div>
+                            </div>
+                        </div>
+                        <div>
+                            <p class="lm-prox-title">Environnement</p>
+                            <div class="lm-prox-list">
+                                <div class="lm-prox-item"><span class="lm-prox-name">Vue sur le Douro</span><span class="lm-prox-dist">Directe</span></div>
+                                <div class="lm-prox-item"><span class="lm-prox-name">Foret & nature</span><span class="lm-prox-dist">Cadre exceptionnel</span></div>
+                                <div class="lm-prox-item"><span class="lm-prox-name">Zone touristique etablie</span><span class="lm-prox-dist">Oui</span></div>
+                                <div class="lm-prox-item"><span class="lm-prox-name">Praias fluviales</span><span class="lm-prox-dist">Atout unique</span></div>
+                                <div class="lm-prox-item"><span class="lm-prox-name">Tourisme rural/boutique</span><span class="lm-prox-dist">Forte demande</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Sidebar -->
+            <div class="lm-sidebar">
+                <div class="lm-cta-card">
+                    <div class="lm-cta-content">
+                        <p class="lm-cta-pretitle">Human Square · Conseil</p>
+                        <h3 class="lm-cta-title">Interesse par<br><em>ce projet ?</em></h3>
+                        <p class="lm-cta-sub">Contactez notre equipe pour recevoir le dossier complet, les plans architecturaux et organiser une visite du terrain.</p>
+                        <a asp-controller="Contact" asp-action="Contact" class="lm-btn-primary">
+                            Demander le dossier
+                            <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                        </a>
+                        <a asp-controller="Contact" asp-action="Contact" class="lm-btn-secondary">
+                            Visiter le terrain
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lm-info-card">
+                    <p class="lm-info-title">Fiche technique</p>
+                    <div>
+                        <div class="lm-info-row"><span class="lm-info-key">Reference</span><span class="lm-info-val">HS-LOMBA-2024</span></div>
+                        <div class="lm-info-row"><span class="lm-info-key">Type</span><span class="lm-info-val">Terrain + PIP</span></div>
+                        <div class="lm-info-row"><span class="lm-info-key">Surface terrain</span><span class="lm-info-val">5 115 m²</span></div>
+                        <div class="lm-info-row"><span class="lm-info-key">Surface construc.</span><span class="lm-info-val">1 761 m²</span></div>
+                        <div class="lm-info-row"><span class="lm-info-key">Unites logement</span><span class="lm-info-val">16 (T0 + T1 + T2)</span></div>
+                        <div class="lm-info-row"><span class="lm-info-key">Restaurant</span><span class="lm-info-val">440 m² · 2 niveaux</span></div>
+                        <div class="lm-info-row"><span class="lm-info-key">Statut PIP</span><span class="lm-info-val" style="color:var(--forest)">Approuve</span></div>
+                        <div class="lm-info-row"><span class="lm-info-key">Localisation</span><span class="lm-info-val">Lomba, Gondomar</span></div>
+                        <div class="lm-info-row"><span class="lm-info-key">Distance Porto</span><span class="lm-info-val">35 km · 30 min</span></div>
+                        <div class="lm-info-row"><span class="lm-info-key">Rentabilite est.</span><span class="lm-info-val" style="color:var(--forest)">350k – 650k €/an</span></div>
+                        <div class="lm-info-row"><span class="lm-info-key">Prix de vente</span><span class="lm-info-val" style="color:var(--forest);font-size:16px">690 000 €</span></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ── CTA FINAL ── -->
+    <section class="lm-final">
+        <div class="container">
+            <div class="lm-final-content">
+                <div>
+                    <h2 class="lm-final-title">
+                        Une opportunite rare<br><em>au coeur du Douro</em>
+                    </h2>
+                    <p class="lm-final-sub">
+                        PIP approuve, projet architectural valide, rentabilite demontree. Il ne manque plus que l'investisseur. Contactez Human Square pour recevoir le dossier complet et planifier votre visite.
+                    </p>
+                </div>
+                <a asp-controller="Contact" asp-action="Contact" class="lm-final-btn">
+                    Recevoir le dossier
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- ── LIGHTBOX ── -->
+<div class="lm-lightbox" id="lm-lb" onclick="closeLb(event)">
+    <button class="lm-lightbox-close" onclick="closeLb()">Fermer ✕</button>
+    <button class="lm-lightbox-nav lm-lightbox-prev" onclick="event.stopPropagation();navLb(-1)">‹</button>
+    <img id="lm-lb-img" src="" alt="" />
+    <button class="lm-lightbox-nav lm-lightbox-next" onclick="event.stopPropagation();navLb(1)">›</button>
+    <div class="lm-lightbox-counter" id="lm-lb-counter"></div>
+</div>
+
+<script>
+    const lmImages = [
+        '/images/lomba-01.png',
+        '/images/lomba-02.jpeg',
+        '/images/DJI_20260326140655_0581_D.JPG',
+        '/images/DJI_20260326140724_0585_D.JPG'
+    ];
+    let lmCurrent = 0;
+
+    function openLb(idx) {
+        lmCurrent = idx;
+        document.getElementById('lm-lb-img').src = lmImages[lmCurrent];
+        document.getElementById('lm-lb-counter').textContent = (lmCurrent+1) + ' / ' + lmImages.length;
+        document.getElementById('lm-lb').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLb(e) {
+        if (!e || e.target === document.getElementById('lm-lb')) {
+            document.getElementById('lm-lb').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+    }
+
+    function navLb(dir) {
+        lmCurrent = (lmCurrent + dir + lmImages.length) % lmImages.length;
+        document.getElementById('lm-lb-img').src = lmImages[lmCurrent];
+        document.getElementById('lm-lb-counter').textContent = (lmCurrent+1) + ' / ' + lmImages.length;
+    }
+
+    document.addEventListener('keydown', e => {
+        if (document.getElementById('lm-lb').classList.contains('open')) {
+            if (e.key === 'ArrowRight') navLb(1);
+            if (e.key === 'ArrowLeft') navLb(-1);
+            if (e.key === 'Escape') closeLb({ target: document.getElementById('lm-lb') });
+        }
+    });
+</script>

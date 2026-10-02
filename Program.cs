@@ -66,6 +66,20 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+// 🌊 Site Horizonte Atlântico : le domaine horizonte-atlantico.com sert le site statique wwwroot/horizonte
+app.Use(async (context, next) =>
+{
+    var host = context.Request.Host.Host ?? "";
+    if (host.Contains("horizonte-atlantico", StringComparison.OrdinalIgnoreCase))
+    {
+        var path = context.Request.Path.Value ?? "/";
+        if (!path.StartsWith("/horizonte", StringComparison.OrdinalIgnoreCase))
+            context.Request.Path = "/horizonte" + path;
+    }
+    await next();
+});
+app.UseDefaultFiles();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseAuthorization();

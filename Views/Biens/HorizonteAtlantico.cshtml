@@ -1,0 +1,1343 @@
+﻿@{
+    ViewData["Title"] = "Horizonte Atlântico – 15 villas T4 neuves | Gulpilhares, Vila Nova de Gaia";
+    ViewData["Description"] = "Complexe résidentiel Horizonte Atlântico à Gulpilhares (Vila Nova de Gaia) : 15 villas T4 sur 2 niveaux, jardin privatif, garage 2 voitures, à 5 min de l'A29 et 15 min de Porto.";
+
+    // ── PRIX « À PARTIR DE » ── modifiez ici (ex. "395 000 €")
+    var prixDesde = "Prix sur demande";
+
+    // ── TABLEAU DES LOTS (source : brochure, surfaces en m²) ── Statut : "Disponible" / "Réservé" / "Vendu"
+    var lots = new[] {
+        new { Lot = 1,  Terrain = "359,5", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
+        new { Lot = 2,  Terrain = "465,5", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
+        new { Lot = 3,  Terrain = "571,2", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
+        new { Lot = 4,  Terrain = "440,0", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
+        new { Lot = 5,  Terrain = "546,5", Implantation = "119,7", Brute = "157,1", Parking = "36,4", Total = "192,5", Statut = "Disponible" },
+        new { Lot = 6,  Terrain = "568,1", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
+        new { Lot = 7,  Terrain = "668,1", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
+        new { Lot = 8,  Terrain = "756,3", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
+        new { Lot = 9,  Terrain = "838,3", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
+        new { Lot = 10, Terrain = "343,8", Implantation = "113,4", Brute = "154,0", Parking = "36,4", Total = "190,4", Statut = "Disponible" },
+        new { Lot = 11, Terrain = "351,4", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
+        new { Lot = 12, Terrain = "351,4", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
+        new { Lot = 13, Terrain = "351,4", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
+        new { Lot = 14, Terrain = "351,4", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
+        new { Lot = 15, Terrain = "360,5", Implantation = "113,4", Brute = "154,0", Parking = "36,4", Total = "190,4", Statut = "Disponible" },
+    };
+}
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+
+<style>
+    :root {
+        --ink: #0c0c0a;
+        --cream: #f5f3ee;
+        --warm: #ece8df;
+        --gold: #b8935a;
+        --gold2: #d4b483;
+        --muted: #78766e;
+        --hint: #aeac9f;
+        --border: rgba(12,12,10,0.09);
+        --teal: #1e4a5a;
+    }
+
+    .tj {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        background: var(--cream);
+        color: var(--ink);
+        overflow-x: hidden;
+    }
+
+    /* ── HERO PROGRAMME ── */
+    .tj-hero {
+        background: var(--teal);
+        min-height: 88vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .tj-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(212,180,131,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(212,180,131,0.06) 1px, transparent 1px);
+            background-size: 48px 48px;
+        }
+
+    .tj-hero-left {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 80px 64px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .tj-hero-right {
+        position: relative;
+        overflow: hidden;
+        border-left: 0.5px solid rgba(212,180,131,0.15);
+    }
+
+    .tj-hero-right-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        opacity: 0.55;
+        transition: opacity .4s;
+    }
+
+    .tj-hero-right:hover .tj-hero-right-img {
+        opacity: 0.7;
+    }
+
+    .tj-hero-right-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to right, var(--teal) 0%, transparent 40%);
+    }
+
+    /* Badges programme */
+    .tj-badges {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 28px;
+    }
+
+    .tj-badge {
+        font-family: 'DM Mono', monospace;
+        font-size: 8px;
+        font-weight: 300;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--teal);
+        background: var(--gold2);
+        padding: 5px 12px;
+    }
+
+    .tj-badge-outline {
+        font-family: 'DM Mono', monospace;
+        font-size: 8px;
+        font-weight: 300;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.6);
+        border: 0.5px solid rgba(212,180,131,0.35);
+        padding: 5px 12px;
+    }
+
+    .tj-pretitle {
+        font-family: 'DM Mono', monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+        .tj-pretitle::before {
+            content: '';
+            width: 20px;
+            height: 1px;
+            background: var(--gold);
+            display: block;
+        }
+
+    .tj-hero-h1 {
+        font-size: clamp(42px, 5vw, 76px);
+        font-weight: 300;
+        line-height: 0.94;
+        color: #fff;
+        margin-bottom: 12px;
+        letter-spacing: -0.02em;
+    }
+
+        .tj-hero-h1 em {
+            font-style: italic;
+            color: var(--gold2);
+            display: block;
+        }
+
+    .tj-hero-sub {
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        font-weight: 300;
+        color: rgba(255,255,255,0.45);
+        line-height: 1.7;
+        letter-spacing: 0.04em;
+        max-width: 380px;
+        margin-bottom: 40px;
+    }
+
+    .tj-hero-stats {
+        display: flex;
+        gap: 32px;
+        padding-top: 28px;
+        border-top: 0.5px solid rgba(212,180,131,0.2);
+    }
+
+    .tj-hero-stat-num {
+        font-size: 28px;
+        font-weight: 300;
+        color: var(--gold2);
+        line-height: 1;
+    }
+
+    .tj-hero-stat-label {
+        font-family: 'DM Mono', monospace;
+        font-size: 8px;
+        font-weight: 300;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.3);
+        margin-top: 4px;
+    }
+
+    /* ── BANDE PRIX ── */
+    .tj-prix-band {
+        background: var(--ink);
+        padding: 20px 0;
+        border-bottom: 0.5px solid rgba(212,180,131,0.15);
+    }
+
+    .tj-prix-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+
+    .tj-prix-item {
+        text-align: center;
+    }
+
+    .tj-prix-label {
+        font-family: 'DM Mono', monospace;
+        font-size: 8px;
+        font-weight: 300;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--hint);
+        margin-bottom: 4px;
+    }
+
+    .tj-prix-val {
+        font-size: 20px;
+        font-weight: 300;
+        color: var(--gold2);
+    }
+
+    .tj-prix-sep {
+        width: 0.5px;
+        height: 40px;
+        background: rgba(255,255,255,0.06);
+    }
+
+    /* ── SECTIONS ── */
+    .tj-section {
+        padding: 72px 0;
+        border-bottom: 0.5px solid var(--border);
+    }
+
+    .tj-section-label {
+        font-family: 'DM Mono', monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 14px;
+    }
+
+    .tj-section-h2 {
+        font-size: clamp(28px, 3.5vw, 44px);
+        font-weight: 300;
+        line-height: 1.05;
+        color: var(--ink);
+        margin-bottom: 20px;
+        letter-spacing: -0.01em;
+    }
+
+        .tj-section-h2 em {
+            font-style: italic;
+            color: var(--muted);
+        }
+
+    .tj-text {
+        font-family: 'DM Mono', monospace;
+        font-size: 12px;
+        font-weight: 300;
+        line-height: 1.8;
+        color: var(--muted);
+        letter-spacing: 0.02em;
+    }
+
+    /* ── GRID TYPOLOGIES ── */
+    .tj-typo-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--border);
+        margin-top: 40px;
+    }
+
+    .tj-typo-card {
+        background: var(--cream);
+        padding: 36px 32px;
+        transition: background .18s;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .tj-typo-card:hover {
+            background: #fff;
+        }
+
+        .tj-typo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform .3s;
+        }
+
+        .tj-typo-card:hover::before {
+            transform: scaleX(1);
+        }
+
+    .tj-typo-ref {
+        font-family: 'DM Mono', monospace;
+        font-size: 9px;
+        font-weight: 300;
+        color: var(--gold);
+        letter-spacing: 0.1em;
+        margin-bottom: 12px;
+        opacity: 0.8;
+    }
+
+    .tj-typo-name {
+        font-size: 32px;
+        font-weight: 300;
+        color: var(--ink);
+        line-height: 1;
+        margin-bottom: 4px;
+    }
+
+    .tj-typo-surface {
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        font-weight: 300;
+        color: var(--hint);
+        margin-bottom: 20px;
+    }
+
+    .tj-typo-specs {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 20px;
+        padding: 16px 0;
+        border-top: 0.5px solid var(--border);
+        border-bottom: 0.5px solid var(--border);
+    }
+
+    .tj-typo-spec {
+        display: flex;
+        justify-content: space-between;
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        font-weight: 300;
+        color: var(--muted);
+    }
+
+        .tj-typo-spec span:last-child {
+            color: var(--ink);
+            font-weight: 400;
+        }
+
+    .tj-typo-prix {
+        font-size: 22px;
+        font-weight: 300;
+        color: var(--ink);
+        margin-bottom: 4px;
+    }
+
+    .tj-typo-prix-label {
+        font-family: 'DM Mono', monospace;
+        font-size: 9px;
+        font-weight: 300;
+        color: var(--hint);
+        letter-spacing: 0.08em;
+    }
+
+    .tj-typo-tag {
+        display: inline-block;
+        font-family: 'DM Mono', monospace;
+        font-size: 8px;
+        font-weight: 300;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        padding: 4px 10px;
+        margin-top: 12px;
+    }
+
+    .tj-typo-tag-libre {
+        background: rgba(184,147,90,0.15);
+        color: var(--gold);
+    }
+
+    .tj-typo-tag-reserve {
+        background: rgba(12,12,10,0.08);
+        color: var(--muted);
+    }
+
+    /* ── TABLEAU LOTES ── */
+    .tj-table-wrap {
+        margin-top: 40px;
+        overflow-x: auto;
+        border: 0.5px solid var(--border);
+    }
+
+    .tj-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: 'DM Mono', monospace;
+    }
+
+        .tj-table thead tr {
+            background: var(--ink);
+        }
+
+        .tj-table thead th {
+            font-size: 8px;
+            font-weight: 300;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.5);
+            padding: 14px 20px;
+            text-align: left;
+            border-right: 0.5px solid rgba(255,255,255,0.05);
+            white-space: nowrap;
+        }
+
+        .tj-table tbody tr {
+            border-bottom: 0.5px solid var(--border);
+            transition: background .12s;
+        }
+
+            .tj-table tbody tr:hover {
+                background: #fff;
+            }
+
+        .tj-table tbody td {
+            font-size: 12px;
+            font-weight: 300;
+            color: var(--muted);
+            padding: 14px 20px;
+            border-right: 0.5px solid var(--border);
+            white-space: nowrap;
+        }
+
+            .tj-table tbody td:first-child {
+                color: var(--gold);
+                font-weight: 400;
+            }
+
+            .tj-table tbody td.prix {
+                color: var(--ink);
+                font-weight: 400;
+            }
+
+    .tj-status-libre {
+        display: inline-block;
+        background: rgba(184,147,90,0.12);
+        color: var(--gold);
+        font-size: 8px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 3px 8px;
+    }
+
+    .tj-status-reserve {
+        display: inline-block;
+        background: rgba(12,12,10,0.07);
+        color: var(--hint);
+        font-size: 8px;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 3px 8px;
+    }
+
+    /* ── CONDITIONS ACQUISITION ── */
+    .tj-acq-grid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 1px;
+        background: var(--border);
+        margin-top: 40px;
+    }
+
+    .tj-acq-step {
+        background: var(--cream);
+        padding: 32px 24px;
+        transition: background .18s;
+    }
+
+        .tj-acq-step:hover {
+            background: #fff;
+        }
+
+    .tj-acq-num {
+        font-family: 'DM Mono', monospace;
+        font-size: 28px;
+        font-weight: 300;
+        color: var(--gold);
+        line-height: 1;
+        margin-bottom: 8px;
+    }
+
+    .tj-acq-label {
+        font-family: 'DM Mono', monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--hint);
+        margin-bottom: 8px;
+    }
+
+    .tj-acq-desc {
+        font-size: 15px;
+        font-weight: 300;
+        color: var(--ink);
+        line-height: 1.3;
+    }
+
+    /* ── ATOUTS ── */
+    .tj-atouts {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1px;
+        background: var(--border);
+        margin-top: 40px;
+    }
+
+    .tj-atout {
+        background: var(--cream);
+        padding: 28px 28px;
+        border-left: 2px solid transparent;
+        transition: all .18s;
+    }
+
+        .tj-atout:hover {
+            background: #fff;
+            border-left-color: var(--gold);
+        }
+
+    .tj-atout-icon {
+        font-size: 20px;
+        margin-bottom: 12px;
+    }
+
+    .tj-atout-title {
+        font-size: 18px;
+        font-weight: 300;
+        color: var(--ink);
+        margin-bottom: 6px;
+    }
+
+    .tj-atout-desc {
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        font-weight: 300;
+        color: var(--hint);
+        line-height: 1.6;
+        letter-spacing: 0.03em;
+    }
+
+    /* ── PROXIMITÉS ── */
+    .tj-prox-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 48px;
+        margin-top: 40px;
+    }
+
+    .tj-prox-col-title {
+        font-family: 'DM Mono', monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 20px;
+    }
+
+    .tj-prox-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .tj-prox-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 0;
+        border-bottom: 0.5px solid var(--border);
+    }
+
+    .tj-prox-name {
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        font-weight: 300;
+        color: var(--muted);
+    }
+
+    .tj-prox-dist {
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        font-weight: 400;
+        color: var(--gold);
+    }
+
+    /* ── CTA SIDEBAR LAYOUT ── */
+    .tj-body-layout {
+        display: grid;
+        grid-template-columns: 1fr 360px;
+        gap: 64px;
+        align-items: start;
+    }
+
+    .tj-sidebar {
+        position: sticky;
+        top: 88px;
+    }
+
+    .tj-cta-card {
+        background: var(--ink);
+        padding: 36px 32px;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 16px;
+    }
+
+        .tj-cta-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(212,180,131,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(212,180,131,0.04) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+    .tj-cta-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .tj-cta-pretitle {
+        font-family: 'DM Mono', monospace;
+        font-size: 8px;
+        font-weight: 300;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 12px;
+    }
+
+    .tj-cta-title {
+        font-size: 26px;
+        font-weight: 300;
+        color: #fff;
+        line-height: 1.15;
+        margin-bottom: 8px;
+    }
+
+        .tj-cta-title em {
+            font-style: italic;
+            color: var(--gold2);
+        }
+
+    .tj-cta-sub {
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        font-weight: 300;
+        color: rgba(255,255,255,0.35);
+        line-height: 1.65;
+        margin-bottom: 28px;
+        letter-spacing: 0.03em;
+    }
+
+    .tj-btn-primary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        padding: 16px;
+        font-family: 'DM Mono', monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--ink);
+        background: var(--gold);
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background .2s;
+        margin-bottom: 8px;
+    }
+
+        .tj-btn-primary:hover {
+            background: var(--gold2);
+            color: var(--ink);
+        }
+
+    .tj-btn-secondary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        width: 100%;
+        padding: 14px;
+        font-family: 'DM Mono', monospace;
+        font-size: 9px;
+        font-weight: 300;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.4);
+        background: none;
+        border: 0.5px solid rgba(255,255,255,0.12);
+        cursor: pointer;
+        text-decoration: none;
+        transition: all .2s;
+    }
+
+        .tj-btn-secondary:hover {
+            border-color: rgba(255,255,255,0.35);
+            color: #fff;
+        }
+
+    .tj-info-card {
+        background: var(--warm);
+        padding: 28px 28px;
+        border: 0.5px solid var(--border);
+    }
+
+    .tj-info-title {
+        font-family: 'DM Mono', monospace;
+        font-size: 8px;
+        font-weight: 300;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--gold);
+        margin-bottom: 18px;
+    }
+
+    .tj-info-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 0.5px solid var(--border);
+    }
+
+        .tj-info-row:last-child {
+            border-bottom: none;
+        }
+
+    .tj-info-key {
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        font-weight: 300;
+        color: var(--hint);
+    }
+
+    .tj-info-val {
+        font-size: 15px;
+        font-weight: 300;
+        color: var(--ink);
+        text-align: right;
+    }
+
+    /* ── CTA FINAL ── */
+    .tj-final {
+        background: var(--teal);
+        padding: 80px 0;
+        position: relative;
+        overflow: hidden;
+    }
+
+        .tj-final::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(212,180,131,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(212,180,131,0.04) 1px, transparent 1px);
+            background-size: 48px 48px;
+        }
+
+    .tj-final-content {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 48px;
+    }
+
+    .tj-final-title {
+        font-size: clamp(28px, 3.5vw, 46px);
+        font-weight: 300;
+        color: #fff;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+    }
+
+        .tj-final-title em {
+            font-style: italic;
+            color: var(--gold2);
+        }
+
+    .tj-final-sub {
+        font-family: 'DM Mono', monospace;
+        font-size: 11px;
+        font-weight: 300;
+        color: rgba(255,255,255,0.35);
+        margin-top: 10px;
+        line-height: 1.65;
+        letter-spacing: 0.04em;
+    }
+
+    .tj-final-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-family: 'DM Mono', monospace;
+        font-size: 10px;
+        font-weight: 300;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--ink);
+        text-decoration: none;
+        background: var(--gold);
+        padding: 18px 36px;
+        transition: background .2s, transform .15s;
+        white-space: nowrap;
+        flex-shrink: 0;
+    }
+
+        .tj-final-btn:hover {
+            background: var(--gold2);
+            color: var(--ink);
+            transform: translateY(-2px);
+        }
+
+    /* Responsive */
+    @@media (max-width: 1100px) {
+        .tj-typo-grid {
+            grid-template-columns: repeat(2,1fr);
+        }
+
+        .tj-acq-grid {
+            grid-template-columns: repeat(3,1fr);
+        }
+    }
+
+    @@media (max-width: 900px) {
+        .tj-hero {
+            grid-template-columns: 1fr;
+        }
+
+        .tj-hero-right {
+            display: none;
+        }
+
+        .tj-hero-left {
+            min-height: 60vh;
+            padding: 80px 28px 48px;
+        }
+
+        .tj-body-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .tj-sidebar {
+            position: static;
+        }
+
+        .tj-prox-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .tj-final-content {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    @@media (max-width: 640px) {
+        .tj-typo-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .tj-acq-grid {
+            grid-template-columns: repeat(2,1fr);
+        }
+
+        .tj-atouts {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<style>
+    /* ── Spécifique Horizonte Atlântico ── */
+    .tj-body-layout > div { min-width: 0; }
+    .ha-hero-right-img { opacity: 0.75 !important; object-position: center 70%; }
+    .ha-plan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); margin-top: 32px; }
+    .ha-plan { background: #fff; padding: 18px; cursor: pointer; }
+    .ha-plan img { width: 100%; height: auto; display: block; }
+    .ha-plan-cap { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-top: 12px; text-align: center; }
+    .ha-implant { margin-top: 32px; background: #fff; border: 0.5px solid var(--border); padding: 12px; cursor: pointer; }
+    .ha-implant img { width: 100%; height: auto; display: block; }
+    .ha-gallery { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 400px 280px; gap: 3px; background: #0c0c0a; height: 680px; overflow: hidden; margin: 8px 0 0; }
+    .ha-gallery > div { overflow: hidden; position: relative; cursor: pointer; }
+    .ha-gallery img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+    .ha-gallery > div:hover img { transform: scale(1.04); }
+    .ha-quote { margin-top: 28px; padding: 28px 32px; border-left: 2px solid var(--gold); background: var(--warm); font-size: 20px; font-style: italic; font-weight: 300; line-height: 1.45; color: var(--ink); }
+    .ha-partner { display: flex; gap: 20px; align-items: flex-start; margin-top: 28px; padding: 24px 28px; border: 0.5px solid var(--border); background: #fff; }
+    .ha-partner-name { font-size: 20px; font-weight: 400; color: var(--ink); margin-bottom: 4px; }
+    @@media (max-width: 900px) {
+        .ha-plan-grid { grid-template-columns: 1fr; }
+        .ha-gallery { grid-template-columns: 1fr; grid-template-rows: 300px 200px 200px; height: auto; }
+        .ha-gallery > div:first-child { grid-row: auto !important; }
+    }
+</style>
+
+<div class="tj">
+
+    <!-- ── HERO ── -->
+    <section class="tj-hero">
+        <div class="tj-hero-left">
+            <div class="tj-badges">
+                <span class="tj-badge">Nouveau programme</span>
+                <span class="tj-badge-outline">15 villas · T4</span>
+                <span class="tj-badge-outline">PIP favorable</span>
+            </div>
+            <p class="tj-pretitle">Horizonte Atlântico · Gulpilhares, Vila Nova de Gaia</p>
+            <h1 class="tj-hero-h1">
+                Horizonte<br>
+                <em>Atlântico</em>
+            </h1>
+            <p class="tj-hero-sub">
+                Complexe résidentiel de 15 villas individuelles T4 sur deux niveaux, avec jardin privatif et garage pour deux voitures. Rua do Monte, Gulpilhares — entre l'océan et Porto.
+            </p>
+            <div class="tj-hero-stats">
+                <div>
+                    <div class="tj-hero-stat-num">15</div>
+                    <div class="tj-hero-stat-label">Villas</div>
+                </div>
+                <div>
+                    <div class="tj-hero-stat-num">T4</div>
+                    <div class="tj-hero-stat-label">2 niveaux</div>
+                </div>
+                <div>
+                    <div class="tj-hero-stat-num">343–838</div>
+                    <div class="tj-hero-stat-label">m² de terrain</div>
+                </div>
+                <div>
+                    <div class="tj-hero-stat-num">15 min</div>
+                    <div class="tj-hero-stat-label">de Porto</div>
+                </div>
+            </div>
+        </div>
+        <div class="tj-hero-right">
+            <img class="tj-hero-right-img ha-hero-right-img" src="/images/gulpilhares/ha_jardim_piscina.jpg" alt="Horizonte Atlântico – villa avec jardin et piscine" />
+            <div class="tj-hero-right-overlay"></div>
+        </div>
+    </section>
+
+    <!-- ── BANDE PRIX ── -->
+    <div class="tj-prix-band">
+        <div class="container">
+            <div class="tj-prix-inner">
+                <div class="tj-prix-item">
+                    <div class="tj-prix-label">Villa T4 à partir de</div>
+                    <div class="tj-prix-val">@prixDesde</div>
+                </div>
+                <div class="tj-prix-sep"></div>
+                <div class="tj-prix-item">
+                    <div class="tj-prix-label">Surface de construction</div>
+                    <div class="tj-prix-val">182 à 193 m²</div>
+                </div>
+                <div class="tj-prix-sep"></div>
+                <div class="tj-prix-item">
+                    <div class="tj-prix-label">Terrain par lot</div>
+                    <div class="tj-prix-val">343 à 838 m²</div>
+                </div>
+                <div class="tj-prix-sep"></div>
+                <div class="tj-prix-item">
+                    <div class="tj-prix-label">Lots disponibles</div>
+                    <div class="tj-prix-val">15 / 15</div>
+                </div>
+                <div class="tj-prix-sep"></div>
+                <div class="tj-prix-item">
+                    <div class="tj-prix-label">Adresse</div>
+                    <div class="tj-prix-val" style="font-size:14px">Rua do Monte, Gulpilhares – V.N. Gaia</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── CORPS ── -->
+    <div class="container" style="padding-top:64px; padding-bottom:80px">
+        <div class="tj-body-layout">
+
+            <!-- Contenu principal -->
+            <div>
+
+                <!-- Présentation -->
+                <div class="tj-section" style="padding-top:0">
+                    <p class="tj-section-label">Le programme</p>
+                    <h2 class="tj-section-h2">
+                        15 villas familiales<br><em>à deux pas de l'Atlantique</em>
+                    </h2>
+                    <p class="tj-text">
+                        Horizonte Atlântico est une opération de lotissement destinée à l'habitat unifamilial, située Rua do Monte, dans l'Union des paroisses de Gulpilhares et Valadares, commune de Vila Nova de Gaia (district de Porto).
+                    </p>
+                    <p class="tj-text" style="margin-top:12px">
+                        Le projet bénéficie d'un Pedido de Informação Prévia (PIP) favorable émis par Gaiurb – Urbanismo e Habitação, EM, au titre du Décret-Loi n.º 555/99. Le terrain est classé en Sol Urbain, zone urbanisée en transformation — typologie de villas.
+                    </p>
+                </div>
+
+                <!-- Atouts -->
+                <div class="tj-section">
+                    <p class="tj-section-label">Points forts du programme</p>
+                    <h2 class="tj-section-h2">Espace, intimité,<br><em>océan & valorisation</em></h2>
+                    <div class="tj-atouts">
+                        <div class="tj-atout"><div class="tj-atout-icon">✦</div><div class="tj-atout-title">Villas T4 sur 2 niveaux</div><div class="tj-atout-desc">De 182 à 193 m² de construction, suite au rez-de-chaussée, séjour/cuisine ouvert et trois chambres à l'étage.</div></div>
+                        <div class="tj-atout"><div class="tj-atout-icon">🌿</div><div class="tj-atout-title">Jardin & terrasse privatifs</div><div class="tj-atout-desc">Des lots de 343 à 838 m² avec espaces extérieurs généreux, pensés pour la vie de famille.</div></div>
+                        <div class="tj-atout"><div class="tj-atout-icon">🚗</div><div class="tj-atout-title">Garage pour 2 voitures</div><div class="tj-atout-desc">Stationnement intégré à chaque villa, voie interne de circulation simple et sécurisée.</div></div>
+                        <div class="tj-atout"><div class="tj-atout-icon">🌊</div><div class="tj-atout-title">Plages à proximité</div><div class="tj-atout-desc">Gulpilhares, sur la côte de Gaia : plages et front de mer à quelques minutes.</div></div>
+                        <div class="tj-atout"><div class="tj-atout-icon">🛣</div><div class="tj-atout-title">A29 à 5 min · Porto à 15 min</div><div class="tj-atout-desc">Accès rapides, train à Francelos, écoles et commerces à proximité.</div></div>
+                        <div class="tj-atout"><div class="tj-atout-icon">📈</div><div class="tj-atout-title">PIP favorable</div><div class="tj-atout-desc">Projet validé en amont par la Gaiurb : un cadre sécurisé et un fort potentiel de valorisation.</div></div>
+                    </div>
+                </div>
+
+                <!-- Typologie -->
+                <div class="tj-section">
+                    <p class="tj-section-label">Typologie T4 · 2 niveaux</p>
+                    <h2 class="tj-section-h2">Des espaces pensés<br><em>pour mieux vivre</em></h2>
+                    <div class="tj-typo-grid">
+
+                        <div class="tj-typo-card">
+                            <p class="tj-typo-ref">Rez-de-chaussée</p>
+                            <div class="tj-typo-name">R/C</div>
+                            <div class="tj-typo-surface">Pièces de vie</div>
+                            <div class="tj-typo-specs">
+                                <div class="tj-typo-spec"><span>Séjour & cuisine</span><span>31,0 m²</span></div>
+                                <div class="tj-typo-spec"><span>Suite (R/C)</span><span>17,0 m²</span></div>
+                                <div class="tj-typo-spec"><span>Hall</span><span>5,5 m²</span></div>
+                                <div class="tj-typo-spec"><span>WC</span><span>2,4 m²</span></div>
+                                <div class="tj-typo-spec"><span>Garage</span><span>2 voitures</span></div>
+                            </div>
+                            <p class="tj-text" style="font-size:11px">Ambiances amples, lumineuses et fonctionnelles, ouvertes sur la terrasse et le jardin.</p>
+                        </div>
+
+                        <div class="tj-typo-card">
+                            <p class="tj-typo-ref">Étage (Piso 1)</p>
+                            <div class="tj-typo-name">Piso 1</div>
+                            <div class="tj-typo-surface">Espace nuit</div>
+                            <div class="tj-typo-specs">
+                                <div class="tj-typo-spec"><span>Suite</span><span>22,6 m²</span></div>
+                                <div class="tj-typo-spec"><span>Chambre</span><span>12,6 m²</span></div>
+                                <div class="tj-typo-spec"><span>Chambre</span><span>12,2 m²</span></div>
+                                <div class="tj-typo-spec"><span>Salle de bain</span><span>6,6 m²</span></div>
+                                <div class="tj-typo-spec"><span>Balcons</span><span>4,0 + 3,3 m²</span></div>
+                            </div>
+                            <p class="tj-text" style="font-size:11px">Lumière naturelle, finitions contemporaines et rangements intégrés.</p>
+                        </div>
+
+                        <div class="tj-typo-card">
+                            <p class="tj-typo-ref">La villa</p>
+                            <div class="tj-typo-name">T4</div>
+                            <div class="tj-typo-surface">182,6 à 192,5 m² (total max.)</div>
+                            <div class="tj-typo-specs">
+                                <div class="tj-typo-spec"><span>Niveaux</span><span>2</span></div>
+                                <div class="tj-typo-spec"><span>Hauteur façade</span><span>6,00 m</span></div>
+                                <div class="tj-typo-spec"><span>Imperméabilisation</span><span>0,22</span></div>
+                                <div class="tj-typo-spec"><span>Terrain</span><span>343 – 838 m²</span></div>
+                            </div>
+                            <div class="tj-typo-prix">@prixDesde</div>
+                            <div class="tj-typo-prix-label">Prix à partir de · selon lot</div>
+                            <span class="tj-typo-tag tj-typo-tag-libre">15 lots disponibles</span>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Galerie -->
+                <div class="tj-section">
+                    <p class="tj-section-label">Galerie</p>
+                    <h2 class="tj-section-h2">Qualité<br><em>dans les détails</em></h2>
+                    <div class="ha-gallery">
+                        <div style="grid-row:1/3" onclick="openLightbox(0)">
+                            <img src="/images/gulpilhares/ha_sala_cozinha.jpg" alt="Séjour et cuisine" />
+                            <span style="position:absolute;top:20px;left:20px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:#0c0c0a;background:#d4b483;padding:5px 12px">Villa T4 · 15 lots</span>
+                            <button onclick="event.stopPropagation();openLightbox(0)" style="position:absolute;bottom:18px;right:18px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:rgba(12,12,10,.55);border:0.5px solid rgba(255,255,255,.2);padding:8px 16px;cursor:pointer;backdrop-filter:blur(4px)">
+                                Voir les <span id="ha-count"></span> photos →
+                            </button>
+                        </div>
+                        <div onclick="openLightbox(1)"><img src="/images/gulpilhares/ha_piscina_noite.jpg" alt="Jardin et piscine de nuit" /></div>
+                        <div onclick="openLightbox(2)"><img src="/images/gulpilhares/ha_suite.jpg" alt="Suite" /></div>
+                    </div>
+                </div>
+
+                <!-- Plans -->
+                <div class="tj-section">
+                    <p class="tj-section-label">Plans de la villa</p>
+                    <h2 class="tj-section-h2">Rez-de-chaussée<br><em>& étage</em></h2>
+                    <div class="ha-plan-grid">
+                        <div class="ha-plan" onclick="openLightbox(images.indexOf('/images/gulpilhares/ha_planta_rc.jpg'))">
+                            <img src="/images/gulpilhares/ha_planta_rc.jpg" alt="Plan rez-de-chaussée" loading="lazy" />
+                            <p class="ha-plan-cap">Rés-do-chão</p>
+                        </div>
+                        <div class="ha-plan" onclick="openLightbox(images.indexOf('/images/gulpilhares/ha_planta_piso1.jpg'))">
+                            <img src="/images/gulpilhares/ha_planta_piso1.jpg" alt="Plan étage" loading="lazy" />
+                            <p class="ha-plan-cap">Piso 1</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Implantation -->
+                <div class="tj-section">
+                    <p class="tj-section-label">Concept d'implantation</p>
+                    <h2 class="tj-section-h2">Un ensemble<br><em>harmonieux et contemporain</em></h2>
+                    <p class="tj-text">
+                        Implantation en bande adaptée à la topographie existante, lots bien délimités avec espaces extérieurs entre bâti, voirie et espaces verts. Voie interne de circulation simple et sûre, accès piétons clairs, stationnement intégré, murs et limites pensés pour garantir l'intimité : un environnement résidentiel calme, idéal pour la vie de famille.
+                    </p>
+                    <div class="ha-implant" onclick="openLightbox(images.indexOf('/images/gulpilhares/ha_implantacao.jpg'))">
+                        <img src="/images/gulpilhares/ha_implantacao.jpg" alt="Plan d'implantation des 15 lots" loading="lazy" />
+                    </div>
+                </div>
+
+                <!-- Tableau des lots -->
+                <div class="tj-section">
+                    <p class="tj-section-label">Disponibilité</p>
+                    <h2 class="tj-section-h2">Tableau des lots<br><em>& surfaces</em></h2>
+                    <div class="tj-table-wrap">
+                        <table class="tj-table">
+                            <thead>
+                                <tr>
+                                    <th>Lot</th>
+                                    <th>Terrain</th>
+                                    <th>Implantation</th>
+                                    <th>Surface brute</th>
+                                    <th>Stationnement</th>
+                                    <th>Total max.</th>
+                                    <th>Statut</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var l in lots)
+                                {
+                                    <tr>
+                                        <td>@l.Lot.ToString("00")</td>
+                                        <td>@l.Terrain m²</td>
+                                        <td>@l.Implantation m²</td>
+                                        <td>@l.Brute m²</td>
+                                        <td>@l.Parking m²</td>
+                                        <td class="prix">@l.Total m²</td>
+                                        <td><span class="@(l.Statut == "Disponible" ? "tj-status-libre" : "tj-status-reserve")">@l.Statut</span></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="tj-text" style="margin-top:12px;font-size:10px">Surfaces indicatives en m², selon PIP. Prix par lot sur demande.</p>
+                </div>
+
+                <!-- Terrain -->
+                <div class="tj-section">
+                    <p class="tj-section-label">Caractérisation du terrain</p>
+                    <h2 class="tj-section-h2">9 888 m²<br><em>en zone urbaine</em></h2>
+                    <div class="tj-prox-list" style="margin-top:24px">
+                        <div class="tj-prox-item"><span class="tj-prox-name">Surface totale du terrain</span><span class="tj-prox-dist">9 888,00 m²</span></div>
+                        <div class="tj-prox-item"><span class="tj-prox-name">Topographie</span><span class="tj-prox-dist">Pente marquée Nord → Sud</span></div>
+                        <div class="tj-prox-item"><span class="tj-prox-name">État actuel</span><span class="tj-prox-dist">Non bâti, couvert végétal</span></div>
+                        <div class="tj-prox-item"><span class="tj-prox-name">Classement</span><span class="tj-prox-dist">Sol urbain – typologie villas</span></div>
+                        <div class="tj-prox-item"><span class="tj-prox-name">Autorisation</span><span class="tj-prox-dist">PIP favorable – Gaiurb</span></div>
+                    </div>
+                </div>
+
+                <!-- Localisation -->
+                <div class="tj-section">
+                    <p class="tj-section-label">Localisation</p>
+                    <h2 class="tj-section-h2">Rua do Monte<br><em>Gulpilhares, Vila Nova de Gaia</em></h2>
+                    <p class="tj-text">Une zone résidentielle consolidée, avec accès facile à une large gamme de services et d'infrastructures, entre les plages de la côte de Gaia et le centre de Porto.</p>
+                    <div class="tj-prox-grid">
+                        <div>
+                            <p class="tj-prox-col-title">Accessibilité</p>
+                            <div class="tj-prox-list">
+                                <div class="tj-prox-item"><span class="tj-prox-name">Autoroute A29</span><span class="tj-prox-dist">5 min</span></div>
+                                <div class="tj-prox-item"><span class="tj-prox-name">Porto</span><span class="tj-prox-dist">15 min</span></div>
+                                <div class="tj-prox-item"><span class="tj-prox-name">Gare de Francelos</span><span class="tj-prox-dist">Proche</span></div>
+                                <div class="tj-prox-item"><span class="tj-prox-name">Plages de Gaia</span><span class="tj-prox-dist">Proches</span></div>
+                                <div class="tj-prox-item"><span class="tj-prox-name">Écoles & commerces</span><span class="tj-prox-dist">Proches</span></div>
+                            </div>
+                        </div>
+                        <div style="cursor:pointer" onclick="openLightbox(images.indexOf('/images/gulpilhares/ha_vista_aerea.jpg'))">
+                            <img src="/images/gulpilhares/ha_vista_aerea.jpg" alt="Vue aérienne du terrain, océan en arrière-plan" style="width:100%;height:auto;display:block" loading="lazy" />
+                            <p class="ha-plan-cap">Le terrain · vue vers l'océan</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Investissement -->
+                <div class="tj-section">
+                    <p class="tj-section-label">Investir avec sécurité et potentiel</p>
+                    <h2 class="tj-section-h2">Un investissement<br><em>d'avenir</em></h2>
+                    <p class="tj-text">Localisation stratégique proche de Porto, accès rapides par l'A29, plages et train à Francelos, typologie T4 très recherchée et PIP favorable : tous les éléments d'une valorisation durable.</p>
+                    <div class="ha-quote">Ce programme réunit les caractéristiques essentielles d'une valorisation future et d'une demande soutenue sur le marché résidentiel.</div>
+                    <div class="ha-partner">
+                        <div>
+                            <p class="tj-section-label" style="margin-bottom:8px">Partenaire financement</p>
+                            <div class="ha-partner-name">Alvida Capital, Unipessoal, Lda</div>
+                            <p class="tj-text" style="font-size:11px">Intermédiation de crédit (registo n.º 0008570) — accompagnement de votre financement bancaire.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Sidebar -->
+            <div class="tj-sidebar">
+                <div class="tj-cta-card">
+                    <div class="tj-cta-content">
+                        <p class="tj-cta-pretitle">Human Square · Commercialisation</p>
+                        <h3 class="tj-cta-title">Intéressé par<br><em>une villa ?</em></h3>
+                        <p class="tj-cta-sub">Contactez notre équipe pour recevoir la brochure complète, connaître le prix par lot et organiser une visite du terrain.</p>
+                        <a asp-controller="Contact" asp-action="Contact" class="tj-btn-primary">
+                            Demander une visite
+                            <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                        </a>
+                        <a asp-controller="Contact" asp-action="Contact" class="tj-btn-secondary">
+                            Recevoir la brochure PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tj-info-card">
+                    <p class="tj-info-title">Fiche programme</p>
+                    <div>
+                        <div class="tj-info-row"><span class="tj-info-key">Programme</span><span class="tj-info-val">Horizonte Atlântico</span></div>
+                        <div class="tj-info-row"><span class="tj-info-key">Adresse</span><span class="tj-info-val">Rua do Monte, Gulpilhares</span></div>
+                        <div class="tj-info-row"><span class="tj-info-key">Commune</span><span class="tj-info-val">V.N. de Gaia</span></div>
+                        <div class="tj-info-row"><span class="tj-info-key">Nombre de lots</span><span class="tj-info-val">15 villas</span></div>
+                        <div class="tj-info-row"><span class="tj-info-key">Typologie</span><span class="tj-info-val">T4 · 2 niveaux</span></div>
+                        <div class="tj-info-row"><span class="tj-info-key">Construction</span><span class="tj-info-val">182 – 193 m²</span></div>
+                        <div class="tj-info-row"><span class="tj-info-key">Terrain</span><span class="tj-info-val">343 – 838 m²</span></div>
+                        <div class="tj-info-row"><span class="tj-info-key">Garage</span><span class="tj-info-val">2 voitures</span></div>
+                        <div class="tj-info-row"><span class="tj-info-key">Prix à partir de</span><span class="tj-info-val" style="color:var(--gold)">@prixDesde</span></div>
+                        <div class="tj-info-row"><span class="tj-info-key">Référence HS</span><span class="tj-info-val">HS-GULPI-2026</span></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ── CTA FINAL ── -->
+    <section class="tj-final" style="width:100vw;margin-left:calc(-50vw + 50%);position:relative">
+        <div class="container">
+            <div class="tj-final-content">
+                <div>
+                    <h2 class="tj-final-title">
+                        Horizonte Atlântico<br><em>um investimento de futuro</em>
+                    </h2>
+                    <p class="tj-final-sub">
+                        15 villas T4 à Gulpilhares, entre l'océan et Porto. Prenez rendez-vous ou demandez la brochure — notre équipe vous accompagne à chaque étape, jusqu'au financement.
+                    </p>
+                </div>
+                <a asp-controller="Contact" asp-action="Contact" class="tj-final-btn">
+                    Nous contacter
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- ── LIGHTBOX ── -->
+<div id="lightbox" onclick="closeLightbox(event)" style="display:none;position:fixed;inset:0;background:rgba(12,12,10,.95);z-index:9999;align-items:center;justify-content:center;padding:40px">
+    <button onclick="closeLightbox()" style="position:absolute;top:20px;right:24px;font-family:'DM Mono',monospace;font-size:11px;color:rgba(255,255,255,.4);background:none;border:none;cursor:pointer;letter-spacing:.1em">Fermer ✕</button>
+    <button onclick="event.stopPropagation();navLightbox(-1)" style="position:absolute;left:20px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:rgba(255,255,255,.08);border:0.5px solid rgba(255,255,255,.15);color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center">‹</button>
+    <img id="lightbox-img" src="" alt="" style="max-width:100%;max-height:90vh;object-fit:contain;background:#fff" />
+    <button onclick="event.stopPropagation();navLightbox(1)" style="position:absolute;right:20px;top:50%;transform:translateY(-50%);width:44px;height:44px;background:rgba(255,255,255,.08);border:0.5px solid rgba(255,255,255,.15);color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center">›</button>
+    <div id="lightbox-counter" style="position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-family:'DM Mono',monospace;font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.12em"></div>
+</div>
+
+<script>
+    const images = [
+        '/images/gulpilhares/ha_sala_cozinha.jpg',
+        '/images/gulpilhares/ha_piscina_noite.jpg',
+        '/images/gulpilhares/ha_suite.jpg',
+        '/images/gulpilhares/ha_jardim_piscina.jpg',
+        '/images/gulpilhares/ha_facade.jpg',
+        '/images/gulpilhares/ha_sala_escada.jpg',
+        '/images/gulpilhares/ha_hall.jpg',
+        '/images/gulpilhares/ha_corredor.jpg',
+        '/images/gulpilhares/ha_quarto.jpg',
+        '/images/gulpilhares/ha_planta_rc.jpg',
+        '/images/gulpilhares/ha_planta_piso1.jpg',
+        '/images/gulpilhares/ha_implantacao.jpg',
+        '/images/gulpilhares/ha_vista_aerea.jpg',
+        '/images/gulpilhares/ha_localizacao.jpg'
+    ];
+    document.getElementById('ha-count').textContent = images.length;
+
+    let current = 0;
+
+    function openLightbox(idx) {
+        current = Math.max(0, idx);
+        document.getElementById('lightbox-img').src = images[current];
+        document.getElementById('lightbox-counter').textContent = (current + 1) + ' / ' + images.length;
+        document.getElementById('lightbox').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(e) {
+        if (!e || e.target === document.getElementById('lightbox')) {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = '';
+        }
+    }
+
+    function navLightbox(dir) {
+        current = (current + dir + images.length) % images.length;
+        document.getElementById('lightbox-img').src = images[current];
+        document.getElementById('lightbox-counter').textContent = (current + 1) + ' / ' + images.length;
+    }
+
+    document.addEventListener('keydown', e => {
+        if (document.getElementById('lightbox').style.display === 'flex') {
+            if (e.key === 'ArrowRight') navLightbox(1);
+            if (e.key === 'ArrowLeft') navLightbox(-1);
+            if (e.key === 'Escape') closeLightbox({ target: document.getElementById('lightbox') });
+        }
+    });
+</script>

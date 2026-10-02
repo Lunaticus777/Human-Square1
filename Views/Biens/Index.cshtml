@@ -312,7 +312,7 @@
                             {
                                 <p class="hs-desc">@(b.Description.Length > 80 ? b.Description.Substring(0,80) + "…" : b.Description)</p>
                             }
-                            <div class="hs-prix">@b.Prix.ToString("N0") € <small>prix de vente</small></div>
+                            <div class="hs-prix">@if (b.Prix > 0) { @(b.Prix.ToString("N0") + " €") <small>prix de vente</small> } else { <text>Prix sur demande</text> }</div>
                             <div class="hs-specs">
                                 @if (b.Surface.HasValue) { <span class="hs-spec">⬜ @b.Surface m²</span> }
                                 @if (b.NbPieces.HasValue) { <span class="hs-spec">🛏 @b.NbPieces pièces</span> }
@@ -464,7 +464,7 @@
                 <p class="hs-loc">📍 ${b.quartier}, ${b.ville}</p>
                 <h2 class="hs-titre">${b.titre}</h2>
                 <p class="hs-desc">${desc}</p>
-                <div class="hs-prix">${Number(b.prix).toLocaleString('fr-FR')} € <small>prix de vente</small></div>
+                <div class="hs-prix">${b.prix > 0 ? Number(b.prix).toLocaleString('fr-FR') + ' € <small>prix de vente</small>' : 'Prix sur demande'}</div>
                 <div class="hs-specs">${specs}</div>
                 <div class="hs-card-footer"><span class="hs-link">Voir le bien →</span><span class="hs-statut ${sc}">${b.statut}</span></div>
             </div>
@@ -478,6 +478,7 @@
     const slugMap = {
         'HS-JOANE-2024': '/Biens/TerracosDeJoane',
         'HS-LOMBA-2024': '/Biens/Lomba',
+        'HS-GULPI-2026': '/Biens/HorizonteAtlantico',
     };
 
     if (slugMap[b.reference]) {
@@ -498,7 +499,7 @@
     sb.textContent = b.statut; sb.className = `hs-statut ${sc}`;
     document.getElementById('modal-ref').textContent = b.reference || '';
     document.getElementById('modal-ville').textContent = '📍 ' + b.quartier + ', ' + b.ville;
-    document.getElementById('modal-prix').textContent = Number(b.prix).toLocaleString('fr-FR') + ' €';
+    document.getElementById('modal-prix').textContent = b.prix > 0 ? Number(b.prix).toLocaleString('fr-FR') + ' €' : 'Prix sur demande';
     document.getElementById('modal-desc').textContent = b.description || '';
     const specs = [
         b.surface ? { l:'Surface', v: b.surface+' m²' } : null,

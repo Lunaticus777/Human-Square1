@@ -707,7 +707,7 @@
                             _ => "#7a7870"
                         };
 
-                        <a class="hs-bien-card" href="/Biens">
+                        <a class="hs-bien-card" href="@(b.Reference == "HS-GULPI-2026" ? "/Biens/HorizonteAtlantico" : b.Reference == "HS-JOANE-2024" ? "/Biens/TerracosDeJoane" : b.Reference == "HS-LOMBA-2024" ? "/Biens/Lomba" : "/Biens")">
                             <div class="hs-bien-media">
                                 @if (!string.IsNullOrEmpty(b.ImagePrincipale))
                                 {
@@ -725,8 +725,7 @@
                                 <p class="hs-bien-loc">📍 @b.Quartier · @b.Ville</p>
                                 <h3 class="hs-bien-titre">@b.Titre</h3>
                                 <div class="hs-bien-prix">
-                                    @b.Prix.ToString("N0") €
-                                    <small>prix de vente</small>
+                                    @if (b.Prix > 0) { @(b.Prix.ToString("N0") + " €") <small>prix de vente</small> } else { <text>Prix sur demande</text> }
                                 </div>
                                 <div class="hs-bien-specs">
                                     @if (b.Surface.HasValue)

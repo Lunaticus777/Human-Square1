@@ -21,6 +21,26 @@ namespace Human_Evolution.Controllers
         public static List<Bien> GetBiensStatiques() => new List<Bien>
         {
             new Bien {
+                Id = 3,
+                Titre = "Horizonte Atlantico  15 villas T4 neuves",
+                Type = "Maison",
+                Ville = "Vila Nova de Gaia",
+                Quartier = "Gulpilhares",
+                Prix = 0, // 0 = "Prix sur demande" — remplacez par le prix le plus bas (ex. 395000)
+                Surface = 182.6m,
+                NbPieces = 4,
+                NbSdb = 3,
+                Reference = "HS-GULPI-2026",
+                Statut = "Disponible",
+                Visible = true,
+                ImagePrincipale = "/images/gulpilhares/ha_jardim_piscina.jpg",
+                Description = "Complexe residentiel de 15 villas T4 sur 2 niveaux, jardin privatif et garage 2 voitures. Terrains de 343 a 838 m2, PIP favorable. A 5 min de l'A29 et 15 min de Porto.",
+                Etat = "Sur plan",
+                Slug = "horizonte-atlantico",
+                DateAjout = new DateTime(2026, 10, 1)
+            },
+
+            new Bien {
                 Id = 1,
                 Titre = "Terracos de Joane  T0, T2, T3 neufs",
                 Type = "Appartement",
@@ -109,6 +129,12 @@ namespace Human_Evolution.Controllers
             return View("~/Views/Biens/T3Joane.cshtml");
         }
 
+        // GET /Biens/HorizonteAtlantico
+        public IActionResult HorizonteAtlantico()
+        {
+            return View("~/Views/Biens/HorizonteAtlantico.cshtml");
+        }
+
         // GET /Biens/Detail/{slug}
         public async Task<IActionResult> Detail(string slug)
         {
@@ -117,6 +143,8 @@ namespace Human_Evolution.Controllers
             // Redirection directe pour les slugs connus
             if (slug == "terracos-de-joane")
                 return RedirectToAction("TerracosDeJoane");
+            if (slug == "horizonte-atlantico")
+                return RedirectToAction("HorizonteAtlantico");
 
             Bien bien = null;
             try

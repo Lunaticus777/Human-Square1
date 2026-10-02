@@ -91,7 +91,7 @@ namespace Human_Evolution.Controllers
                 {
                     Title = "15 villas à Porto",
                     Description = "Projet haut standing à Gaia",
-                    ImageUrl = "/images/gaia.jpg",
+                    ImageUrl = "/images/gulpilhares/ha_jardim_piscina.jpg",
                     ModalId = "modalProjet8"
                 }
             };

@@ -15,12 +15,14 @@ namespace Human_Evolution.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly SmtpSettings _smtp;
         private readonly ApplicationDbContext _context;
+        private readonly MailService _mailService;
 
-        public HomeController(ILogger<HomeController> logger, IOptions<SmtpSettings> smtpOptions, ApplicationDbContext context)
+        public HomeController(ILogger<HomeController> logger, IOptions<SmtpSettings> smtpOptions, ApplicationDbContext context, MailService mailService)
         {
             _logger = logger;
             _smtp = smtpOptions.Value;
             _context = context;
+            _mailService = mailService;
         }
 
         public async Task<IActionResult> Index()
@@ -52,28 +54,19 @@ namespace Human_Evolution.Controllers
         public IActionResult Privacy() => View("~/Views/Home/Privacy.cshtml");
 
         [HttpPost]
-        public IActionResult ServicesContact(ServicesContactViewModel model)
+        public async Task<IActionResult> ServicesContact(ServicesContactViewModel model)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var body = $"Nom: {model.FullName}\nEmail: {model.Email}\n\nDomaines sélectionnés:\n{model.SelectedDomains}\n\nServices sélectionnés:\n{model.SelectedServices}\n\nMessage:\n{model.Message}";
-                    var mail = new MailMessage
-                    {
-                        From = new MailAddress(_smtp.From),
-                        Subject = "Demande via Services & Formations",
-                        Body = body,
-                        IsBodyHtml = false
-                    };
-                    mail.To.Add("geral@human-square.com");
-                    mail.CC.Add("admin@human-square.com");
-                    using var smtpClient = new SmtpClient(_smtp.Host, _smtp.Port)
-                    {
-                        Credentials = new NetworkCredential(_smtp.User, _smtp.Password),
-                        EnableSsl = _smtp.EnableSsl
-                    };
-                    smtpClient.Send(mail);
+                    Func<string?, string?> enc = System.Net.WebUtility.HtmlEncode;
+                    var body = $"<p><strong>Nom :</strong> {enc(model.FullName)}</p>" +
+                               $"<p><strong>Email :</strong> {enc(model.Email)}</p>" +
+                               $"<p><strong>Domaines sélectionnés :</strong><br>{enc(model.SelectedDomains)}</p>" +
+                               $"<p><strong>Services sélectionnés :</strong><br>{enc(model.SelectedServices)}</p>" +
+                               $"<p><strong>Message :</strong><br>{enc(model.Message)}</p>";
+                    await _mailService.SendEmailAsync("Demande via Services & Formations", body, model.Email);
                     TempData["SuccessMessage"] = "Votre message a bien été envoyé.";
                 }
                 catch (Exception ex)

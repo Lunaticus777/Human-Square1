@@ -41,7 +41,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 #region 🧱 MVC + Razor + Localisation
 
-builder.Services.AddControllersWithViews()
+builder.Services.AddControllersWithViews(options =>
+        options.Filters.Add<Human_Evolution.Filters.AntiforgeryRedirectFilter>())
     .AddViewLocalization()
     .AddDataAnnotationsLocalization();
 

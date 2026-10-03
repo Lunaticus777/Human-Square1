@@ -20,7 +20,8 @@ namespace Human_Evolution.Services
             var message = new MimeMessage();
 
             message.From.Add(new MailboxAddress("Human Square", _settings.From));
-            message.To.Add(MailboxAddress.Parse("geralvelho@gmail.com")); // ← Tu reçois le test
+            message.To.Add(MailboxAddress.Parse("geral@human-square.com"));
+            message.Cc.Add(MailboxAddress.Parse("geralvelho@gmail.com"));
             message.Subject = subject;
 
             var builder = new BodyBuilder

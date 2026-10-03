@@ -66,7 +66,8 @@ namespace Human_Evolution.Controllers
                         Body = body,
                         IsBodyHtml = false
                     };
-                    mail.To.Add("admin@human-square.com");
+                    mail.To.Add("geral@human-square.com");
+                    mail.CC.Add("admin@human-square.com");
                     using var smtpClient = new SmtpClient(_smtp.Host, _smtp.Port)
                     {
                         Credentials = new NetworkCredential(_smtp.User, _smtp.Password),

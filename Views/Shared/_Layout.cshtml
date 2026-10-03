@@ -5,16 +5,53 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="@(ViewData["Description"] ?? "Human Square accompagne les projets immobiliers et investissements au Portugal : stratégie, acquisition, réseau local et accompagnement sur mesure.")" />
-    <meta property="og:title" content="@ViewData["Title"] | Human Square" />
-    <meta property="og:description" content="@(ViewData["Description"] ?? "Human Square accompagne les projets immobiliers et investissements au Portugal.")" />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://human-square.com/images/Human_Square_Logo.png" />
-    <meta property="og:url" content="@Context.Request.Scheme://@Context.Request.Host@Context.Request.Path" />
-    <meta name="robots" content="index, follow" />
+@{
+    // SEO : URL canonique toujours en https://www.human-square.com, sans doublons /Home/Index
+    var seoPath = (Context.Request.Path.Value ?? "/").TrimEnd('/');
+    if (string.IsNullOrEmpty(seoPath) || seoPath.Equals("/Home", StringComparison.OrdinalIgnoreCase) || seoPath.Equals("/Home/Index", StringComparison.OrdinalIgnoreCase)) { seoPath = "/"; }
+    var seoUrl = "https://www.human-square.com" + seoPath;
+    var seoTitle = (ViewData["Title"]?.ToString() ?? "Human Square");
+    if (!seoTitle.Contains("Human Square")) { seoTitle += " | Human Square"; }
+    var seoDesc = ViewData["Description"]?.ToString() ?? "Human Square accompagne vos projets immobiliers et investissements au Portugal (Porto, Vila do Conde, Lisbonne) : stratégie, acquisition, promotion immobilière et accompagnement sur mesure.";
+    var seoRobots = ViewData["Robots"]?.ToString() ?? "index, follow, max-image-preview:large";
+}
+    <meta name="description" content="@seoDesc" />
+    <meta name="robots" content="@seoRobots" />
     <meta name="google-site-verification" content="_ek8itCYCOZJ3HXerrZP7iIghOo42_5p1CDo7kecxPI" />
-    <link rel="canonical" href="@Context.Request.Scheme://@Context.Request.Host@Context.Request.Path" />
-    <title>@ViewData["Title"] | Human Square</title>
+    <link rel="canonical" href="@seoUrl" />
+    <meta property="og:site_name" content="Human Square" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:title" content="@seoTitle" />
+    <meta property="og:description" content="@seoDesc" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="@seoUrl" />
+    <meta property="og:image" content="https://www.human-square.com/images/Human_Square_Logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>@seoTitle</title>
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@type": "RealEstateAgent",
+      "@@id": "https://www.human-square.com/#organisation",
+      "name": "Human Square",
+      "legalName": "Human Square, Lda",
+      "url": "https://www.human-square.com/",
+      "logo": "https://www.human-square.com/images/Human_Square_Logo.png",
+      "image": "https://www.human-square.com/images/Human_Square_Logo.png",
+      "description": "Conseil, investissement et promotion immobilière au Portugal.",
+      "email": "geral@human-square.com",
+      "telephone": "+351 923 233 201",
+      "address": {
+        "@@type": "PostalAddress",
+        "streetAddress": "Av. General Humberto Delgado 115",
+        "postalCode": "4480-905",
+        "addressLocality": "Vila do Conde",
+        "addressCountry": "PT"
+      },
+      "areaServed": ["Porto", "Vila do Conde", "Vila Nova de Gaia", "Lisboa", "Viseu", "Albufeira", "Portugal"],
+      "knowsLanguage": ["fr", "pt", "en"]
+    }
+    </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /horizonte/
+Disallow: /Contact/SendMessage
+
+Sitemap: https://www.human-square.com/sitemap.xml

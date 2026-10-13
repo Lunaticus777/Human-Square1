@@ -120,6 +120,7 @@ em{font-style:italic;color:var(--gold)}
 .tab.on{background:var(--navy);color:#fff}
 .plan{display:grid;grid-template-columns:3fr 2fr;gap:clamp(24px,4vw,64px);align-items:center}
 .plan-img{background:#fff;padding:18px;box-shadow:0 30px 60px -40px rgba(15,30,51,.45);cursor:zoom-in}
+.plan-img img{display:block;max-height:min(680px,75vh);width:auto;max-width:100%;margin:0 auto}
 .plan[hidden]{display:none}
 .plan-list{list-style:none;counter-reset:c}
 .plan-list li{counter-increment:c;display:flex;gap:18px;align-items:baseline;padding:16px 0;border-bottom:1px solid var(--line);font-family:var(--serif);font-size:21px}

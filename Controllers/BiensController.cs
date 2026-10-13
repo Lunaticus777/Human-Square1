@@ -26,15 +26,15 @@ namespace Human_Evolution.Controllers
                 Type = "Maison",
                 Ville = "Vila Nova de Gaia",
                 Quartier = "Gulpilhares",
-                Prix = 0, // 0 = "Prix sur demande" — remplacez par le prix le plus bas (ex. 395000)
+                Prix = 520000, // prévente phase 1 (lots 10 à 15), prix le plus bas
                 Surface = 182.6m,
                 NbPieces = 4,
-                NbSdb = 3,
+                NbSdb = 4,
                 Reference = "HS-GULPI-2026",
                 Statut = "Disponible",
                 Visible = true,
-                ImagePrincipale = "/images/gulpilhares/ha_jardim_piscina.jpg",
-                Description = "Complexe residentiel de 15 villas T4 sur 2 niveaux, jardin privatif et garage 2 voitures. Terrains de 343 a 838 m2, PIP favorable. A 5 min de l'A29 et 15 min de Porto.",
+                ImagePrincipale = "/images/gulpilhares/ha_villa.jpg",
+                Description = "15 villas T4 avec 4 suites, jardin privatif et garage 2 voitures. Prévente dès 520 000 € (6 villas en phase 1). Plage à 3,9 km, Porto à 15 min.",
                 Etat = "Sur plan",
                 Slug = "horizonte-atlantico",
                 DateAjout = new DateTime(2026, 10, 1)

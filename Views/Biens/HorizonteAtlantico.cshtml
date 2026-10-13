@@ -1,27 +1,27 @@
 ﻿@{
     ViewData["Title"] = "Horizonte Atlântico – 15 villas T4 neuves | Gulpilhares, Vila Nova de Gaia";
-    ViewData["Description"] = "Complexe résidentiel Horizonte Atlântico à Gulpilhares (Vila Nova de Gaia) : 15 villas T4 sur 2 niveaux, jardin privatif, garage 2 voitures, à 5 min de l'A29 et 15 min de Porto.";
+    ViewData["Description"] = "Horizonte Atlântico à Gulpilhares (Vila Nova de Gaia) : 15 villas T4 avec 4 suites, jardin privatif et garage 2 voitures, à 3,9 km de la plage et 15 min de Porto. Prévente dès 520 000 €.";
 
-    // ── PRIX « À PARTIR DE » ── modifiez ici (ex. "395 000 €")
-    var prixDesde = "Prix sur demande";
+    // ── PRIX « À PARTIR DE » ── prévente phase 1 (lots 10 à 15)
+    var prixDesde = "520 000 €";
 
-    // ── TABLEAU DES LOTS (source : brochure, surfaces en m²) ── Statut : "Disponible" / "Réservé" / "Vendu"
+    // ── TABLEAU DES LOTS (source : Descriptif technique v1.0 + brochure, surfaces en m²) ── Statut : "Disponible" / "Réservé" / "Vendu" / "Phase 2"
     var lots = new[] {
-        new { Lot = 1,  Terrain = "359,5", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
-        new { Lot = 2,  Terrain = "465,5", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
-        new { Lot = 3,  Terrain = "571,2", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
-        new { Lot = 4,  Terrain = "440,0", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
-        new { Lot = 5,  Terrain = "546,5", Implantation = "119,7", Brute = "157,1", Parking = "36,4", Total = "192,5", Statut = "Disponible" },
-        new { Lot = 6,  Terrain = "568,1", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
-        new { Lot = 7,  Terrain = "668,1", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
-        new { Lot = 8,  Terrain = "756,3", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
-        new { Lot = 9,  Terrain = "838,3", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
-        new { Lot = 10, Terrain = "343,8", Implantation = "113,4", Brute = "154,0", Parking = "36,4", Total = "190,4", Statut = "Disponible" },
-        new { Lot = 11, Terrain = "351,4", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
-        new { Lot = 12, Terrain = "351,4", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
-        new { Lot = 13, Terrain = "351,4", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
-        new { Lot = 14, Terrain = "351,4", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Statut = "Disponible" },
-        new { Lot = 15, Terrain = "360,5", Implantation = "113,4", Brute = "154,0", Parking = "36,4", Total = "190,4", Statut = "Disponible" },
+        new { Lot = 1,  Terrain = "359,5", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Jardin = "—", Terrasse = "—", PrixAvant = "", Prix = "Bientôt", Statut = "Phase 2" },
+        new { Lot = 2,  Terrain = "465,5", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Jardin = "—", Terrasse = "—", PrixAvant = "", Prix = "Bientôt", Statut = "Phase 2" },
+        new { Lot = 3,  Terrain = "571,2", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Jardin = "—", Terrasse = "—", PrixAvant = "", Prix = "Bientôt", Statut = "Phase 2" },
+        new { Lot = 4,  Terrain = "440,0", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Jardin = "—", Terrasse = "—", PrixAvant = "", Prix = "Bientôt", Statut = "Phase 2" },
+        new { Lot = 5,  Terrain = "546,5", Implantation = "119,7", Brute = "157,1", Parking = "36,4", Total = "193,5", Jardin = "—", Terrasse = "—", PrixAvant = "", Prix = "Bientôt", Statut = "Phase 2" },
+        new { Lot = 6,  Terrain = "568,1", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Jardin = "—", Terrasse = "—", PrixAvant = "", Prix = "Bientôt", Statut = "Phase 2" },
+        new { Lot = 7,  Terrain = "668,1", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Jardin = "—", Terrasse = "—", PrixAvant = "", Prix = "Bientôt", Statut = "Phase 2" },
+        new { Lot = 8,  Terrain = "756,3", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Jardin = "—", Terrasse = "—", PrixAvant = "", Prix = "Bientôt", Statut = "Phase 2" },
+        new { Lot = 9,  Terrain = "838,3", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Jardin = "—", Terrasse = "—", PrixAvant = "", Prix = "Bientôt", Statut = "Phase 2" },
+        new { Lot = 10, Terrain = "343,8", Implantation = "113,4", Brute = "154,0", Parking = "28,6", Total = "182,6", Jardin = "172,0", Terrasse = "86,4", PrixAvant = "615 000 €", Prix = "535 850 €", Statut = "Disponible" },
+        new { Lot = 11, Terrain = "351,4", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Jardin = "108,6", Terrasse = "126,9", PrixAvant = "580 000 €", Prix = "520 000 €", Statut = "Disponible" },
+        new { Lot = 12, Terrain = "351,4", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Jardin = "108,6", Terrasse = "126,9", PrixAvant = "580 000 €", Prix = "520 000 €", Statut = "Disponible" },
+        new { Lot = 13, Terrain = "351,4", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Jardin = "108,6", Terrasse = "126,9", PrixAvant = "580 000 €", Prix = "520 000 €", Statut = "Disponible" },
+        new { Lot = 14, Terrain = "351,4", Implantation = "105,6", Brute = "154,0", Parking = "28,6", Total = "182,6", Jardin = "108,6", Terrasse = "126,9", PrixAvant = "580 000 €", Prix = "520 000 €", Statut = "Disponible" },
+        new { Lot = 15, Terrain = "360,5", Implantation = "113,4", Brute = "154,0", Parking = "36,4", Total = "190,4", Jardin = "47,5", Terrasse = "109,5", PrixAvant = "630 000 €", Prix = "550 500 €", Statut = "Disponible" },
     };
 }
 
@@ -935,7 +935,7 @@
             <div class="tj-badges">
                 <span class="tj-badge">Nouveau programme</span>
                 <span class="tj-badge-outline">15 villas · T4</span>
-                <span class="tj-badge-outline">PIP favorable</span>
+                <span class="tj-badge-outline">Prévente dès 520 000 €</span>
             </div>
             <p class="tj-pretitle">Horizonte Atlântico · Gulpilhares, Vila Nova de Gaia</p>
             <h1 class="tj-hero-h1">
@@ -943,7 +943,7 @@
                 <em>Atlântico</em>
             </h1>
             <p class="tj-hero-sub">
-                Complexe résidentiel de 15 villas individuelles T4 sur deux niveaux, avec jardin privatif et garage pour deux voitures. Rua do Monte, Gulpilhares — entre l'océan et Porto.
+                Complexe résidentiel de 15 villas T4 sur deux niveaux, avec jardin privatif, garage pour deux voitures et classe énergétique A visée. Rua do Monte, Gulpilhares — à 3,9 km de la plage et 15 min de Porto.
             </p>
             <div class="tj-hero-stats">
                 <div>
@@ -955,17 +955,17 @@
                     <div class="tj-hero-stat-label">2 niveaux</div>
                 </div>
                 <div>
-                    <div class="tj-hero-stat-num">343–838</div>
-                    <div class="tj-hero-stat-label">m² de terrain</div>
+                    <div class="tj-hero-stat-num">4</div>
+                    <div class="tj-hero-stat-label">Suites</div>
                 </div>
                 <div>
-                    <div class="tj-hero-stat-num">15 min</div>
-                    <div class="tj-hero-stat-label">de Porto</div>
+                    <div class="tj-hero-stat-num">3,9 km</div>
+                    <div class="tj-hero-stat-label">de la plage</div>
                 </div>
             </div>
         </div>
         <div class="tj-hero-right">
-            <img class="tj-hero-right-img ha-hero-right-img" src="/images/gulpilhares/ha_jardim_piscina.jpg" alt="Horizonte Atlântico – villa avec jardin et piscine" />
+            <img class="tj-hero-right-img ha-hero-right-img" src="/images/gulpilhares/ha_villa.jpg" alt="Horizonte Atlântico – villa T4 avec garage" />
             <div class="tj-hero-right-overlay"></div>
         </div>
     </section>
@@ -975,23 +975,23 @@
         <div class="container">
             <div class="tj-prix-inner">
                 <div class="tj-prix-item">
-                    <div class="tj-prix-label">Villa T4 à partir de</div>
+                    <div class="tj-prix-label">Prévente · villa T4 dès</div>
                     <div class="tj-prix-val">@prixDesde</div>
                 </div>
                 <div class="tj-prix-sep"></div>
                 <div class="tj-prix-item">
                     <div class="tj-prix-label">Surface de construction</div>
-                    <div class="tj-prix-val">182 à 193 m²</div>
+                    <div class="tj-prix-val">183 à 194 m²</div>
                 </div>
                 <div class="tj-prix-sep"></div>
                 <div class="tj-prix-item">
                     <div class="tj-prix-label">Terrain par lot</div>
-                    <div class="tj-prix-val">343 à 838 m²</div>
+                    <div class="tj-prix-val">344 à 838 m²</div>
                 </div>
                 <div class="tj-prix-sep"></div>
                 <div class="tj-prix-item">
-                    <div class="tj-prix-label">Lots disponibles</div>
-                    <div class="tj-prix-val">15 / 15</div>
+                    <div class="tj-prix-label">Phase 1 en prévente</div>
+                    <div class="tj-prix-val">6 villas</div>
                 </div>
                 <div class="tj-prix-sep"></div>
                 <div class="tj-prix-item">
@@ -1019,7 +1019,7 @@
                         Horizonte Atlântico est une opération de lotissement destinée à l'habitat unifamilial, située Rua do Monte, dans l'Union des paroisses de Gulpilhares et Valadares, commune de Vila Nova de Gaia (district de Porto).
                     </p>
                     <p class="tj-text" style="margin-top:12px">
-                        Le projet bénéficie d'un Pedido de Informação Prévia (PIP) favorable émis par Gaiurb – Urbanismo e Habitação, EM, au titre du Décret-Loi n.º 555/99. Le terrain est classé en Sol Urbain, zone urbanisée en transformation — typologie de villas.
+                        Le projet bénéficie d'un Pedido de Informação Prévia (PIP) favorable émis par Gaiurb – Urbanismo e Habitação, EM, au titre du Décret-Loi n.º 555/99, et la demande de licenciamento (permis de construire) est en cours auprès de Gaiurb. Le terrain est classé en Sol Urbain, zone urbanisée en transformation — typologie de villas.
                     </p>
                 </div>
 
@@ -1028,12 +1028,12 @@
                     <p class="tj-section-label">Points forts du programme</p>
                     <h2 class="tj-section-h2">Espace, intimité,<br><em>océan & valorisation</em></h2>
                     <div class="tj-atouts">
-                        <div class="tj-atout"><div class="tj-atout-icon">✦</div><div class="tj-atout-title">Villas T4 sur 2 niveaux</div><div class="tj-atout-desc">De 182 à 193 m² de construction, suite au rez-de-chaussée, séjour/cuisine ouvert et trois chambres à l'étage.</div></div>
-                        <div class="tj-atout"><div class="tj-atout-icon">🌿</div><div class="tj-atout-title">Jardin & terrasse privatifs</div><div class="tj-atout-desc">Des lots de 343 à 838 m² avec espaces extérieurs généreux, pensés pour la vie de famille.</div></div>
+                        <div class="tj-atout"><div class="tj-atout-icon">✦</div><div class="tj-atout-title">Villas T4 sur 2 niveaux</div><div class="tj-atout-desc">De 183 à 194 m² de construction : séjour/cuisine ouvert de 32,6 m² et une suite au rez-de-chaussée, trois suites à l'étage.</div></div>
+                        <div class="tj-atout"><div class="tj-atout-icon">🌿</div><div class="tj-atout-title">Jardin & terrasse privatifs</div><div class="tj-atout-desc">Des lots de 344 à 838 m² : jardin engazonné, terrasse en grès cérame et murs de 2 m pour l'intimité.</div></div>
                         <div class="tj-atout"><div class="tj-atout-icon">🚗</div><div class="tj-atout-title">Garage pour 2 voitures</div><div class="tj-atout-desc">Stationnement intégré à chaque villa, voie interne de circulation simple et sécurisée.</div></div>
-                        <div class="tj-atout"><div class="tj-atout-icon">🌊</div><div class="tj-atout-title">Plages à proximité</div><div class="tj-atout-desc">Gulpilhares, sur la côte de Gaia : plages et front de mer à quelques minutes.</div></div>
-                        <div class="tj-atout"><div class="tj-atout-icon">🛣</div><div class="tj-atout-title">A29 à 5 min · Porto à 15 min</div><div class="tj-atout-desc">Accès rapides, train à Francelos, écoles et commerces à proximité.</div></div>
-                        <div class="tj-atout"><div class="tj-atout-icon">📈</div><div class="tj-atout-title">PIP favorable</div><div class="tj-atout-desc">Projet validé en amont par la Gaiurb : un cadre sécurisé et un fort potentiel de valorisation.</div></div>
+                        <div class="tj-atout"><div class="tj-atout-icon">🌊</div><div class="tj-atout-title">Plage à 3,9 km</div><div class="tj-atout-desc">Praia Dunas Mar et le littoral de Gaia, ses promenades en bois et son front de mer.</div></div>
+                        <div class="tj-atout"><div class="tj-atout-icon">🛣</div><div class="tj-atout-title">A29 à 5 min · Porto à 15 min</div><div class="tj-atout-desc">Gare de Francelos à 3,2 km, écoles à 2,5 km, commerces et services à proximité.</div></div>
+                        <div class="tj-atout"><div class="tj-atout-icon">📈</div><div class="tj-atout-title">PIP favorable · classe A</div><div class="tj-atout-desc">Projet validé en amont par la Gaiurb (licenciamento en cours), classe énergétique A visée : un cadre sécurisé et un fort potentiel de valorisation.</div></div>
                     </div>
                 </div>
 
@@ -1048,11 +1048,11 @@
                             <div class="tj-typo-name">R/C</div>
                             <div class="tj-typo-surface">Pièces de vie</div>
                             <div class="tj-typo-specs">
-                                <div class="tj-typo-spec"><span>Séjour & cuisine</span><span>31,0 m²</span></div>
-                                <div class="tj-typo-spec"><span>Suite (R/C)</span><span>17,0 m²</span></div>
-                                <div class="tj-typo-spec"><span>Hall</span><span>5,5 m²</span></div>
-                                <div class="tj-typo-spec"><span>WC</span><span>2,4 m²</span></div>
-                                <div class="tj-typo-spec"><span>Garage</span><span>2 voitures</span></div>
+                                <div class="tj-typo-spec"><span>Séjour & cuisine ouverte</span><span>32,6 m²</span></div>
+                                <div class="tj-typo-spec"><span>Suite (R/C)</span><span>17,2 m²</span></div>
+                                <div class="tj-typo-spec"><span>Hall d'entrée</span><span>9,8 m²</span></div>
+                                <div class="tj-typo-spec"><span>Salle d'eau de service</span><span>3,4 m²</span></div>
+                                <div class="tj-typo-spec"><span>Garage 2 voitures</span><span>28,6 à 47,2 m²</span></div>
                             </div>
                             <p class="tj-text" style="font-size:11px">Ambiances amples, lumineuses et fonctionnelles, ouvertes sur la terrasse et le jardin.</p>
                         </div>
@@ -1060,13 +1060,14 @@
                         <div class="tj-typo-card">
                             <p class="tj-typo-ref">Étage (Piso 1)</p>
                             <div class="tj-typo-name">Piso 1</div>
-                            <div class="tj-typo-surface">Espace nuit</div>
+                            <div class="tj-typo-surface">Trois suites · deux balcons</div>
                             <div class="tj-typo-specs">
-                                <div class="tj-typo-spec"><span>Suite</span><span>22,6 m²</span></div>
-                                <div class="tj-typo-spec"><span>Chambre</span><span>12,6 m²</span></div>
-                                <div class="tj-typo-spec"><span>Chambre</span><span>12,2 m²</span></div>
-                                <div class="tj-typo-spec"><span>Salle de bain</span><span>6,6 m²</span></div>
-                                <div class="tj-typo-spec"><span>Balcons</span><span>4,0 + 3,3 m²</span></div>
+                                <div class="tj-typo-spec"><span>Suite 1 avec dressing</span><span>26,9 m²</span></div>
+                                <div class="tj-typo-spec"><span>Suite 2</span><span>17,8 m²</span></div>
+                                <div class="tj-typo-spec"><span>Suite 3</span><span>14,5 m²</span></div>
+                                <div class="tj-typo-spec"><span>Dégagement</span><span>3,9 m²</span></div>
+                                <div class="tj-typo-spec"><span>Balcon suite 2</span><span>4,4 m²</span></div>
+                                <div class="tj-typo-spec"><span>Balcon suite 1</span><span>2,4 m²</span></div>
                             </div>
                             <p class="tj-text" style="font-size:11px">Lumière naturelle, finitions contemporaines et rangements intégrés.</p>
                         </div>
@@ -1074,16 +1075,17 @@
                         <div class="tj-typo-card">
                             <p class="tj-typo-ref">La villa</p>
                             <div class="tj-typo-name">T4</div>
-                            <div class="tj-typo-surface">182,6 à 192,5 m² (total max.)</div>
+                            <div class="tj-typo-surface">182,6 à 193,5 m² (total max.)</div>
                             <div class="tj-typo-specs">
                                 <div class="tj-typo-spec"><span>Niveaux</span><span>2</span></div>
                                 <div class="tj-typo-spec"><span>Hauteur façade</span><span>6,00 m</span></div>
                                 <div class="tj-typo-spec"><span>Imperméabilisation</span><span>0,22</span></div>
-                                <div class="tj-typo-spec"><span>Terrain</span><span>343 – 838 m²</span></div>
+                                <div class="tj-typo-spec"><span>Terrain</span><span>344 – 838 m²</span></div>
+                                <div class="tj-typo-spec"><span>Classe énergétique</span><span>A (visée)</span></div>
                             </div>
                             <div class="tj-typo-prix">@prixDesde</div>
-                            <div class="tj-typo-prix-label">Prix à partir de · selon lot</div>
-                            <span class="tj-typo-tag tj-typo-tag-libre">15 lots disponibles</span>
+                            <div class="tj-typo-prix-label">Prévente · lots 10 à 15</div>
+                            <span class="tj-typo-tag tj-typo-tag-libre">6 villas en phase 1</span>
                         </div>
 
                     </div>
@@ -1094,15 +1096,15 @@
                     <p class="tj-section-label">Galerie</p>
                     <h2 class="tj-section-h2">Qualité<br><em>dans les détails</em></h2>
                     <div class="ha-gallery">
-                        <div style="grid-row:1/3" onclick="openLightbox(0)">
-                            <img src="/images/gulpilhares/ha_hall_noite.jpg" alt="Hall d'entrée et séjour" />
+                        <div style="grid-row:1/3" onclick="openLightbox(images.indexOf('/images/gulpilhares/ha_terrasse.jpg'))">
+                            <img src="/images/gulpilhares/ha_terrasse.jpg" alt="Terrasse et jardin au coucher du soleil" />
                             <span style="position:absolute;top:20px;left:20px;font-family:'DM Mono',monospace;font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:#0c0c0a;background:#d4b483;padding:5px 12px">Villa T4 · 15 lots</span>
                             <button onclick="event.stopPropagation();openLightbox(0)" style="position:absolute;bottom:18px;right:18px;font-family:'DM Mono',monospace;font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:rgba(12,12,10,.55);border:0.5px solid rgba(255,255,255,.2);padding:8px 16px;cursor:pointer;backdrop-filter:blur(4px)">
                                 Voir les <span id="ha-count"></span> photos →
                             </button>
                         </div>
-                        <div onclick="openLightbox(1)"><img src="/images/gulpilhares/ha_jardim_piscina.jpg" alt="Jardin et piscine" /></div>
-                        <div onclick="openLightbox(2)"><img src="/images/gulpilhares/ha_suite.jpg" alt="Suite" /></div>
+                        <div onclick="openLightbox(images.indexOf('/images/gulpilhares/ha_facade_duo.jpg'))"><img src="/images/gulpilhares/ha_facade_duo.jpg" alt="Villas au coucher du soleil" /></div>
+                        <div onclick="openLightbox(images.indexOf('/images/gulpilhares/ha_cuisine.jpg'))"><img src="/images/gulpilhares/ha_cuisine.jpg" alt="Séjour et cuisine ouverte" /></div>
                     </div>
                 </div>
 
@@ -1111,13 +1113,13 @@
                     <p class="tj-section-label">Plans de la villa</p>
                     <h2 class="tj-section-h2">Rez-de-chaussée<br><em>& étage</em></h2>
                     <div class="ha-plan-grid">
-                        <div class="ha-plan" onclick="openLightbox(images.indexOf('/images/gulpilhares/ha_planta_rc.jpg'))">
-                            <img src="/images/gulpilhares/ha_planta_rc.jpg" alt="Plan rez-de-chaussée" loading="lazy" />
-                            <p class="ha-plan-cap">Rés-do-chão</p>
+                        <div class="ha-plan" onclick="openLightbox(images.indexOf('/images/gulpilhares/ha_plan3d_rc.jpg'))">
+                            <img src="/images/gulpilhares/ha_plan3d_rc.jpg" alt="Plan 3D rez-de-chaussée" loading="lazy" />
+                            <p class="ha-plan-cap">Rez-de-chaussée</p>
                         </div>
-                        <div class="ha-plan" onclick="openLightbox(images.indexOf('/images/gulpilhares/ha_planta_piso1.jpg'))">
-                            <img src="/images/gulpilhares/ha_planta_piso1.jpg" alt="Plan étage" loading="lazy" />
-                            <p class="ha-plan-cap">Piso 1</p>
+                        <div class="ha-plan" onclick="openLightbox(images.indexOf('/images/gulpilhares/ha_plan3d_etage.jpg'))">
+                            <img src="/images/gulpilhares/ha_plan3d_etage.jpg" alt="Plan 3D étage" loading="lazy" />
+                            <p class="ha-plan-cap">Étage</p>
                         </div>
                     </div>
                 </div>
@@ -1148,6 +1150,9 @@
                                     <th>Surface brute</th>
                                     <th>Stationnement</th>
                                     <th>Total max.</th>
+                                    <th>Jardin</th>
+                                    <th>Terrasse</th>
+                                    <th>Prix</th>
                                     <th>Statut</th>
                                 </tr>
                             </thead>
@@ -1161,13 +1166,16 @@
                                         <td>@l.Brute m²</td>
                                         <td>@l.Parking m²</td>
                                         <td class="prix">@l.Total m²</td>
+                                        <td>@(l.Jardin == "—" ? "—" : l.Jardin + " m²")</td>
+                                        <td>@(l.Terrasse == "—" ? "—" : l.Terrasse + " m²")</td>
+                                        <td class="prix">@if (l.PrixAvant != "") { <s style="opacity:.45;font-size:.85em;margin-right:6px">@l.PrixAvant</s> }@l.Prix</td>
                                         <td><span class="@(l.Statut == "Disponible" ? "tj-status-libre" : "tj-status-reserve")">@l.Statut</span></td>
                                     </tr>
                                 }
                             </tbody>
                         </table>
                     </div>
-                    <p class="tj-text" style="margin-top:12px;font-size:10px">Surfaces indicatives en m², selon PIP. Prix par lot sur demande.</p>
+                    <p class="tj-text" style="margin-top:12px;font-size:10px">Surfaces indicatives en m² (valeurs maximales). Prix de prévente de lancement pour la phase 1 (lots 10 à 15) ; jardin et terrasse indiqués pour la phase 1. Lots 1 à 9 commercialisés en phase 2. Prix indicatifs, sous réserve de disponibilité.</p>
                 </div>
 
                 <!-- Terrain -->
@@ -1179,7 +1187,7 @@
                         <div class="tj-prox-item"><span class="tj-prox-name">Topographie</span><span class="tj-prox-dist">Pente marquée Nord → Sud</span></div>
                         <div class="tj-prox-item"><span class="tj-prox-name">État actuel</span><span class="tj-prox-dist">Non bâti, couvert végétal</span></div>
                         <div class="tj-prox-item"><span class="tj-prox-name">Classement</span><span class="tj-prox-dist">Sol urbain – typologie villas</span></div>
-                        <div class="tj-prox-item"><span class="tj-prox-name">Autorisation</span><span class="tj-prox-dist">PIP favorable – Gaiurb</span></div>
+                        <div class="tj-prox-item"><span class="tj-prox-name">Autorisation</span><span class="tj-prox-dist">PIP favorable · licenciamento en cours – Gaiurb</span></div>
                     </div>
                 </div>
 
@@ -1194,9 +1202,9 @@
                             <div class="tj-prox-list">
                                 <div class="tj-prox-item"><span class="tj-prox-name">Autoroute A29</span><span class="tj-prox-dist">5 min</span></div>
                                 <div class="tj-prox-item"><span class="tj-prox-name">Porto</span><span class="tj-prox-dist">15 min</span></div>
-                                <div class="tj-prox-item"><span class="tj-prox-name">Gare de Francelos</span><span class="tj-prox-dist">Proche</span></div>
-                                <div class="tj-prox-item"><span class="tj-prox-name">Plages de Gaia</span><span class="tj-prox-dist">Proches</span></div>
-                                <div class="tj-prox-item"><span class="tj-prox-name">Écoles & commerces</span><span class="tj-prox-dist">Proches</span></div>
+                                <div class="tj-prox-item"><span class="tj-prox-name">Plage Praia Dunas Mar</span><span class="tj-prox-dist">3,9 km</span></div>
+                                <div class="tj-prox-item"><span class="tj-prox-name">Gare de Francelos</span><span class="tj-prox-dist">3,2 km</span></div>
+                                <div class="tj-prox-item"><span class="tj-prox-name">Écoles</span><span class="tj-prox-dist">2,5 km</span></div>
                             </div>
                         </div>
                         <div style="cursor:pointer" onclick="openLightbox(images.indexOf('/images/gulpilhares/ha_vista_aerea.jpg'))">
@@ -1248,10 +1256,12 @@
                         <div class="tj-info-row"><span class="tj-info-key">Commune</span><span class="tj-info-val">V.N. de Gaia</span></div>
                         <div class="tj-info-row"><span class="tj-info-key">Nombre de lots</span><span class="tj-info-val">15 villas</span></div>
                         <div class="tj-info-row"><span class="tj-info-key">Typologie</span><span class="tj-info-val">T4 · 2 niveaux</span></div>
-                        <div class="tj-info-row"><span class="tj-info-key">Construction</span><span class="tj-info-val">182 – 193 m²</span></div>
-                        <div class="tj-info-row"><span class="tj-info-key">Terrain</span><span class="tj-info-val">343 – 838 m²</span></div>
+                        <div class="tj-info-row"><span class="tj-info-key">Construction</span><span class="tj-info-val">183 – 194 m²</span></div>
+                        <div class="tj-info-row"><span class="tj-info-key">Terrain</span><span class="tj-info-val">344 – 838 m²</span></div>
                         <div class="tj-info-row"><span class="tj-info-key">Garage</span><span class="tj-info-val">2 voitures</span></div>
-                        <div class="tj-info-row"><span class="tj-info-key">Prix à partir de</span><span class="tj-info-val" style="color:var(--gold)">@prixDesde</span></div>
+                        <div class="tj-info-row"><span class="tj-info-key">Prévente dès</span><span class="tj-info-val" style="color:var(--gold)">@prixDesde</span></div>
+                        <div class="tj-info-row"><span class="tj-info-key">Classe énergétique</span><span class="tj-info-val">A (visée)</span></div>
+                        <div class="tj-info-row"><span class="tj-info-key">Site du programme</span><span class="tj-info-val"><a href="https://www.horizonte-atlantico.com/fr/" target="_blank" rel="noopener" style="color:inherit">horizonte-atlantico.com</a></span></div>
                         <div class="tj-info-row"><span class="tj-info-key">Référence HS</span><span class="tj-info-val">HS-GULPI-2026</span></div>
                     </div>
                 </div>
@@ -1269,7 +1279,7 @@
                         Horizonte Atlântico<br><em>um investimento de futuro</em>
                     </h2>
                     <p class="tj-final-sub">
-                        15 villas T4 à Gulpilhares, entre l'océan et Porto. Prenez rendez-vous ou demandez la brochure — notre équipe vous accompagne à chaque étape, jusqu'au financement.
+                        15 villas T4 à Gulpilhares, entre l'océan et Porto. Prévente dès 520 000 € — seulement 6 villas en phase 1. Prenez rendez-vous ou demandez la brochure : notre équipe vous accompagne à chaque étape, jusqu'au financement.
                     </p>
                 </div>
                 <a asp-controller="Contact" asp-action="Contact" class="tj-final-btn">
@@ -1293,14 +1303,18 @@
 
 <script>
     const images = [
-        '/images/gulpilhares/ha_hall_noite.jpg',
-        '/images/gulpilhares/ha_jardim_piscina.jpg',
-        '/images/gulpilhares/ha_suite.jpg',
-        '/images/gulpilhares/ha_corredor.jpg',
-        '/images/gulpilhares/ha_planta_rc.jpg',
-        '/images/gulpilhares/ha_planta_piso1.jpg',
-        '/images/gulpilhares/ha_implantacao.jpg',
+        '/images/gulpilhares/ha_terrasse.jpg',
+        '/images/gulpilhares/ha_facade_duo.jpg',
+        '/images/gulpilhares/ha_cuisine.jpg',
+        '/images/gulpilhares/ha_praia.jpg',
+        '/images/gulpilhares/ha_plan3d_rc.jpg',
+        '/images/gulpilhares/ha_dressing.jpg',
+        '/images/gulpilhares/ha_plan3d_etage.jpg',
+        '/images/gulpilhares/ha_jardin_soir.jpg',
+        '/images/gulpilhares/ha_exterieurs.jpg',
         '/images/gulpilhares/ha_vista_aerea.jpg',
+        '/images/gulpilhares/ha_praias.jpg',
+        '/images/gulpilhares/ha_implantacao.jpg',
         '/images/gulpilhares/ha_localizacao.jpg'
     ];
     document.getElementById('ha-count').textContent = images.length;

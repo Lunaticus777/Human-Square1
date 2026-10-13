@@ -726,7 +726,7 @@
                                 <p class="hs-bien-loc">📍 @b.Quartier · @b.Ville</p>
                                 <h3 class="hs-bien-titre">@b.Titre</h3>
                                 <div class="hs-bien-prix">
-                                    @if (b.Prix > 0) { @(b.Prix.ToString("N0") + " €") <small>prix de vente</small> } else { <text>Prix sur demande</text> }
+                                    @if (b.Prix > 0) { @(b.Prix.ToString("N0") + " €") <small>@(b.Reference == "HS-GULPI-2026" ? "prévente, à partir de" : "prix de vente")</small> } else { <text>Prix sur demande</text> }
                                 </div>
                                 <div class="hs-bien-specs">
                                     @if (b.Surface.HasValue)

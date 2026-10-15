@@ -612,34 +612,34 @@
         <div class="hs-hero-stats">
             <div class="hs-stat">
                 <div class="hs-stat-num">Depuis <span class="counter" data-target="2017">2017</span></div>
-                <div class="hs-stat-label">Année de lancement</div>
+                <div class="hs-stat-label" data-i18n="home_stat1_label">Année de lancement</div>
             </div>
             <div class="hs-stat">
                 <div class="hs-stat-num"><span class="counter" data-target="784">784</span></div>
-                <div class="hs-stat-label">Sessions de coaching</div>
+                <div class="hs-stat-label" data-i18n="home_stat2_label">Sessions de coaching</div>
             </div>
             <div class="hs-stat">
                 <div class="hs-stat-num"><span class="counter" data-target="52">52</span></div>
-                <div class="hs-stat-label">Projets accompagnés</div>
+                <div class="hs-stat-label" data-i18n="home_stat3_label">Projets accompagnés</div>
             </div>
             <div class="hs-stat">
                 <div class="hs-stat-num"><span class="counter" data-target="191">191</span></div>
-                <div class="hs-stat-label">Formations réalisées</div>
+                <div class="hs-stat-label" data-i18n="home_stat4_label">Formations réalisées</div>
             </div>
         </div>
 
         <!-- Main content -->
         <div class="hs-hero-content">
             <img src="/images/Logo_HS_blanc.png" alt="Human Square" class="hs-hero-logo" />
-            <div class="hs-hero-eyebrow">Conseil Immobilier · Portugal</div>
-            <h1 class="hs-hero-title">
+            <div class="hs-hero-eyebrow" data-i18n="home_hero_eyebrow">Conseil Immobilier · Portugal</div>
+            <h1 class="hs-hero-title" data-i18n="home_hero_title" data-i18n-html>
                 L'accompagnement<br><em>sur mesure</em> au Portugal
             </h1>
-            <p class="hs-hero-sub">
+            <p class="hs-hero-sub" data-i18n="home_hero_sub">
                 Stratégie, acquisition et suivi personnalisé pour votre projet immobilier — de l'idée à la clé en main.
             </p>
             <a asp-controller="Contact" asp-action="Contact" class="hs-hero-cta">
-                Prendre rendez-vous
+                <span data-i18n="home_hero_cta">Prendre rendez-vous</span>
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                     <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
@@ -648,7 +648,7 @@
 
         <!-- Scroll hint -->
         <div class="hs-scroll-hint">
-            <span>Découvrir</span>
+            <span data-i18n="home_scroll">Découvrir</span>
             <div class="hs-scroll-arrow"></div>
         </div>
     </section>
@@ -658,10 +658,10 @@
         <div class="container">
             <div class="hs-biens-header">
                 <div>
-                    <p class="hs-section-eyebrow">Catalogue immobilier · Portugal</p>
-                    <h2 class="hs-section-title">Biens <em>récemment publiés</em></h2>
+                    <p class="hs-section-eyebrow" data-i18n="home_biens_eyebrow">Catalogue immobilier · Portugal</p>
+                    <h2 class="hs-section-title" data-i18n="home_biens_title" data-i18n-html>Biens <em>récemment publiés</em></h2>
                 </div>
-                <a href="/Biens" class="hs-voir-tout d-none d-md-flex">
+                <a href="/Biens" class="hs-voir-tout d-none d-md-flex" data-i18n="home_voir_tout">
                     Voir tout le catalogue
                     <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                         <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
@@ -673,8 +673,8 @@
             {
                 <div class="hs-biens-grid">
                     <div class="hs-empty-biens">
-                        <p>Aucun bien publié pour le moment.</p>
-                        <a href="/Biens" class="hs-voir-tout" style="display:inline-flex;margin:0 auto">Voir le catalogue →</a>
+                        <p data-i18n="home_empty">Aucun bien publié pour le moment.</p>
+                        <a href="/Biens" class="hs-voir-tout" style="display:inline-flex;margin:0 auto" data-i18n="home_voir_catalogue">Voir le catalogue →</a>
                     </div>
                 </div>
             }
@@ -726,7 +726,7 @@
                                 <p class="hs-bien-loc">📍 @b.Quartier · @b.Ville</p>
                                 <h3 class="hs-bien-titre">@b.Titre</h3>
                                 <div class="hs-bien-prix">
-                                    @if (b.Prix > 0) { @(b.Prix.ToString("N0") + " €") <small>@(b.Reference == "HS-GULPI-2026" ? "prévente, à partir de" : "prix de vente")</small> } else { <text>Prix sur demande</text> }
+                                    @if (b.Prix > 0) { @(b.Prix.ToString("N0") + " €") <small data-i18n="@(b.Reference == "HS-GULPI-2026" ? "home_prix_prevente" : "home_prix_vente")">@(b.Reference == "HS-GULPI-2026" ? "prévente, à partir de" : "prix de vente")</small> } else { <span data-i18n="home_prix_demande">Prix sur demande</span> }
                                 </div>
                                 <div class="hs-bien-specs">
                                     @if (b.Surface.HasValue)
@@ -735,14 +735,14 @@
                                     }
                                     @if (b.NbPieces.HasValue)
                                     {
-                                        <span class="hs-bien-spec">@b.NbPieces pièces</span>
+                                        <span class="hs-bien-spec">@b.NbPieces <span data-i18n="home_pieces">pièces</span></span>
                                     }
                                     @if (b.NbSdb.HasValue)
                                     {
-                                        <span class="hs-bien-spec">@b.NbSdb sdb</span>
+                                        <span class="hs-bien-spec">@b.NbSdb <span data-i18n="home_sdb">sdb</span></span>
                                     }
                                 </div>
-                                <div class="hs-bien-link">
+                                <div class="hs-bien-link" data-i18n="home_voir_bien">
                                     Voir le bien
                                     <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
                                         <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
@@ -754,7 +754,7 @@
                 </div>
 
                 <div class="text-center mt-4 d-md-none">
-                    <a href="/Biens" class="hs-voir-tout" style="display:inline-flex">Voir tout le catalogue →</a>
+                    <a href="/Biens" class="hs-voir-tout" style="display:inline-flex" data-i18n="home_voir_tout">Voir tout le catalogue →</a>
                 </div>
             }
         </div>
@@ -764,13 +764,13 @@
     <section class="hs-cta-section">
         <div class="hs-cta-bg-pattern"></div>
         <div class="hs-cta-inner">
-            <div class="hs-cta-eyebrow">Human Square · Portugal</div>
-            <h2 class="hs-cta-title">Prêt à lancer<br><em>votre projet ?</em></h2>
-            <p class="hs-cta-sub">
+            <div class="hs-cta-eyebrow" data-i18n="home_cta_eyebrow">Human Square · Portugal</div>
+            <h2 class="hs-cta-title" data-i18n="home_cta_title" data-i18n-html>Prêt à lancer<br><em>votre projet ?</em></h2>
+            <p class="hs-cta-sub" data-i18n="home_cta_sub">
                 Réservez un appel découverte et voyons ensemble comment Human Square peut vous accompagner vers votre objectif immobilier.
             </p>
             <a asp-controller="Contact" asp-action="Contact" class="hs-cta-btn">
-                Contactez-nous
+                <span data-i18n="home_cta_btn">Contactez-nous</span>
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                     <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>

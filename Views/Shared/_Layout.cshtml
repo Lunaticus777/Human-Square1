@@ -458,19 +458,20 @@
         </a>
 
         <ul class="hs-nav-links">
-            <li><a asp-controller="Home" asp-action="Index">Accueil</a></li>
-            <li><a asp-controller="Home" asp-action="About">À propos</a></li>
-            <li><a href="/Biens">Acheter un bien</a></li>
-            <li><a asp-controller="Services" asp-action="Index">Prestations</a></li>
-            <li><a asp-controller="Home" asp-action="Projects">Projets</a></li>
-            <li id="langItem" style="display:none" class="dropdown">
-                <button class="hs-lang-btn dropdown-toggle" data-bs-toggle="dropdown">Langue</button>
+            <li><a asp-controller="Home" asp-action="Index" data-i18n="nav_home">Accueil</a></li>
+            <li><a asp-controller="Home" asp-action="About" data-i18n="nav_about">À propos</a></li>
+            <li><a href="/Biens" data-i18n="nav_buy">Acheter un bien</a></li>
+            <li><a asp-controller="Services" asp-action="Index" data-i18n="nav_services">Prestations</a></li>
+            <li><a asp-controller="Home" asp-action="Projects" data-i18n="nav_projects">Projets</a></li>
+            <li class="dropdown">
+                <button class="hs-lang-btn dropdown-toggle" data-bs-toggle="dropdown" id="hsLangBtn">🇫🇷 FR</button>
                 <ul class="dropdown-menu dropdown-menu-end">
-                    <li><button class="dropdown-item" onclick="changeLanguage('fr')">🇫🇷 Français</button></li>
-                    <li><button class="dropdown-item" onclick="changeLanguage('pt')">🇵🇹 Português</button></li>
+                    <li><button class="dropdown-item hs-lang-item" data-lang="fr" onclick="HSi18n.setLocale('fr')">🇫🇷 Français</button></li>
+                    <li><button class="dropdown-item hs-lang-item" data-lang="pt" onclick="HSi18n.setLocale('pt')">🇵🇹 Português</button></li>
+                    <li><button class="dropdown-item hs-lang-item" data-lang="en" onclick="HSi18n.setLocale('en')">🇬🇧 English</button></li>
                 </ul>
             </li>
-            <li><a asp-controller="Contact" asp-action="Contact" class="hs-nav-cta">Contact</a></li>
+            <li><a asp-controller="Contact" asp-action="Contact" class="hs-nav-cta" data-i18n="nav_contact">Contact</a></li>
         </ul>
 
         <button class="hs-hamburger" onclick="toggleMenu()" aria-label="Menu">
@@ -481,15 +482,18 @@
 
     <!-- Menu mobile -->
     <div class="hs-mobile-menu" id="mobileMenu">
-        <a asp-controller="Home" asp-action="Index">Accueil</a>
-        <a asp-controller="Home" asp-action="About">À propos</a>
-        <a href="/Biens">Acheter un bien</a>
-        <a asp-controller="Services" asp-action="Index">Prestations</a>
-        <a asp-controller="Home" asp-action="Projects">Projets</a>
-        <a asp-controller="Contact" asp-action="Contact">Contact</a>
+        <a asp-controller="Home" asp-action="Index" data-i18n="nav_home">Accueil</a>
+        <a asp-controller="Home" asp-action="About" data-i18n="nav_about">À propos</a>
+        <a href="/Biens" data-i18n="nav_buy">Acheter un bien</a>
+        <a asp-controller="Services" asp-action="Index" data-i18n="nav_services">Prestations</a>
+        <a asp-controller="Home" asp-action="Projects" data-i18n="nav_projects">Projets</a>
+        <a asp-controller="Contact" asp-action="Contact" data-i18n="nav_contact">Contact</a>
+        <div style="padding:13px 0;display:flex;gap:12px">
+            <button class="dropdown-item hs-lang-item" data-lang="fr" onclick="HSi18n.setLocale('fr')" style="padding:6px 12px;border:0.5px solid var(--border);background:#fff;font-size:13px;cursor:pointer">🇫🇷 FR</button>
+            <button class="dropdown-item hs-lang-item" data-lang="pt" onclick="HSi18n.setLocale('pt')" style="padding:6px 12px;border:0.5px solid var(--border);background:#fff;font-size:13px;cursor:pointer">🇵🇹 PT</button>
+            <button class="dropdown-item hs-lang-item" data-lang="en" onclick="HSi18n.setLocale('en')" style="padding:6px 12px;border:0.5px solid var(--border);background:#fff;font-size:13px;cursor:pointer">🇬🇧 EN</button>
+        </div>
     </div>
-
-    <div id="google_translate_element" style="display:none"></div>
 
     <!-- ═══════════════ CONTENU ═══════════════ -->
     <main role="main" class="pb-3">
@@ -504,11 +508,11 @@
                 <!-- Colonne marque -->
                 <div>
                     <img src="/images/Human_Square_Logo.png?v=2" alt="Human Square" class="hs-footer-logo" />
-                    <p class="hs-footer-desc">
+                    <p class="hs-footer-desc" data-i18n="footer_desc">
                         Accompagnement stratégique pour vos projets immobiliers au Portugal — de la stratégie à la clé en main.
                     </p>
                     <a asp-controller="Contact" asp-action="Contact" class="hs-footer-contact-link">
-                        Prendre rendez-vous
+                        <span data-i18n="footer_cta">Prendre rendez-vous</span>
                         <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
                             <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
@@ -517,28 +521,28 @@
 
                 <!-- Navigation -->
                 <div class="hs-footer-col">
-                    <p class="hs-footer-col-title">Navigation</p>
-                    <a asp-controller="Home" asp-action="Index">Accueil</a>
-                    <a asp-controller="Home" asp-action="About">À propos</a>
-                    <a href="/Biens">Acheter un bien</a>
-                    <a asp-controller="Services" asp-action="Index">Prestations</a>
-                    <a asp-controller="Home" asp-action="Projects">Projets</a>
-                    <a asp-controller="Contact" asp-action="Contact">Contact</a>
+                    <p class="hs-footer-col-title" data-i18n="footer_nav">Navigation</p>
+                    <a asp-controller="Home" asp-action="Index" data-i18n="nav_home">Accueil</a>
+                    <a asp-controller="Home" asp-action="About" data-i18n="nav_about">À propos</a>
+                    <a href="/Biens" data-i18n="nav_buy">Acheter un bien</a>
+                    <a asp-controller="Services" asp-action="Index" data-i18n="nav_services">Prestations</a>
+                    <a asp-controller="Home" asp-action="Projects" data-i18n="nav_projects">Projets</a>
+                    <a asp-controller="Contact" asp-action="Contact" data-i18n="nav_contact">Contact</a>
                 </div>
 
                 <!-- Services -->
                 <div class="hs-footer-col">
-                    <p class="hs-footer-col-title">Services</p>
-                    <a href="#">Conseil stratégique</a>
-                    <a href="#">Coaching professionnel</a>
-                    <a href="#">Formations</a>
-                    <a href="#">Audit immobilier</a>
-                    <a href="/Biens">Catalogue de biens</a>
+                    <p class="hs-footer-col-title" data-i18n="footer_services_title">Services</p>
+                    <a href="#" data-i18n="footer_s1">Conseil stratégique</a>
+                    <a href="#" data-i18n="footer_s2">Coaching professionnel</a>
+                    <a href="#" data-i18n="footer_s3">Formations</a>
+                    <a href="#" data-i18n="footer_s4">Audit immobilier</a>
+                    <a href="/Biens" data-i18n="footer_s5">Catalogue de biens</a>
                 </div>
 
                 <!-- Contact -->
                 <div class="hs-footer-col">
-                    <p class="hs-footer-col-title">Contact</p>
+                    <p class="hs-footer-col-title" data-i18n="footer_contact_title">Contact</p>
                     <p>Av. Gen. Humberto Delgado 115<br />4480-905 Vila do Conde<br />Portugal</p>
                     <a href="mailto:geral@human-square.com">geral@human-square.com</a>
                 </div>
@@ -547,10 +551,10 @@
 
             <!-- Bas du footer -->
             <div class="hs-footer-bottom">
-                <span>© 2026 Human Square. Tous droits réservés.</span>
+                <span data-i18n="footer_copyright">© 2026 Human Square. Tous droits réservés.</span>
                 <div class="hs-footer-bottom-links">
-                    <a href="/Home/Privacy">Mentions légales</a>
-                    <a asp-controller="Contact" asp-action="Contact">Contact</a>
+                    <a href="/Home/Privacy" data-i18n="footer_legal">Mentions légales</a>
+                    <a asp-controller="Contact" asp-action="Contact" data-i18n="nav_contact">Contact</a>
                 </div>
             </div>
         </div>
@@ -559,6 +563,7 @@
     <!-- ═══════════════ SCRIPTS ═══════════════ -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/i18n.js" asp-append-version="true"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <partial name="_ValidationScriptsPartial" />
     @await RenderSectionAsync("Scripts", required: false)
@@ -589,31 +594,6 @@
         /* ── Menu mobile ── */
         function toggleMenu() {
             document.getElementById('mobileMenu').classList.toggle('open');
-        }
-
-        /* ── Google Translate ── */
-        const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-        if (!isChrome) {
-            const s = document.createElement('script');
-            s.src = "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
-            document.head.appendChild(s);
-            document.addEventListener("DOMContentLoaded", () => {
-                const l = document.getElementById("langItem");
-                if (l) l.style.display = "block";
-            });
-        }
-
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement({
-                pageLanguage: 'fr', includedLanguages: 'fr,pt',
-                layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                autoDisplay: false
-            }, 'google_translate_element');
-        }
-
-        function changeLanguage(lang) {
-            document.cookie = `googtrans=/fr/${lang};path=/;domain=.human-square.com`;
-            window.location.reload();
         }
 
         /* ── Compteurs animés ── */

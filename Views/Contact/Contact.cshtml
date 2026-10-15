@@ -395,12 +395,12 @@ else if (TempData["ErrorMessage"] != null)
         <div class="ct-left">
             <div class="ct-left-content">
 
-                <p class="ct-pretitle">Human Square · Portugal</p>
-                <h1 class="ct-h1">
+                <p class="ct-pretitle" data-i18n="contact_eyebrow">Human Square · Portugal</p>
+                <h1 class="ct-h1" data-i18n="contact_title" data-i18n-html>
                     Parlons<br>
                     <em>de votre projet</em>
                 </h1>
-                <p class="ct-tagline">
+                <p class="ct-tagline" data-i18n="contact_tagline">
                     Chaque projet commence par une conversation. Prenez contact — nous vous répondons sous 24h.
                 </p>
 
@@ -414,7 +414,7 @@ else if (TempData["ErrorMessage"] != null)
                             </svg>
                         </div>
                         <div>
-                            <p class="ct-info-label">Adresse</p>
+                            <p class="ct-info-label" data-i18n="contact_address_label">Adresse</p>
                             <p class="ct-info-value">Av. Gen. Humberto Delgado 115<br />4480-905 Vila do Conde, Portugal</p>
                         </div>
                     </div>
@@ -427,7 +427,7 @@ else if (TempData["ErrorMessage"] != null)
                             </svg>
                         </div>
                         <div>
-                            <p class="ct-info-label">Email</p>
+                            <p class="ct-info-label" data-i18n="contact_email_label">Email</p>
                             <p class="ct-info-value"><a href="mailto:geral@human-square.com">geral@human-square.com</a></p>
                         </div>
                     </div>
@@ -440,14 +440,14 @@ else if (TempData["ErrorMessage"] != null)
                             </svg>
                         </div>
                         <div>
-                            <p class="ct-info-label">Réponse</p>
-                            <p class="ct-info-value">Sous 24h ouvrées</p>
+                            <p class="ct-info-label" data-i18n="contact_response_label">Réponse</p>
+                            <p class="ct-info-value" data-i18n="contact_response_value">Sous 24h ouvrées</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="ct-cities">
-                    <p class="ct-cities-label">Présence nationale</p>
+                    <p class="ct-cities-label" data-i18n="contact_cities_label">Présence nationale</p>
                     <div class="ct-cities-list">
                         <span class="ct-city">Vila do Conde</span>
                         <span class="ct-city">Porto</span>
@@ -463,8 +463,8 @@ else if (TempData["ErrorMessage"] != null)
         <!-- ── Droite : formulaire ── -->
         <div class="ct-right">
             <div class="ct-form-header">
-                <p class="ct-form-label">Formulaire de contact</p>
-                <h2 class="ct-form-title">
+                <p class="ct-form-label" data-i18n="contact_form_label">Formulaire de contact</p>
+                <h2 class="ct-form-title" data-i18n="contact_form_title" data-i18n-html>
                     Envoyez-nous<br>
                     <em>un message</em>
                 </h2>
@@ -474,31 +474,31 @@ else if (TempData["ErrorMessage"] != null)
                 @Html.AntiForgeryToken()
 
                 <div class="ct-field">
-                    <label asp-for="Name" class="ct-field-label">Nom complet</label>
-                    <input asp-for="Name" class="ct-input" placeholder="Votre nom" />
+                    <label asp-for="Name" class="ct-field-label" data-i18n="contact_name">Nom complet</label>
+                    <input asp-for="Name" class="ct-input" placeholder="Votre nom" data-i18n-placeholder="contact_name_placeholder" />
                     <span asp-validation-for="Name" class="ct-error"></span>
                 </div>
 
                 <div class="ct-field">
-                    <label asp-for="Email" class="ct-field-label">Adresse email</label>
-                    <input asp-for="Email" class="ct-input" placeholder="votre@email.com" />
+                    <label asp-for="Email" class="ct-field-label" data-i18n="contact_email">Adresse email</label>
+                    <input asp-for="Email" class="ct-input" placeholder="votre@email.com" data-i18n-placeholder="contact_email_placeholder" />
                     <span asp-validation-for="Email" class="ct-error"></span>
                 </div>
 
                 <div class="ct-field">
-                    <label asp-for="Phone" class="ct-field-label">Téléphone</label>
-                    <input asp-for="Phone" class="ct-input" placeholder="+33 6 00 00 00 00" />
+                    <label asp-for="Phone" class="ct-field-label" data-i18n="contact_phone">Téléphone</label>
+                    <input asp-for="Phone" class="ct-input" placeholder="+33 6 00 00 00 00" data-i18n-placeholder="contact_phone_placeholder" />
                     <span asp-validation-for="Phone" class="ct-error"></span>
                 </div>
 
                 <div class="ct-field">
-                    <label asp-for="Message" class="ct-field-label">Votre message</label>
-                    <textarea asp-for="Message" class="ct-input ct-textarea" placeholder="Décrivez votre projet en quelques mots…"></textarea>
+                    <label asp-for="Message" class="ct-field-label" data-i18n="contact_message">Votre message</label>
+                    <textarea asp-for="Message" class="ct-input ct-textarea" placeholder="Décrivez votre projet en quelques mots…" data-i18n-placeholder="contact_message_placeholder"></textarea>
                     <span asp-validation-for="Message" class="ct-error"></span>
                 </div>
 
                 <button type="submit" class="ct-submit">
-                    Envoyer le message
+                    <span data-i18n="contact_send">Envoyer le message</span>
                     <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3">
                         <path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>

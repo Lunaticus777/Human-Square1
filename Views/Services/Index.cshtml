@@ -791,36 +791,36 @@
         <div class="sv-hero-left">
             <span class="sv-hero-counter">HS / PRESTATIONS / 2026</span>
             <div class="sv-hero-left-content">
-                <p class="sv-hero-pretitle">Human Square · Portugal</p>
-                <h1 class="sv-hero-h1">
+                <p class="sv-hero-pretitle" data-i18n="services_hero_pretitle">Human Square · Portugal</p>
+                <h1 class="sv-hero-h1" data-i18n="services_hero_h1" data-i18n-html>
                     Nos<br>
                     <em>prestations</em>
                 </h1>
-                <p class="sv-hero-desc">
+                <p class="sv-hero-desc" data-i18n="services_hero_desc">
                     Coaching certifié ICF, consulting stratégique, audit et formations — pour investisseurs, dirigeants et entrepreneurs au Portugal.
                 </p>
             </div>
         </div>
         <div class="sv-hero-right">
-            <p class="sv-hero-index-title">Index des prestations</p>
+            <p class="sv-hero-index-title" data-i18n="services_index_title">Index des prestations</p>
             <a class="sv-hero-service-item" onclick="activateSection('coaching'); return false;" href="#">
                 <span class="sv-hero-service-num">01</span>
-                <span class="sv-hero-service-name">Coaching professionnel</span>
+                <span class="sv-hero-service-name" data-i18n="services_idx1">Coaching professionnel</span>
                 <span class="sv-hero-service-arrow">→</span>
             </a>
             <a class="sv-hero-service-item" onclick="activateSection('consulting'); return false;" href="#">
                 <span class="sv-hero-service-num">02</span>
-                <span class="sv-hero-service-name">Consulting stratégique</span>
+                <span class="sv-hero-service-name" data-i18n="services_idx2">Consulting stratégique</span>
                 <span class="sv-hero-service-arrow">→</span>
             </a>
             <a class="sv-hero-service-item" onclick="activateSection('audit'); return false;" href="#">
                 <span class="sv-hero-service-num">03</span>
-                <span class="sv-hero-service-name">Audit & optimisation</span>
+                <span class="sv-hero-service-name" data-i18n="services_idx3">Audit & optimisation</span>
                 <span class="sv-hero-service-arrow">→</span>
             </a>
             <a class="sv-hero-service-item" onclick="activateSection('formation'); return false;" href="#">
                 <span class="sv-hero-service-num">04</span>
-                <span class="sv-hero-service-name">Formations</span>
+                <span class="sv-hero-service-name" data-i18n="services_idx4">Formations</span>
                 <span class="sv-hero-service-arrow">→</span>
             </a>
         </div>
@@ -829,16 +829,16 @@
     <!-- ══ BANDE NAV ══ -->
     <div class="sv-band">
         <button class="sv-band-tab active" onclick="activateSection('coaching')" id="tab-coaching">
-            <span class="sv-band-num">01</span> Coaching
+            <span class="sv-band-num">01</span> <span data-i18n="services_tab1">Coaching</span>
         </button>
         <button class="sv-band-tab" onclick="activateSection('consulting')" id="tab-consulting">
-            <span class="sv-band-num">02</span> Consulting
+            <span class="sv-band-num">02</span> <span data-i18n="services_tab2">Consulting</span>
         </button>
         <button class="sv-band-tab" onclick="activateSection('audit')" id="tab-audit">
-            <span class="sv-band-num">03</span> Audit
+            <span class="sv-band-num">03</span> <span data-i18n="services_tab3">Audit</span>
         </button>
         <button class="sv-band-tab" onclick="activateSection('formation')" id="tab-formation">
-            <span class="sv-band-num">04</span> Formations
+            <span class="sv-band-num">04</span> <span data-i18n="services_tab4">Formations</span>
         </button>
     </div>
 
@@ -849,69 +849,69 @@
         <div id="sv-coaching" class="sv-section active">
             <div class="sv-section-banner">
                 <div>
-                    <p class="sv-section-label">01 — Coaching Professionnel</p>
-                    <h2 class="sv-section-h2">
+                    <p class="sv-section-label" data-i18n="services_coaching_label">01 — Coaching Professionnel</p>
+                    <h2 class="sv-section-h2" data-i18n="services_coaching_h2" data-i18n-html>
                         Transformation<br>
                         <em>& alignement</em>
                     </h2>
                 </div>
-                <p class="sv-section-intro">Une démarche de clarification profonde, portée par un coach certifié ICF — pour investisseurs, dirigeants et entrepreneurs engagés dans un parcours exigeant.</p>
+                <p class="sv-section-intro" data-i18n="services_coaching_intro">Une démarche de clarification profonde, portée par un coach certifié ICF — pour investisseurs, dirigeants et entrepreneurs engagés dans un parcours exigeant.</p>
             </div>
 
             <div class="sv-cards">
                 <div class="sv-card">
                     <p class="sv-card-num">01.1</p>
-                    <h3 class="sv-card-title">Coaching<br>Immobilier</h3>
-                    <p class="sv-card-text">Structuration de votre stratégie d'investissement, vision à long terme, priorisation des opportunités et gestion des risques.</p>
-                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#coachingImmobilierModal">Détail →</button>
+                    <h3 class="sv-card-title" data-i18n="services_coaching_c1_title" data-i18n-html>Coaching<br>Immobilier</h3>
+                    <p class="sv-card-text" data-i18n="services_coaching_c1_text">Structuration de votre stratégie d'investissement, vision à long terme, priorisation des opportunités et gestion des risques.</p>
+                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#coachingImmobilierModal" data-i18n="services_card_btn">Détail →</button>
                 </div>
                 <div class="sv-card">
                     <p class="sv-card-num">01.2</p>
-                    <h3 class="sv-card-title">Coaching<br>Business</h3>
-                    <p class="sv-card-text">Développement de votre offre, posture entrepreneuriale, pilotage stratégique et équilibre entre ambition et faisabilité.</p>
-                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#coachingBusinessModal">Détail →</button>
+                    <h3 class="sv-card-title" data-i18n="services_coaching_c2_title" data-i18n-html>Coaching<br>Business</h3>
+                    <p class="sv-card-text" data-i18n="services_coaching_c2_text">Développement de votre offre, posture entrepreneuriale, pilotage stratégique et équilibre entre ambition et faisabilité.</p>
+                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#coachingBusinessModal" data-i18n="services_card_btn">Détail →</button>
                 </div>
                 <div class="sv-card">
                     <p class="sv-card-num">01.3</p>
-                    <h3 class="sv-card-title">Coaching<br>Mindset</h3>
-                    <p class="sv-card-text">Recentrage, confiance dans la décision, clarté mentale pour avancer avec cohérence même en période d'incertitude.</p>
-                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#coachingMindsetModal">Détail →</button>
+                    <h3 class="sv-card-title" data-i18n="services_coaching_c3_title" data-i18n-html>Coaching<br>Mindset</h3>
+                    <p class="sv-card-text" data-i18n="services_coaching_c3_text">Recentrage, confiance dans la décision, clarté mentale pour avancer avec cohérence même en période d'incertitude.</p>
+                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#coachingMindsetModal" data-i18n="services_card_btn">Détail →</button>
                 </div>
                 <div class="sv-card">
                     <p class="sv-card-num">01.4</p>
-                    <h3 class="sv-card-title">Coaching<br>Transition</h3>
-                    <p class="sv-card-text">Orientation stratégique, repositionnement professionnel ou lancement d'une nouvelle activité avec impact.</p>
-                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#coachingTransitionModal">Détail →</button>
+                    <h3 class="sv-card-title" data-i18n="services_coaching_c4_title" data-i18n-html>Coaching<br>Transition</h3>
+                    <p class="sv-card-text" data-i18n="services_coaching_c4_text">Orientation stratégique, repositionnement professionnel ou lancement d'une nouvelle activité avec impact.</p>
+                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#coachingTransitionModal" data-i18n="services_card_btn">Détail →</button>
                 </div>
             </div>
 
             <div class="sv-depth">
                 <div class="sv-depth-left">
                     <div class="sv-depth-left-content">
-                        <h3 class="sv-depth-title">Coaching certifié<br><em>ICF — standard mondial</em></h3>
+                        <h3 class="sv-depth-title" data-i18n="services_coaching_depth_title" data-i18n-html>Coaching certifié<br><em>ICF — standard mondial</em></h3>
                         <ul class="sv-depth-list">
-                            <li>Clarifier une direction ou un changement professionnel</li>
-                            <li>Développer sa posture de leader ou d'entrepreneur</li>
-                            <li>Surmonter un blocage ou une difficulté persistante</li>
-                            <li>Réussir une transition ou une reconversion</li>
-                            <li>Aligner ambition, sens et action durablement</li>
+                            <li data-i18n="services_coaching_depth1">Clarifier une direction ou un changement professionnel</li>
+                            <li data-i18n="services_coaching_depth2">Développer sa posture de leader ou d'entrepreneur</li>
+                            <li data-i18n="services_coaching_depth3">Surmonter un blocage ou une difficulté persistante</li>
+                            <li data-i18n="services_coaching_depth4">Réussir une transition ou une reconversion</li>
+                            <li data-i18n="services_coaching_depth5">Aligner ambition, sens et action durablement</li>
                         </ul>
                     </div>
                 </div>
                 <div class="sv-depth-right">
-                    <p class="sv-depth-quote">« Un partenariat stratégique et humain pour avancer avec <em>clarté, confiance</em> et impact. »</p>
+                    <p class="sv-depth-quote" data-i18n="services_coaching_quote" data-i18n-html>« Un partenariat stratégique et humain pour avancer avec <em>clarté, confiance</em> et impact. »</p>
                     <div class="sv-depth-attrs">
                         <div class="sv-depth-attr">
                             <div class="sv-depth-attr-dot"></div>
-                            <p class="sv-depth-attr-text">Une écoute active et neutre · Questions qui font émerger vos propres solutions</p>
+                            <p class="sv-depth-attr-text" data-i18n="services_coaching_attr1">Une écoute active et neutre · Questions qui font émerger vos propres solutions</p>
                         </div>
                         <div class="sv-depth-attr">
                             <div class="sv-depth-attr-dot"></div>
-                            <p class="sv-depth-attr-text">Cadre sécurisé et confidentiel · Meilleure clarté et efficacité personnelle</p>
+                            <p class="sv-depth-attr-text" data-i18n="services_coaching_attr2">Cadre sécurisé et confidentiel · Meilleure clarté et efficacité personnelle</p>
                         </div>
                         <div class="sv-depth-attr">
                             <div class="sv-depth-attr-dot"></div>
-                            <p class="sv-depth-attr-text">Pas de conseils tout faits · Vous restez acteur de votre transformation</p>
+                            <p class="sv-depth-attr-text" data-i18n="services_coaching_attr3">Pas de conseils tout faits · Vous restez acteur de votre transformation</p>
                         </div>
                     </div>
                 </div>
@@ -922,69 +922,69 @@
         <div id="sv-consulting" class="sv-section">
             <div class="sv-section-banner">
                 <div>
-                    <p class="sv-section-label">02 — Consulting Stratégique</p>
-                    <h2 class="sv-section-h2">
+                    <p class="sv-section-label" data-i18n="services_consulting_label">02 — Consulting Stratégique</p>
+                    <h2 class="sv-section-h2" data-i18n="services_consulting_h2" data-i18n-html>
                         Stratégie<br>
                         <em>& faisabilité</em>
                     </h2>
                 </div>
-                <p class="sv-section-intro">Un accompagnement ciblé selon le type de projet et les objectifs. Étude de faisabilité, analyse fiscale et stratégie de rentabilité sur mesure pour chaque client.</p>
+                <p class="sv-section-intro" data-i18n="services_consulting_intro">Un accompagnement ciblé selon le type de projet et les objectifs. Étude de faisabilité, analyse fiscale et stratégie de rentabilité sur mesure pour chaque client.</p>
             </div>
 
             <div class="sv-cards">
                 <div class="sv-card">
                     <p class="sv-card-num">02.1</p>
-                    <h3 class="sv-card-title">Consulting<br>Immobilier</h3>
-                    <p class="sv-card-text">Étude de faisabilité, projection budgétaire, structuration juridique et fiscale, analyse de marché et montage opérationnel.</p>
-                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#consultingImmobilierModal">Détail →</button>
+                    <h3 class="sv-card-title" data-i18n="services_consulting_c1_title" data-i18n-html>Consulting<br>Immobilier</h3>
+                    <p class="sv-card-text" data-i18n="services_consulting_c1_text">Étude de faisabilité, projection budgétaire, structuration juridique et fiscale, analyse de marché et montage opérationnel.</p>
+                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#consultingImmobilierModal" data-i18n="services_card_btn">Détail →</button>
                 </div>
                 <div class="sv-card">
                     <p class="sv-card-num">02.2</p>
-                    <h3 class="sv-card-title">Consulting<br>Entreprises</h3>
-                    <p class="sv-card-text">Positionnement stratégique, développement de l'offre, structuration interne et accompagnement dans la croissance.</p>
-                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#consultingEntreprisesModal">Détail →</button>
+                    <h3 class="sv-card-title" data-i18n="services_consulting_c2_title" data-i18n-html>Consulting<br>Entreprises</h3>
+                    <p class="sv-card-text" data-i18n="services_consulting_c2_text">Positionnement stratégique, développement de l'offre, structuration interne et accompagnement dans la croissance.</p>
+                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#consultingEntreprisesModal" data-i18n="services_card_btn">Détail →</button>
                 </div>
                 <div class="sv-card">
                     <p class="sv-card-num">02.3</p>
-                    <h3 class="sv-card-title">Consulting<br>Business</h3>
-                    <p class="sv-card-text">De l'idée à la concrétisation : business plan, étude d'opportunité, structuration du projet et mise en œuvre.</p>
-                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#consultingInnovantsModal">Détail →</button>
+                    <h3 class="sv-card-title" data-i18n="services_consulting_c3_title" data-i18n-html>Consulting<br>Business</h3>
+                    <p class="sv-card-text" data-i18n="services_consulting_c3_text">De l'idée à la concrétisation : business plan, étude d'opportunité, structuration du projet et mise en œuvre.</p>
+                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#consultingInnovantsModal" data-i18n="services_card_btn">Détail →</button>
                 </div>
                 <div class="sv-card">
                     <p class="sv-card-num">02.4</p>
-                    <h3 class="sv-card-title">Consulting<br>Finances</h3>
-                    <p class="sv-card-text">Optimisation des flux, recherche de financement, structuration d'investissement et gestion des risques.</p>
-                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#consultingFinancesModal">Détail →</button>
+                    <h3 class="sv-card-title" data-i18n="services_consulting_c4_title" data-i18n-html>Consulting<br>Finances</h3>
+                    <p class="sv-card-text" data-i18n="services_consulting_c4_text">Optimisation des flux, recherche de financement, structuration d'investissement et gestion des risques.</p>
+                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#consultingFinancesModal" data-i18n="services_card_btn">Détail →</button>
                 </div>
             </div>
 
             <div class="sv-depth">
                 <div class="sv-depth-left">
                     <div class="sv-depth-left-content">
-                        <h3 class="sv-depth-title">Notre approche<br><em>terrain & réseau local</em></h3>
+                        <h3 class="sv-depth-title" data-i18n="services_consulting_depth_title" data-i18n-html>Notre approche<br><em>terrain & réseau local</em></h3>
                         <ul class="sv-depth-list">
-                            <li>Implantation dans 5 régions stratégiques du Portugal</li>
-                            <li>Réseau d'architectes, juristes, fiscalistes, constructeurs</li>
-                            <li>Connaissance fine des marchés locaux et des procédures</li>
-                            <li>Suivi de A à Z : de l'analyse à la concrétisation</li>
-                            <li>Conseil indépendant — pas d'intérêt dans la transaction</li>
+                            <li data-i18n="services_consulting_depth1">Implantation dans 5 régions stratégiques du Portugal</li>
+                            <li data-i18n="services_consulting_depth2">Réseau d'architectes, juristes, fiscalistes, constructeurs</li>
+                            <li data-i18n="services_consulting_depth3">Connaissance fine des marchés locaux et des procédures</li>
+                            <li data-i18n="services_consulting_depth4">Suivi de A à Z : de l'analyse à la concrétisation</li>
+                            <li data-i18n="services_consulting_depth5">Conseil indépendant — pas d'intérêt dans la transaction</li>
                         </ul>
                     </div>
                 </div>
                 <div class="sv-depth-right">
-                    <p class="sv-depth-quote">« De l'idée au projet opérationnel, nous apportons <em>méthode, réseau</em> et rigueur. »</p>
+                    <p class="sv-depth-quote" data-i18n="services_consulting_quote" data-i18n-html>« De l'idée au projet opérationnel, nous apportons <em>méthode, réseau</em> et rigueur. »</p>
                     <div class="sv-depth-attrs">
                         <div class="sv-depth-attr">
                             <div class="sv-depth-attr-dot"></div>
-                            <p class="sv-depth-attr-text">Vila do Conde · Porto · Lisbonne · Viseu · Albufeira</p>
+                            <p class="sv-depth-attr-text" data-i18n="services_consulting_attr1">Vila do Conde · Porto · Lisbonne · Viseu · Albufeira</p>
                         </div>
                         <div class="sv-depth-attr">
                             <div class="sv-depth-attr-dot"></div>
-                            <p class="sv-depth-attr-text">Conseil indépendant · Aucune commission d'agence</p>
+                            <p class="sv-depth-attr-text" data-i18n="services_consulting_attr2">Conseil indépendant · Aucune commission d'agence</p>
                         </div>
                         <div class="sv-depth-attr">
                             <div class="sv-depth-attr-dot"></div>
-                            <p class="sv-depth-attr-text">Accompagnement depuis 2017 · +52 projets réalisés</p>
+                            <p class="sv-depth-attr-text" data-i18n="services_consulting_attr3">Accompagnement depuis 2017 · +52 projets réalisés</p>
                         </div>
                     </div>
                 </div>
@@ -995,69 +995,69 @@
         <div id="sv-audit" class="sv-section">
             <div class="sv-section-banner">
                 <div>
-                    <p class="sv-section-label">03 — Audit & Optimisation</p>
-                    <h2 class="sv-section-h2">
+                    <p class="sv-section-label" data-i18n="services_audit_label">03 — Audit & Optimisation</p>
+                    <h2 class="sv-section-h2" data-i18n="services_audit_h2" data-i18n-html>
                         Analyse<br>
                         <em>& sécurisation</em>
                     </h2>
                 </div>
-                <p class="sv-section-intro">Nous identifions les leviers de performance à chaque étape de votre projet. Avant d'agir, comprenez exactement sur quoi vous vous engagez.</p>
+                <p class="sv-section-intro" data-i18n="services_audit_intro">Nous identifions les leviers de performance à chaque étape de votre projet. Avant d'agir, comprenez exactement sur quoi vous vous engagez.</p>
             </div>
 
             <div class="sv-cards">
                 <div class="sv-card">
                     <p class="sv-card-num">03.1</p>
-                    <h3 class="sv-card-title">Audit<br>Immobilier</h3>
-                    <p class="sv-card-text">Vérification du potentiel constructible, évaluation coût/valeur, analyse de rentabilité et des risques liés à la zone.</p>
-                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#auditImmobilierModal">Détail →</button>
+                    <h3 class="sv-card-title" data-i18n="services_audit_c1_title" data-i18n-html>Audit<br>Immobilier</h3>
+                    <p class="sv-card-text" data-i18n="services_audit_c1_text">Vérification du potentiel constructible, évaluation coût/valeur, analyse de rentabilité et des risques liés à la zone.</p>
+                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#auditImmobilierModal" data-i18n="services_card_btn">Détail →</button>
                 </div>
                 <div class="sv-card">
                     <p class="sv-card-num">03.2</p>
-                    <h3 class="sv-card-title">Audit<br>Entreprises</h3>
-                    <p class="sv-card-text">Évaluation stratégique d'une activité, repositionnement, identification de leviers de croissance ou de restructuration.</p>
-                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#auditEntreprisesModal">Détail →</button>
+                    <h3 class="sv-card-title" data-i18n="services_audit_c2_title" data-i18n-html>Audit<br>Entreprises</h3>
+                    <p class="sv-card-text" data-i18n="services_audit_c2_text">Évaluation stratégique d'une activité, repositionnement, identification de leviers de croissance ou de restructuration.</p>
+                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#auditEntreprisesModal" data-i18n="services_card_btn">Détail →</button>
                 </div>
                 <div class="sv-card">
                     <p class="sv-card-num">03.3</p>
-                    <h3 class="sv-card-title">Audit<br>Financier</h3>
-                    <p class="sv-card-text">Analyse des coûts, marges, flux de trésorerie, structuration financière et solutions d'optimisation adaptées.</p>
-                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#auditFinancesModal">Détail →</button>
+                    <h3 class="sv-card-title" data-i18n="services_audit_c3_title" data-i18n-html>Audit<br>Financier</h3>
+                    <p class="sv-card-text" data-i18n="services_audit_c3_text">Analyse des coûts, marges, flux de trésorerie, structuration financière et solutions d'optimisation adaptées.</p>
+                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#auditFinancesModal" data-i18n="services_card_btn">Détail →</button>
                 </div>
                 <div class="sv-card">
                     <p class="sv-card-num">03.4</p>
-                    <h3 class="sv-card-title">Audit<br>de Projet</h3>
-                    <p class="sv-card-text">Revue complète d'un projet en cours : cohérence, faisabilité, partenaires, calendrier et indicateurs de pilotage.</p>
-                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#auditProjetsModal">Détail →</button>
+                    <h3 class="sv-card-title" data-i18n="services_audit_c4_title" data-i18n-html>Audit<br>de Projet</h3>
+                    <p class="sv-card-text" data-i18n="services_audit_c4_text">Revue complète d'un projet en cours : cohérence, faisabilité, partenaires, calendrier et indicateurs de pilotage.</p>
+                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#auditProjetsModal" data-i18n="services_card_btn">Détail →</button>
                 </div>
             </div>
 
             <div class="sv-depth">
                 <div class="sv-depth-left">
                     <div class="sv-depth-left-content">
-                        <h3 class="sv-depth-title">Décision éclairée<br><em>avant chaque engagement</em></h3>
+                        <h3 class="sv-depth-title" data-i18n="services_audit_depth_title" data-i18n-html>Décision éclairée<br><em>avant chaque engagement</em></h3>
                         <ul class="sv-depth-list">
-                            <li>Analyse des règles d'urbanisme locales (PDM, RNU)</li>
-                            <li>Vérification juridique complète avant acquisition</li>
-                            <li>Calcul du rendement net et scénarios de sortie</li>
-                            <li>Identification des risques administratifs et techniques</li>
-                            <li>Rapport structuré et synthétique remis au client</li>
+                            <li data-i18n="services_audit_depth1">Analyse des règles d'urbanisme locales (PDM, RNU)</li>
+                            <li data-i18n="services_audit_depth2">Vérification juridique complète avant acquisition</li>
+                            <li data-i18n="services_audit_depth3">Calcul du rendement net et scénarios de sortie</li>
+                            <li data-i18n="services_audit_depth4">Identification des risques administratifs et techniques</li>
+                            <li data-i18n="services_audit_depth5">Rapport structuré et synthétique remis au client</li>
                         </ul>
                     </div>
                 </div>
                 <div class="sv-depth-right">
-                    <p class="sv-depth-quote">« Avant d'agir, comprendre. L'audit est <em>l'intelligence</em> de votre investissement. »</p>
+                    <p class="sv-depth-quote" data-i18n="services_audit_quote" data-i18n-html>« Avant d'agir, comprendre. L'audit est <em>l'intelligence</em> de votre investissement. »</p>
                     <div class="sv-depth-attrs">
                         <div class="sv-depth-attr">
                             <div class="sv-depth-attr-dot"></div>
-                            <p class="sv-depth-attr-text">Étude technique et juridique complète du bien ou du projet</p>
+                            <p class="sv-depth-attr-text" data-i18n="services_audit_attr1">Étude technique et juridique complète du bien ou du projet</p>
                         </div>
                         <div class="sv-depth-attr">
                             <div class="sv-depth-attr-dot"></div>
-                            <p class="sv-depth-attr-text">Projection financière et analyse de la rentabilité nette</p>
+                            <p class="sv-depth-attr-text" data-i18n="services_audit_attr2">Projection financière et analyse de la rentabilité nette</p>
                         </div>
                         <div class="sv-depth-attr">
                             <div class="sv-depth-attr-dot"></div>
-                            <p class="sv-depth-attr-text">Rapport livré · Recommandations actionnables</p>
+                            <p class="sv-depth-attr-text" data-i18n="services_audit_attr3">Rapport livré · Recommandations actionnables</p>
                         </div>
                     </div>
                 </div>
@@ -1068,93 +1068,93 @@
         <div id="sv-formation" class="sv-section">
             <div class="sv-section-banner">
                 <div>
-                    <p class="sv-section-label">04 — Formations Human Square</p>
-                    <h2 class="sv-section-h2">
+                    <p class="sv-section-label" data-i18n="services_formations_label">04 — Formations Human Square</p>
+                    <h2 class="sv-section-h2" data-i18n="services_formations_h2" data-i18n-html>
                         Compétences<br>
                         <em>& maîtrise</em>
                     </h2>
                 </div>
-                <p class="sv-section-intro">Formations structurées et certifiantes pour renforcer vos compétences en investissement, gestion immobilière et entrepreneuriat au Portugal.</p>
+                <p class="sv-section-intro" data-i18n="services_formations_intro">Formations structurées et certifiantes pour renforcer vos compétences en investissement, gestion immobilière et entrepreneuriat au Portugal.</p>
             </div>
 
             <div class="sv-cards" style="grid-template-columns: repeat(4,1fr)">
                 <div class="sv-card">
-                    <p class="sv-card-num">04.1 · Dès 8 000 €</p>
-                    <h3 class="sv-card-title">L'Investisseur<br>Aligné</h3>
-                    <p class="sv-card-text">Accompagnement stratégique 3–6 mois pour aligner vos projets avec votre vision et sécuriser vos décisions.</p>
-                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#formationInvestisseurModal">Détail →</button>
+                    <p class="sv-card-num" data-i18n="services_formations_c1_num">04.1 · Dès 8 000 €</p>
+                    <h3 class="sv-card-title" data-i18n="services_formations_c1_title" data-i18n-html>L'Investisseur<br>Aligné</h3>
+                    <p class="sv-card-text" data-i18n="services_formations_c1_text">Accompagnement stratégique 3–6 mois pour aligner vos projets avec votre vision et sécuriser vos décisions.</p>
+                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#formationInvestisseurModal" data-i18n="services_card_btn">Détail →</button>
                 </div>
                 <div class="sv-card">
-                    <p class="sv-card-num">04.2 · 1 500 €</p>
-                    <h3 class="sv-card-title">Investissement<br>Portugal</h3>
-                    <p class="sv-card-text">Masterclass 2 jours pour sécuriser votre projet immobilier au Portugal de A à Z.</p>
-                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#formationInvestPortugalModal">Détail →</button>
+                    <p class="sv-card-num" data-i18n="services_formations_c2_num">04.2 · 1 500 €</p>
+                    <h3 class="sv-card-title" data-i18n="services_formations_c2_title" data-i18n-html>Investissement<br>Portugal</h3>
+                    <p class="sv-card-text" data-i18n="services_formations_c2_text">Masterclass 2 jours pour sécuriser votre projet immobilier au Portugal de A à Z.</p>
+                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#formationInvestPortugalModal" data-i18n="services_card_btn">Détail →</button>
                 </div>
                 <div class="sv-card">
-                    <p class="sv-card-num">04.3 · 3 500 €</p>
-                    <h3 class="sv-card-title">Promotion<br>Immobilière</h3>
-                    <p class="sv-card-text">Formation 3 jours pour maîtriser le cycle complet de la promotion : faisabilité, financement, chantier, commercialisation.</p>
-                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#formationPromotionModal">Détail →</button>
+                    <p class="sv-card-num" data-i18n="services_formations_c3_num">04.3 · 3 500 €</p>
+                    <h3 class="sv-card-title" data-i18n="services_formations_c3_title" data-i18n-html>Promotion<br>Immobilière</h3>
+                    <p class="sv-card-text" data-i18n="services_formations_c3_text">Formation 3 jours pour maîtriser le cycle complet de la promotion : faisabilité, financement, chantier, commercialisation.</p>
+                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#formationPromotionModal" data-i18n="services_card_btn">Détail →</button>
                 </div>
                 <div class="sv-card">
-                    <p class="sv-card-num">04.4 · 2 500 €</p>
-                    <h3 class="sv-card-title">Entrepreneuriat<br>& Pilotage</h3>
-                    <p class="sv-card-text">Atelier 2 jours + 3 mois de suivi pour construire un business model robuste et piloter avec vision.</p>
-                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#formationBusinessModal">Détail →</button>
+                    <p class="sv-card-num" data-i18n="services_formations_c4_num">04.4 · 2 500 €</p>
+                    <h3 class="sv-card-title" data-i18n="services_formations_c4_title" data-i18n-html>Entrepreneuriat<br>& Pilotage</h3>
+                    <p class="sv-card-text" data-i18n="services_formations_c4_text">Atelier 2 jours + 3 mois de suivi pour construire un business model robuste et piloter avec vision.</p>
+                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#formationBusinessModal" data-i18n="services_card_btn">Détail →</button>
                 </div>
                 <div class="sv-card">
-                    <p class="sv-card-num">04.5 · 4–6 000 €</p>
-                    <h3 class="sv-card-title">Coaching<br>Dirigeants ICF</h3>
-                    <p class="sv-card-text">Pack 10 sessions premium pour dirigeants : leadership, décisions complexes, équilibre personnel.</p>
-                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#formationCoachingDirigeantModal">Détail →</button>
+                    <p class="sv-card-num" data-i18n="services_formations_c5_num">04.5 · 4–6 000 €</p>
+                    <h3 class="sv-card-title" data-i18n="services_formations_c5_title" data-i18n-html>Coaching<br>Dirigeants ICF</h3>
+                    <p class="sv-card-text" data-i18n="services_formations_c5_text">Pack 10 sessions premium pour dirigeants : leadership, décisions complexes, équilibre personnel.</p>
+                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#formationCoachingDirigeantModal" data-i18n="services_card_btn">Détail →</button>
                 </div>
                 <div class="sv-card">
-                    <p class="sv-card-num">04.6 · 900 €</p>
-                    <h3 class="sv-card-title">Apporteur<br>d'affaires</h3>
-                    <p class="sv-card-text">Formation 1 journée pour maîtriser l'activité d'apporteur d'affaires immobilier haut de gamme.</p>
-                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#formationApporteurModal">Détail →</button>
+                    <p class="sv-card-num" data-i18n="services_formations_c6_num">04.6 · 900 €</p>
+                    <h3 class="sv-card-title" data-i18n="services_formations_c6_title" data-i18n-html>Apporteur<br>d'affaires</h3>
+                    <p class="sv-card-text" data-i18n="services_formations_c6_text">Formation 1 journée pour maîtriser l'activité d'apporteur d'affaires immobilier haut de gamme.</p>
+                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#formationApporteurModal" data-i18n="services_card_btn">Détail →</button>
                 </div>
                 <div class="sv-card">
-                    <p class="sv-card-num">04.7 · 2 900 €</p>
-                    <h3 class="sv-card-title">Consulting<br>Premium</h3>
-                    <p class="sv-card-text">2 jours + suivi pour structurer une activité de consulting immobilier de prestige, éthique et rentable.</p>
-                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#formationConsultingModal">Détail →</button>
+                    <p class="sv-card-num" data-i18n="services_formations_c7_num">04.7 · 2 900 €</p>
+                    <h3 class="sv-card-title" data-i18n="services_formations_c7_title" data-i18n-html>Consulting<br>Premium</h3>
+                    <p class="sv-card-text" data-i18n="services_formations_c7_text">2 jours + suivi pour structurer une activité de consulting immobilier de prestige, éthique et rentable.</p>
+                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#formationConsultingModal" data-i18n="services_card_btn">Détail →</button>
                 </div>
                 <div class="sv-card">
-                    <p class="sv-card-num">04.8 · 1 200 €</p>
-                    <h3 class="sv-card-title">Web3<br>Immobilier</h3>
-                    <p class="sv-card-text">Masterclass 1 jour sur la tokenisation, la blockchain et les nouvelles formes de financement immobilier.</p>
-                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#formationWeb3Modal">Détail →</button>
+                    <p class="sv-card-num" data-i18n="services_formations_c8_num">04.8 · 1 200 €</p>
+                    <h3 class="sv-card-title" data-i18n="services_formations_c8_title" data-i18n-html>Web3<br>Immobilier</h3>
+                    <p class="sv-card-text" data-i18n="services_formations_c8_text">Masterclass 1 jour sur la tokenisation, la blockchain et les nouvelles formes de financement immobilier.</p>
+                    <button class="sv-card-btn" data-bs-toggle="modal" data-bs-target="#formationWeb3Modal" data-i18n="services_card_btn">Détail →</button>
                 </div>
             </div>
 
             <div class="sv-depth">
                 <div class="sv-depth-left">
                     <div class="sv-depth-left-content">
-                        <h3 class="sv-depth-title">Formations<br><em>conçues pour l'action</em></h3>
+                        <h3 class="sv-depth-title" data-i18n="services_formations_depth_title" data-i18n-html>Formations<br><em>conçues pour l'action</em></h3>
                         <ul class="sv-depth-list">
-                            <li>Contenu structuré par des praticiens, pas des théoriciens</li>
-                            <li>Cas pratiques et exercices issus de projets réels</li>
-                            <li>Petits groupes pour maximiser l'interaction</li>
-                            <li>Matériaux et outils fournis et réutilisables</li>
-                            <li>Suivi post-formation disponible selon le programme</li>
+                            <li data-i18n="services_formations_depth1">Contenu structuré par des praticiens, pas des théoriciens</li>
+                            <li data-i18n="services_formations_depth2">Cas pratiques et exercices issus de projets réels</li>
+                            <li data-i18n="services_formations_depth3">Petits groupes pour maximiser l'interaction</li>
+                            <li data-i18n="services_formations_depth4">Matériaux et outils fournis et réutilisables</li>
+                            <li data-i18n="services_formations_depth5">Suivi post-formation disponible selon le programme</li>
                         </ul>
                     </div>
                 </div>
                 <div class="sv-depth-right">
-                    <p class="sv-depth-quote">« Chaque formation est conçue pour vous donner des outils <em>opérationnels</em> immédiatement. »</p>
+                    <p class="sv-depth-quote" data-i18n="services_formations_quote" data-i18n-html>« Chaque formation est conçue pour vous donner des outils <em>opérationnels</em> immédiatement. »</p>
                     <div class="sv-depth-attrs">
                         <div class="sv-depth-attr">
                             <div class="sv-depth-attr-dot"></div>
-                            <p class="sv-depth-attr-text">+191 formations réalisées · +784 sessions de coaching</p>
+                            <p class="sv-depth-attr-text" data-i18n="services_formations_attr1">+191 formations réalisées · +784 sessions de coaching</p>
                         </div>
                         <div class="sv-depth-attr">
                             <div class="sv-depth-attr-dot"></div>
-                            <p class="sv-depth-attr-text">Présentiel ou distanciel · Portugal et international</p>
+                            <p class="sv-depth-attr-text" data-i18n="services_formations_attr2">Présentiel ou distanciel · Portugal et international</p>
                         </div>
                         <div class="sv-depth-attr">
                             <div class="sv-depth-attr-dot"></div>
-                            <p class="sv-depth-attr-text">Sur mesure pour groupes · Nous contacter pour devis</p>
+                            <p class="sv-depth-attr-text" data-i18n="services_formations_attr3">Sur mesure pour groupes · Nous contacter pour devis</p>
                         </div>
                     </div>
                 </div>
@@ -1163,12 +1163,12 @@
 
         <!-- CTA FINAL -->
         <div class="sv-final">
-            <p class="sv-final-text">
-                Pas sûr de ce dont<br>vous avez besoin ?
+            <p class="sv-final-text" data-i18n="services_cta_text" data-i18n-html>
+                Pas sûr de ce dont<br>vous avez besoin ?<br>
                 <em>Parlons-en.</em>
             </p>
             <a asp-controller="Contact" asp-action="Contact" class="sv-final-cta">
-                Prendre rendez-vous
+                <span data-i18n="services_cta_btn">Prendre rendez-vous</span>
                 <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" /></svg>
             </a>
         </div>
@@ -1182,18 +1182,18 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <div><p class="sv-modal-pretitle">01.1 — Coaching</p><h5 class="modal-title">Coaching Immobilier</h5></div>
+                <div><p class="sv-modal-pretitle" data-i18n="modal_coaching_immo_pretitle">01.1 — Coaching</p><h5 class="modal-title" data-i18n="modal_coaching_immo_title">Coaching Immobilier</h5></div>
                 <button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <div class="sv-modal-intro"><p class="sv-modal-intro-text">Un accompagnement stratégique et humain pour réussir votre projet immobilier au Portugal avec clarté, structure et confiance.</p></div>
+                <div class="sv-modal-intro"><p class="sv-modal-intro-text" data-i18n="modal_coaching_immo_intro">Un accompagnement stratégique et humain pour réussir votre projet immobilier au Portugal avec clarté, structure et confiance.</p></div>
                 <div class="sv-modal-grid">
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title">Clarification des objectifs</h4><p class="sv-modal-item-text">Identifier et clarifier vos objectifs, structurer votre réflexion et mettre en place des leviers adaptés à votre personnalité.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title">Structuration & stratégie</h4><p class="sv-modal-item-text">Visualisation, alignement interne, levée de blocages, priorisation des actions jusqu'à une projection cohérente et durable.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title">Expertise certifiée ICF</h4><p class="sv-modal-item-text">Coach certifié ICF, +8 ans d'expérience dans l'accompagnement de dirigeants et d'investisseurs à fort enjeu.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title">Relation humaine</h4><p class="sv-modal-item-text">Relation sincère, respectueuse et stimulante. Chaque projet est avant tout une rencontre.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title" data-i18n="modal_coaching_immo_i1_title">Clarification des objectifs</h4><p class="sv-modal-item-text" data-i18n="modal_coaching_immo_i1_text">Identifier et clarifier vos objectifs, structurer votre réflexion et mettre en place des leviers adaptés à votre personnalité.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title" data-i18n="modal_coaching_immo_i2_title">Structuration & stratégie</h4><p class="sv-modal-item-text" data-i18n="modal_coaching_immo_i2_text">Visualisation, alignement interne, levée de blocages, priorisation des actions jusqu'à une projection cohérente et durable.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title" data-i18n="modal_coaching_immo_i3_title">Expertise certifiée ICF</h4><p class="sv-modal-item-text" data-i18n="modal_coaching_immo_i3_text">Coach certifié ICF, +8 ans d'expérience dans l'accompagnement de dirigeants et d'investisseurs à fort enjeu.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title" data-i18n="modal_coaching_immo_i4_title">Relation humaine</h4><p class="sv-modal-item-text" data-i18n="modal_coaching_immo_i4_text">Relation sincère, respectueuse et stimulante. Chaque projet est avant tout une rencontre.</p></div>
                 </div>
-                <div class="sv-modal-note"><p class="sv-modal-note-text">Human Square — Coaching Professionnel ICF</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button></div>
+                <div class="sv-modal-note"><p class="sv-modal-note-text" data-i18n="modal_coaching_immo_note">Human Square — Coaching Professionnel ICF</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" data-i18n="services_modal_close">Fermer</button></div>
             </div>
         </div>
     </div>
@@ -1204,18 +1204,18 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <div><p class="sv-modal-pretitle">01.2 — Coaching</p><h5 class="modal-title">Coaching Business</h5></div>
+                <div><p class="sv-modal-pretitle" data-i18n="modal_coaching_biz_pretitle">01.2 — Coaching</p><h5 class="modal-title" data-i18n="modal_coaching_biz_title">Coaching Business</h5></div>
                 <button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <div class="sv-modal-intro"><p class="sv-modal-intro-text">De l'idée au pilotage, construisez une activité alignée, durable et porteuse de sens.</p></div>
+                <div class="sv-modal-intro"><p class="sv-modal-intro-text" data-i18n="modal_coaching_biz_intro">De l'idée au pilotage, construisez une activité alignée, durable et porteuse de sens.</p></div>
                 <div class="sv-modal-grid">
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title">Positionnement & offre</h4><p class="sv-modal-item-text">Clarification de votre proposition de valeur, étude de la cible, structuration d'une offre cohérente et différenciante.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title">Vision & stratégie</h4><p class="sv-modal-item-text">Stratégie alignée avec vos aspirations, vos ressources et le marché. Priorisation et feuille de route claire.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title">Posture entrepreneuriale</h4><p class="sv-modal-item-text">Développement de votre leadership, assertivité et résilience en tant qu'entrepreneur.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title">Équilibre & impact</h4><p class="sv-modal-item-text">Équilibre entre ambition et faisabilité, performance et bien-être, croissance et alignement personnel.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title" data-i18n="modal_coaching_biz_i1_title">Positionnement & offre</h4><p class="sv-modal-item-text" data-i18n="modal_coaching_biz_i1_text">Clarification de votre proposition de valeur, étude de la cible, structuration d'une offre cohérente et différenciante.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title" data-i18n="modal_coaching_biz_i2_title">Vision & stratégie</h4><p class="sv-modal-item-text" data-i18n="modal_coaching_biz_i2_text">Stratégie alignée avec vos aspirations, vos ressources et le marché. Priorisation et feuille de route claire.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title" data-i18n="modal_coaching_biz_i3_title">Posture entrepreneuriale</h4><p class="sv-modal-item-text" data-i18n="modal_coaching_biz_i3_text">Développement de votre leadership, assertivité et résilience en tant qu'entrepreneur.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title" data-i18n="modal_coaching_biz_i4_title">Équilibre & impact</h4><p class="sv-modal-item-text" data-i18n="modal_coaching_biz_i4_text">Équilibre entre ambition et faisabilité, performance et bien-être, croissance et alignement personnel.</p></div>
                 </div>
-                <div class="sv-modal-note"><p class="sv-modal-note-text">Human Square — Coaching Business</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button></div>
+                <div class="sv-modal-note"><p class="sv-modal-note-text" data-i18n="modal_coaching_biz_note">Human Square — Coaching Business</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" data-i18n="services_modal_close">Fermer</button></div>
             </div>
         </div>
     </div>
@@ -1226,18 +1226,18 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <div><p class="sv-modal-pretitle">01.3 — Coaching</p><h5 class="modal-title">Coaching Mindset</h5></div>
+                <div><p class="sv-modal-pretitle" data-i18n="modal_coaching_mind_pretitle">01.3 — Coaching</p><h5 class="modal-title" data-i18n="modal_coaching_mind_title">Coaching Mindset</h5></div>
                 <button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <div class="sv-modal-intro"><p class="sv-modal-intro-text">Un esprit clair pour des décisions alignées — parce qu'un bon projet commence par un bon ancrage intérieur.</p></div>
+                <div class="sv-modal-intro"><p class="sv-modal-intro-text" data-i18n="modal_coaching_mind_intro">Un esprit clair pour des décisions alignées — parce qu'un bon projet commence par un bon ancrage intérieur.</p></div>
                 <div class="sv-modal-grid">
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title">Recentrage & clarté</h4><p class="sv-modal-item-text">Se reconnecter à l'essentiel, prendre du recul sur les enjeux, retrouver de la clarté dans la complexité.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title">Confiance dans la décision</h4><p class="sv-modal-item-text">Développer une posture intérieure stable pour faire des choix justes, même en contexte incertain.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title">Équilibre émotionnel</h4><p class="sv-modal-item-text">Mieux gérer le stress, les doutes et les peurs. Renforcer votre solidité intérieure et votre résilience.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title">Cohérence personnelle</h4><p class="sv-modal-item-text">Aligner vos choix professionnels et personnels avec vos valeurs profondes pour une vie plus fluide.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title" data-i18n="modal_coaching_mind_i1_title">Recentrage & clarté</h4><p class="sv-modal-item-text" data-i18n="modal_coaching_mind_i1_text">Se reconnecter à l'essentiel, prendre du recul sur les enjeux, retrouver de la clarté dans la complexité.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title" data-i18n="modal_coaching_mind_i2_title">Confiance dans la décision</h4><p class="sv-modal-item-text" data-i18n="modal_coaching_mind_i2_text">Développer une posture intérieure stable pour faire des choix justes, même en contexte incertain.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title" data-i18n="modal_coaching_mind_i3_title">Équilibre émotionnel</h4><p class="sv-modal-item-text" data-i18n="modal_coaching_mind_i3_text">Mieux gérer le stress, les doutes et les peurs. Renforcer votre solidité intérieure et votre résilience.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title" data-i18n="modal_coaching_mind_i4_title">Cohérence personnelle</h4><p class="sv-modal-item-text" data-i18n="modal_coaching_mind_i4_text">Aligner vos choix professionnels et personnels avec vos valeurs profondes pour une vie plus fluide.</p></div>
                 </div>
-                <div class="sv-modal-note"><p class="sv-modal-note-text">Human Square — Coaching Mindset</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button></div>
+                <div class="sv-modal-note"><p class="sv-modal-note-text" data-i18n="modal_coaching_mind_note">Human Square — Coaching Mindset</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" data-i18n="services_modal_close">Fermer</button></div>
             </div>
         </div>
     </div>
@@ -1248,18 +1248,18 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <div><p class="sv-modal-pretitle">01.4 — Coaching</p><h5 class="modal-title">Coaching Transition</h5></div>
+                <div><p class="sv-modal-pretitle" data-i18n="modal_coaching_trans_pretitle">01.4 — Coaching</p><h5 class="modal-title" data-i18n="modal_coaching_trans_title">Coaching Transition</h5></div>
                 <button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <div class="sv-modal-intro"><p class="sv-modal-intro-text">Transition, reconversion, repositionnement — faites des choix alignés et puissants pour la suite de votre parcours.</p></div>
+                <div class="sv-modal-intro"><p class="sv-modal-intro-text" data-i18n="modal_coaching_trans_intro">Transition, reconversion, repositionnement — faites des choix alignés et puissants pour la suite de votre parcours.</p></div>
                 <div class="sv-modal-grid">
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title">Orientation & clarification</h4><p class="sv-modal-item-text">Comprendre vos besoins, vos forces, vos aspirations, et clarifier les options professionnelles qui vous correspondent.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title">Repositionnement stratégique</h4><p class="sv-modal-item-text">Repenser votre positionnement, affiner votre profil et valoriser votre expérience dans un nouveau cadre.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title">Lancement d'activité</h4><p class="sv-modal-item-text">Structurer et sécuriser votre nouveau projet professionnel avec méthode et confiance.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title">Accompagnement humain</h4><p class="sv-modal-item-text">Un soutien bienveillant, exigeant et sur-mesure pour avancer pas à pas, avec alignement.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title" data-i18n="modal_coaching_trans_i1_title">Orientation & clarification</h4><p class="sv-modal-item-text" data-i18n="modal_coaching_trans_i1_text">Comprendre vos besoins, vos forces, vos aspirations, et clarifier les options professionnelles qui vous correspondent.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title" data-i18n="modal_coaching_trans_i2_title">Repositionnement stratégique</h4><p class="sv-modal-item-text" data-i18n="modal_coaching_trans_i2_text">Repenser votre positionnement, affiner votre profil et valoriser votre expérience dans un nouveau cadre.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title" data-i18n="modal_coaching_trans_i3_title">Lancement d'activité</h4><p class="sv-modal-item-text" data-i18n="modal_coaching_trans_i3_text">Structurer et sécuriser votre nouveau projet professionnel avec méthode et confiance.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title" data-i18n="modal_coaching_trans_i4_title">Accompagnement humain</h4><p class="sv-modal-item-text" data-i18n="modal_coaching_trans_i4_text">Un soutien bienveillant, exigeant et sur-mesure pour avancer pas à pas, avec alignement.</p></div>
                 </div>
-                <div class="sv-modal-note"><p class="sv-modal-note-text">Human Square — Coaching Transition</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button></div>
+                <div class="sv-modal-note"><p class="sv-modal-note-text" data-i18n="modal_coaching_trans_note">Human Square — Coaching Transition</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" data-i18n="services_modal_close">Fermer</button></div>
             </div>
         </div>
     </div>
@@ -1270,18 +1270,18 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <div><p class="sv-modal-pretitle">02.1 — Consulting</p><h5 class="modal-title">Consulting Immobilier</h5></div>
+                <div><p class="sv-modal-pretitle" data-i18n="modal_consulting_immo_pretitle">02.1 — Consulting</p><h5 class="modal-title" data-i18n="modal_consulting_immo_title">Consulting Immobilier</h5></div>
                 <button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <div class="sv-modal-intro"><p class="sv-modal-intro-text">Expertise et accompagnement opérationnel sur vos projets immobiliers au Portugal, de l'analyse à la concrétisation.</p></div>
+                <div class="sv-modal-intro"><p class="sv-modal-intro-text" data-i18n="modal_consulting_immo_intro">Expertise et accompagnement opérationnel sur vos projets immobiliers au Portugal, de l'analyse à la concrétisation.</p></div>
                 <div class="sv-modal-grid">
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title">Étude de faisabilité</h4><p class="sv-modal-item-text">Analyse du projet pour valider sa viabilité technique, réglementaire et économique.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title">Cadre légal & fiscalité</h4><p class="sv-modal-item-text">Conseil sur les démarches administratives, structure juridique, fiscalité locale et obligations légales.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title">Planification & pilotage</h4><p class="sv-modal-item-text">Structuration du projet, sélection des prestataires, négociation des devis et suivi de chantier.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title">Réseau d'experts</h4><p class="sv-modal-item-text">Accès à un réseau de confiance : architectes, juristes, fiscalistes, constructeurs, notaires.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title" data-i18n="modal_consulting_immo_i1_title">Étude de faisabilité</h4><p class="sv-modal-item-text" data-i18n="modal_consulting_immo_i1_text">Analyse du projet pour valider sa viabilité technique, réglementaire et économique.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title" data-i18n="modal_consulting_immo_i2_title">Cadre légal & fiscalité</h4><p class="sv-modal-item-text" data-i18n="modal_consulting_immo_i2_text">Conseil sur les démarches administratives, structure juridique, fiscalité locale et obligations légales.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title" data-i18n="modal_consulting_immo_i3_title">Planification & pilotage</h4><p class="sv-modal-item-text" data-i18n="modal_consulting_immo_i3_text">Structuration du projet, sélection des prestataires, négociation des devis et suivi de chantier.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title" data-i18n="modal_consulting_immo_i4_title">Réseau d'experts</h4><p class="sv-modal-item-text" data-i18n="modal_consulting_immo_i4_text">Accès à un réseau de confiance : architectes, juristes, fiscalistes, constructeurs, notaires.</p></div>
                 </div>
-                <div class="sv-modal-note"><p class="sv-modal-note-text">Human Square — Consulting Immobilier</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button></div>
+                <div class="sv-modal-note"><p class="sv-modal-note-text" data-i18n="modal_consulting_immo_note">Human Square — Consulting Immobilier</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" data-i18n="services_modal_close">Fermer</button></div>
             </div>
         </div>
     </div>
@@ -1292,18 +1292,18 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <div><p class="sv-modal-pretitle">02.2 — Consulting</p><h5 class="modal-title">Consulting Entreprises</h5></div>
+                <div><p class="sv-modal-pretitle" data-i18n="modal_consulting_ent_pretitle">02.2 — Consulting</p><h5 class="modal-title" data-i18n="modal_consulting_ent_title">Consulting Entreprises</h5></div>
                 <button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <div class="sv-modal-intro"><p class="sv-modal-intro-text">Un accompagnement sur-mesure pour structurer, transformer ou accélérer votre entreprise avec clarté et cohérence.</p></div>
+                <div class="sv-modal-intro"><p class="sv-modal-intro-text" data-i18n="modal_consulting_ent_intro">Un accompagnement sur-mesure pour structurer, transformer ou accélérer votre entreprise avec clarté et cohérence.</p></div>
                 <div class="sv-modal-grid">
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title">Positionnement stratégique</h4><p class="sv-modal-item-text">Clarification de votre ADN d'entreprise, diagnostic global, alignement vision-mission-offres.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title">Structuration & organisation</h4><p class="sv-modal-item-text">Appui à la structuration des équipes, process internes, management et systèmes de croissance.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title">Transformation</h4><p class="sv-modal-item-text">Gestion du changement, nouvelles offres, digitalisation, nouvelles gouvernances ou évolutions structurelles.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title">Accompagnement humain</h4><p class="sv-modal-item-text">Coaching des dirigeants, dynamique d'équipe, gouvernance participative et culture alignée.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title" data-i18n="modal_consulting_ent_i1_title">Positionnement stratégique</h4><p class="sv-modal-item-text" data-i18n="modal_consulting_ent_i1_text">Clarification de votre ADN d'entreprise, diagnostic global, alignement vision-mission-offres.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title" data-i18n="modal_consulting_ent_i2_title">Structuration & organisation</h4><p class="sv-modal-item-text" data-i18n="modal_consulting_ent_i2_text">Appui à la structuration des équipes, process internes, management et systèmes de croissance.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title" data-i18n="modal_consulting_ent_i3_title">Transformation</h4><p class="sv-modal-item-text" data-i18n="modal_consulting_ent_i3_text">Gestion du changement, nouvelles offres, digitalisation, nouvelles gouvernances ou évolutions structurelles.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title" data-i18n="modal_consulting_ent_i4_title">Accompagnement humain</h4><p class="sv-modal-item-text" data-i18n="modal_consulting_ent_i4_text">Coaching des dirigeants, dynamique d'équipe, gouvernance participative et culture alignée.</p></div>
                 </div>
-                <div class="sv-modal-note"><p class="sv-modal-note-text">Human Square — Consulting Entreprises</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button></div>
+                <div class="sv-modal-note"><p class="sv-modal-note-text" data-i18n="modal_consulting_ent_note">Human Square — Consulting Entreprises</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" data-i18n="services_modal_close">Fermer</button></div>
             </div>
         </div>
     </div>
@@ -1314,18 +1314,18 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <div><p class="sv-modal-pretitle">02.3 — Consulting</p><h5 class="modal-title">Consulting Business</h5></div>
+                <div><p class="sv-modal-pretitle" data-i18n="modal_consulting_biz_pretitle">02.3 — Consulting</p><h5 class="modal-title" data-i18n="modal_consulting_biz_title">Consulting Business</h5></div>
                 <button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <div class="sv-modal-intro"><p class="sv-modal-intro-text">Transformez vos idées en réalité grâce à un accompagnement stratégique, structuré et humain.</p></div>
+                <div class="sv-modal-intro"><p class="sv-modal-intro-text" data-i18n="modal_consulting_biz_intro">Transformez vos idées en réalité grâce à un accompagnement stratégique, structuré et humain.</p></div>
                 <div class="sv-modal-grid">
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title">Clarification & vision</h4><p class="sv-modal-item-text">Identifier votre valeur ajoutée, affiner votre idée, cadrer votre vision pour bâtir un projet porteur de sens.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title">Étude d'opportunité</h4><p class="sv-modal-item-text">Valider la faisabilité, étudier le marché, modéliser votre offre et établir votre business plan.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title">Structuration</h4><p class="sv-modal-item-text">Définir les étapes clés, les ressources nécessaires, les partenariats et les choix financiers adaptés.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title">Mise en œuvre</h4><p class="sv-modal-item-text">Suivi personnalisé pour passer de l'idée à l'action avec confiance, méthode et soutien stratégique.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title" data-i18n="modal_consulting_biz_i1_title">Clarification & vision</h4><p class="sv-modal-item-text" data-i18n="modal_consulting_biz_i1_text">Identifier votre valeur ajoutée, affiner votre idée, cadrer votre vision pour bâtir un projet porteur de sens.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title" data-i18n="modal_consulting_biz_i2_title">Étude d'opportunité</h4><p class="sv-modal-item-text" data-i18n="modal_consulting_biz_i2_text">Valider la faisabilité, étudier le marché, modéliser votre offre et établir votre business plan.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title" data-i18n="modal_consulting_biz_i3_title">Structuration</h4><p class="sv-modal-item-text" data-i18n="modal_consulting_biz_i3_text">Définir les étapes clés, les ressources nécessaires, les partenariats et les choix financiers adaptés.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title" data-i18n="modal_consulting_biz_i4_title">Mise en œuvre</h4><p class="sv-modal-item-text" data-i18n="modal_consulting_biz_i4_text">Suivi personnalisé pour passer de l'idée à l'action avec confiance, méthode et soutien stratégique.</p></div>
                 </div>
-                <div class="sv-modal-note"><p class="sv-modal-note-text">Human Square — Consulting Business</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button></div>
+                <div class="sv-modal-note"><p class="sv-modal-note-text" data-i18n="modal_consulting_biz_note">Human Square — Consulting Business</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" data-i18n="services_modal_close">Fermer</button></div>
             </div>
         </div>
     </div>
@@ -1336,18 +1336,18 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <div><p class="sv-modal-pretitle">02.4 — Consulting</p><h5 class="modal-title">Consulting Finances</h5></div>
+                <div><p class="sv-modal-pretitle" data-i18n="modal_consulting_fin_pretitle">02.4 — Consulting</p><h5 class="modal-title" data-i18n="modal_consulting_fin_title">Consulting Finances</h5></div>
                 <button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <div class="sv-modal-intro"><p class="sv-modal-intro-text">Sécurisez et optimisez vos ressources financières pour soutenir la croissance de vos projets.</p></div>
+                <div class="sv-modal-intro"><p class="sv-modal-intro-text" data-i18n="modal_consulting_fin_intro">Sécurisez et optimisez vos ressources financières pour soutenir la croissance de vos projets.</p></div>
                 <div class="sv-modal-grid">
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title">Optimisation des flux</h4><p class="sv-modal-item-text">Analyse de vos flux financiers, réduction des coûts cachés, amélioration de la rentabilité opérationnelle.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title">Recherche de financement</h4><p class="sv-modal-item-text">Accompagnement dans la recherche de partenaires financiers, subventions, ou structuration de dossiers bancaires.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title">Structuration d'investissement</h4><p class="sv-modal-item-text">Conseil sur le montage juridique et financier d'opérations d'investissement et levées de fonds.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title">Gestion des risques</h4><p class="sv-modal-item-text">Identification des risques financiers, mise en place de dispositifs de sécurisation et d'anticipation.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title" data-i18n="modal_consulting_fin_i1_title">Optimisation des flux</h4><p class="sv-modal-item-text" data-i18n="modal_consulting_fin_i1_text">Analyse de vos flux financiers, réduction des coûts cachés, amélioration de la rentabilité opérationnelle.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title" data-i18n="modal_consulting_fin_i2_title">Recherche de financement</h4><p class="sv-modal-item-text" data-i18n="modal_consulting_fin_i2_text">Accompagnement dans la recherche de partenaires financiers, subventions, ou structuration de dossiers bancaires.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title" data-i18n="modal_consulting_fin_i3_title">Structuration d'investissement</h4><p class="sv-modal-item-text" data-i18n="modal_consulting_fin_i3_text">Conseil sur le montage juridique et financier d'opérations d'investissement et levées de fonds.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title" data-i18n="modal_consulting_fin_i4_title">Gestion des risques</h4><p class="sv-modal-item-text" data-i18n="modal_consulting_fin_i4_text">Identification des risques financiers, mise en place de dispositifs de sécurisation et d'anticipation.</p></div>
                 </div>
-                <div class="sv-modal-note"><p class="sv-modal-note-text">Human Square — Consulting Finances</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button></div>
+                <div class="sv-modal-note"><p class="sv-modal-note-text" data-i18n="modal_consulting_fin_note">Human Square — Consulting Finances</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" data-i18n="services_modal_close">Fermer</button></div>
             </div>
         </div>
     </div>
@@ -1358,18 +1358,18 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <div><p class="sv-modal-pretitle">03.1 — Audit</p><h5 class="modal-title">Audit Immobilier</h5></div>
+                <div><p class="sv-modal-pretitle" data-i18n="modal_audit_immo_pretitle">03.1 — Audit</p><h5 class="modal-title" data-i18n="modal_audit_immo_title">Audit Immobilier</h5></div>
                 <button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <div class="sv-modal-intro"><p class="sv-modal-intro-text">Avant d'acheter ou de lancer un projet, faites analyser le bien sous tous ses angles — technique, juridique, financier.</p></div>
+                <div class="sv-modal-intro"><p class="sv-modal-intro-text" data-i18n="modal_audit_immo_intro">Avant d'acheter ou de lancer un projet, faites analyser le bien sous tous ses angles — technique, juridique, financier.</p></div>
                 <div class="sv-modal-grid">
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title">Potentiel constructible</h4><p class="sv-modal-item-text">Analyse des règles d'urbanisme, vérification COS/CERU, faisabilité technique et juridique (PDM, RNU).</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title">Coût vs valeur</h4><p class="sv-modal-item-text">Estimation précise du coût global d'un projet par rapport à la valeur de marché cible attendue.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title">Rentabilité</h4><p class="sv-modal-item-text">Calcul du rendement net, retour sur investissement, scénarios de sortie, points de levier et zones de fragilité.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title">Risques & contraintes</h4><p class="sv-modal-item-text">Identification des risques administratifs, techniques, environnementaux ou géographiques.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title" data-i18n="modal_audit_immo_i1_title">Potentiel constructible</h4><p class="sv-modal-item-text" data-i18n="modal_audit_immo_i1_text">Analyse des règles d'urbanisme, vérification COS/CERU, faisabilité technique et juridique (PDM, RNU).</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title" data-i18n="modal_audit_immo_i2_title">Coût vs valeur</h4><p class="sv-modal-item-text" data-i18n="modal_audit_immo_i2_text">Estimation précise du coût global d'un projet par rapport à la valeur de marché cible attendue.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title" data-i18n="modal_audit_immo_i3_title">Rentabilité</h4><p class="sv-modal-item-text" data-i18n="modal_audit_immo_i3_text">Calcul du rendement net, retour sur investissement, scénarios de sortie, points de levier et zones de fragilité.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title" data-i18n="modal_audit_immo_i4_title">Risques & contraintes</h4><p class="sv-modal-item-text" data-i18n="modal_audit_immo_i4_text">Identification des risques administratifs, techniques, environnementaux ou géographiques.</p></div>
                 </div>
-                <div class="sv-modal-note"><p class="sv-modal-note-text">Human Square — Audit Immobilier</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button></div>
+                <div class="sv-modal-note"><p class="sv-modal-note-text" data-i18n="modal_audit_immo_note">Human Square — Audit Immobilier</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" data-i18n="services_modal_close">Fermer</button></div>
             </div>
         </div>
     </div>
@@ -1380,18 +1380,18 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <div><p class="sv-modal-pretitle">03.2 — Audit</p><h5 class="modal-title">Audit Entreprises</h5></div>
+                <div><p class="sv-modal-pretitle" data-i18n="modal_audit_ent_pretitle">03.2 — Audit</p><h5 class="modal-title" data-i18n="modal_audit_ent_title">Audit Entreprises</h5></div>
                 <button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <div class="sv-modal-intro"><p class="sv-modal-intro-text">Un regard externe, stratégique et structuré pour identifier les points d'appui et de transformation de votre entreprise.</p></div>
+                <div class="sv-modal-intro"><p class="sv-modal-intro-text" data-i18n="modal_audit_ent_intro">Un regard externe, stratégique et structuré pour identifier les points d'appui et de transformation de votre entreprise.</p></div>
                 <div class="sv-modal-grid">
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title">Diagnostic stratégique</h4><p class="sv-modal-item-text">Analyse globale : vision, offres, positionnement, gouvernance, indicateurs et cohérence interne.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title">Identification des blocages</h4><p class="sv-modal-item-text">Repérage des freins à la performance : organisation, communication, offres, rentabilité, RH.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title">Leviers de croissance</h4><p class="sv-modal-item-text">Recommandations claires et hiérarchisées pour redynamiser l'activité, innover, structurer ou réorienter.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title">Accompagnement possible</h4><p class="sv-modal-item-text">Possibilité de poursuivre par un accompagnement personnalisé pour mettre en œuvre les recommandations.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title" data-i18n="modal_audit_ent_i1_title">Diagnostic stratégique</h4><p class="sv-modal-item-text" data-i18n="modal_audit_ent_i1_text">Analyse globale : vision, offres, positionnement, gouvernance, indicateurs et cohérence interne.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title" data-i18n="modal_audit_ent_i2_title">Identification des blocages</h4><p class="sv-modal-item-text" data-i18n="modal_audit_ent_i2_text">Repérage des freins à la performance : organisation, communication, offres, rentabilité, RH.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title" data-i18n="modal_audit_ent_i3_title">Leviers de croissance</h4><p class="sv-modal-item-text" data-i18n="modal_audit_ent_i3_text">Recommandations claires et hiérarchisées pour redynamiser l'activité, innover, structurer ou réorienter.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title" data-i18n="modal_audit_ent_i4_title">Accompagnement possible</h4><p class="sv-modal-item-text" data-i18n="modal_audit_ent_i4_text">Possibilité de poursuivre par un accompagnement personnalisé pour mettre en œuvre les recommandations.</p></div>
                 </div>
-                <div class="sv-modal-note"><p class="sv-modal-note-text">Human Square — Audit Entreprises</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button></div>
+                <div class="sv-modal-note"><p class="sv-modal-note-text" data-i18n="modal_audit_ent_note">Human Square — Audit Entreprises</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" data-i18n="services_modal_close">Fermer</button></div>
             </div>
         </div>
     </div>
@@ -1402,18 +1402,18 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <div><p class="sv-modal-pretitle">03.3 — Audit</p><h5 class="modal-title">Audit Financier</h5></div>
+                <div><p class="sv-modal-pretitle" data-i18n="modal_audit_fin_pretitle">03.3 — Audit</p><h5 class="modal-title" data-i18n="modal_audit_fin_title">Audit Financier</h5></div>
                 <button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <div class="sv-modal-intro"><p class="sv-modal-intro-text">Un audit complet pour comprendre, ajuster et renforcer votre modèle financier avec rigueur et agilité.</p></div>
+                <div class="sv-modal-intro"><p class="sv-modal-intro-text" data-i18n="modal_audit_fin_intro">Un audit complet pour comprendre, ajuster et renforcer votre modèle financier avec rigueur et agilité.</p></div>
                 <div class="sv-modal-grid">
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title">Analyse des flux & marges</h4><p class="sv-modal-item-text">Évaluation des coûts directs/indirects, des marges opérationnelles et des points critiques de trésorerie.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title">Structuration financière</h4><p class="sv-modal-item-text">Diagnostic des structures de financement, dettes, capitaux propres et stratégie à moyen terme.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title">Identification des leviers</h4><p class="sv-modal-item-text">Recommandations concrètes pour améliorer votre performance financière et sécuriser la rentabilité.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title">Plan d'actions</h4><p class="sv-modal-item-text">Plan ciblé, priorisé et adapté à votre réalité, avec possibilité d'accompagnement à la mise en œuvre.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title" data-i18n="modal_audit_fin_i1_title">Analyse des flux & marges</h4><p class="sv-modal-item-text" data-i18n="modal_audit_fin_i1_text">Évaluation des coûts directs/indirects, des marges opérationnelles et des points critiques de trésorerie.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title" data-i18n="modal_audit_fin_i2_title">Structuration financière</h4><p class="sv-modal-item-text" data-i18n="modal_audit_fin_i2_text">Diagnostic des structures de financement, dettes, capitaux propres et stratégie à moyen terme.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title" data-i18n="modal_audit_fin_i3_title">Identification des leviers</h4><p class="sv-modal-item-text" data-i18n="modal_audit_fin_i3_text">Recommandations concrètes pour améliorer votre performance financière et sécuriser la rentabilité.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title" data-i18n="modal_audit_fin_i4_title">Plan d'actions</h4><p class="sv-modal-item-text" data-i18n="modal_audit_fin_i4_text">Plan ciblé, priorisé et adapté à votre réalité, avec possibilité d'accompagnement à la mise en œuvre.</p></div>
                 </div>
-                <div class="sv-modal-note"><p class="sv-modal-note-text">Human Square — Audit Financier</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button></div>
+                <div class="sv-modal-note"><p class="sv-modal-note-text" data-i18n="modal_audit_fin_note">Human Square — Audit Financier</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" data-i18n="services_modal_close">Fermer</button></div>
             </div>
         </div>
     </div>
@@ -1424,18 +1424,18 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <div><p class="sv-modal-pretitle">03.4 — Audit</p><h5 class="modal-title">Audit de Projet</h5></div>
+                <div><p class="sv-modal-pretitle" data-i18n="modal_audit_proj_pretitle">03.4 — Audit</p><h5 class="modal-title" data-i18n="modal_audit_proj_title">Audit de Projet</h5></div>
                 <button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <div class="sv-modal-intro"><p class="sv-modal-intro-text">Une analyse complète pour valider, ajuster ou relancer votre projet dans les meilleures conditions.</p></div>
+                <div class="sv-modal-intro"><p class="sv-modal-intro-text" data-i18n="modal_audit_proj_intro">Une analyse complète pour valider, ajuster ou relancer votre projet dans les meilleures conditions.</p></div>
                 <div class="sv-modal-grid">
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title">Cohérence globale</h4><p class="sv-modal-item-text">Vérification de la logique d'ensemble : vision, objectifs, moyens, public cible, impact attendu.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title">Faisabilité opérationnelle</h4><p class="sv-modal-item-text">Analyse des ressources disponibles, contraintes, dépendances et capacité à livrer dans les temps.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title">Partenaires & acteurs</h4><p class="sv-modal-item-text">Identification des parties prenantes, clarification des rôles, recommandations sur la gouvernance.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title">Calendrier & indicateurs</h4><p class="sv-modal-item-text">Revue des étapes, jalons critiques, indicateurs de pilotage et pistes de réajustement.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title" data-i18n="modal_audit_proj_i1_title">Cohérence globale</h4><p class="sv-modal-item-text" data-i18n="modal_audit_proj_i1_text">Vérification de la logique d'ensemble : vision, objectifs, moyens, public cible, impact attendu.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title" data-i18n="modal_audit_proj_i2_title">Faisabilité opérationnelle</h4><p class="sv-modal-item-text" data-i18n="modal_audit_proj_i2_text">Analyse des ressources disponibles, contraintes, dépendances et capacité à livrer dans les temps.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title" data-i18n="modal_audit_proj_i3_title">Partenaires & acteurs</h4><p class="sv-modal-item-text" data-i18n="modal_audit_proj_i3_text">Identification des parties prenantes, clarification des rôles, recommandations sur la gouvernance.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title" data-i18n="modal_audit_proj_i4_title">Calendrier & indicateurs</h4><p class="sv-modal-item-text" data-i18n="modal_audit_proj_i4_text">Revue des étapes, jalons critiques, indicateurs de pilotage et pistes de réajustement.</p></div>
                 </div>
-                <div class="sv-modal-note"><p class="sv-modal-note-text">Human Square — Audit de Projet</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button></div>
+                <div class="sv-modal-note"><p class="sv-modal-note-text" data-i18n="modal_audit_proj_note">Human Square — Audit de Projet</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" data-i18n="services_modal_close">Fermer</button></div>
             </div>
         </div>
     </div>
@@ -1446,18 +1446,18 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <div><p class="sv-modal-pretitle">04.1 — Formation · Dès 8 000 €</p><h5 class="modal-title">L'Investisseur Aligné</h5></div>
+                <div><p class="sv-modal-pretitle" data-i18n="modal_form_invest_pretitle">04.1 — Formation · Dès 8 000 €</p><h5 class="modal-title" data-i18n="modal_form_invest_title">L'Investisseur Aligné</h5></div>
                 <button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <div class="sv-modal-intro"><p class="sv-modal-intro-text">Accompagnement stratégique 3 à 6 mois pour aligner vos projets immobiliers ou entrepreneuriaux avec votre vision personnelle et sécuriser vos décisions.</p></div>
+                <div class="sv-modal-intro"><p class="sv-modal-intro-text" data-i18n="modal_form_invest_intro">Accompagnement stratégique 3 à 6 mois pour aligner vos projets immobiliers ou entrepreneuriaux avec votre vision personnelle et sécuriser vos décisions.</p></div>
                 <div class="sv-modal-grid">
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title">Clarification des objectifs</h4><p class="sv-modal-item-text">Poser des objectifs d'investissement clairs, alignés avec vos ressources, contraintes et ambitions.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title">Audit stratégique</h4><p class="sv-modal-item-text">Étude de faisabilité, analyse des scénarios, projection financière et identification des risques.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title">Structuration juridique</h4><p class="sv-modal-item-text">Sélection du meilleur schéma : société, holding, dettes bancaires, fiscalité internationale.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title">Coaching ICF</h4><p class="sv-modal-item-text">Travail sur vos leviers de décision, clarification mentale, gestion émotionnelle des enjeux financiers.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title" data-i18n="modal_form_invest_i1_title">Clarification des objectifs</h4><p class="sv-modal-item-text" data-i18n="modal_form_invest_i1_text">Poser des objectifs d'investissement clairs, alignés avec vos ressources, contraintes et ambitions.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title" data-i18n="modal_form_invest_i2_title">Audit stratégique</h4><p class="sv-modal-item-text" data-i18n="modal_form_invest_i2_text">Étude de faisabilité, analyse des scénarios, projection financière et identification des risques.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title" data-i18n="modal_form_invest_i3_title">Structuration juridique</h4><p class="sv-modal-item-text" data-i18n="modal_form_invest_i3_text">Sélection du meilleur schéma : société, holding, dettes bancaires, fiscalité internationale.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title" data-i18n="modal_form_invest_i4_title">Coaching ICF</h4><p class="sv-modal-item-text" data-i18n="modal_form_invest_i4_text">Travail sur vos leviers de décision, clarification mentale, gestion émotionnelle des enjeux financiers.</p></div>
                 </div>
-                <div class="sv-modal-note"><p class="sv-modal-note-text">Accompagnement personnalisé 3 à 6 mois — À partir de 8 000 €</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button></div>
+                <div class="sv-modal-note"><p class="sv-modal-note-text" data-i18n="modal_form_invest_note">Accompagnement personnalisé 3 à 6 mois — À partir de 8 000 €</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" data-i18n="services_modal_close">Fermer</button></div>
             </div>
         </div>
     </div>
@@ -1468,18 +1468,18 @@
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
             <div class="modal-header">
-                <div><p class="sv-modal-pretitle">04.2 — Formation · 1 500 €</p><h5 class="modal-title">Investissement Portugal</h5></div>
+                <div><p class="sv-modal-pretitle" data-i18n="modal_form_portugal_pretitle">04.2 — Formation · 1 500 €</p><h5 class="modal-title" data-i18n="modal_form_portugal_title">Investissement Portugal</h5></div>
                 <button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
-                <div class="sv-modal-intro"><p class="sv-modal-intro-text">Masterclass 2 jours pour sécuriser votre projet immobilier au Portugal, en évitant les erreurs les plus fréquentes et en optimisant chaque étape.</p></div>
+                <div class="sv-modal-intro"><p class="sv-modal-intro-text" data-i18n="modal_form_portugal_intro">Masterclass 2 jours pour sécuriser votre projet immobilier au Portugal, en évitant les erreurs les plus fréquentes et en optimisant chaque étape.</p></div>
                 <div class="sv-modal-grid">
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title">Zones attractives</h4><p class="sv-modal-item-text">Étude des régions selon vos objectifs : rendement locatif, résidence secondaire, valorisation patrimoniale.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title">Structuration fiscale</h4><p class="sv-modal-item-text">Optimisation des structures d'achat : achat en direct, SCI, société commerciale, fiscalité RNH.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title">Sécurisation contractuelle</h4><p class="sv-modal-item-text">Vérification des documents, négociation CPCV, choix du notaire, audit juridique des permis.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title">Pilotage post-acquisition</h4><p class="sv-modal-item-text">Gestion des prestataires, rénovations, location, gestion fiscale continue et optimisation patrimoniale.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title" data-i18n="modal_form_portugal_i1_title">Zones attractives</h4><p class="sv-modal-item-text" data-i18n="modal_form_portugal_i1_text">Étude des régions selon vos objectifs : rendement locatif, résidence secondaire, valorisation patrimoniale.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title" data-i18n="modal_form_portugal_i2_title">Structuration fiscale</h4><p class="sv-modal-item-text" data-i18n="modal_form_portugal_i2_text">Optimisation des structures d'achat : achat en direct, SCI, société commerciale, fiscalité RNH.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title" data-i18n="modal_form_portugal_i3_title">Sécurisation contractuelle</h4><p class="sv-modal-item-text" data-i18n="modal_form_portugal_i3_text">Vérification des documents, négociation CPCV, choix du notaire, audit juridique des permis.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title" data-i18n="modal_form_portugal_i4_title">Pilotage post-acquisition</h4><p class="sv-modal-item-text" data-i18n="modal_form_portugal_i4_text">Gestion des prestataires, rénovations, location, gestion fiscale continue et optimisation patrimoniale.</p></div>
                 </div>
-                <div class="sv-modal-note"><p class="sv-modal-note-text">Masterclass 2 jours — 1 500 €</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button></div>
+                <div class="sv-modal-note"><p class="sv-modal-note-text" data-i18n="modal_form_portugal_note">Masterclass 2 jours — 1 500 €</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" data-i18n="services_modal_close">Fermer</button></div>
             </div>
         </div>
     </div>
@@ -1489,16 +1489,16 @@
 <div class="modal fade sv-modal" id="formationPromotionModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
-            <div class="modal-header"><div><p class="sv-modal-pretitle">04.3 — Formation · 3 500 €</p><h5 class="modal-title">Promotion Immobilière</h5></div><button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button></div>
+            <div class="modal-header"><div><p class="sv-modal-pretitle" data-i18n="modal_form_promo_pretitle">04.3 — Formation · 3 500 €</p><h5 class="modal-title" data-i18n="modal_form_promo_title">Promotion Immobilière</h5></div><button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button></div>
             <div class="modal-body">
-                <div class="sv-modal-intro"><p class="sv-modal-intro-text">Formation 3 jours pour maîtriser le cycle complet de la promotion immobilière au Portugal : faisabilité, financement, chantier, commercialisation.</p></div>
+                <div class="sv-modal-intro"><p class="sv-modal-intro-text" data-i18n="modal_form_promo_intro">Formation 3 jours pour maîtriser le cycle complet de la promotion immobilière au Portugal : faisabilité, financement, chantier, commercialisation.</p></div>
                 <div class="sv-modal-grid">
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title">Étude de faisabilité</h4><p class="sv-modal-item-text">Analyse foncière, réglementation d'urbanisme, projections budgétaires, définition de la cible commerciale.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title">Structuration financière</h4><p class="sv-modal-item-text">Budgétisation, choix du financement, négociation bancaire, levée de fonds privés ou investisseurs.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title">Gestion opérationnelle</h4><p class="sv-modal-item-text">Pilotage du chantier, gestion des entreprises, respect des délais et contrôle des marges.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title">Commercialisation</h4><p class="sv-modal-item-text">Stratégie de commercialisation, choix des canaux de vente, gestion des compromis et actes.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title" data-i18n="modal_form_promo_i1_title">Étude de faisabilité</h4><p class="sv-modal-item-text" data-i18n="modal_form_promo_i1_text">Analyse foncière, réglementation d'urbanisme, projections budgétaires, définition de la cible commerciale.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title" data-i18n="modal_form_promo_i2_title">Structuration financière</h4><p class="sv-modal-item-text" data-i18n="modal_form_promo_i2_text">Budgétisation, choix du financement, négociation bancaire, levée de fonds privés ou investisseurs.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title" data-i18n="modal_form_promo_i3_title">Gestion opérationnelle</h4><p class="sv-modal-item-text" data-i18n="modal_form_promo_i3_text">Pilotage du chantier, gestion des entreprises, respect des délais et contrôle des marges.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title" data-i18n="modal_form_promo_i4_title">Commercialisation</h4><p class="sv-modal-item-text" data-i18n="modal_form_promo_i4_text">Stratégie de commercialisation, choix des canaux de vente, gestion des compromis et actes.</p></div>
                 </div>
-                <div class="sv-modal-note"><p class="sv-modal-note-text">Formation 3 jours — 3 500 €</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button></div>
+                <div class="sv-modal-note"><p class="sv-modal-note-text" data-i18n="modal_form_promo_note">Formation 3 jours — 3 500 €</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" data-i18n="services_modal_close">Fermer</button></div>
             </div>
         </div>
     </div>
@@ -1507,16 +1507,16 @@
 <div class="modal fade sv-modal" id="formationBusinessModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
-            <div class="modal-header"><div><p class="sv-modal-pretitle">04.4 — Formation · 2 500 €</p><h5 class="modal-title">Entrepreneuriat & Pilotage</h5></div><button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button></div>
+            <div class="modal-header"><div><p class="sv-modal-pretitle" data-i18n="modal_form_entrep_pretitle">04.4 — Formation · 2 500 €</p><h5 class="modal-title" data-i18n="modal_form_entrep_title">Entrepreneuriat & Pilotage</h5></div><button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button></div>
             <div class="modal-body">
-                <div class="sv-modal-intro"><p class="sv-modal-intro-text">Atelier 2 jours + 3 mois de suivi pour construire un business model robuste et piloter avec vision.</p></div>
+                <div class="sv-modal-intro"><p class="sv-modal-intro-text" data-i18n="modal_form_entrep_intro">Atelier 2 jours + 3 mois de suivi pour construire un business model robuste et piloter avec vision.</p></div>
                 <div class="sv-modal-grid">
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title">Vision & positionnement</h4><p class="sv-modal-item-text">Clarifier votre ADN entrepreneurial, votre cible client, votre valeur ajoutée et les piliers de votre modèle.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title">Structuration</h4><p class="sv-modal-item-text">Identifier la meilleure structure de démarrage, sécuriser votre activité sur les aspects fiscaux et administratifs.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title">Pilotage & planification</h4><p class="sv-modal-item-text">Établir un plan d'action réaliste, piloter les priorités, ajuster aux évolutions du marché.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title">Posture de dirigeant</h4><p class="sv-modal-item-text">Développer votre leadership, prendre les bonnes décisions, équilibrer ambition, sécurité et rythme.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title" data-i18n="modal_form_entrep_i1_title">Vision & positionnement</h4><p class="sv-modal-item-text" data-i18n="modal_form_entrep_i1_text">Clarifier votre ADN entrepreneurial, votre cible client, votre valeur ajoutée et les piliers de votre modèle.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title" data-i18n="modal_form_entrep_i2_title">Structuration</h4><p class="sv-modal-item-text" data-i18n="modal_form_entrep_i2_text">Identifier la meilleure structure de démarrage, sécuriser votre activité sur les aspects fiscaux et administratifs.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title" data-i18n="modal_form_entrep_i3_title">Pilotage & planification</h4><p class="sv-modal-item-text" data-i18n="modal_form_entrep_i3_text">Établir un plan d'action réaliste, piloter les priorités, ajuster aux évolutions du marché.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title" data-i18n="modal_form_entrep_i4_title">Posture de dirigeant</h4><p class="sv-modal-item-text" data-i18n="modal_form_entrep_i4_text">Développer votre leadership, prendre les bonnes décisions, équilibrer ambition, sécurité et rythme.</p></div>
                 </div>
-                <div class="sv-modal-note"><p class="sv-modal-note-text">Atelier 2 jours + 3 mois de suivi — 2 500 €</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button></div>
+                <div class="sv-modal-note"><p class="sv-modal-note-text" data-i18n="modal_form_entrep_note">Atelier 2 jours + 3 mois de suivi — 2 500 €</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" data-i18n="services_modal_close">Fermer</button></div>
             </div>
         </div>
     </div>
@@ -1525,16 +1525,16 @@
 <div class="modal fade sv-modal" id="formationCoachingDirigeantModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
-            <div class="modal-header"><div><p class="sv-modal-pretitle">04.5 — Formation · 4 000–6 000 €</p><h5 class="modal-title">Coaching Dirigeants ICF</h5></div><button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button></div>
+            <div class="modal-header"><div><p class="sv-modal-pretitle" data-i18n="modal_form_coaching_pretitle">04.5 — Formation · 4 000–6 000 €</p><h5 class="modal-title" data-i18n="modal_form_coaching_title">Coaching Dirigeants ICF</h5></div><button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button></div>
             <div class="modal-body">
-                <div class="sv-modal-intro"><p class="sv-modal-intro-text">Pack 10 sessions premium pour dirigeants : leadership, décisions complexes, équilibre personnel. Coaching certifié PCC/ICF.</p></div>
+                <div class="sv-modal-intro"><p class="sv-modal-intro-text" data-i18n="modal_form_coaching_intro">Pack 10 sessions premium pour dirigeants : leadership, décisions complexes, équilibre personnel. Coaching certifié PCC/ICF.</p></div>
                 <div class="sv-modal-grid">
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title">Décisions complexes</h4><p class="sv-modal-item-text">Accompagnement dans vos arbitrages stratégiques, choix critiques et périodes d'incertitude.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title">Posture de leader</h4><p class="sv-modal-item-text">Clarifier votre rôle, renforcer votre impact managérial et ajuster votre posture face aux équipes.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title">Vision et alignement</h4><p class="sv-modal-item-text">(Re)donner du sens à votre projet entrepreneurial ou à votre gouvernance d'entreprise.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title">Standard ICF certifié</h4><p class="sv-modal-item-text">Coaching professionnel certifié PCC/ICF sur des bases éthiques, méthodologiques et confidentielles.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title" data-i18n="modal_form_coaching_i1_title">Décisions complexes</h4><p class="sv-modal-item-text" data-i18n="modal_form_coaching_i1_text">Accompagnement dans vos arbitrages stratégiques, choix critiques et périodes d'incertitude.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title" data-i18n="modal_form_coaching_i2_title">Posture de leader</h4><p class="sv-modal-item-text" data-i18n="modal_form_coaching_i2_text">Clarifier votre rôle, renforcer votre impact managérial et ajuster votre posture face aux équipes.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title" data-i18n="modal_form_coaching_i3_title">Vision et alignement</h4><p class="sv-modal-item-text" data-i18n="modal_form_coaching_i3_text">(Re)donner du sens à votre projet entrepreneurial ou à votre gouvernance d'entreprise.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title" data-i18n="modal_form_coaching_i4_title">Standard ICF certifié</h4><p class="sv-modal-item-text" data-i18n="modal_form_coaching_i4_text">Coaching professionnel certifié PCC/ICF sur des bases éthiques, méthodologiques et confidentielles.</p></div>
                 </div>
-                <div class="sv-modal-note"><p class="sv-modal-note-text">Pack 10 sessions (1h30) — 4 000 € à 6 000 €</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button></div>
+                <div class="sv-modal-note"><p class="sv-modal-note-text" data-i18n="modal_form_coaching_note">Pack 10 sessions (1h30) — 4 000 € à 6 000 €</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" data-i18n="services_modal_close">Fermer</button></div>
             </div>
         </div>
     </div>
@@ -1543,16 +1543,16 @@
 <div class="modal fade sv-modal" id="formationApporteurModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
-            <div class="modal-header"><div><p class="sv-modal-pretitle">04.6 — Formation · 900 €</p><h5 class="modal-title">Apporteur d'affaires</h5></div><button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button></div>
+            <div class="modal-header"><div><p class="sv-modal-pretitle" data-i18n="modal_form_apport_pretitle">04.6 — Formation · 900 €</p><h5 class="modal-title" data-i18n="modal_form_apport_title">Apporteur d'affaires</h5></div><button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button></div>
             <div class="modal-body">
-                <div class="sv-modal-intro"><p class="sv-modal-intro-text">Formation 1 journée intensive pour maîtriser l'activité d'apporteur d'affaires immobilier haut de gamme.</p></div>
+                <div class="sv-modal-intro"><p class="sv-modal-intro-text" data-i18n="modal_form_apport_intro">Formation 1 journée intensive pour maîtriser l'activité d'apporteur d'affaires immobilier haut de gamme.</p></div>
                 <div class="sv-modal-grid">
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title">Rôle et cadre légal</h4><p class="sv-modal-item-text">Réglementation, contrats d'apport, déclaration de commissions et sécurisation de l'activité.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title">Développer son réseau</h4><p class="sv-modal-item-text">Identifier les bons partenaires, construire des relations durables et professionnaliser la prospection.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title">Valoriser ses leads</h4><p class="sv-modal-item-text">Qualifier ses apports, présenter de vraies opportunités aux bons interlocuteurs, négocier sa rémunération.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title">Sécuriser ses commissions</h4><p class="sv-modal-item-text">Techniques juridiques et contractuelles pour protéger son activité et garantir le paiement.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title" data-i18n="modal_form_apport_i1_title">Rôle et cadre légal</h4><p class="sv-modal-item-text" data-i18n="modal_form_apport_i1_text">Réglementation, contrats d'apport, déclaration de commissions et sécurisation de l'activité.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title" data-i18n="modal_form_apport_i2_title">Développer son réseau</h4><p class="sv-modal-item-text" data-i18n="modal_form_apport_i2_text">Identifier les bons partenaires, construire des relations durables et professionnaliser la prospection.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title" data-i18n="modal_form_apport_i3_title">Valoriser ses leads</h4><p class="sv-modal-item-text" data-i18n="modal_form_apport_i3_text">Qualifier ses apports, présenter de vraies opportunités aux bons interlocuteurs, négocier sa rémunération.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title" data-i18n="modal_form_apport_i4_title">Sécuriser ses commissions</h4><p class="sv-modal-item-text" data-i18n="modal_form_apport_i4_text">Techniques juridiques et contractuelles pour protéger son activité et garantir le paiement.</p></div>
                 </div>
-                <div class="sv-modal-note"><p class="sv-modal-note-text">Formation 1 journée intensive — 900 €</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button></div>
+                <div class="sv-modal-note"><p class="sv-modal-note-text" data-i18n="modal_form_apport_note">Formation 1 journée intensive — 900 €</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" data-i18n="services_modal_close">Fermer</button></div>
             </div>
         </div>
     </div>
@@ -1561,16 +1561,16 @@
 <div class="modal fade sv-modal" id="formationConsultingModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
-            <div class="modal-header"><div><p class="sv-modal-pretitle">04.7 — Formation · 2 900 €</p><h5 class="modal-title">Consulting Immobilier Premium</h5></div><button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button></div>
+            <div class="modal-header"><div><p class="sv-modal-pretitle" data-i18n="modal_form_consult_pretitle">04.7 — Formation · 2 900 €</p><h5 class="modal-title" data-i18n="modal_form_consult_title">Consulting Immobilier Premium</h5></div><button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button></div>
             <div class="modal-body">
-                <div class="sv-modal-intro"><p class="sv-modal-intro-text">2 jours + accompagnement pour structurer une activité de consulting immobilier de prestige, éthique et rentable.</p></div>
+                <div class="sv-modal-intro"><p class="sv-modal-intro-text" data-i18n="modal_form_consult_intro">2 jours + accompagnement pour structurer une activité de consulting immobilier de prestige, éthique et rentable.</p></div>
                 <div class="sv-modal-grid">
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title">Positionnement & expertise</h4><p class="sv-modal-item-text">Définir sa spécialité : promotion, audit, investissement, expatriation, opérations complexes.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title">Éthique & crédibilité</h4><p class="sv-modal-item-text">Construire une vraie valeur ajoutée, respecter une posture de conseil, construire la confiance.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title">Structuration juridique</h4><p class="sv-modal-item-text">Créer son activité, sécuriser les contrats, fixer des honoraires adaptés, piloter la facturation.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title">Développement commercial</h4><p class="sv-modal-item-text">Stratégies de développement, partenariats institutionnels, prescripteurs, premiers mandats.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title" data-i18n="modal_form_consult_i1_title">Positionnement & expertise</h4><p class="sv-modal-item-text" data-i18n="modal_form_consult_i1_text">Définir sa spécialité : promotion, audit, investissement, expatriation, opérations complexes.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title" data-i18n="modal_form_consult_i2_title">Éthique & crédibilité</h4><p class="sv-modal-item-text" data-i18n="modal_form_consult_i2_text">Construire une vraie valeur ajoutée, respecter une posture de conseil, construire la confiance.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title" data-i18n="modal_form_consult_i3_title">Structuration juridique</h4><p class="sv-modal-item-text" data-i18n="modal_form_consult_i3_text">Créer son activité, sécuriser les contrats, fixer des honoraires adaptés, piloter la facturation.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title" data-i18n="modal_form_consult_i4_title">Développement commercial</h4><p class="sv-modal-item-text" data-i18n="modal_form_consult_i4_text">Stratégies de développement, partenariats institutionnels, prescripteurs, premiers mandats.</p></div>
                 </div>
-                <div class="sv-modal-note"><p class="sv-modal-note-text">Formation 2 jours + accompagnement — 2 900 €</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button></div>
+                <div class="sv-modal-note"><p class="sv-modal-note-text" data-i18n="modal_form_consult_note">Formation 2 jours + accompagnement — 2 900 €</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" data-i18n="services_modal_close">Fermer</button></div>
             </div>
         </div>
     </div>
@@ -1579,16 +1579,16 @@
 <div class="modal fade sv-modal" id="formationWeb3Modal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content">
-            <div class="modal-header"><div><p class="sv-modal-pretitle">04.8 — Formation · 1 200 €</p><h5 class="modal-title">Web3 & Immobilier</h5></div><button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button></div>
+            <div class="modal-header"><div><p class="sv-modal-pretitle" data-i18n="modal_form_web3_pretitle">04.8 — Formation · 1 200 €</p><h5 class="modal-title" data-i18n="modal_form_web3_title">Web3 & Immobilier</h5></div><button class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal"></button></div>
             <div class="modal-body">
-                <div class="sv-modal-intro"><p class="sv-modal-intro-text">Masterclass stratégique 1 jour sur la tokenisation, la blockchain et les nouvelles formes de financement immobilier.</p></div>
+                <div class="sv-modal-intro"><p class="sv-modal-intro-text" data-i18n="modal_form_web3_intro">Masterclass stratégique 1 jour sur la tokenisation, la blockchain et les nouvelles formes de financement immobilier.</p></div>
                 <div class="sv-modal-grid">
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title">Principes du Web3</h4><p class="sv-modal-item-text">Blockchain, smart contracts, NFT, tokenisation d'actifs réels, DAOs et gouvernance décentralisée.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title">Nouveaux modèles</h4><p class="sv-modal-item-text">Financement participatif tokenisé, levées de fonds en crypto-actifs, dématérialisation des parts.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title">Aspects juridiques</h4><p class="sv-modal-item-text">Régulation actuelle, enjeux de conformité KYC/AML, fiscalité des revenus tokenisés, cadre MiCA.</p></div>
-                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title">Opportunités & risques</h4><p class="sv-modal-item-text">Avantages stratégiques du Web3, limites actuelles, vision prospective sur 5 à 10 ans.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">01</p><h4 class="sv-modal-item-title" data-i18n="modal_form_web3_i1_title">Principes du Web3</h4><p class="sv-modal-item-text" data-i18n="modal_form_web3_i1_text">Blockchain, smart contracts, NFT, tokenisation d'actifs réels, DAOs et gouvernance décentralisée.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">02</p><h4 class="sv-modal-item-title" data-i18n="modal_form_web3_i2_title">Nouveaux modèles</h4><p class="sv-modal-item-text" data-i18n="modal_form_web3_i2_text">Financement participatif tokenisé, levées de fonds en crypto-actifs, dématérialisation des parts.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">03</p><h4 class="sv-modal-item-title" data-i18n="modal_form_web3_i3_title">Aspects juridiques</h4><p class="sv-modal-item-text" data-i18n="modal_form_web3_i3_text">Régulation actuelle, enjeux de conformité KYC/AML, fiscalité des revenus tokenisés, cadre MiCA.</p></div>
+                    <div class="sv-modal-item"><p class="sv-modal-item-num">04</p><h4 class="sv-modal-item-title" data-i18n="modal_form_web3_i4_title">Opportunités & risques</h4><p class="sv-modal-item-text" data-i18n="modal_form_web3_i4_text">Avantages stratégiques du Web3, limites actuelles, vision prospective sur 5 à 10 ans.</p></div>
                 </div>
-                <div class="sv-modal-note"><p class="sv-modal-note-text">Masterclass stratégique 1 jour — 1 200 €</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">Fermer</button></div>
+                <div class="sv-modal-note"><p class="sv-modal-note-text" data-i18n="modal_form_web3_note">Masterclass stratégique 1 jour — 1 200 €</p><button class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" data-i18n="services_modal_close">Fermer</button></div>
             </div>
         </div>
     </div>

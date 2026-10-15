@@ -7,13 +7,13 @@ using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-#region 🌍 Localisation (FR/PT)
+#region 🌍 Localisation (FR/PT/EN)
 
 // Indique le dossier des fichiers de traduction
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 
 // Liste des cultures supportées
-var supportedCultures = new[] { new CultureInfo("fr"), new CultureInfo("pt") };
+var supportedCultures = new[] { new CultureInfo("fr"), new CultureInfo("pt"), new CultureInfo("en") };
 
 // Configuration des options de localisation
 builder.Services.Configure<RequestLocalizationOptions>(options =>

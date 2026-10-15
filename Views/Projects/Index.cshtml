@@ -610,24 +610,24 @@
     <!-- ── HERO ── -->
     <section class="pj-hero">
         <div class="container pj-hero-content">
-            <p class="pj-pretitle">Human Square · Portugal</p>
-            <h1 class="pj-h1">
+            <p class="pj-pretitle" data-i18n="projects_eyebrow">Human Square · Portugal</p>
+            <h1 class="pj-h1" data-i18n="projects_title" data-i18n-html>
                 @(isDisponibles ? "Opportunités" : "Projets")<br>
                 <em>@(isDisponibles ? "d'investissement" : "accompagnés")</em>
             </h1>
-            <p class="pj-hero-sub">
+            <p class="pj-hero-sub" data-i18n="projects_sub">
                 @(isDisponibles
                                 ? "Opportunités immobilières sélectionnées par Human Square — projets touristiques, réhabilitation et développement au Portugal."
                                 : "Human Square accompagne investisseurs, particuliers et promoteurs dans leurs projets immobiliers au Portugal, de la faisabilité à la livraison.")
             </p>
             <div class="pj-hero-stats">
                 <div class="pj-hero-stat">
-                    <div class="pj-stat-num">17+</div>
-                    <div class="pj-stat-label">Années d'expérience</div>
+                    <div class="pj-stat-num" data-i18n="projects_stat1">17+</div>
+                    <div class="pj-stat-label" data-i18n="projects_stat1_label">Années d'expérience</div>
                 </div>
                 <div class="pj-hero-stat">
-                    <div class="pj-stat-num">5</div>
-                    <div class="pj-stat-label">Régions couvertes</div>
+                    <div class="pj-stat-num" data-i18n="projects_stat2">5</div>
+                    <div class="pj-stat-label" data-i18n="projects_stat2_label">Régions couvertes</div>
                 </div>
             </div>
         </div>
@@ -636,10 +636,10 @@
     <!-- ── TABS ── -->
     <div class="pj-tabs">
         <a class="pj-tab @(isDisponibles ? "" : "active")" href="/Projects/Index">
-            <span class="pj-tab-num">01</span> Projets clients
+            <span class="pj-tab-num">01</span> <span data-i18n="projects_tab_clients">Projets clients</span>
         </a>
         <a class="pj-tab @(isDisponibles ? "active" : "")" href="/Projects/Disponibles">
-            <span class="pj-tab-num">02</span> Sur le marché
+            <span class="pj-tab-num">02</span> <span data-i18n="projects_tab_market">Sur le marché</span>
         </a>
     </div>
 
@@ -684,7 +684,7 @@
                         <h3 class="pj-card-title">@project.Title</h3>
                         <p class="pj-card-desc">@project.Description</p>
                         <div class="pj-card-footer">
-                            <button class="pj-card-btn" data-bs-toggle="modal" data-bs-target="#@project.ModalId">
+                            <button class="pj-card-btn" data-bs-toggle="modal" data-bs-target="#@project.ModalId" data-i18n="projects_voir">
                                 Voir le projet →
                             </button>
                             <span class="pj-card-arrow">→</span>
@@ -698,11 +698,11 @@
 
     <!-- ── CTA ── -->
     <div class="pj-cta">
-        <p class="pj-cta-text">
+        <p class="pj-cta-text" data-i18n="projects_cta_title" data-i18n-html>
             Vous avez un projet<br><em>immobilier au Portugal ?</em>
         </p>
         <a asp-controller="Contact" asp-action="Contact" class="pj-cta-btn">
-            Être accompagné
+            <span data-i18n="projects_cta_btn">Être accompagné</span>
             <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
             </svg>

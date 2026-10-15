@@ -7,7 +7,7 @@
 
 <!-- ===== Bouton “voir tous nos services” ===== -->
 <div class="container py-3 text-end">
-    <a asp-controller="Services" asp-action="Services" class="btn btn-outline-secondary">
+    <a asp-controller="Services" asp-action="Services" class="btn btn-outline-secondary" data-i18n="orientation_back_btn">
         Voir tous nos services
     </a>
 </div>
@@ -19,12 +19,12 @@
 
 <!-- ===== Sélection des domaines ===== -->
 <div class="container py-5">
-    <h1 class="text-center mb-4">Choisissez vos domaines d’intérêt</h1>
+    <h1 class="text-center mb-4" data-i18n="orientation_h1">Choisissez vos domaines d’intérêt</h1>
     <div class="row g-4">
         <div class="col-md-4">
             <div class="card h-100 shadow-sm clickable-domain"
                  onclick="toggleDomain('conseil')">
-                <div class="card-body text-center">
+                <div class="card-body text-center" data-i18n="orientation_domain_conseil">
                     Consulting stratégique
                 </div>
             </div>
@@ -32,7 +32,7 @@
         <div class="col-md-4">
             <div class="card h-100 shadow-sm clickable-domain"
                  onclick="toggleDomain('audit')">
-                <div class="card-body text-center">
+                <div class="card-body text-center" data-i18n="orientation_domain_audit">
                     Audit
                 </div>
             </div>
@@ -40,7 +40,7 @@
         <div class="col-md-4">
             <div class="card h-100 shadow-sm clickable-domain"
                  onclick="toggleDomain('formation')">
-                <div class="card-body text-center">
+                <div class="card-body text-center" data-i18n="orientation_domain_formation">
                     Formation
                 </div>
             </div>
@@ -48,7 +48,7 @@
         <div class="col-md-4">
             <div class="card h-100 shadow-sm clickable-domain"
                  onclick="toggleDomain('coaching')">
-                <div class="card-body text-center">
+                <div class="card-body text-center" data-i18n="orientation_domain_coaching">
                     Coaching Professionnel
                 </div>
             </div>
@@ -61,7 +61,7 @@
 
 <!-- ======= Formulaire ======= -->
 <div class="container py-5">
-    <h3 class="text-center mb-4">Votre sélection</h3>
+    <h3 class="text-center mb-4" data-i18n="orientation_selection_title">Votre sélection</h3>
 
     @if (TempData["SuccessMessage"] != null)
     {
@@ -73,9 +73,9 @@
     }
 
     <div class="alert alert-light border mb-4">
-        <strong>Domaines sélectionnés :</strong>
+        <strong data-i18n="orientation_selected_domains">Domaines sélectionnés :</strong>
         <ul id="domainList" class="mb-2"></ul>
-        <strong>Prestations sélectionnées :</strong>
+        <strong data-i18n="orientation_selected_services">Prestations sélectionnées :</strong>
         <ul id="serviceList"></ul>
     </div>
 
@@ -114,7 +114,7 @@
         </div>
 
         <div class="col-12 text-center">
-            <button class="btn btn-primary" type="submit">Envoyer</button>
+            <button class="btn btn-primary" type="submit" data-i18n="orientation_submit">Envoyer</button>
         </div>
     </form>
 </div>
@@ -126,6 +126,13 @@
         audit: ["Projet immobilier", "Optimiser finances", "Entreprise"],
         formation: ["Investissement", "Entrepreneuriat", "Immobilier & Construction"],
         coaching: ["Marketing de soi", "Affirmation & confiance de soi", "Prise de position & décision"]
+    };
+
+    const prestationKeys = {
+        conseil: ["orientation_conseil_1", "orientation_conseil_2", "orientation_conseil_3"],
+        audit: ["orientation_audit_1", "orientation_audit_2", "orientation_audit_3"],
+        formation: ["orientation_formation_1", "orientation_formation_2", "orientation_formation_3"],
+        coaching: ["orientation_coaching_1", "orientation_coaching_2", "orientation_coaching_3"]
     };
 
     let selectedDomains = [];
@@ -153,19 +160,22 @@
         wrap.id = `services-${domain}`;
 
         let html = `<h5 class="mb-3 text-capitalize">${domain}</h5><div class="row g-3">`;
-        prestations[domain].forEach(s => {
+        prestations[domain].forEach((s, idx) => {
             const id = `${domain}-${s}`.replace(/\s+/g, '-').toLowerCase();
+            const i18nKey = prestationKeys[domain] ? prestationKeys[domain][idx] : '';
             html += `
                   <div class="col-md-3">
                     <div id="${id}" class="card h-100 shadow-sm clickable-card"
                          onclick="toggleService('${domain}','${s}','${id}')">
-                         <div class="card-body text-center">${s}</div>
+                         <div class="card-body text-center" data-i18n="${i18nKey}">${s}</div>
                     </div>
                   </div>`;
         });
         html += "</div>";
         wrap.innerHTML = html;
         document.getElementById("servicesByDomain").appendChild(wrap);
+        // Re-apply i18n translations to newly rendered elements
+        if (window.HSi18n && HSi18n.getLocale() !== 'fr') HSi18n.setLocale(HSi18n.getLocale());
     }
 
     function toggleService(domain, service, id) {
